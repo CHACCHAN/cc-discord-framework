@@ -1,0 +1,14 @@
+{
+    "name": "VS Code Dev Container",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "discord-bot",
+    "workspaceFolder": "/usr/src/cc2.3",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode"
+            ]
+        }
+    }
+}

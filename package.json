@@ -1,0 +1,42 @@
+{
+  "name": "cc-discord-framework",
+  "version": "1.0.0",
+  "description": "My custom Discord.js framework",
+
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "bun run clean && bun run build",
+    "api:setup": "cd ../api && bun install"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.19.2",
+    "axios": "^1.16.0",
+    "glob": "^13.0.6",
+    "play-dl": "^1.9.7",
+    "reflect-metadata": "^0.2.2"
+  },
+
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.0.0",
+    "dotenv": "^17.4.2"
+  },
+
+  "peerDependencies": {
+    "discord.js": "^14.26.3",
+    "hono": "^4.12.18"
+  }
+}
