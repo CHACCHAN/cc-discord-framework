@@ -1,15 +1,19 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./core",
     "outDir": "./dist",
     "rootDir": "./core",
+    "paths": {
+      "@core/*": ["*"],
+      "@core/containersType": ["types/ContainersType"],
+      "@core/cacheType": ["types/CacheType"],
+    },
     "declaration": true,
     "noEmit": false,
     "allowImportingTsExtensions": false
   },
-  "include": [
-    "core/**/*"
-  ],
+  "include": ["core/**/*"],
   "exclude": [
     "node_modules",
     "src",
