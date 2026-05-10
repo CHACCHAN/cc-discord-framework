@@ -7,6 +7,6 @@ git remote add bot-origin https://github.com/CHACCHAN/cc-discord-framework.git 2
 git add .
 git commit -m "chore: sync framework core from subdir script"
 
-git subtree push --prefix=discord-bot/core bot-origin main -f
+git subtree push --prefix=discord-bot/core bot-origin main
 
 pause
