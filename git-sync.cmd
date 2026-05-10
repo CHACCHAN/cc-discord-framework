@@ -6,7 +6,7 @@ cd /d %~dp0..
 echo.
 echo [1/4] リモートリポジトリ(bot-origin)の設定を更新中...
 git remote remove bot-origin 2>nul
-git remote add bot-origin https://github.com/CHACCHAN/CC-System.git
+git remote add bot-origin https://github.com/CHACCHAN/cc-discord-framework.git
 
 echo.
 echo [2/4] ローカルの最新の変更を保存しています...
