@@ -1,8 +1,8 @@
 import { Client, Events, type ClientOptions } from "discord.js";
-import { Container } from "@core/registry";
-import { FileLoader, Logger } from "@core/utils";
-import * as Structures from "@core/structures";
-import { DefaultMessageCreateListener } from "@core/listeners";
+import { Container } from "@core/registry/index.js";
+import { FileLoader, Logger } from "@core/utils/index.js";
+import * as Structures from "@core/structures/index.js";
+import { DefaultMessageCreateListener } from "@core/listeners/index.js";
 
 interface CoreOptions extends ClientOptions {
     defaultPrefix: string;
@@ -70,7 +70,7 @@ export class Core extends Client {
                 listenerMap.set(meta.eventName, { Component, meta });
             }),
             // モジュール読み込み
-            import("./modules/index").then((modules) => {
+            import("./modules/index.js").then((modules) => {
                 for (const [name, Component] of Object.entries(modules)) {
                     if (typeof Component === "function" && Component.name) {
                         Logger.system(`[Module Hit] ${name}`);

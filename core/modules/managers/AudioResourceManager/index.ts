@@ -1,1 +1,1 @@
-export * from "./AudioResourceManager";
+export * from "./AudioResourceManager.js";

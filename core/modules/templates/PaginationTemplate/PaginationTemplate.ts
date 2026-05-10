@@ -1,4 +1,4 @@
-import { Logger } from "@core/utils";
+import { Logger } from "@core/utils/index.js";
 import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, ComponentType, InteractionCollector, Message, type CacheType, type InteractionReplyOptions, type MessageCreateOptions, type MessageEditOptions, type ReadonlyCollection, type RepliableInteraction } from "discord.js";
 
 interface ButtonOption {

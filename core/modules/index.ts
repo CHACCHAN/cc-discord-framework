@@ -1,2 +1,2 @@
-export * from "./managers";
-export * from "./templates";
+export * from "./managers/index.js";
+export * from "./templates/index.js";

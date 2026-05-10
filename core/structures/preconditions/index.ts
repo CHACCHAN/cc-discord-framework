@@ -1,1 +1,1 @@
-export * from "./MessageCreatePrecondition";
+export * from "./MessageCreatePrecondition.js";

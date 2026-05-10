@@ -1,4 +1,4 @@
-import { Logger } from "@core/utils";
+import { Logger } from "@core/utils/index.js";
 import type { ContainerEntries } from "@core/containersType";
 
 export class Container {

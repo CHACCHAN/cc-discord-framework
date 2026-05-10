@@ -1,4 +1,4 @@
-import { Logger } from "@core/utils";
+import { Logger } from "@core/utils/index.js";
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, VoiceConnection } from "@discordjs/voice";
 import type { VoiceBasedChannel } from "discord.js";
 

@@ -1,5 +1,5 @@
 import { type Message } from "discord.js";
-import { Base, BaseApplyDecorator } from "../Base";
+import { Base, BaseApplyDecorator } from "../Base.js";
 
 export interface PreconditionRegistry {}
 

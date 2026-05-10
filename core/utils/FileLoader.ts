@@ -1,7 +1,7 @@
 import { glob } from "glob";
 import path from "node:path";
 import "reflect-metadata";
-import { Logger } from "./Logger";
+import { Logger } from "./Logger.js";
 
 export class FileLoader {
     /**

@@ -1,1 +1,1 @@
-export * from "./FormatTemplate";
+export * from "./FormatTemplate.js";

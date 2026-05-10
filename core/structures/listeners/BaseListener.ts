@@ -1,5 +1,5 @@
 import { type ClientEvents } from "discord.js";
-import { Base, BaseApplyDecorator } from "../Base";
+import { Base, BaseApplyDecorator } from "../Base.js";
 
 interface ListenerOptions<K extends keyof ClientEvents> {
     eventName: K;

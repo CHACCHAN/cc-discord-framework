@@ -1,1 +1,1 @@
-export * from "./EmbedTemplate";
+export * from "./EmbedTemplate.js";

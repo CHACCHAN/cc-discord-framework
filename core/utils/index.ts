@@ -1,2 +1,2 @@
-export * from "./FileLoader";
-export * from "./Logger";
+export * from "./FileLoader.js";
+export * from "./Logger.js";

@@ -1,6 +1,6 @@
-import { BaseListener, MESSAGE_COMMAND_METADATA_KEY, MESSAGE_CREATE_PRECONDITION_METADATA_KEY } from "@core/structures";
+import { BaseListener, MESSAGE_COMMAND_METADATA_KEY, MESSAGE_CREATE_PRECONDITION_METADATA_KEY } from "@core/structures/index.js";
 import type { Events, Message } from "discord.js";
-import { Logger } from "@core/utils";
+import { Logger } from "@core/utils/index.js";
 
 export class DefaultMessageCreateListener extends BaseListener<Events.MessageCreate> {
     public async run(message: Message) {

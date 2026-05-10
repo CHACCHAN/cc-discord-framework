@@ -1,1 +1,1 @@
-export * from "./MessageCommand";
+export * from "./MessageCommand.js";
