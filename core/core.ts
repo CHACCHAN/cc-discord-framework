@@ -48,25 +48,26 @@ export class Core extends Client {
 
     private async bootstrap(extraTasks: Promise<void>[] = []) {
         const listenerMap = new Map<string, any>();
+        const extensionPattern = typeof (globalThis as any).Bun !== "undefined" ? "{ts,js}" : "js";
         const coreTasks = [
             // コマンド自動登録 KEY:NAME:(ALIASES)
-            FileLoader.load(Structures.MESSAGE_COMMAND_METADATA_KEY, `${this.basePath}/commands/**/*.{ts,js}`, (Component, meta) => {
+            FileLoader.load(Structures.MESSAGE_COMMAND_METADATA_KEY, `${this.basePath}/commands/**/*.${extensionPattern}`, (Component, meta) => {
                 const instance = new Component();
                 Container.register(`${Structures.MESSAGE_COMMAND_METADATA_KEY}:${meta.name}`, instance);
                 meta.aliases?.forEach((a: string) => Container.register(`${Structures.MESSAGE_COMMAND_METADATA_KEY}:${a}`, instance));
                 if (meta?.preconditions) instance.preconditions = meta.preconditions;
             }),
             // 前提条件自動登録
-            FileLoader.load(Structures.MESSAGE_CREATE_PRECONDITION_METADATA_KEY, `${this.basePath}/preconditions/**/*.{ts,js}`, (Component, meta) => {
+            FileLoader.load(Structures.MESSAGE_CREATE_PRECONDITION_METADATA_KEY, `${this.basePath}/preconditions/**/*.${extensionPattern}`, (Component, meta) => {
                 Container.register(`${Structures.MESSAGE_CREATE_PRECONDITION_METADATA_KEY}:${meta.name}`, new Component());
             }),
             // コンポーネント
-            FileLoader.load(Structures.BASE_COMPONENT_META_KEY, `${this.basePath}/components/**/*.{ts,js}`, (Component, meta) => {
+            FileLoader.load(Structures.BASE_COMPONENT_META_KEY, `${this.basePath}/components/**/*.${extensionPattern}`, (Component, meta) => {
                 const registerName = meta.name || Component.name;
                 Container.register(registerName, new Component());
             }),
             // 汎用リスナー自動登録
-            FileLoader.load(Structures.BASE_LISTENER_METADATA_KEY, `${this.basePath}/listeners/**/*.{ts,js}`, (Component, meta) => {
+            FileLoader.load(Structures.BASE_LISTENER_METADATA_KEY, `${this.basePath}/listeners/**/*.${extensionPattern}`, (Component, meta) => {
                 listenerMap.set(meta.eventName, { Component, meta });
             }),
             // モジュール読み込み
