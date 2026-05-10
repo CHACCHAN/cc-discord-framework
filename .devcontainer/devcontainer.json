@@ -2,7 +2,7 @@
     "name": "VS Code Dev Container",
     "dockerComposeFile": "../../docker-compose.yml",
     "service": "discord-bot",
-    "workspaceFolder": "/usr/src/cc2.3",
+    "workspaceFolder": "/usr/src/discord-bot",
     "customizations": {
         "vscode": {
             "extensions": [
