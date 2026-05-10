@@ -22,9 +22,7 @@ const core = new Core({
 });
 
 await core.init({
-    awake: () => {
-        console.log(__dirname)
-    },
+    awake: () => {},
     start: async (bootstrap) => {
         await bootstrap();
     },
