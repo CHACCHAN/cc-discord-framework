@@ -1,4 +1,4 @@
-import { Logger } from "@core/utils/index.js";
+import { Logger } from "../../../utils/index.js";
 import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, ComponentType, InteractionCollector, Message, type CacheType, type InteractionReplyOptions, type MessageCreateOptions, type MessageEditOptions, type ReadonlyCollection, type RepliableInteraction } from "discord.js";
 
 interface ButtonOption {
@@ -142,7 +142,7 @@ export class PaginationTemplate extends ActionRowBuilder<ButtonBuilder> {
     }
 }
 
-declare module "@core/containersType" {
+declare module "../../../types/index.js" {
     interface ContainerEntries {
         PaginationTemplate: typeof PaginationTemplate;
     }

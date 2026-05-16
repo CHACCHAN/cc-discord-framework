@@ -1,5 +1,5 @@
-import { Logger } from "@core/utils/index.js";
-import type { CacheEntries } from "@core/cacheType";
+import { Logger } from "../../utils/index.js";
+import type { CacheEntries } from "../../types/index.js";
 
 interface CacheItem<T> {
     value: T;

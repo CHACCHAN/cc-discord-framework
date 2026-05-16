@@ -1,4 +1,4 @@
-import { Cache, Container } from "@core/registry/index.js";
+import { Cache, Container } from "../registry/index.js";
 import "reflect-metadata";
 
 export function BaseApplyDecorator<T>(key: string, options: T): ClassDecorator {

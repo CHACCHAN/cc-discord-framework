@@ -41,7 +41,7 @@ export class EmbedTemplate extends EmbedBuilder {
     }
 }
 
-declare module "@core/containersType" {
+declare module "../../../types/index.js" {
     interface ContainerEntries {
         EmbedTemplate: typeof EmbedTemplate;
     }

@@ -1,5 +1,5 @@
-import { Logger } from "@core/utils/index.js";
-import type { ContainerEntries } from "@core/containersType";
+import { Logger } from "../../utils/index.js";
+import type { ContainerEntries } from "../../types/index.js";
 
 export class Container {
     private static instance = new Map<string, any>();

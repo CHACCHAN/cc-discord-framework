@@ -1,8 +1,8 @@
 import { Client, Events, type ClientOptions } from "discord.js";
-import { Container } from "@core/registry/index.js";
-import { FileLoader, Logger } from "@core/utils/index.js";
-import * as Structures from "@core/structures/index.js";
-import { DefaultMessageCreateListener } from "@core/listeners/index.js";
+import { Container } from "./registry/index.js";
+import { FileLoader, Logger } from "./utils/index.js";
+import * as Structures from "./structures/index.js";
+import { DefaultMessageCreateListener } from "./listeners/index.js";
 
 interface CoreOptions extends ClientOptions {
     defaultPrefix: string;
@@ -106,7 +106,7 @@ export class Core extends Client {
     }
 }
 
-declare module "@core/containersType" {
+declare module "./types/index.js" {
     interface ContainerEntries {
         Core: Core;
     }

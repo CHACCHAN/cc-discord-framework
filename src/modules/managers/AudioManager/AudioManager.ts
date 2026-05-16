@@ -1,4 +1,4 @@
-import { Logger } from "@core/utils/index.js";
+import { Logger } from "../../../utils/index.js";
 import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, VoiceConnection } from "@discordjs/voice";
 import type { VoiceBasedChannel } from "discord.js";
 
@@ -162,7 +162,7 @@ export class AudioManager {
     }
 }
 
-declare module "@core/containersType" {
+declare module "../../../types/index.js" {
     interface ContainerEntries {
         AudioManager: typeof AudioManager;
     }

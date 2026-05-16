@@ -8,7 +8,7 @@ export class FormatTemplate {
     }
 }
 
-declare module "@core/containersType" {
+declare module "../../../types/index.js" {
     interface ContainerEntries {
         FormatTemplate: typeof FormatTemplate;
     }

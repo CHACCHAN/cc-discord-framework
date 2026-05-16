@@ -27,7 +27,7 @@ export class AudioResourceManager {
     }
 }
 
-declare module "@core/containersType" {
+declare module "../../../types/index.js" {
     interface ContainerEntries {
         AudioResourceManager: typeof AudioResourceManager;
     }
