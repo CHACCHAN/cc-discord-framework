@@ -26,5 +26,5 @@ jobs:
       - name: Install dependencies
         run: bun install
         
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+      # - name: Publish to npm
+      #   run: npm publish --provenance --access public
