@@ -37,7 +37,6 @@ export class Core extends Client {
     // init framework core
     public async init(options: InitOptions): Promise<Core> {
         try {
-            // init setup
             await options.awake?.();
             await options.start?.(async (extraTasks) => {
                 await this.bootstrap(extraTasks);
@@ -86,13 +85,18 @@ export class Core extends Client {
 
     // this framework starts an ecosystem
     private async bootstrap(extraTasks: Promise<void>[] = []) {
-        // load plugins
+        // loading plugins and installers
         const everyEventPlugins: {
             [K in keyof ClientEvents]?: Array<(...args: ClientEvents[K]) => void | Promise<void>>
         } = {};
+        const everyEventPluginInstallers: Array<Promise<void>> = [];
 
         if (this.plugins && this.plugins.length > 0) {
             for (const plugin of this.plugins) {
+                if (plugin.install) {
+                    everyEventPluginInstallers.push(plugin.install(this));
+                }
+
                 if (!plugin.events) continue;
 
                 for (const [eventName, listener] of Object.entries(plugin.events)) {
@@ -106,7 +110,11 @@ export class Core extends Client {
                 }
             }
         }
+
+        // launch the installer
+        await Promise.all(everyEventPluginInstallers);
         
+        // get the application project file
         const isTS = __filename.endsWith(".ts") || typeof (globalThis as any).Bun !== "undefined";
         const extensionPattern = isTS ? "{ts,js}" : "js";
 

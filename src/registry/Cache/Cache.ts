@@ -23,11 +23,13 @@ export class Cache {
         return keys.join(":");
     }
 
-    public static set<T>(key: string, value: T, ttl: number = this.DEFAULT_TTL): void {
+    public static set<T>(key: string, value: T, options?: { ttl?: number, timeout?: () => void }): void {
         this.clearTimer(key);
 
+        const ttl = options?.ttl || this.DEFAULT_TTL;
         const timeoutId = setTimeout(() => {
             this.cache.delete(key);
+            options?.timeout?.();
             Logger.system(`[Cache Expired] ${key}`);
         }, ttl);
 

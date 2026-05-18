@@ -1,4 +1,4 @@
-import { EmbedBuilder, Emoji, Message, User, type ColorResolvable, type EmojiIdentifierResolvable } from "discord.js";
+import { EmbedBuilder, Emoji, type ColorResolvable, type EmojiIdentifierResolvable } from "discord.js";
 
 const COLORS = {
     SUCCESS: "#00FFAA" as ColorResolvable,

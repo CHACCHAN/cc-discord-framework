@@ -1,31 +1,20 @@
 import { Logger } from "../../../utils/index.js";
-import { AudioPlayer, AudioPlayerStatus, AudioResource, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, VoiceConnection } from "@discordjs/voice";
+import { AudioPlayer, AudioPlayerStatus, createAudioPlayer, joinVoiceChannel, NoSubscriberBehavior, VoiceConnection } from "@discordjs/voice";
 import type { VoiceBasedChannel } from "discord.js";
-
-// プラグインの共通基盤
-export interface QueuePlugin {
-    createResource(): Promise<AudioResource>;
-    destroy?(): Promise<void>;
-    callbacks?: Callbacks;
-}
-
-interface Callbacks {
-    emptyQueue?: () => void;
-    trackStart?: () => void;
-}
+import type { AudioManagerPlugin, AudioManagerPluginCallbacks } from "../../../types/index.js";
 
 interface AudioManagerState {
     connection: VoiceConnection | null;
     player: AudioPlayer;
-    queue: QueuePlugin[];
-    current: QueuePlugin | null;
+    queue: AudioManagerPlugin[];
+    current: AudioManagerPlugin | null;
     isProcessing: boolean;
 }
 
 export class AudioManager {
     private static states: Map<string, AudioManagerState> = new Map();
     private guildId: string;
-    private callbacks: Callbacks | undefined;
+    private callbacks: AudioManagerPluginCallbacks | undefined;
 
     constructor(guildId: string) {
         this.guildId = guildId;
@@ -60,17 +49,17 @@ export class AudioManager {
     public get queue() {
         return {
             // 追加
-            add: (plugin: QueuePlugin) => {
+            add: (plugin: AudioManagerPlugin) => {
                 plugin.callbacks = this.callbacks;
                 this.state.queue.push(plugin);
                 this.player.play();
             },
             // 取り出す
-            shift: (): QueuePlugin | undefined => { 
+            shift: (): AudioManagerPlugin | undefined => { 
                 return this.state.queue.shift();
             },
             // 現在再生中インスタンスを渡す
-            current: <T extends QueuePlugin>(): T | null => {
+            current: <T extends AudioManagerPlugin>(): T | null => {
                 return this.state.current as T | null;
             }
         }
@@ -118,7 +107,7 @@ export class AudioManager {
     }
 
     // コールバック関数登録
-    public registerCallbacks(callbacks: Callbacks) {
+    public registerCallbacks(callbacks: AudioManagerPluginCallbacks) {
         this.callbacks = callbacks;
     }
 
