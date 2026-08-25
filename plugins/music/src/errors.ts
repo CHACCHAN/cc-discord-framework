@@ -1,4 +1,4 @@
-import { UserError } from "cc-discord-framework";
+import { UserError } from "@cc-discord-framework/core";
 
 /**
  * 音楽再生に関する、ユーザーへ提示してよいエラー。

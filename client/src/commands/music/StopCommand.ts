@@ -1,4 +1,4 @@
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 import { requireQueue } from "./_shared.js";
 
 @Command.define({ description: "再生を停止し、キューを空にして切断します。" })

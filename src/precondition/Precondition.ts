@@ -9,7 +9,7 @@ import type { Command } from "../command/Command.js";
  * 使われます。各 Precondition の隣で宣言マージしてください:
  *
  * ```ts
- * declare module "cc-discord-framework" {
+ * declare module "@cc-discord-framework/core" {
  *   interface Preconditions {
  *     OwnerOnly: never;
  *   }

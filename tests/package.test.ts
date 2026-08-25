@@ -73,11 +73,13 @@ describe("公開パッケージの manifest", () => {
 });
 
 describe("README の導入経路", () => {
-	test("未公開の v2 は GitHub 指定で案内する", async () => {
+	test("v2 はスコープ付きパッケージ名で案内する", async () => {
 		const readme = await Bun.file(join(ROOT, "README.md")).text();
 
-		expect(readme).toContain("bun add github:CHACCHAN/cc-discord-framework");
-		expect(readme).toContain("npm の `cc-discord-framework` は互換性のない");
+		expect(readme).toContain("bun add @cc-discord-framework/core");
+		expect(readme).toContain("npm の `cc-discord-framework`(スコープなし)は互換性のない");
+		// 旧 GitHub 指定の導入案内は公開後に撤去済み。
+		expect(readme).not.toContain("bun add github:CHACCHAN/cc-discord-framework");
 	});
 
 	test("リポジトリ開発ではセルフリンクを明示実行する", async () => {

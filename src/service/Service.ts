@@ -9,7 +9,7 @@ import { defineOptions } from "../component/metadata.js";
  * ```ts
  * export class ConfigService extends Service { ... }
  *
- * declare module "cc-discord-framework" {
+ * declare module "@cc-discord-framework/core" {
  *   interface Services {
  *     config: ConfigService;
  *   }

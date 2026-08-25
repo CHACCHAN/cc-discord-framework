@@ -31,7 +31,7 @@
  * どちらのサービスも、公式 API ではない経路でアクセスします。各サービスの
  * 利用規約を確認したうえで、自分の責任で使ってください。
  */
-import { definePlugin, type Plugin } from "cc-discord-framework";
+import { definePlugin, type Plugin } from "@cc-discord-framework/core";
 import {
 	DEFAULT_ARTWORK_SIZE,
 	defaultFfmpegArgs,

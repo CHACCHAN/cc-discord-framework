@@ -4,7 +4,7 @@
 Contributor と、プラグインを書く Plugin Author を読者にしています。
 
 **Bot を作りたい方(Framework User)はここではなく公式サイトへ**:
-<https://cc-discord-framework.pages.dev>(準備中)。
+<https://discord-framework.oss.cc-chacchan.com>(準備中)。
 インストール、チュートリアル、コマンド・リスナー・サービスの書き方、
 公式プラグインの使い方は、すべて公式サイト側にあります。
 

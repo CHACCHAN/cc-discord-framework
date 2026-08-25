@@ -1,4 +1,4 @@
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 /** `/chat` が積んだ会話履歴を消します(キーは `/chat` と同じチャンネル ID)。 */
 @Command.define({ description: "このチャンネルのAIとの会話履歴を消します。" })

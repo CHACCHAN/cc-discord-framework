@@ -1,5 +1,5 @@
 import { chunk, paginate, type Page } from "@cc-discord-framework/utils";
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 /** 1ページあたりの表示コマンド数(この Bot が決めている値)。 */
 const PAGE_SIZE = 20;

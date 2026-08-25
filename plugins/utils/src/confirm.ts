@@ -7,7 +7,7 @@ import {
 	ComponentType,
 	type APIEmbed,
 	type EmbedBuilder,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { parseDuration, type DurationInput } from "./duration.js";
 import { invokerId, sendReply, type ReplyTarget } from "./reply.js";
 import {

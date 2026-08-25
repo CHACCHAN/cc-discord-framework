@@ -14,7 +14,7 @@
 - **デコレータは宣言、ローダーが実行。** `@X.define({...})` はメタデータを
   書くだけで、I/O もストア操作もしません
   ([デコレータとメタデータ](./decorator-metadata.md))。
-- **収束。** discord.js の全 API は `cc-discord-framework` から再エクスポート
+- **収束。** discord.js の全 API は `@cc-discord-framework/core` から再エクスポート
   され、サービスは `this.services.<名前>` に集まります。
 - **Bun 専用。** ファイル探索は `Bun.Glob`、`Bun.main` からディレクトリ既定を
   導き、Node 互換の抽象化はありません。
@@ -156,7 +156,7 @@ graph BT
   `component/`・`errors`・`events` に依存し、`client.ts` には依存しません。
 - `client.ts` は種別を配線する唯一のモジュールです。その上にいるのは
   `config.ts` と `index.ts` だけです。
-- `plugins/` は公開パッケージ名(`cc-discord-framework`)で import し、
+- `plugins/` は公開パッケージ名(`@cc-discord-framework/core`)で import し、
   拡張点しか使いません(サードパーティと同じ立場のコードです)。
 - ランタイムの循環 import はゼロ。型のみの循環(`Component ↔
   ComponentStore` など)は明示的な `import type` です。

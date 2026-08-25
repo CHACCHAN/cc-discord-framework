@@ -1,4 +1,4 @@
-import { Service } from "cc-discord-framework";
+import { Service } from "@cc-discord-framework/core";
 import type { TextBasedChannel, VoiceBasedChannel } from "discord.js";
 import "./config.js";
 import { MusicError, NoResultError } from "./errors.js";
@@ -146,7 +146,7 @@ export class AudioService extends Service {
 	}
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Services {
 		audio: AudioService;
 	}

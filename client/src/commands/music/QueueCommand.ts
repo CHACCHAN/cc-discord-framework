@@ -1,5 +1,5 @@
 import { chunk, paginate, type Page } from "@cc-discord-framework/utils";
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 import { LOOP_LABELS, describeTrack, requireQueue } from "./_shared.js";
 
 /** 1ページあたりの表示曲数(この Bot が決めている値)。 */

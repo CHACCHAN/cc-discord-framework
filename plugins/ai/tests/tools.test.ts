@@ -2,7 +2,7 @@
  * `AiTool` の検証。**ネットワークにも API キーにも触りません。**
  */
 import { describe, expect, test } from "bun:test";
-import { Client, ComponentLoadError } from "cc-discord-framework";
+import { Client, ComponentLoadError } from "@cc-discord-framework/core";
 import { z } from "zod";
 import {
 	ai,

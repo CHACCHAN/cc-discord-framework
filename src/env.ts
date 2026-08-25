@@ -7,7 +7,7 @@
  *
  * ```ts
  * // config/_env.ts — 環境変数を読むのはこの1ファイルだけ、という形を推奨
- * import { createEnv } from "cc-discord-framework";
+ * import { createEnv } from "@cc-discord-framework/core";
  *
  * const reader = createEnv();
  *

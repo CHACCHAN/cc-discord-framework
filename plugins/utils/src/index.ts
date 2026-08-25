@@ -31,7 +31,7 @@
  * その場だけ上書きできます。ハードコードされて変えられない見た目は
  * ありません。
  */
-import { definePlugin, type Plugin } from "cc-discord-framework";
+import { definePlugin, type Plugin } from "@cc-discord-framework/core";
 import { resolveTheme, type ThemeOptions } from "./theme.js";
 import { TaskStore } from "./scheduler.js";
 import { UiService } from "./UiService.js";
@@ -128,7 +128,7 @@ export {
 	type SplitMessageOptions,
 } from "./text.js";
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Stores {
 		tasks: TaskStore;
 	}

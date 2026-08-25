@@ -23,7 +23,7 @@
  * エントリファイルの場所(`dirname(Bun.main)`)から決まります。エントリを
  * 動かすと、エラーも出さずに全ストアが空になります。
  */
-import { createClient } from "cc-discord-framework";
+import { createClient } from "@cc-discord-framework/core";
 
 const client = await createClient();
 

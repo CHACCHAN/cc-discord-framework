@@ -30,7 +30,7 @@ graph TD
 
 ## ルート = フレームワーク本体
 
-npm パッケージ `cc-discord-framework` はリポジトリの **ルートそのもの**
+npm パッケージ `@cc-discord-framework/core` はリポジトリの **ルートそのもの**
 です。ルートはワークスペースメンバーになれないため、他のメンバーからの
 解決は開発時に明示実行する `bun run link:self` のセルフリンクで実現しています
 ([開発環境](./setup.md#link-selfts-の仕組み))。
@@ -38,7 +38,7 @@ npm パッケージ `cc-discord-framework` はリポジトリの **ルートそ�
 ## `plugins/` — 公式プラグイン
 
 各プラグインは独立した npm パッケージで、フレームワークへは
-`peerDependencies: { "cc-discord-framework": "^2.0.0" }` で依存します。
+`peerDependencies: { "@cc-discord-framework/core": "^2.0.0" }` で依存します。
 重い依存(`@discordjs/voice`、Vercel AI SDK など)をコアへ持ち込まない
 ための分離です — フレームワーク本体の実行時依存は `discord.js` と `pino`
 の2つだけです。
@@ -72,7 +72,7 @@ npm パッケージ `cc-discord-framework` はリポジトリの **ルートそ�
    「これはエンジンの能力か、Bot の機能か」に迷ったら client/ の分担を
    見てください。
 
-import は公開時とまったく同じ `cc-discord-framework` /
+import は公開時とまったく同じ `@cc-discord-framework/core` /
 `@cc-discord-framework/*` です(tsconfig `paths` は不使用)。
 
 ## `website/` — 公式サイト(利用者向けドキュメント)

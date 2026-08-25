@@ -8,7 +8,7 @@ import {
 	type ComponentOptions,
 	type Message,
 	type RepliableInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { AiTimeoutError, messageOf } from "./errors.js";
 import { AiEvents, reportAiError } from "./events.js";
 

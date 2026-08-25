@@ -2,7 +2,7 @@ import {
 	ApplicationCommandOptionType,
 	Command,
 	type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 /**
  * チャンネル単位の会話履歴を踏まえて答えます。

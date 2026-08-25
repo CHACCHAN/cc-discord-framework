@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { EMBED_DESCRIPTION_LIMIT, MESSAGE_LIMIT } from "@cc-discord-framework/utils";
-import type { EmbedBuilder } from "cc-discord-framework";
+import type { EmbedBuilder } from "@cc-discord-framework/core";
 import {
 	aiSplitThreshold,
 	defaultAiConfig,

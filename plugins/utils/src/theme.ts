@@ -17,7 +17,7 @@
  * 2段目を飛ばして `defaultTheme` を既定に使います。Bot 全体のテーマを
  * 効かせたい場合は `this.services.ui` 経由で呼んでください。
  */
-import { ButtonStyle, type ButtonBuilder } from "cc-discord-framework";
+import { ButtonStyle, type ButtonBuilder } from "@cc-discord-framework/core";
 import type { DurationInput, FormatDurationOptions } from "./duration.js";
 
 /** ボタン1つ分の見た目。`label` と `emoji` は少なくとも一方が必要です。 */
@@ -209,7 +209,7 @@ export function applyButtonTheme(button: ButtonBuilder, theme: ButtonTheme): But
 	return button;
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Container {
 		/** `utils()` が解決して置くテーマ。クライアント毎に独立しています。 */
 		theme: Theme;

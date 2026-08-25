@@ -21,7 +21,7 @@
  * にあります。`intents` は設定ファイル間で合併(union)されるので、ここは
  * 「どの機能でも要る分」だけを持ちます。
  */
-import { defineConfig, definePlugin, GatewayIntentBits } from "cc-discord-framework";
+import { defineConfig, definePlugin, GatewayIntentBits } from "@cc-discord-framework/core";
 import { env } from "./_env.js";
 
 export default defineConfig({

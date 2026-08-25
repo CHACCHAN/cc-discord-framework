@@ -6,7 +6,7 @@ import {
 	VoiceConnectionStatus,
 	getVoiceConnection,
 } from "@discordjs/voice";
-import { Client } from "cc-discord-framework";
+import { Client } from "@cc-discord-framework/core";
 import {
 	GuildQueue,
 	MusicEvents,

@@ -2,7 +2,7 @@ import {
 	ApplicationCommandOptionType,
 	Command,
 	type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { requireQueue } from "./_shared.js";
 
 /**

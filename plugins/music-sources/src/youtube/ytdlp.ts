@@ -16,7 +16,7 @@
  * yt-dlp は頻繁な更新が前提のツールなので、パッケージへ同梱せず
  * システムにインストールされたものを使います。
  */
-import type { Logger } from "cc-discord-framework";
+import type { Logger } from "@cc-discord-framework/core";
 import type { YtdlpConfig } from "../config.js";
 
 /** yt-dlp が見つからないときに投げます。 */

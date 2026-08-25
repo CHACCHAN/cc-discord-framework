@@ -189,7 +189,7 @@ super({ name: "ai", base: AiTool, suffix: "Tool" });
 [`plugins/utils/src/index.ts`](../../plugins/utils/src/index.ts)):
 
 ```ts
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Stores {
 		tasks: TaskStore;
 	}

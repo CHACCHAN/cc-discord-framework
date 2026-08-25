@@ -1,4 +1,4 @@
-import { Client } from "cc-discord-framework";
+import { Client } from "@cc-discord-framework/core";
 import { music, type MusicOptions } from "../src/index.js";
 
 /** music プラグイン入りのオフラインクライアント。 */

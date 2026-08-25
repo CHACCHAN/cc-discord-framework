@@ -9,7 +9,7 @@
 
 ```jsonc
 "peerDependencies": {
-  "cc-discord-framework": "^2.0.0"
+  "@cc-discord-framework/core": "^2.0.0"
 }
 ```
 

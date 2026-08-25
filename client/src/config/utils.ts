@@ -11,7 +11,7 @@
  * パス順)。この1行が、ファイルを分けても順序を決められるという仕組みの
  * 実例になっています。
  */
-import { defineConfig } from "cc-discord-framework";
+import { defineConfig } from "@cc-discord-framework/core";
 import { utils } from "@cc-discord-framework/utils";
 
 export default defineConfig({

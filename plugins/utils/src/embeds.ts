@@ -5,7 +5,7 @@
  * いつもどおりチェーンできます — 独自クラスに閉じ込めません。
  * 色は[テーマ](./theme.ts)から取るので、Bot 全体で一度に変えられます。
  */
-import { EmbedBuilder } from "cc-discord-framework";
+import { EmbedBuilder } from "@cc-discord-framework/core";
 import { resolveTheme, type ColorTheme, type Theme, type ThemeOptions } from "./theme.js";
 
 /** {@link createEmbeds} が返す埋め込みファクトリ。 */

@@ -5,7 +5,7 @@
  * Redis や DB に置きたい場合は {@link AiMemoryStore} を実装して
  * `ai({ memory: { store } })` に渡してください。
  */
-import type { Awaitable } from "cc-discord-framework";
+import type { Awaitable } from "@cc-discord-framework/core";
 import type { ModelMessage } from "ai";
 
 /**

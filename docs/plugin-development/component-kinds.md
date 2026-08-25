@@ -42,7 +42,7 @@ import {
 	defineOptions,
 	type Awaitable,
 	type ComponentOptions,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 export interface TaskOptions extends ComponentOptions {
 	/** 実行間隔。ミリ秒か `"1h"` `"30m"` のような期間表記。**必須**。 */
@@ -84,7 +84,7 @@ export abstract class Task extends Component {
 
 ```ts
 // plugins/utils/src/scheduler.ts(抜粋 — 検証メッセージ等は一部省略)
-import { ComponentLoadError, ComponentStore, Events } from "cc-discord-framework";
+import { ComponentLoadError, ComponentStore, Events } from "@cc-discord-framework/core";
 
 export class TaskStore extends ComponentStore<Task> {
 	readonly #timers = new Map<Task, ReturnType<typeof setInterval>>();
@@ -196,7 +196,7 @@ export function utils(options: UtilsOptions = {}): Plugin {
 	});
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Stores {
 		tasks: TaskStore;
 	}
@@ -237,7 +237,7 @@ export class CleanupTask extends Task {
 
 ```ts
 import { join } from "node:path";
-import { collectModuleFiles } from "cc-discord-framework";
+import { collectModuleFiles } from "@cc-discord-framework/core";
 
 if (client.baseDirectory !== null) {          // null = 自動探索が無効
 	const paths = await collectModuleFiles(join(client.baseDirectory, "migrations"));

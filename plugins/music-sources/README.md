@@ -3,17 +3,12 @@
 cc-discord-framework 公式プラグイン — **YouTube と SoundCloud** を
 [`@cc-discord-framework/music`](../music/) の音源として追加します。
 
-> [!IMPORTANT]
-> この v2 プラグインはまだ npm 未公開です。次の `bun add` は公開後の手順です。
-> 現在はリポジトリを clone してルートで `bun install` し、[`client/`](../../client/) の
-> `workspace:*` 構成を実例として使ってください。
-
 ```sh
 bun add @cc-discord-framework/music-sources
 ```
 
 ```ts
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 import { musicSources } from "@cc-discord-framework/music-sources";
 

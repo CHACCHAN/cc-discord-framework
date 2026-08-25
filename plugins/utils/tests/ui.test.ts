@@ -6,7 +6,7 @@ import {
 	type ButtonBuilder,
 	type Message,
 	type RepliableInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { confirm, createEmbeds, defaultTheme, paginate, paginationRow } from "../src/index.js";
 
 const embeds = createEmbeds();

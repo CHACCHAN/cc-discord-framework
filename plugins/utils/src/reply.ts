@@ -6,7 +6,7 @@
  * ephemeral な返信は `Message#edit` では書き換えられないため、編集は
  * 必ず送信元の作法へ委譲します。
  */
-import { Message, MessageFlags, type BaseMessageOptions, type RepliableInteraction } from "cc-discord-framework";
+import { Message, MessageFlags, type BaseMessageOptions, type RepliableInteraction } from "@cc-discord-framework/core";
 
 /** UI ヘルパーを呼べる相手 — 返信可能なインタラクション、またはメッセージ。 */
 export type ReplyTarget = RepliableInteraction | Message;

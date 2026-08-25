@@ -17,7 +17,7 @@ import {
 	type StopCondition,
 	type ToolSet,
 } from "ai";
-import { Message, MessageFlags, Service, type RepliableInteraction } from "cc-discord-framework";
+import { Message, MessageFlags, Service, type RepliableInteraction } from "@cc-discord-framework/core";
 import type { AiToolContext } from "./AiTool.js";
 import { aiSplitThreshold, defaultAiConfig, type AiConfig } from "./config.js";
 import {
@@ -888,7 +888,7 @@ function formatUsage(
 	return line(usage.inputTokens ?? null, usage.outputTokens ?? null, usage.totalTokens ?? null);
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Services {
 		ai: AiService;
 	}

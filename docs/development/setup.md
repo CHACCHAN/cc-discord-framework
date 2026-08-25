@@ -41,16 +41,19 @@ cc-discord-framework/
 ## `link-self.ts` の仕組み
 
 リポジトリ内のプラグインと `client/` は、公開時とまったく同じ
-`import "cc-discord-framework"` でフレームワークを解決します。tsconfig の
+`import "@cc-discord-framework/core"` でフレームワークを解決します。tsconfig の
 `paths` による読み替えは **使っていません**。
 
 これを成立させているのが
 [`scripts/link-self.ts`](../../scripts/link-self.ts) です:
 
 - ルートパッケージ自身は Bun のワークスペースメンバーになれないため、
-  `bun install` は `node_modules/cc-discord-framework` を作りません。
+  `bun install` はローカルの `src/` を指す
+  `node_modules/@cc-discord-framework/core` を作りません(レジストリ版が
+  peer として入ることはあります)。
 - そこでセットアップ時に `bun run link:self` を明示的に実行し、セルフリンク
-  `node_modules/cc-discord-framework -> ..` を張ります。
+  `node_modules/@cc-discord-framework/core -> リポジトリルート` を張ります。
+  これでリポジトリ内のコードは常に手元の `src/` に対して動きます。
 - 公開パッケージのインストール時にはこの開発専用スクリプトを実行しません。
   tarball に含まれない `scripts/` を参照して利用者のインストールを
   壊さないためです。

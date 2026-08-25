@@ -47,7 +47,7 @@
         "@ai-sdk/google": "^4.0.0",
         "@ai-sdk/openai": "^4.0.0",
         "@ai-sdk/openai-compatible": "^3.0.0",
-        "cc-discord-framework": "^2.0.0",
+        "@cc-discord-framework/core": "^2.0.0",
       },
       "optionalPeers": [
         "@ai-sdk/anthropic",
@@ -68,7 +68,7 @@
         "typescript": "^6.0.3",
       },
       "peerDependencies": {
-        "cc-discord-framework": "^2.0.0",
+        "@cc-discord-framework/core": "^2.0.0",
       },
     },
     "plugins/music-sources": {
@@ -83,8 +83,8 @@
         "typescript": "^6.0.3",
       },
       "peerDependencies": {
+        "@cc-discord-framework/core": "^2.0.0",
         "@cc-discord-framework/music": "^1.0.0",
-        "cc-discord-framework": "^2.0.0",
       },
     },
     "plugins/utils": {
@@ -95,7 +95,7 @@
         "typescript": "^6.0.3",
       },
       "peerDependencies": {
-        "cc-discord-framework": "^2.0.0",
+        "@cc-discord-framework/core": "^2.0.0",
       },
     },
     "website": {
@@ -127,6 +127,9 @@
         "typescript": "~6.0.2",
       },
     },
+  },
+  "overrides": {
+    "@cc-discord-framework/core": "link:.",
   },
   "packages": {
     "@11ty/gray-matter": ["@11ty/gray-matter@1.0.0", "", { "dependencies": { "js-yaml": "^4.1.0", "kind-of": "^6.0.3", "section-matter": "^1.0.0", "strip-bom-string": "^1.0.0" } }, "sha512-7mJJl+wf1AByoT0PknQiQfOPnVNT4fevGrUBVWO4HXsnYn1aQPyRyrELYrNUFleUBM++KzMKN6QaxHPk0t/6/g=="],
@@ -392,6 +395,8 @@
     "@bufbuild/protobuf": ["@bufbuild/protobuf@2.14.0", "", {}, "sha512-C3UGsiCwSprE2NKIIFA3hCDlpXTMCAXRZuEVp88L1GY36Y41+rYL5fryE+nOFhp4p4JPQvdV8PQ4DWgHgeTE+w=="],
 
     "@cc-discord-framework/ai": ["@cc-discord-framework/ai@workspace:plugins/ai"],
+
+    "@cc-discord-framework/core": ["cc-discord-framework@root:", {}],
 
     "@cc-discord-framework/music": ["@cc-discord-framework/music@workspace:plugins/music"],
 

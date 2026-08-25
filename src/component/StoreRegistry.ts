@@ -15,7 +15,7 @@ import type { ServiceStore } from "../service/ServiceStore.js";
  * 宣言マージしてください:
  *
  * ```ts
- * declare module "cc-discord-framework" {
+ * declare module "@cc-discord-framework/core" {
  *   interface Stores {
  *     tasks: TaskStore;
  *   }

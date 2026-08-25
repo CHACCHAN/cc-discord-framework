@@ -130,7 +130,7 @@ export function defaultFfmpegArgs(input: string): string[] {
 	];
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Container {
 		/** `musicSources()` が解決して置く設定。 */
 		musicSourcesConfig: MusicSourcesConfig;

@@ -11,7 +11,7 @@ import {
 	type BaseMessageOptions,
 	type Message,
 	type RepliableInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import {
 	confirm,
 	defaultTheme,

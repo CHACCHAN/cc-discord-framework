@@ -71,7 +71,7 @@
  * ごと差し替えられる**ので、並び順や区切りまで利用者が決められます。
  * ハードコードされて変えられない値はありません。
  */
-import { definePlugin, type Plugin } from "cc-discord-framework";
+import { definePlugin, type Plugin } from "@cc-discord-framework/core";
 import { AiService } from "./AiService.js";
 import { AiToolStore } from "./AiTool.js";
 import { resolveAiConfig, type AiConfigOptions } from "./config.js";
@@ -185,7 +185,7 @@ export {
 	type RenderOptions,
 } from "./render.js";
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Stores {
 		ai: AiToolStore;
 	}

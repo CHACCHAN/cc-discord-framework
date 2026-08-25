@@ -11,7 +11,7 @@
  */
 import { APICallError, type LanguageModel } from "ai";
 import { MockLanguageModelV3 } from "ai/test";
-import { Client } from "cc-discord-framework";
+import { Client } from "@cc-discord-framework/core";
 import { ai, type AiOptions } from "../src/index.js";
 
 /** ai プラグイン入りのオフラインクライアント。 */

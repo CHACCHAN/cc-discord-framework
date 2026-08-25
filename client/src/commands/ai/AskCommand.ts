@@ -2,7 +2,7 @@ import {
 	ApplicationCommandOptionType,
 	Command,
 	type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 /**
  * 一問一答。履歴キーを渡さないので、前の話には引きずられません。

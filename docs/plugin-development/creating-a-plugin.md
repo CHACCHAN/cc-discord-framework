@@ -12,7 +12,7 @@
 
 ```ts
 // src/index.ts(あなたのプラグイン)
-import { definePlugin, type Plugin } from "cc-discord-framework";
+import { definePlugin, type Plugin } from "@cc-discord-framework/core";
 import { resolveGreeterConfig, type GreeterOptions } from "./config.js";
 
 export function greeter(options: GreeterOptions = {}): Plugin {
@@ -86,7 +86,7 @@ export function resolveGreeterConfig(options: GreeterOptions = {}): GreeterConfi
 /** 何も指定しないときの設定。 */
 export const defaultGreeterConfig: GreeterConfig = resolveGreeterConfig();
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Container {
 		/** greeter プラグインの設定。install 時に設定されます。 */
 		greeterConfig: GreeterConfig;

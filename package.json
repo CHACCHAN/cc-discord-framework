@@ -1,5 +1,5 @@
 {
-  "name": "cc-discord-framework",
+  "name": "@cc-discord-framework/core",
   "version": "2.0.0",
   "license": "MIT",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "git+https://github.com/CHACCHAN/cc-discord-framework.git"
   },
   "description": "A modern Discord framework specifically for Bun",
-  "homepage": "https://cc-discord-framework.pages.dev",
+  "homepage": "https://discord-framework.oss.cc-chacchan.com",
   "bugs": "https://github.com/CHACCHAN/cc-discord-framework/issues",
   "author": "CHACCHAN",
   "keywords": [
@@ -36,6 +36,9 @@
     "SUPPORT.md"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "workspaces": [
     "client",
     "plugins/*",

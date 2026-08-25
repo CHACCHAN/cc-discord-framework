@@ -1,5 +1,5 @@
 import type { GuildQueue, Track } from "@cc-discord-framework/music";
-import { Listener } from "cc-discord-framework";
+import { Listener } from "@cc-discord-framework/core";
 
 /**
  * 再生中のエラーを、その曲を頼んだチャンネルへ知らせます。

@@ -44,7 +44,7 @@
  * います。`music({ texts, limits, ... })` で必要な項目だけを上書きできます。
  * ハードコードされて変えられない値はありません。
  */
-import { definePlugin, type Plugin } from "cc-discord-framework";
+import { definePlugin, type Plugin } from "@cc-discord-framework/core";
 import { AudioService } from "./AudioService.js";
 import { resolveMusicConfig, type MusicConfigOptions } from "./config.js";
 import { TrackResolverStore } from "./TrackResolver.js";
@@ -145,7 +145,7 @@ export { HttpStreamProvider } from "./builtin/HttpStreamProvider.js";
 export { ArchiveResolver } from "./builtin/ArchiveResolver.js";
 export { LocalFileResolver, LocalFileStreamProvider } from "./builtin/local.js";
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Stores {
 		resolvers: TrackResolverStore;
 		providers: StreamProviderStore;

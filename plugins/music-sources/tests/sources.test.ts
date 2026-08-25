@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Client } from "cc-discord-framework";
+import { Client } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 import { defaultFfmpegArgs, musicSources, type MusicSourcesOptions } from "../src/index.js";
 import { toTrack } from "../src/soundcloud/SoundCloudResolver.js";

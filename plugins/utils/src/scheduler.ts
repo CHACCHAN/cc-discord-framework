@@ -9,7 +9,7 @@ import {
 	Events,
 	type Awaitable,
 	type ComponentOptions,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { parseDuration, type DurationInput } from "./duration.js";
 
 export interface TaskOptions extends ComponentOptions {

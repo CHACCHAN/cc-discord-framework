@@ -7,8 +7,9 @@ cc-discord-framework への改善提案・不具合修正・ドキュメント�
 
 ## 現在の開発対象
 
-`main` と公式サイトは、npm 未公開の **v2 Next** を対象にしています。
-npm latest の v1.0.5 とは API 非互換です。報告や Pull Request では、対象の
+`main` は npm 公開済みの **v2**(`@cc-discord-framework/core`)を対象に
+しています。旧パッケージ `cc-discord-framework`(npm latest = v1.0.5)は
+旧仕様の v1 で、v2 とは API 非互換です。報告や Pull Request では、対象の
 版またはコミットを明記してください。
 
 ## 開発を始める

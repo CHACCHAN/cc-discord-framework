@@ -1,5 +1,5 @@
 import { APICallError, NoOutputGeneratedError } from "ai";
-import { UserError } from "cc-discord-framework";
+import { UserError } from "@cc-discord-framework/core";
 import type { AiTexts } from "./texts.js";
 
 /**

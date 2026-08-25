@@ -16,7 +16,7 @@ import {
 	type Track,
 } from "@cc-discord-framework/music";
 import { formatDuration, truncate } from "@cc-discord-framework/utils";
-import { ChannelType, type ChatInputCommandInteraction, type VoiceBasedChannel } from "cc-discord-framework";
+import { ChannelType, type ChatInputCommandInteraction, type VoiceBasedChannel } from "@cc-discord-framework/core";
 
 /** 何も再生していないときの言い回し(複数のコマンドで揃えるため)。 */
 export const NOTHING_PLAYING = "現在このサーバーでは何も再生していません。";

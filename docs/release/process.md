@@ -1,7 +1,8 @@
 # リリース手順
 
-フレームワーク本体(npm パッケージ `cc-discord-framework`)のリリース
-フローと、その前後にやることをまとめます。
+フレームワーク本体(npm パッケージ `@cc-discord-framework/core`)と
+公式プラグイン(`@cc-discord-framework/{utils,music,music-sources,ai}`)の
+リリースフローと、その前後にやることをまとめます。
 
 ## 自動化されている部分: GitHub Release → npm publish
 
@@ -16,33 +17,39 @@ flowchart LR
     bun["oven-sh/setup-bun"]
     node["actions/setup-node(24.x)<br>registry-url: registry.npmjs.org"]
     install["bun install"]
-    publish["npm publish --provenance --access public"]
+    link["bun run link:self"]
+    publish["core → utils → music → music-sources → ai の順に npm publish<br>(公開済み version はスキップ)"]
 
-    release --> trigger --> checkout --> bun --> node --> install --> publish
+    release --> trigger --> checkout --> bun --> node --> install --> link --> publish
 ```
 
 押さえておくべき事実:
 
 - **トリガーは GitHub Release の published** です。タグを push しただけ
   では動きません。
-- ジョブは `id-token: write` 権限を持ち、`--provenance` 付きで publish
-  します(npm の provenance / OIDC 連携)。`setup-node` の
-  `registry-url` 指定はこの publish のためのものです。
-- `npm publish` は npm の仕組みとして `prepublishOnly` を実行します。
-  ルートの [`package.json`](../../package.json) では
-  `prepublishOnly: "bun run clean && bun run build"` なので、**ビルドは
-  ワークフロー内で自動的に走ります**(dist を commit する必要は
-  ありません)。
-- **公開されるバージョンは `package.json` の `version`** です。Release の
+- **認証は npm Trusted Publishing(OIDC)** です。トークンや secrets は
+  使いません。ジョブの `id-token: write` 権限と、npmjs.com 側で各
+  パッケージに登録した Trusted Publisher(repository:
+  `CHACCHAN/cc-discord-framework`、workflow: `publish.yml`)の組で
+  認証されます。**Trusted Publisher が未登録のパッケージの publish は
+  失敗します**(登録はオーナーが npmjs.com 上で行います)。public
+  リポジトリなので provenance は自動で付与されます。
+- 公開対象は **コア + 4 プラグインの5パッケージ** で、依存順
+  (core → utils → music → music-sources → ai)に publish します。
+  `package.json` の `version` が既に npm にあるパッケージはスキップ
+  されるため、一部のパッケージだけ version を上げた Release でも
+  安全に実行できます。
+- `npm publish` は npm の仕組みとして、ルートでは `prepublishOnly`、
+  プラグインでは `prepack` を実行します。いずれも
+  `bun run clean && bun run build` なので、**ビルドはワークフロー内で
+  自動的に走ります**(dist を commit する必要はありません)。
+- **公開されるバージョンは各 `package.json` の `version`** です。Release の
   タグ名からは取られません — タグと `version` を一致させるのは人間の
   仕事です(不一致でもそのまま publish されてしまいます)。
-- 公開物は `files` フィールドどおり `dist` + `src` + `README.md` です
-  (`src` は `exports` の `"bun"` 条件のために必須 —
+- 公開物は `files` フィールドどおり `dist` + `src` + `README.md`(ルートは
+  さらに `CONTRIBUTING.md` / `SUPPORT.md`)です(`src` は `exports` の
+  `"bun"` 条件のために必須 —
   [パッケージング](../plugin-development/packaging.md))。
-- **このワークフローが publish するのはルートパッケージだけ** です。
-  `plugins/*` の公開は自動化されていません(公開する場合は各プラグイン
-  ディレクトリでの手動 `npm publish` になります)。各プラグインにも
-  `prepack` があり、新規 checkout からでも公開前に `dist` を生成します。
 - **ワークフローはテストを実行しません。** 検証はリリース前に手元で
   済ませるのが前提です(下記チェックリスト)。
 

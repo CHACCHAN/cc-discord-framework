@@ -3,13 +3,12 @@
 [cc-discord-framework](../../README.md) の公式音楽プラグイン。
 キュー・再生制御と、**差し替え可能なプロバイダー機構**を提供します。
 
-> [!IMPORTANT]
-> この v2 プラグインはまだ npm 未公開です。パッケージ名を使った導入手順は
-> 公開後のものです。現在はリポジトリを clone してルートで `bun install` し、
-> [`client/`](../../client/) の `workspace:*` 構成を実例として使ってください。
+```sh
+bun add @cc-discord-framework/music
+```
 
 ```ts
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 
 const client = new Client({
@@ -35,7 +34,7 @@ const client = new Client({
 
 ```ts
 // client/src/commands/music/PlayCommand.ts
-import { ApplicationCommandOptionType, Command } from "cc-discord-framework";
+import { ApplicationCommandOptionType, Command } from "@cc-discord-framework/core";
 import type { ChatInputCommandInteraction, GuildMember } from "discord.js";
 
 @Command.define({

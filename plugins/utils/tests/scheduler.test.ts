@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Client, ComponentLoadError, Events } from "cc-discord-framework";
+import { Client, ComponentLoadError, Events } from "@cc-discord-framework/core";
 import { Task, utils } from "../src/index.js";
 
 function createClient(options: Parameters<typeof utils>[0] = {}) {

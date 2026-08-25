@@ -12,7 +12,7 @@
  * ai 側のツール(`src/ai/`)が `this.services.audio` を参照するので、
  * 依存の向きに合わせて音楽を先に入れています。
  */
-import { defineConfig, GatewayIntentBits } from "cc-discord-framework";
+import { defineConfig, GatewayIntentBits } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 import { musicSources } from "@cc-discord-framework/music-sources";
 import { env } from "./_env.js";

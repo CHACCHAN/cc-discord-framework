@@ -2,7 +2,7 @@ import {
 	Command,
 	MessageFlags,
 	type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 @Command.define({
 	description: "Botを安全にシャットダウンします。",

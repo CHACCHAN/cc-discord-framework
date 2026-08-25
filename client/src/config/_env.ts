@@ -19,7 +19,7 @@
  * (コンポーネント探索と同じ規約)。共有のヘルパーはこうして `_` 付きの
  * ファイルに置きます。
  */
-import { createEnv } from "cc-discord-framework";
+import { createEnv } from "@cc-discord-framework/core";
 
 const reader = createEnv();
 

@@ -8,7 +8,7 @@
 
 ```ts
 // src/index.ts — エントリポイントはこれだけ
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 await client.login(); // トークンは DISCORD_TOKEN 環境変数から自動使用
@@ -16,7 +16,7 @@ await client.login(); // トークンは DISCORD_TOKEN 環境変数から自動�
 
 ```ts
 // src/commands/PingCommand.ts — 置くだけで /ping が動く
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 @Command.define({ description: "Pong! と返します。" })
 export class PingCommand extends Command {
@@ -27,9 +27,10 @@ export class PingCommand extends Command {
 ```
 
 > [!IMPORTANT]
-> この README と main ブランチは **v2 Next（未公開）** を対象にしています。
-> npm の latest は旧仕様の **v1.0.5** で、v2 とは API 互換ではありません。
-> v2 を試す場合は、下記の GitHub 指定で導入してください。
+> v2 は **`@cc-discord-framework/core`** として npm に公開されています。
+> 旧パッケージ `cc-discord-framework`(npm latest = v1.0.5)は旧仕様の v1 で、
+> v2 とは API 互換ではありません。今後の開発はすべて
+> `@cc-discord-framework` スコープで行われます。
 
 本プロジェクトは **CHACCHAN** が設計・実装・ドキュメントを保守する
 個人メンテナンスの OSS です。現在地と変更は
@@ -50,7 +51,7 @@ export class PingCommand extends Command {
 - **Class 指向 + 標準デコレータ。** 振る舞いは基底クラスの継承で、宣言的
   な設定は標準(TC39)の `@X.define({...})` で。legacy デコレータも
   `reflect-metadata` も、コンストラクタの引き回しもありません。
-- **収束。** discord.js の全 API は `cc-discord-framework` から
+- **収束。** discord.js の全 API は `@cc-discord-framework/core` から
   再エクスポート — Bot 側の import は1パッケージで完結。サービスは
   `this.services.<名前>` に集まり、コンポーネント同士の import は不要です。
 - **小さなコアと本物の拡張点。** コアはサービス・コマンド・リスナー・
@@ -71,27 +72,27 @@ export class PingCommand extends Command {
 ## インストール
 
 ```sh
-bun add github:CHACCHAN/cc-discord-framework
+bun add @cc-discord-framework/core
 ```
-
-v2 は現在リリース前です。npm の `cc-discord-framework` は互換性のない
-1.x 系なので、v2.0.0 の公開までは上記の GitHub 指定を使ってください。
 
 discord.js は同梱・再エクスポートされるため、個別のインストールは
 不要です。
 
+なお npm の `cc-discord-framework`(スコープなし)は互換性のない
+旧 v1 系です。v2 以降は必ず `@cc-discord-framework/core` を使ってください。
+
 ## ドキュメント
 
 - **利用者向け(Bot を作る)**: 公式サイト
-  <https://cc-discord-framework.pages.dev>(準備中)—
+  <https://discord-framework.oss.cc-chacchan.com>(準備中)—
   チュートリアル、概念解説、公式プラグインの使い方
 - **開発者向け(フレームワーク開発 / プラグイン作成)**:
   [docs/](./docs/README.md)
 - リファレンス Bot: [`client/`](./client/) — 実運用中の音楽 + AI Bot
   (全コンポーネント種別と `config/` 規約の実例)
 
-npm: [`cc-discord-framework`](https://www.npmjs.com/package/cc-discord-framework)
-(公式プラグインは `@cc-discord-framework/*`)
+npm: [`@cc-discord-framework/core`](https://www.npmjs.com/package/@cc-discord-framework/core)
+(公式プラグインも同じ [`@cc-discord-framework`](https://www.npmjs.com/org/cc-discord-framework) スコープに集約)
 
 ## リポジトリでの開発
 

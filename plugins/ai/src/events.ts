@@ -1,5 +1,5 @@
 import type { LanguageModelUsage } from "ai";
-import type { Client, Logger } from "cc-discord-framework";
+import type { Client, Logger } from "@cc-discord-framework/core";
 import type { AiTool, AiToolContext } from "./AiTool.js";
 
 /** 生成を始めるときに分かっていること。 */

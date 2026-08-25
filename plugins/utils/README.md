@@ -6,17 +6,12 @@ cc-discord-framework 公式プラグイン — **小さな便利機能の詰め�
 なるものを集めています。ひとつずつでは専用パッケージにするほどの大きさが
 ないので、ここへまとめました。
 
-> [!IMPORTANT]
-> この v2 プラグインはまだ npm 未公開です。次の `bun add` は公開後の手順です。
-> 現在はリポジトリを clone してルートで `bun install` し、[`client/`](../../client/) の
-> `workspace:*` 構成を実例として使ってください。
-
 ```sh
 bun add @cc-discord-framework/utils
 ```
 
 ```ts
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 import { utils } from "@cc-discord-framework/utils";
 
 const client = new Client({
@@ -40,7 +35,7 @@ const client = new Client({
 (`tasks/`)とテーマ・`this.services.ui` を有効にするときです。
 
 discord.js が既に持っているもの(`codeBlock`・`bold`・`escapeMarkdown`・
-`time` など)はここに置いていません — `cc-discord-framework` から直接
+`time` など)はここに置いていません — `@cc-discord-framework/core` から直接
 使えます。
 
 ---

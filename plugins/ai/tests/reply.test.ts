@@ -5,7 +5,7 @@
  * 送られたペイロードを数えて、間引き・分割・見せ方を確かめます。
  */
 import { describe, expect, test } from "bun:test";
-import { MessageFlags, type EmbedBuilder } from "cc-discord-framework";
+import { MessageFlags, type EmbedBuilder } from "@cc-discord-framework/core";
 import { z } from "zod";
 import {
 	AiEvents,

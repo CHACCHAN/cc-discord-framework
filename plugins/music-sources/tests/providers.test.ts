@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Client } from "cc-discord-framework";
+import { Client } from "@cc-discord-framework/core";
 import { createTrack, music, type MusicTextsOptions } from "@cc-discord-framework/music";
 import { musicSources } from "../src/index.js";
 import type { SoundCloudStreamProvider } from "../src/soundcloud/SoundCloudStreamProvider.js";

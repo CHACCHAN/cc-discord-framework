@@ -6,7 +6,7 @@
  * このサービスがあれば、コンポーネントの中では常に
  * `this.services.ui` と書くだけで Bot 全体のテーマが効きます。
  */
-import { Service, type EmbedBuilder, type Message } from "cc-discord-framework";
+import { Service, type EmbedBuilder, type Message } from "@cc-discord-framework/core";
 import { confirm, type ConfirmOptions } from "./confirm.js";
 import { createEmbeds, type Embeds } from "./embeds.js";
 import {
@@ -103,7 +103,7 @@ export class UiService extends Service {
 	}
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Services {
 		ui: UiService;
 	}

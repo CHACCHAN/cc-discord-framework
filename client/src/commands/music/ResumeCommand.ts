@@ -1,5 +1,5 @@
 import { MusicError } from "@cc-discord-framework/music";
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 import { requireQueue } from "./_shared.js";
 
 @Command.define({ description: "一時停止した再生を再開します。" })

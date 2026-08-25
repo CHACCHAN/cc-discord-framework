@@ -35,7 +35,7 @@
     "prepack": "bun run clean && bun run build"
   },
   "peerDependencies": {
-    "cc-discord-framework": "^2.0.0"
+    "@cc-discord-framework/core": "^2.0.0"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -66,18 +66,18 @@
 
 | 分類 | 使いどころ | 実例 |
 | --- | --- | --- |
-| `peerDependencies` | フレームワーク本体、および「利用者側と同一インスタンスであるべき」パッケージ | 全プラグインの `cc-discord-framework: ^2.0.0`、music-sources の `@cc-discord-framework/music` |
+| `peerDependencies` | フレームワーク本体、および「利用者側と同一インスタンスであるべき」パッケージ | 全プラグインの `@cc-discord-framework/core: ^2.0.0`、music-sources の `@cc-discord-framework/music` |
 | `dependencies` | プラグインが自分で抱え込んでよい実装詳細 | music の `@discordjs/voice` / `opusscript`、ai の `ai` / `zod`、music-sources の `youtubei.js` / `soundcloud.ts` |
 | optional peer(`peerDependenciesMeta`) | 利用者が **使うものだけ入れる** 重い依存 | ai の `@ai-sdk/*`(下記) |
 
-`cc-discord-framework` を peer にするのは、`Container` / `Stores` /
+`@cc-discord-framework/core` を peer にするのは、`Container` / `Stores` /
 `Services` の宣言マージとストア解決が **利用者と同じモジュール
 インスタンス** を前提にするためです。dependency にすると二重
 インスタンスになり、宣言マージも `instanceof` も壊れます。
 
 `discord.js` は個別に依存しません — フレームワークが再エクスポート
-しているので、`cc-discord-framework` から import します(公式プラグインは
-すべてそうしています)。
+しているので、`@cc-discord-framework/core` から import します(公式
+プラグインはすべてそうしています)。
 
 ## optional peer + 動的 import パターン
 
@@ -93,7 +93,7 @@
   "@ai-sdk/google": "^4.0.0",
   "@ai-sdk/openai": "^4.0.0",
   "@ai-sdk/openai-compatible": "^3.0.0",
-  "cc-discord-framework": "^2.0.0"
+  "@cc-discord-framework/core": "^2.0.0"
 },
 "peerDependenciesMeta": {
   "@ai-sdk/anthropic": { "optional": true },

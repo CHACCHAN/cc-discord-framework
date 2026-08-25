@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Client, type Logger } from "cc-discord-framework";
+import { Client, type Logger } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 import { musicSources } from "../src/index.js";
 import { YtdlpError, ytdlpJson } from "../src/youtube/ytdlp.js";

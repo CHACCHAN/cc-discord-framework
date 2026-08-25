@@ -1,4 +1,4 @@
-import { Precondition, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Precondition, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 /** OWNER_IDS のユーザーだけにコマンドを制限します。 */
 export class OwnerOnlyPrecondition extends Precondition {
@@ -9,7 +9,7 @@ export class OwnerOnlyPrecondition extends Precondition {
 	}
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Preconditions {
 		OwnerOnly: never;
 	}

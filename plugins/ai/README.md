@@ -4,13 +4,12 @@
 [Vercel AI SDK](https://ai-sdk.dev/) を使い、**複数プロバイダー対応の AI 機能**と
 **`ai/` に置くだけで LLM から呼べる関数**を提供します。
 
-> [!IMPORTANT]
-> この v2 プラグインはまだ npm 未公開です。パッケージ名を使った導入手順は
-> 公開後のものです。現在はリポジトリを clone してルートで `bun install` し、
-> [`client/`](../../client/) の `workspace:*` 構成を実例として使ってください。
+```sh
+bun add @cc-discord-framework/ai
+```
 
 ```ts
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 import { ai } from "@cc-discord-framework/ai";
 
 const client = new Client({
@@ -37,7 +36,7 @@ import {
   ApplicationCommandOptionType,
   Command,
   type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 @Command.define({
   description: "AI に質問します。",
@@ -453,7 +452,7 @@ ai({
 
 ```
 dependencies:  ai ^7.0.77 / zod ^4.4.3 / @cc-discord-framework/utils
-peer:          cc-discord-framework ^2.0.0
+peer:          @cc-discord-framework/core ^2.0.0
 peer(optional): @ai-sdk/openai / @ai-sdk/anthropic / @ai-sdk/google / @ai-sdk/openai-compatible
 ```
 

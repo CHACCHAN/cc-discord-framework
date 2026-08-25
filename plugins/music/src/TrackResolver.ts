@@ -4,7 +4,7 @@ import {
 	defineOptions,
 	type Awaitable,
 	type ComponentOptions,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import type { Track } from "./track.js";
 
 export interface TrackResolverOptions extends ComponentOptions {

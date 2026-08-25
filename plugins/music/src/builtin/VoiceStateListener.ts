@@ -1,4 +1,4 @@
-import { Events, Listener } from "cc-discord-framework";
+import { Events, Listener } from "@cc-discord-framework/core";
 import type { Guild, VoiceState } from "discord.js";
 
 /**

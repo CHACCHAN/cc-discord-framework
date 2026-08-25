@@ -18,7 +18,7 @@ import type { ClientTexts } from "./texts.js";
  * 宣言マージ + 代入だけで追加できます:
  *
  * ```ts
- * declare module "cc-discord-framework" {
+ * declare module "@cc-discord-framework/core" {
  *   interface Container {
  *     redis: RedisClient;
  *   }

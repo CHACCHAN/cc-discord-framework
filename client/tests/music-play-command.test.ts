@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import type { AudioService } from "@cc-discord-framework/music";
-import { ChannelType, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { ChannelType, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 import { requirePlaybackVoiceChannel } from "../src/commands/music/_shared.js";
 
 function interaction(channelId: string): ChatInputCommandInteraction {

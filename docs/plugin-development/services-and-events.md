@@ -25,7 +25,7 @@ install(client) {
 ([`plugins/utils/src/UiService.ts`](../../plugins/utils/src/UiService.ts)):
 
 ```ts
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Services {
 		ui: UiService;
 	}
@@ -94,7 +94,7 @@ declare module "discord.js" {
   `FrameworkEvents` と衝突しないためです。
 - 宣言マージ先は `"discord.js"` です(`ClientEvents` は discord.js の
   インターフェースなので)。`Stores` / `Services` / `Container` の
-  マージ先が `"cc-discord-framework"` なのと混同しないでください。
+  マージ先が `"@cc-discord-framework/core"` なのと混同しないでください。
 
 これで利用者は `Listener` コンポーネントで型付きのまま受けられます:
 

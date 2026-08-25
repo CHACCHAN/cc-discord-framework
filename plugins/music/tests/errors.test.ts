@@ -9,7 +9,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import { createServer } from "node:http";
-import type { Client } from "cc-discord-framework";
+import type { Client } from "@cc-discord-framework/core";
 import {
 	MusicEvents,
 	StreamProvider,

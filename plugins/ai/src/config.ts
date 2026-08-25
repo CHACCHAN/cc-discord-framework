@@ -13,7 +13,7 @@ import {
 	parseDuration,
 	type DurationInput,
 } from "@cc-discord-framework/utils";
-import type { EmbedBuilder, MessageMentionOptions } from "cc-discord-framework";
+import type { EmbedBuilder, MessageMentionOptions } from "@cc-discord-framework/core";
 import type { AiMemoryStore } from "./memory.js";
 import type { AiModelInput, AiProviderLoader, AiProviders, AiRegistry } from "./models.js";
 import { builtinProviders } from "./models.js";
@@ -400,7 +400,7 @@ export function aiConfigOf(source: { client?: unknown } | null | undefined): AiC
 	return container?.aiConfig ?? defaultAiConfig;
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Container {
 		/** ai プラグインの設定。install 時に設定されます。 */
 		aiConfig: AiConfig;

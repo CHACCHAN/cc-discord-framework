@@ -1,4 +1,4 @@
-import { ActivityType } from "cc-discord-framework";
+import { ActivityType } from "@cc-discord-framework/core";
 import { Task } from "@cc-discord-framework/utils";
 
 /** 公式 utils プラグインが追加する Task 種別のコンポーネント。 */

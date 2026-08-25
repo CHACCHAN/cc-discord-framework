@@ -1,5 +1,10 @@
-name: Publish Framework to npm
+name: Publish packages to npm
 
+# GitHub Release の published をトリガーに、コア + 公式プラグインを
+# npm Trusted Publishing(OIDC)で公開します。トークンは使いません。
+# 事前条件: npmjs.com 側で各パッケージに Trusted Publisher
+# (repository: CHACCHAN/cc-discord-framework, workflow: publish.yml)を
+# 登録しておくこと。未登録のパッケージは 401/404 で失敗します。
 on:
   release:
     types: [published]
@@ -13,18 +18,40 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
+      # Node 24.x は npm >= 11.5.1 を同梱しており、OIDC Trusted Publishing に
+      # そのまま対応します。
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
-          
+
       - name: Install dependencies
         run: bun install
-        
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+
+      # プラグインの prepack ビルドがリポジトリ内のコア(同一コミット)を
+      # 参照できるよう、レジストリ版ではなくセルフリンクで解決させます。
+      - name: Link framework core
+        run: bun run link:self
+
+      # 依存順(core → utils → music → music-sources → ai)に公開します。
+      # package.json の version が既に npm にあるパッケージはスキップする
+      # ため、一部のパッケージだけ version を上げた Release でも安全に
+      # 再実行できます。
+      - name: Publish packages (skip already-published versions)
+        run: |
+          set -euo pipefail
+          for dir in . plugins/utils plugins/music plugins/music-sources plugins/ai; do
+            name=$(jq -r .name "$dir/package.json")
+            version=$(jq -r .version "$dir/package.json")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "skip: $name@$version は公開済み"
+            else
+              echo "publish: $name@$version"
+              (cd "$dir" && npm publish)
+            fi
+          done

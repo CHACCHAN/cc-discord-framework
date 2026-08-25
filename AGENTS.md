@@ -15,7 +15,7 @@ plugins/      Official plugins (utils / music / music-sources / ai) — workspac
 client/       Production reference bot (NOT a sample — the owner runs it on their own server)
 docs/         Developer documentation (contributors, plugin authors)
 website/      Docusaurus public site (for users; different role from docs/ — never plain-copy between them)
-scripts/      link-self.ts (postinstall symlink: node_modules/cc-discord-framework -> ..)
+scripts/      link-self.ts (self-link: node_modules/@cc-discord-framework/core -> repo root)
 ```
 
 ## Absolute rules (violations = rework)
@@ -113,11 +113,17 @@ taking screenshots** (after `bun run website:preview`) — not by grepping CSS.
 
 ## Current status notes (as of 2026-08)
 
-- npm latest is the legacy v1.0.5. The v2.0.0 on main is **unreleased**. Website docs run under the
-  "Next 🚧" banner. On the v2 release, create the first Stable snapshot with
-  `bun run --cwd website docusaurus docs:version 2.0`.
-- The publish workflow currently publishes ONLY the root package. The four plugin manifests already
-  use publishable semver ranges and build `dist/` in `prepack`; the release automation and ordering
-  for publishing those plugins still need to be decided.
+- v2 ships on npm as **`@cc-discord-framework/core`@2.0.0** (renamed from the unscoped
+  `cc-discord-framework`, whose npm latest remains the incompatible legacy v1.0.5). The four
+  plugins publish as `@cc-discord-framework/{utils,music,music-sources,ai}`@1.0.0. Future packages
+  accumulate under the `@cc-discord-framework` npm org.
+- The publish workflow publishes core + all four plugins in dependency order via npm Trusted
+  Publishing (OIDC, no tokens), skipping versions already on the registry. Each package needs a
+  Trusted Publisher registered on npmjs.com (repo `CHACCHAN/cc-discord-framework`, workflow
+  `publish.yml`) — the owner manages those registrations.
+- The website (`website/`) has NOT been updated for the package rename yet: it still shows the old
+  package name and "npm 未公開" notices, and runs under the "Next 🚧" banner. A dedicated
+  post-publish site pass is planned (rename sweep, TypeDoc regeneration, install pages, and the
+  first Stable snapshot via `bun run --cwd website docusaurus docs:version 2.0`).
 - Running `client/` requires `yt-dlp` (YouTube) and `ffmpeg` (SoundCloud) on the host. The bot still
   boots without them.

@@ -8,7 +8,7 @@
  */
 import { Readable } from "node:stream";
 import type { ReadableStream as WebReadableStream } from "node:stream/web";
-import type { Logger } from "cc-discord-framework";
+import type { Logger } from "@cc-discord-framework/core";
 import type { FfmpegConfig } from "./config.js";
 
 /** ffmpeg が見つからないときに投げます。 */

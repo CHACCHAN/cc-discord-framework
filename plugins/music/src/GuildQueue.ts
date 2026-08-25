@@ -10,7 +10,7 @@ import {
 	type AudioResource,
 	type VoiceConnection,
 } from "@discordjs/voice";
-import type { Client, Logger } from "cc-discord-framework";
+import type { Client, Logger } from "@cc-discord-framework/core";
 import type { TextBasedChannel, VoiceBasedChannel } from "discord.js";
 import { defaultMusicConfig, type MusicLimits, type MusicVoiceConfig } from "./config.js";
 import { MusicEvents } from "./events.js";

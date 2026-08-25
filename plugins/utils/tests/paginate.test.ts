@@ -13,7 +13,7 @@ import {
 	type ButtonBuilder,
 	type Message,
 	type RepliableInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 import { paginate, resolveTheme, type Theme } from "../src/index.js";
 
 interface ButtonJson {

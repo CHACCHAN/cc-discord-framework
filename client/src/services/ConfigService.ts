@@ -1,4 +1,4 @@
-import { Service } from "cc-discord-framework";
+import { Service } from "@cc-discord-framework/core";
 import { env } from "../config/_env.js";
 
 /**
@@ -13,7 +13,7 @@ export class ConfigService extends Service {
 	readonly ownerIds = env.ownerIds;
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Services {
 		config: ConfigService;
 	}

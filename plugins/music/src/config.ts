@@ -189,7 +189,7 @@ export function musicConfigOf(source: { client?: unknown } | null | undefined): 
 	return container?.musicConfig ?? defaultMusicConfig;
 }
 
-declare module "cc-discord-framework" {
+declare module "@cc-discord-framework/core" {
 	interface Container {
 		/** music プラグインの設定。install 時に設定されます。 */
 		musicConfig: MusicConfig;

@@ -9,7 +9,7 @@
  * インストールされます。`src/ai/` のツールは `this.services.audio` を
  * 参照するので、依存の向きに合わせて後ろに置いています。
  */
-import { defineConfig } from "cc-discord-framework";
+import { defineConfig } from "@cc-discord-framework/core";
 import { ai } from "@cc-discord-framework/ai";
 import { env } from "./_env.js";
 

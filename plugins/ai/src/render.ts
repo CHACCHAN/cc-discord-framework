@@ -10,7 +10,7 @@
  * 入れていなくても既定のテーマで動くので、`this.services.ui` は使いません。
  */
 import { createEmbeds, themeOf } from "@cc-discord-framework/utils";
-import type { EmbedBuilder, MessageMentionOptions } from "cc-discord-framework";
+import type { EmbedBuilder, MessageMentionOptions } from "@cc-discord-framework/core";
 import { aiConfigOf } from "./config.js";
 import type { AiReplyKind } from "./texts.js";
 

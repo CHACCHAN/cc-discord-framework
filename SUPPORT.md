@@ -13,15 +13,16 @@ cc-discord-framework は CHACCHAN が個人で保守しているオープンソ�
 - 既知の問題と過去の相談:
   [GitHub Issues](https://github.com/CHACCHAN/cc-discord-framework/issues)
 
-このリポジトリとサイトのドキュメントは、未公開の **v2 Next** を対象に
-しています。npm の latest は旧仕様の **v1.0.5** で、v2 の API とは
-互換ではありません。相談時は、どちらを使っているかを明記してください。
+このリポジトリとサイトのドキュメントは、npm 公開済みの **v2**
+(`@cc-discord-framework/core`)を対象にしています。旧パッケージ
+`cc-discord-framework`(npm latest = v1.0.5)は旧仕様の v1 で、v2 の API
+とは互換ではありません。相談時は、どちらを使っているかを明記してください。
 
 ## Issue を作るとき
 
 再現と切り分けができるよう、可能な範囲で次を添えてください。
 
-1. 利用中の版またはコミット (`v1.0.5` / `v2 main` など)
+1. 利用中の版またはコミット (`@cc-discord-framework/core@2.0.0` / 旧 `cc-discord-framework@1.0.5` など)
 2. Bun、OS、discord.js と関連プラグインのバージョン
 3. 最小の再現コードと再現手順
 4. 期待した結果と実際の結果

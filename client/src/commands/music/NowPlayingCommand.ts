@@ -1,6 +1,6 @@
 import { NotPlayingError } from "@cc-discord-framework/music";
 import { formatDuration, progressBar } from "@cc-discord-framework/utils";
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 import { LOOP_LABELS, NOTHING_PLAYING, describeTrack, requireQueue } from "./_shared.js";
 
 // クラス名からの既定は "now-playing" だが、打ちやすさを優先して "nowplaying" にする。
