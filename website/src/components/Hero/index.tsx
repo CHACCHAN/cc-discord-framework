@@ -173,7 +173,7 @@ export default function Hero(): ReactNode {
 							className={clsx("lp-badge", styles.badge, styles.badgeLink)}
 							to="/docs/framework/project-status"
 						>
-							v2 Next · unreleased
+							v2.0.0 · npm 公開中
 						</Link>
 					</p>
 					<h1 id="home-hero-title" className={clsx("lp-display", styles.title)}>
@@ -191,7 +191,7 @@ export default function Hero(): ReactNode {
 							className={styles.primaryAction}
 							to="/docs/framework/getting-started/installation"
 						>
-							v2 を試す(開発版) <span aria-hidden="true">→</span>
+							いますぐ始める <span aria-hidden="true">→</span>
 						</Link>
 						<Link
 							className={styles.secondaryAction}

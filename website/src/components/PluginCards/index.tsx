@@ -85,7 +85,7 @@ export default function PluginCards(): ReactNode {
 				<SectionHeader
 					eyebrow="06 — 公式プラグイン"
 					title="重い依存は、コアに持ち込まない。"
-					lead="公式プラグインはそれぞれ独立したパッケージ。v2 向けパッケージは現在 npm 公開前のため、詳細ページではモノレポから試す方法も案内しています。"
+					lead="公式プラグインはそれぞれ独立したパッケージ。すべて npm の @cc-discord-framework スコープで公開されていて、使う分だけ bun add で足せます。"
 				/>
 				<div className={styles.grid}>
 					{PLUGINS.map((plugin) => (

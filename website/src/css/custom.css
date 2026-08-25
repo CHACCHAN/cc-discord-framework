@@ -143,10 +143,24 @@ body {
 /* ---------------------------------------------------------------- */
 
 .navbar {
-	background: color-mix(in srgb, var(--ifm-navbar-background-color) 84%, transparent);
-	backdrop-filter: blur(18px) saturate(1.35);
+	background: transparent;
 	border-bottom: 1px solid var(--landing-border-strong);
 	box-shadow: none;
+}
+
+/*
+ * 半透明の生地とブラーは擬似要素に敷く。.navbar 自体に backdrop-filter を
+ * 当てると、CSS の仕様により fixed 配置の子孫の containing block が
+ * navbar になり、モバイルのハンバーガーメニュー(.navbar-sidebar は
+ * navbar の子で position: fixed)がヘッダーの高さに潰れて開けなくなる。
+ */
+.navbar::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: color-mix(in srgb, var(--ifm-navbar-background-color) 84%, transparent);
+	backdrop-filter: blur(18px) saturate(1.35);
 }
 
 .navbar__inner {
