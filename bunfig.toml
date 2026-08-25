@@ -1,0 +1,6 @@
+# Bun のリンカー設定。
+# isolated リンカーだとレジストリ版 @cc-discord-framework/core が
+# プラグイン配下に別実体として入り、link:self のセルフリンクと二重
+# インスタンスになる(instanceof が壊れる)ため、hoisted に固定します。
+[install]
+linker = "hoisted"

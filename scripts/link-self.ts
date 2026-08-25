@@ -7,7 +7,7 @@
  * `bun install` はこのリンクを作ってくれません。依存関係のインストール後に
  * `bun run link:self` を明示的に実行して補います。
  */
-import { existsSync, lstatSync, mkdirSync, symlinkSync, unlinkSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, rmSync, symlinkSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const root = dirname(import.meta.dir);
@@ -22,11 +22,13 @@ if (!existsSync(join(root, "node_modules"))) {
 // ワークスペースのプラグインが未インストールでもスコープディレクトリは作る。
 mkdirSync(scopeDir, { recursive: true });
 
-if (existsSync(link) || lstatSyncSafe(link)) {
-	const stat = lstatSyncSafe(link);
-	if (stat?.isSymbolicLink()) unlinkSync(link);
-	else if (stat) process.exit(0); // 実体がある場合は触らない
-}
+// bun install は公開済みのレジストリ版 @cc-discord-framework/core を
+// この位置に実体として展開します。リポジトリ内のコードは常に手元の
+// src/ に対して動くべきなので、シンボリックリンク・実体のどちらでも
+// 取り除いてからセルフリンクに張り替えます。
+const stat = lstatSyncSafe(link);
+if (stat?.isSymbolicLink()) unlinkSync(link);
+else if (stat) rmSync(link, { recursive: true, force: true });
 
 // リンクの置き場所は node_modules/@cc-discord-framework/ の中なので、
 // リポジトリルートへは2階層戻る。
