@@ -1,0 +1,236 @@
+/*
+ * ダークバンド: ヒーローと同じ「深煎りステージ」をページ中盤で反復し、
+ * 実コードを暗い舞台の上で見せる。ランディング語彙(lp-*)の色は
+ * ステージ用のローカル変数でまとめて差し替える。
+ */
+.section {
+	--landing-accent-text: #edb782;
+	--landing-accent-decor: #d98b4a;
+	--landing-muted: var(--stage-muted);
+	--landing-border: var(--stage-border);
+	--landing-border-strong: var(--stage-border-strong);
+	--landing-anchor: #e0995c;
+	--landing-card-bg: rgba(30, 19, 13, 0.62);
+	--landing-glass-bg: rgba(32, 21, 14, 0.6);
+	--landing-glass-border: rgba(255, 236, 214, 0.14);
+	--landing-glow: var(--stage-glow);
+	--landing-chrome-bg: rgba(255, 238, 216, 0.04);
+	--landing-chrome-text: var(--stage-muted);
+
+	position: relative;
+	padding: clamp(5rem, 9vw, 8rem) 0;
+	color: var(--stage-text);
+	background-color: var(--stage-bg);
+	background-image:
+		radial-gradient(52rem 30rem at 82% 0%, rgba(200, 110, 52, 0.12), transparent 70%),
+		radial-gradient(46rem 28rem at 8% 100%, rgba(224, 140, 70, 0.09), transparent 72%),
+		linear-gradient(var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
+	background-size: auto, auto, 64px 64px, 64px 64px;
+	border-top: 1px solid var(--stage-border);
+	border-bottom: 1px solid var(--stage-border);
+}
+
+/* 上下の継ぎ目: ヒーローと同じ発光ヘアラインで暗面の出入りを示す。 */
+.section::before,
+.section::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 1px;
+	pointer-events: none;
+	background: linear-gradient(90deg, transparent 6%, rgba(238, 168, 98, 0.5) 32%, rgba(238, 168, 98, 0.5) 68%, transparent 94%);
+}
+
+.section::before {
+	top: -1px;
+}
+
+.section::after {
+	bottom: -1px;
+}
+
+/* タブバー: すりガラス(lp-glass)のピル。面と枠はユーティリティ側が持つ。 */
+.tabs {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.35rem;
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 auto 2.2rem;
+	padding: 0.38rem;
+	border-radius: 999px;
+}
+
+/* タブラベルは等幅で、設計図の見出しに揃える。 */
+.tab {
+	appearance: none;
+	cursor: pointer;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.84rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	background: transparent;
+	color: var(--landing-muted);
+	transition:
+		color 180ms ease,
+		background 180ms ease,
+		border-color 180ms ease;
+}
+
+.tab:hover {
+	color: var(--stage-text);
+	background: rgba(255, 236, 214, 0.06);
+}
+
+/* 選択中: アクセントグラデーションのピル。暗面の上で唯一の無地になる。 */
+.tabActive,
+.tabActive:hover {
+	color: #24120a;
+	background: var(--landing-accent-gradient);
+	border-color: transparent;
+	box-shadow: 0 10px 30px -12px rgba(224, 140, 70, 0.55);
+}
+
+.tab:focus-visible {
+	position: relative;
+	z-index: 1;
+	outline: 3px solid var(--ifm-color-primary-light);
+	outline-offset: 2px;
+}
+
+/* パネル全体: 破線フレーム+コーナーアンカー(lp-frame / lp-anchors)。 */
+/* 図面らしく角は落とさない。枠線はユーティリティ側が持つ。 */
+.panel {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	gap: clamp(1.6rem, 4vw, 3.25rem);
+	align-items: start;
+	padding: clamp(1.4rem, 3.5vw, 2.6rem);
+	background: color-mix(in srgb, var(--landing-card-bg) 76%, transparent);
+}
+
+.panel[hidden] {
+	display: none;
+}
+
+.panel:focus-visible {
+	outline: 3px solid var(--ifm-color-primary-light);
+	outline-offset: 4px;
+}
+
+.explain {
+	position: sticky;
+	top: calc(var(--ifm-navbar-height) + 1.5rem);
+}
+
+.panelTitle {
+	font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+	line-height: 1.5;
+	margin-bottom: 0.9rem;
+}
+
+.panelBody {
+	font-size: 0.95rem;
+	line-height: 2;
+	color: var(--landing-muted);
+	margin-bottom: 1.2rem;
+}
+
+.points {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+
+.points li {
+	position: relative;
+	padding-left: 1.4rem;
+	font-size: 0.9rem;
+	line-height: 1.8;
+	color: var(--landing-muted);
+}
+
+/* 箇条書きの点は 7px の正方形。コーナーアンカーと同じ語彙で揃える。 */
+.points li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.66em;
+	width: 7px;
+	height: 7px;
+	background: var(--landing-accent-decor);
+}
+
+.code {
+	position: relative;
+	min-width: 0;
+}
+
+/* コード列の背後に広く敷く環境光。lp-glow が発光そのものを担う。 */
+.codeGlow {
+	inset: -14% -12% -20%;
+}
+
+/* 発光より手前にコードウィンドウを重ねるための階層。
+   ライトモードでは暗い舞台に浮かぶ「白いコードシート」として見せるため、
+   ウィンドウのクローム面だけ明るい面に戻す(コード面は Prism のライト配色)。 */
+.codeInner {
+	position: relative;
+	--landing-glass-bg: rgba(255, 252, 246, 0.92);
+	--landing-glass-border: rgba(255, 255, 255, 0.85);
+	--landing-chrome-text: #6d574a;
+	--landing-accent-text: #7c3c1e;
+}
+
+/* ダークモードは Prism もダーク配色になるため、クロームも暗面のまま揃える。 */
+:global([data-theme="dark"]) .codeInner {
+	--landing-glass-bg: rgba(32, 21, 14, 0.6);
+	--landing-glass-border: rgba(255, 236, 214, 0.14);
+	--landing-chrome-text: var(--stage-muted);
+	--landing-accent-text: #edb782;
+}
+
+@media (max-width: 996px) {
+	.section {
+		padding: 4.5rem 0;
+	}
+
+	.panel {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1.6rem;
+	}
+
+	.explain {
+		position: static;
+	}
+}
+
+@media (max-width: 620px) {
+	/* 横スクロール時にピルの丸みがタブを削らないよう、半径を控えめにする。 */
+	.tabs {
+		justify-content: flex-start;
+		width: 100%;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		border-radius: 14px;
+	}
+
+	.tab {
+		flex: none;
+	}
+
+	.panel {
+		padding: 1.2rem;
+	}
+}

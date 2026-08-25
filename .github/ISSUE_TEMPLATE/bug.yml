@@ -1,0 +1,69 @@
+name: 不具合の報告
+description: 再現できる不具合や予期しない動作を報告します
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        報告ありがとうございます。Bot token、API key、個人情報は貼らないでください。
+        機密性のある脆弱性は公開 Issue にしないでください。
+  - type: dropdown
+    id: release_line
+    attributes:
+      label: 利用している版
+      options:
+        - v2 Next（GitHub main）
+        - v1.0.5（npm latest / legacy）
+        - 公式プラグイン
+        - その他
+    validations:
+      required: true
+  - type: input
+    id: exact_version
+    attributes:
+      label: 正確なバージョンまたはコミット
+      placeholder: 例）main のコミット SHA、@cc-discord-framework/music 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 実行環境
+      description: Bun、OS、discord.js、関連プラグインのバージョンを書いてください。
+      placeholder: |
+        Bun:
+        OS:
+        discord.js:
+        plugins:
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小の再現手順
+      description: 可能なら、問題だけを再現できる小さなコードも添えてください。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待した結果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の結果とログ
+      description: 秘密情報を除去したログやスタックトレースを貼ってください。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 確認
+      options:
+        - label: 既存の Issue を検索しました
+          required: true
+        - label: 秘密情報と個人情報を除去しました
+          required: true

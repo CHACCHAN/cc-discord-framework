@@ -1,0 +1,100 @@
+.section {
+	padding: clamp(5rem, 9vw, 8rem) 0;
+}
+
+/* 図面(ブループリント)としてのグリッド: セル同士は隙間なく接し、 */
+/* 外周の破線フレームとコーナーアンカーは lp-frame / lp-anchors が担う。 */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0;
+	background: color-mix(in srgb, var(--landing-card-bg) 55%, transparent);
+}
+
+/* 各項目は図面の升目。上罫は lp-frame-t、列の区切りはここで引く。 */
+.cell {
+	padding: 1.85rem 1.7rem 2rem;
+	border-left: 1px solid var(--landing-border-strong);
+	transition: background 180ms ease;
+}
+
+/* リストの升目なので浮かせない。淡い色付けだけで反応を返す。 */
+.cell:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
+}
+
+/* 3列(既定): 外周フレームと重なる 1 行目の上罫・各行先頭の左罫を消す。 */
+@media (min-width: 1201px) {
+	.cell:nth-child(3n + 1) {
+		border-left: none;
+	}
+
+	.cell:nth-child(-n + 3) {
+		border-top: none;
+	}
+}
+
+/* インデックス印: 等幅・装飾色で「04 /」のように打つ。 */
+.number {
+	display: block;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	color: var(--landing-accent-decor);
+	margin-bottom: 0.85rem;
+}
+
+/* スラッシュは装飾なので CSS で付与する(本文コピーには含めない)。 */
+.number::after {
+	content: " /";
+	opacity: 0.7;
+}
+
+.title {
+	font-size: 1.05rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	margin-bottom: 0.65rem;
+}
+
+.body {
+	font-size: 0.9rem;
+	line-height: 1.9;
+	color: var(--landing-muted);
+	margin-bottom: 0;
+}
+
+/* 1列: 左罫は不要。先頭セルの上罫だけ外周と重なるので消す。 */
+@media (max-width: 996px) {
+	.section {
+		padding: 4.5rem 0;
+	}
+
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.cell {
+		border-left: none;
+	}
+
+	.cell:first-child {
+		border-top: none;
+	}
+}
+
+/* 2列: 各行先頭の左罫と 1 行目の上罫を消す。 */
+@media (min-width: 997px) and (max-width: 1200px) {
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.cell:nth-child(2n + 1) {
+		border-left: none;
+	}
+
+	.cell:nth-child(-n + 2) {
+		border-top: none;
+	}
+}

@@ -1,50 +1,64 @@
 {
   "name": "cc-discord-framework",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CHACCHAN/cc-discord-framework.git"
   },
-  "description": "My custom Discord.js framework",
+  "description": "A modern Discord framework specifically for Bun",
+  "homepage": "https://cc-discord-framework.pages.dev",
+  "bugs": "https://github.com/CHACCHAN/cc-discord-framework/issues",
+  "author": "CHACCHAN",
+  "keywords": [
+    "discord",
+    "discord.js",
+    "discord-bot",
+    "framework",
+    "bun"
+  ],
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "bun": "./src/index.ts",
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     },
-    "./modules": {
-      "types": "./dist/modules/index.d.ts",
-      "import": "./dist/modules/index.js",
-      "require": "./dist/modules/index.js"
-    }
+    "./package.json": "./package.json"
   },
-  "private": false,
   "files": [
     "dist",
+    "src",
     "README.md",
-    "package.json"
+    "CONTRIBUTING.md",
+    "SUPPORT.md"
   ],
-  "module": "src/index.ts",
-  "type": "module",
+  "private": false,
+  "workspaces": [
+    "client",
+    "plugins/*",
+    "website"
+  ],
   "scripts": {
+    "link:self": "bun run scripts/link-self.ts",
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf dist",
-    "prepublishOnly": "bun run clean && bun run build"
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "check": "bun run typecheck && bun test && bun run build",
+    "prepublishOnly": "bun run clean && bun run build",
+    "website:dev": "bun run --cwd website start",
+    "website:build": "bun run --cwd website build",
+    "website:preview": "bun run --cwd website serve"
   },
   "dependencies": {
-    "@discordjs/voice": "^0.19.2",
-    "glob": "^13.0.6",
-    "play-dl": "^1.9.7",
-    "reflect-metadata": "^0.2.2"
+    "discord.js": "^14.26.4",
+    "pino": "^10.3.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^6.0.3"
-  },
-  "peerDependencies": {
-    "discord.js": "^14.26.3"
   }
 }

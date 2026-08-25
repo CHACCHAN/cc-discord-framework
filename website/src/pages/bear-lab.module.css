@@ -1,0 +1,93 @@
+/* マスコット工房(開発者向けページ)のレイアウト。 */
+
+.lab {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 21rem;
+	min-height: calc(100vh - var(--ifm-navbar-height));
+}
+
+.stage {
+	position: relative;
+	background:
+		radial-gradient(38rem 24rem at 50% 30%, rgba(224, 140, 70, 0.16), transparent 70%),
+		linear-gradient(var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(180deg, var(--stage-bg-deep), var(--stage-bg));
+	background-size: auto, 64px 64px, 64px 64px, auto;
+}
+
+.stage canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.panel {
+	padding: 1.5rem;
+	border-left: 1px solid var(--landing-border);
+}
+
+.panel h1 {
+	font-size: 1.4rem;
+	margin-bottom: 0.6rem;
+}
+
+.note {
+	font-size: 0.82rem;
+	line-height: 1.8;
+	color: var(--landing-muted);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+	margin: 1rem 0;
+}
+
+.actions button {
+	padding: 0.4rem 0.85rem;
+	border: 1px solid var(--landing-border-strong);
+	border-radius: 8px;
+	background: transparent;
+	color: inherit;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.8rem;
+	cursor: pointer;
+}
+
+.actions button[data-active] {
+	background: var(--landing-accent-gradient);
+	border-color: transparent;
+	color: #24120a;
+	font-weight: 700;
+}
+
+.toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.85rem;
+	margin-bottom: 0.8rem;
+}
+
+.stats {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.75rem;
+	color: var(--landing-accent-text);
+}
+
+@media (max-width: 996px) {
+	.lab {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.stage {
+		min-height: 55vh;
+	}
+
+	.panel {
+		border-left: 0;
+		border-top: 1px solid var(--landing-border);
+	}
+}

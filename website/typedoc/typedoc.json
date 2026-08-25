@@ -1,0 +1,75 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	// パッケージごとの JSON(website/typedoc/.cache/*.json)を統合して
+	// website/docs/api/ に Markdown を出力する最終段の設定。
+	// 実行は `bun run --cwd website api:generate`(website/typedoc/generate.ts)。
+	"plugin": ["typedoc-plugin-markdown"],
+	"entryPointStrategy": "merge",
+	"entryPoints": [
+		".cache/cc-discord-framework.json",
+		".cache/utils.json",
+		".cache/music.json",
+		".cache/music-sources.json",
+		".cache/ai.json"
+	],
+	"out": "../docs/api",
+	"cleanOutputDir": true,
+	"name": "API リファレンス",
+	"readme": "./index.md",
+	"lang": "ja",
+	"githubPages": false,
+	// --- typedoc-plugin-markdown(Docusaurus 向け設定)---
+	"entryFileName": "index",
+	"mergeReadme": true,
+	"useCodeBlocks": true,
+	"sanitizeComments": true,
+	// 見出しが日本語(例: 「コンストラクター」)のため、TypeDoc が生成する
+	// 英語アンカー(#constructor)と Docusaurus の見出しスラッグが一致しない。
+	// HTML アンカーとして出力し、generate.ts の後処理で Docusaurus の
+	// 明示的見出し ID 記法(`### 見出し {#id}`)へ変換する
+	// (useCustomAnchors はコンストラクターにアンカーを付けないため不採用)。
+	"useHTMLAnchors": true,
+	"hidePageHeader": true,
+	"hideBreadcrumbs": true,
+	// JSDoc の {@link} が参照する外部ライブラリの型は公式ドキュメントへ飛ばす
+	// (typedoc.base.json と同じ内容。出力フェーズでも解決されるため両方に置く)。
+	"externalSymbolLinkMappings": {
+		"@discordjs/voice": {
+			"StreamType": "https://discord.js.org/docs/packages/voice/main/StreamType:Enum"
+		},
+		"ai": {
+			"LanguageModel": "https://ai-sdk.dev/docs/reference/ai-sdk-core"
+		},
+		"@ai-sdk/provider-utils": {
+			"ToolSet": "https://ai-sdk.dev/docs/reference/ai-sdk-core"
+		}
+	},
+	// typedoc-plugin-markdown は Converter のイベントで独自の翻訳キーを
+	// 登録するが、"merge" 戦略では Converter を通らないため登録されない。
+	// プラグイン同梱の ja ロケール(dist/internationalization/locales/ja.js)
+	// と同じ内容をここで TypeDoc 本体の locales オプションから登録する。
+	"locales": {
+		"ja": {
+			"tag_examples": "例",
+			"theme_default_value": "デフォルト値",
+			"theme_default_type": "デフォルトタイプ",
+			"theme_description": "説明",
+			"theme_event": "イベント",
+			"theme_re_exports": "再エクスポート",
+			"theme_renames_and_re_exports": "リネームと再エクスポート",
+			"theme_extends": "拡張",
+			"theme_extended_by": "によって拡張された",
+			"theme_globals": "グローバル変数",
+			"theme_member": "メンバー",
+			"theme_member_plural": "メンバー",
+			"theme_modifier": "修飾子",
+			"theme_name": "名前",
+			"theme_package": "パッケージ",
+			"theme_packages": "パッケージ",
+			"theme_type": "タイプ",
+			"theme_union_members": "ユニオンメンバー",
+			"theme_value": "値",
+			"theme_version": "バージョン"
+		}
+	}
+}

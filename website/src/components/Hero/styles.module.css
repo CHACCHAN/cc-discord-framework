@@ -1,0 +1,674 @@
+/**
+ * ヒーロー: 常時ダークの「深煎りステージ」。カラーモードに依存させず、
+ * ネイビー方向へ濁らせないエスプレッソの闇 + アンバーのグローで構成する。
+ * 3D は使わず、グリッド・グロー・ターミナル演出だけで奥行きを作る。
+ */
+
+.hero {
+	position: relative;
+	isolation: isolate;
+	overflow: clip;
+	background: linear-gradient(180deg, var(--stage-bg-deep) 0%, var(--stage-bg) 46%, #150d08 100%);
+	color: var(--stage-text);
+	padding: clamp(4rem, 9vh, 6.5rem) 0 clamp(3.5rem, 7vh, 5.5rem);
+
+	/* 暗面ではグローバル語彙(lp-*)の色をステージ用に差し替える。 */
+	--landing-anchor: #e0995c;
+	--landing-accent-text: #edb782;
+	--landing-accent-decor: #d98b4a;
+	--landing-glow: var(--stage-glow);
+}
+
+/* ---- 背景装飾 ------------------------------------------------- */
+
+.bgGrid {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		linear-gradient(var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
+	background-size: 64px 64px;
+	mask-image: radial-gradient(120% 90% at 50% 12%, #000 38%, transparent 78%);
+}
+
+.bgGlowLeft {
+	position: absolute;
+	z-index: -1;
+	pointer-events: none;
+	top: -18rem;
+	left: -14rem;
+	width: 52rem;
+	height: 44rem;
+	background: radial-gradient(closest-side, rgba(224, 140, 70, 0.17), transparent 70%);
+	animation: glowDrift 14s ease-in-out infinite alternate;
+}
+
+.bgGlowRight {
+	position: absolute;
+	z-index: -1;
+	pointer-events: none;
+	top: 6rem;
+	right: -16rem;
+	width: 48rem;
+	height: 42rem;
+	background: radial-gradient(closest-side, rgba(200, 110, 52, 0.13), transparent 72%);
+	animation: glowDrift 18s ease-in-out infinite alternate-reverse;
+}
+
+/* アンビエントグローがゆっくり漂う。速度は「気づくかどうか」の境目に抑える。 */
+@keyframes glowDrift {
+	from {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	to {
+		transform: translate3d(3rem, 1.5rem, 0) scale(1.06);
+	}
+}
+
+/* 地平線: セクション下端の発光ヘアライン。白い本文セクションへの継ぎ目になる。 */
+.bgHorizon {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 1px;
+	pointer-events: none;
+	background: linear-gradient(90deg, transparent 4%, rgba(238, 168, 98, 0.65) 30%, rgba(238, 168, 98, 0.65) 70%, transparent 96%);
+	box-shadow: 0 0 24px 1px rgba(238, 168, 98, 0.35);
+}
+
+/* 地平線を走る光のパルス。回路を信号が流れるイメージ。 */
+.bgHorizon::after {
+	content: "";
+	position: absolute;
+	top: -1.5px;
+	left: 0;
+	width: 15%;
+	height: 4px;
+	border-radius: 4px;
+	background: linear-gradient(90deg, transparent, rgba(255, 218, 166, 0.95), transparent);
+	filter: blur(0.5px);
+	animation: horizonRun 6.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes horizonRun {
+	0% {
+		transform: translateX(-120%);
+		opacity: 0;
+	}
+	12% {
+		opacity: 1;
+	}
+	88% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(760%);
+		opacity: 0;
+	}
+}
+
+/* エネルギービーム: ターミナルへ流れ込む破線。dashoffset で流れを作る。 */
+.beams {
+	position: absolute;
+	inset: -6% -10%;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	pointer-events: none;
+	overflow: visible;
+}
+
+.beams path {
+	stroke: rgba(232, 154, 85, 0.5);
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-dasharray: 3 17;
+	animation: beamFlow 2.6s linear infinite;
+}
+
+.beams path:nth-child(2) {
+	stroke: rgba(242, 196, 148, 0.38);
+	animation-duration: 3.4s;
+	animation-delay: -1.2s;
+}
+
+.beams path:nth-child(3) {
+	stroke: rgba(224, 122, 68, 0.42);
+	animation-duration: 3s;
+	animation-delay: -0.6s;
+}
+
+@keyframes beamFlow {
+	to {
+		stroke-dashoffset: -120;
+	}
+}
+
+/* ---- レイアウト ------------------------------------------------ */
+
+.inner {
+	max-width: 1320px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	display: grid;
+	grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+	gap: clamp(2.5rem, 5vw, 5rem);
+	align-items: center;
+}
+
+/* ---- コピー(左) ---------------------------------------------- */
+
+.copy {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1.45rem;
+}
+
+.brandLine {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem 1.4rem;
+	margin: 0;
+}
+
+.badge {
+	font-size: 0.72rem;
+}
+
+.badgeLink {
+	text-decoration: none;
+}
+
+.badgeLink:hover {
+	color: var(--stage-text);
+}
+
+.title {
+	margin: 0;
+	font-size: clamp(2.9rem, 6.4vw, 4.9rem);
+	line-height: 1.12;
+	color: var(--stage-text);
+}
+
+.subtitle {
+	margin: 0;
+	max-width: 34rem;
+	font-size: clamp(1rem, 1.4vw, 1.13rem);
+	line-height: 2;
+	color: var(--stage-muted);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.85rem;
+	margin-top: 0.35rem;
+}
+
+.primaryAction {
+	position: relative;
+	overflow: hidden;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55em;
+	padding: 0.82rem 1.55rem;
+	border-radius: 11px;
+	background: var(--landing-accent-gradient);
+	color: #24120a;
+	font-weight: 760;
+	font-size: 0.98rem;
+	box-shadow: 0 14px 44px -14px rgba(224, 140, 70, 0.55);
+	transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* ホバーで表面を走る光沢。 */
+.primaryAction::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -60%;
+	width: 40%;
+	background: linear-gradient(105deg, transparent, rgba(255, 250, 240, 0.55), transparent);
+	transform: skewX(-18deg);
+	transition: left 480ms ease;
+	pointer-events: none;
+}
+
+.primaryAction:hover::before {
+	left: 130%;
+}
+
+.primaryAction:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 20px 52px -14px rgba(224, 140, 70, 0.7);
+	color: #24120a;
+	text-decoration: none;
+}
+
+.primaryAction > span {
+	transition: transform 180ms ease;
+}
+
+.primaryAction:hover > span {
+	transform: translateX(0.25em);
+}
+
+.secondaryAction {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.82rem 1.4rem;
+	border-radius: 11px;
+	border: 1px solid var(--stage-border-strong);
+	color: var(--stage-text);
+	font-weight: 640;
+	font-size: 0.98rem;
+	transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.secondaryAction:hover {
+	border-color: rgba(242, 196, 148, 0.55);
+	background: rgba(255, 236, 214, 0.05);
+	color: var(--stage-text);
+	text-decoration: none;
+}
+
+/* ---- インストールコマンド -------------------------------------- */
+
+.install {
+	display: inline-flex;
+	align-items: stretch;
+	max-width: 100%;
+	border: 1px solid var(--stage-border);
+	border-radius: 10px;
+	background: rgba(255, 240, 220, 0.045);
+}
+
+.installCommand {
+	display: block;
+	padding: 0.72rem 1.1rem;
+	background: none;
+	border: 0;
+	color: #efdcc4;
+	font-size: 0.86rem;
+	letter-spacing: 0.01em;
+	white-space: nowrap;
+	overflow-x: auto;
+}
+
+.installCommand > span {
+	color: var(--landing-accent-decor);
+	margin-right: 0.15em;
+	user-select: none;
+}
+
+.copyButton {
+	flex-shrink: 0;
+	padding: 0 1.05rem;
+	border: 0;
+	border-left: 1px solid var(--stage-border);
+	border-radius: 0 9px 9px 0;
+	background: transparent;
+	color: var(--landing-accent-text);
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.copyButton:hover {
+	background: rgba(255, 236, 214, 0.07);
+	color: var(--stage-text);
+}
+
+/* ---- 動作環境 --------------------------------------------------- */
+
+.techList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem 1.6rem;
+	margin: 0.2rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* 各項目は借用元の公式リポジトリへのリンク。普段は控えめに、ホバーで灯す。 */
+.techList a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	letter-spacing: 0.05em;
+	color: var(--stage-muted);
+	text-decoration: none;
+	transition: color 160ms ease;
+}
+
+.techList a:hover {
+	color: var(--stage-text);
+	text-decoration: underline;
+	text-underline-offset: 0.3em;
+	text-decoration-color: var(--landing-accent-decor);
+}
+
+.techList img {
+	width: 17px;
+	height: 17px;
+	object-fit: contain;
+}
+
+.techList img[data-technology="discordjs"] {
+	width: auto;
+	height: 15px;
+}
+
+/* ---- ターミナル演出(右) --------------------------------------- */
+
+.demo {
+	position: relative;
+}
+
+.demoGlow {
+	inset: -3rem -4rem;
+	z-index: -1;
+}
+
+.terminal {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--stage-border-strong);
+	border-radius: 14px;
+	margin: 0;
+	background: linear-gradient(165deg, rgba(34, 21, 14, 0.94) 0%, rgba(15, 9, 6, 0.97) 100%);
+	box-shadow:
+		0 44px 90px -42px rgba(0, 0, 0, 0.85),
+		0 0 70px -22px var(--stage-glow);
+}
+
+.terminalChrome {
+	display: flex;
+	align-items: center;
+	gap: 0.9rem;
+	margin: 0;
+	padding: 0.72rem 1.05rem;
+	border-bottom: 1px solid var(--stage-border);
+	background: rgba(255, 238, 216, 0.03);
+}
+
+.terminalDots {
+	display: inline-flex;
+	gap: 0.42rem;
+}
+
+.terminalDots i {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: rgba(242, 196, 148, 0.22);
+}
+
+.terminalDots i:first-child {
+	background: rgba(224, 122, 68, 0.6);
+}
+
+.terminalTitle {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.76rem;
+	letter-spacing: 0.05em;
+	color: var(--stage-muted);
+}
+
+.terminalStatus {
+	margin-left: auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45em;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	color: var(--landing-accent-text);
+}
+
+.terminalStatus::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: currentColor;
+	animation: pulse 1.4s ease-in-out infinite;
+}
+
+.terminalStatusReady {
+	color: var(--stage-ok);
+}
+
+.terminalStatusReady::before {
+	animation: none;
+	box-shadow: 0 0 10px 1px rgba(127, 216, 164, 0.6);
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.35;
+	}
+}
+
+.terminalBody {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.84rem;
+	line-height: 1.75;
+}
+
+/* 各ペインは最終状態の行数ぶんの高さを常に確保し、ループ再開時に
+   ターミナルや後続コンテンツが跳ねないようにする。 */
+.treePane {
+	padding: 1rem 1.25rem 0.9rem;
+	border-bottom: 1px solid var(--stage-border);
+	min-height: 9.6rem;
+}
+
+.paneLabel {
+	margin: 0 0 0.35rem;
+	color: var(--landing-accent-text);
+	font-size: 0.76rem;
+	letter-spacing: 0.1em;
+}
+
+.treeList,
+.logList {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.treeLine {
+	display: flex;
+	gap: 0.6em;
+	color: #ecd9c2;
+	animation: lineIn 360ms ease both;
+}
+
+.treeLine:last-child {
+	color: #f7e6cf;
+}
+
+.treeBranch {
+	color: rgba(217, 139, 74, 0.55);
+	user-select: none;
+}
+
+/* log ペイン: フレームワークの応答。 */
+.logPane {
+	flex: 1;
+	padding: 0.95rem 1.25rem 1.15rem;
+	min-height: 14rem;
+}
+
+.logLine {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0 0.7em;
+	animation: lineIn 360ms ease both;
+}
+
+.logMark {
+	width: 1.1em;
+	flex-shrink: 0;
+	text-align: center;
+	user-select: none;
+}
+
+.log_cmd {
+	color: var(--stage-text);
+	margin-bottom: 0.2rem;
+}
+
+.log_cmd .logMark {
+	color: var(--landing-accent-decor);
+}
+
+.log_info {
+	color: var(--stage-muted);
+}
+
+.log_info .logNote {
+	color: rgba(199, 173, 151, 0.75);
+}
+
+.log_register .logMark {
+	color: var(--stage-ok);
+}
+
+.log_register .logText {
+	min-width: 5.4em;
+	color: var(--landing-accent-text);
+	letter-spacing: 0.04em;
+}
+
+.log_register .logNote {
+	color: #e6d2ba;
+}
+
+/* READY 行: この演出の結論。ピルにして発光させる。 */
+.log_ready {
+	margin-top: 0.75rem;
+}
+
+.log_ready .logMark {
+	color: var(--landing-accent-decor);
+}
+
+.log_ready .logText {
+	display: inline-block;
+	padding: 0.12em 0.85em;
+	border-radius: 999px;
+	background: var(--landing-accent-gradient);
+	color: #24120a;
+	font-weight: 760;
+	letter-spacing: 0.16em;
+	box-shadow: 0 6px 26px -6px rgba(224, 140, 70, 0.6);
+}
+
+.log_ready .logNote {
+	flex-basis: 100%;
+	margin-top: 0.45rem;
+	padding-left: 1.8em;
+	color: var(--stage-muted);
+}
+
+/* 入力カーソル: READY までの間だけ明滅する。 */
+.caretLine {
+	height: 1.75em;
+}
+
+.caretLine::after {
+	content: "";
+	display: inline-block;
+	width: 0.62em;
+	height: 1.15em;
+	margin-left: 1.8em;
+	vertical-align: text-bottom;
+	background: rgba(238, 178, 110, 0.85);
+	animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+@keyframes lineIn {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.demoCaption {
+	margin: 1.05rem 0 0;
+	text-align: center;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.73rem;
+	letter-spacing: 0.09em;
+	color: var(--stage-muted);
+}
+
+/* ---- レスポンシブ ----------------------------------------------- */
+
+@media (max-width: 996px) {
+	.hero {
+		padding-top: 3rem;
+	}
+
+	.inner {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 3rem;
+	}
+
+	.title {
+		font-size: clamp(2.5rem, 10vw, 3.4rem);
+	}
+
+	.subtitle br {
+		display: none;
+	}
+
+	.install {
+		display: flex;
+	}
+
+	.installCommand {
+		flex: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.treeLine,
+	.logLine {
+		animation: none;
+	}
+
+	.caretLine {
+		display: none;
+	}
+}

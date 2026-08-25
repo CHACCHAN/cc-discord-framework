@@ -1,0 +1,36 @@
+name: 機能・改善の提案
+description: API、ドキュメント、開発体験の改善を提案します
+title: "proposal: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 解決したい問題
+      description: 実装案より先に、利用者がどこで困るかを教えてください。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案する体験
+      description: どのように使えると自然か、短いコード例があれば添えてください。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 検討した代替案
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 主な対象
+      options:
+        - framework core
+        - utils plugin
+        - music / music-sources plugin
+        - ai plugin
+        - reference Bot
+        - website / documentation
+    validations:
+      required: true

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-label="CC の耳を持つ熊。CC は CHACCHAN から">
+  <defs>
+    <linearGradient id="cc-bear-head-dark" x1="13" y1="18" x2="52" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e9bc8d"/>
+      <stop offset="1" stop-color="#a85e3a"/>
+    </linearGradient>
+    <linearGradient id="cc-bear-caramel-dark" x1="10" y1="3" x2="52" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd19c"/>
+      <stop offset="1" stop-color="#e2874c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ダーク背景でも CC の耳と熊の輪郭が小さい表示で消えない配色。 -->
+  <path d="M22.2 6.9A9.2 9.2 0 1 0 22.2 20.1" stroke="url(#cc-bear-caramel-dark)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M48.2 6.9A9.2 9.2 0 1 0 48.2 20.1" stroke="url(#cc-bear-caramel-dark)" stroke-width="6" stroke-linecap="round"/>
+
+  <path d="M11 35.2C11 22.3 20.3 15 32 15s21 7.3 21 20.2v6.2C53 53.2 44.1 61 32 61S11 53.2 11 41.4v-6.2Z" fill="url(#cc-bear-head-dark)" stroke="#ffe9cf" stroke-width="1.1"/>
+  <path d="M16.5 34.4C17.8 24.8 24.3 20 32 20s14.2 4.8 15.5 14.4" stroke="#f7d6b3" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+
+  <path d="M26.6 33.2a4 4 0 1 0 0 5.6" stroke="#351c13" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M41.1 33.2a4 4 0 1 0 0 5.6" stroke="#351c13" stroke-width="2.5" stroke-linecap="round"/>
+
+  <ellipse cx="32" cy="46" rx="9.4" ry="7.3" fill="#fff0d9"/>
+  <path d="M28.2 44.7c0-2 1.7-3.3 3.8-3.3s3.8 1.3 3.8 3.3c0 1.7-1.7 3.2-3.8 3.2s-3.8-1.5-3.8-3.2Z" fill="#321a12"/>
+  <path d="M32 48v2.2m0 0c-1.1 1.5-2.6 2.1-4.2 2.1m4.2-2.1c1.1 1.5 2.6 2.1 4.2 2.1" stroke="#713a26" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

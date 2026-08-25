@@ -1,1 +1,0 @@
-export * from "./FormatTemplate.js";

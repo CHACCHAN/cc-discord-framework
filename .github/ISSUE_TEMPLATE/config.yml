@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: サポート方針
+    url: https://github.com/CHACCHAN/cc-discord-framework/blob/main/SUPPORT.md
+    about: 質問や不具合を報告する前に、対象バージョンと必要な情報を確認します

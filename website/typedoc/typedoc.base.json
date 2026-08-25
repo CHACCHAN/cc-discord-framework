@@ -1,0 +1,38 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	// 各パッケージを JSON へ変換する際の共通設定。
+	// (website/typedoc/generate.ts がパッケージごとに --entryPoints /
+	//  --tsconfig / --name / --json を追加して実行する)
+	//
+	// ポイント: ルートパッケージは `export * from "discord.js"` しているが、
+	// excludeExternals + externalPattern により node_modules 由来のシンボルは
+	// ドキュメントに含めない。このリポジトリで宣言されたものだけが載る。
+	"excludeExternals": true,
+	"externalPattern": ["**/node_modules/**"],
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"readme": "none",
+	"includeVersion": false,
+	"githubPages": false,
+	"lang": "ja",
+	// パッケージ単体の変換フェーズでは、他パッケージのシンボルへの {@link}
+	// が「ドキュメントに含まれない」と警告される(統合フェーズでは正しく
+	// 相互リンクに解決される)ため、このフェーズではリンク検証を抑制する。
+	// 最終出力のリンク検証は typedoc.json(統合フェーズ)側で行われる。
+	"validation": {
+		"invalidLink": false,
+		"rewrittenLink": false
+	},
+	// JSDoc の {@link} が参照する外部ライブラリの型は公式ドキュメントへ飛ばす。
+	"externalSymbolLinkMappings": {
+		"@discordjs/voice": {
+			"StreamType": "https://discord.js.org/docs/packages/voice/main/StreamType:Enum"
+		},
+		"ai": {
+			"LanguageModel": "https://ai-sdk.dev/docs/reference/ai-sdk-core"
+		},
+		"@ai-sdk/provider-utils": {
+			"ToolSet": "https://ai-sdk.dev/docs/reference/ai-sdk-core"
+		}
+	}
+}

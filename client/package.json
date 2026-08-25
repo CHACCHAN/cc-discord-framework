@@ -1,0 +1,26 @@
+{
+  "name": "cc-discord-bot",
+  "private": true,
+  "description": "cc-discord-framework の運用リファレンス Bot(音楽再生つき)",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun run src/index.ts | bunx pino-pretty",
+    "check": "bun run src/check.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "pino-pretty": "^13.1.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.46",
+    "@ai-sdk/openai-compatible": "^3.0.35",
+    "@cc-discord-framework/ai": "workspace:*",
+    "@cc-discord-framework/music": "workspace:*",
+    "@cc-discord-framework/music-sources": "workspace:*",
+    "@cc-discord-framework/utils": "workspace:*",
+    "zod": "^4.4.3"
+  }
+}

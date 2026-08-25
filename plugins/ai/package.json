@@ -1,0 +1,68 @@
+{
+  "name": "@cc-discord-framework/ai",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "cc-discord-framework 公式プラグイン: AI(Vercel AI SDK・複数プロバイダー・ツール呼び出し・ストリーミング応答)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CHACCHAN/cc-discord-framework.git",
+    "directory": "plugins/ai"
+  },
+  "homepage": "https://cc-discord-framework.pages.dev",
+  "bugs": "https://github.com/CHACCHAN/cc-discord-framework/issues",
+  "author": "CHACCHAN",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepack": "bun run clean && bun run build"
+  },
+  "dependencies": {
+    "@cc-discord-framework/utils": "^1.0.0",
+    "ai": "^7.0.77",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@ai-sdk/anthropic": "^4.0.0",
+    "@ai-sdk/google": "^4.0.0",
+    "@ai-sdk/openai": "^4.0.0",
+    "@ai-sdk/openai-compatible": "^3.0.0",
+    "cc-discord-framework": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ai-sdk/anthropic": {
+      "optional": true
+    },
+    "@ai-sdk/google": {
+      "optional": true
+    },
+    "@ai-sdk/openai": {
+      "optional": true
+    },
+    "@ai-sdk/openai-compatible": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  }
+}

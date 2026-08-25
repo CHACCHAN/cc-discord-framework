@@ -1,0 +1,24 @@
+/**
+ * ベアのキャンバスはビューポート全面に固定し、操作は一切遮らない。
+ * コンテンツ(custom.css がランディング直下の要素を z:2 に持ち上げる)より
+ * 常に背面。透明な背景を持つセクションの隙間からだけ姿が見える。
+ */
+.root {
+	position: fixed;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.root canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* 狭い画面と印刷では出さない(JS 側でも同条件でマウントを避けている)。 */
+@media (max-width: 996px), print {
+	.root {
+		display: none;
+	}
+}

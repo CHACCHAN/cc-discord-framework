@@ -1,32 +1,23 @@
 {
   "compilerOptions": {
-    // Environment setup & latest features
+    // Bun-first: latest language features, standard (TC39) decorators only.
     "lib": ["ESNext"],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
+    "types": ["bun"],
 
-    // Bundler mode
+    // Bundler-style resolution (Bun resolves modules this way).
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
-    // Best practices
+    // Strictness
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "noImplicitOverride": true
+  },
+  "include": ["src/**/*", "tests/**/*"]
 }

@@ -1,16 +1,15 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    // target ESNext keeps standard decorator syntax in the emitted JS;
+    // Bun executes it natively and stores decorator metadata under
+    // Symbol.for("Symbol.metadata"). Downleveling would silently drop
+    // context.metadata on runtimes without Symbol.metadata.
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
-    "noEmit": false,
-    "allowImportingTsExtensions": false
+    "noEmit": false
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

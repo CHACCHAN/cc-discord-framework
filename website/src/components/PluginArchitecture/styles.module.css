@@ -1,0 +1,167 @@
+/* グレイン(lp-grain)を全面に敷くため、セクション自身を配置基準にする。 */
+.section {
+	position: relative;
+	padding: clamp(5rem, 9vw, 8rem) 0;
+}
+
+/* グレインは本文の可読性を損ねない強さまで抑える。 */
+.section .grain {
+	opacity: 0.22;
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: clamp(2.5rem, 6vw, 5rem);
+	align-items: center;
+}
+
+.copy :global(header) {
+	margin-bottom: 1.5rem;
+}
+
+.paragraph {
+	font-size: 0.95rem;
+	line-height: 2;
+	color: var(--landing-muted);
+	margin-bottom: 1.1rem;
+}
+
+.paragraph strong {
+	color: var(--ifm-font-color-base);
+}
+
+.treeWrap {
+	min-width: 0;
+}
+
+/* 図面の台紙。面は lp-glass が持ち、枠だけは設計図の破線に差し替える。 */
+/* (lp-glass の実線 border と background より確実に勝つよう、親を含めて指定する。) */
+.treeWrap .treeFrame {
+	border: 1px solid var(--landing-border-strong);
+	background-image:
+		linear-gradient(color-mix(in srgb, var(--ifm-color-primary) 5%, transparent) 1px, transparent 1px),
+		linear-gradient(90deg, color-mix(in srgb, var(--ifm-color-primary) 5%, transparent) 1px, transparent 1px);
+	background-size: 28px 28px;
+}
+
+/* スクロールは台紙の内側で完結させる(コーナーアンカーを切り取らないため)。 */
+.treeScroller {
+	overflow-x: auto;
+	scrollbar-width: thin;
+}
+
+.treeScroller:focus-visible {
+	outline: 3px solid var(--ifm-color-primary-light);
+	outline-offset: 4px;
+}
+
+.tree {
+	min-width: max-content;
+	padding: 1.4rem 1.5rem;
+	margin: 0;
+	list-style: none;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.86rem;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	padding: 0.4rem 0;
+	white-space: nowrap;
+}
+
+/* ツリーのガイド線。図面の罫と同じ色に揃える。 */
+.branch {
+	color: var(--landing-border-strong);
+	width: 1.5em;
+	flex: none;
+}
+
+/* ディレクトリ名は等幅+アクセント色。図面上の部品名として立たせる。 */
+.name {
+	font-weight: 700;
+	color: var(--landing-accent-text);
+}
+
+.note {
+	font-family: var(--ifm-font-family-base);
+	font-size: 0.78rem;
+	color: var(--landing-muted);
+}
+
+/* 注記の前に図面の引き出し矢印を置く(装飾なので CSS で付与)。 */
+.note::before {
+	content: "← ";
+	opacity: 0.6;
+}
+
+.badge {
+	margin-left: auto;
+	font-family: var(--ifm-font-family-base);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	padding: 0.12rem 0.55rem;
+	border-radius: 999px;
+}
+
+.badge_core {
+	color: var(--ifm-color-primary-darker);
+	background: rgba(154, 75, 38, 0.12);
+}
+
+[data-theme="dark"] .badge_core {
+	color: var(--ifm-color-primary-lighter);
+	background: rgba(229, 170, 120, 0.16);
+}
+
+.badge_utils {
+	color: #7c3c1e;
+	background: rgba(184, 105, 63, 0.14);
+}
+
+[data-theme="dark"] .badge_utils {
+	color: #edbd96;
+	background: rgba(205, 124, 76, 0.18);
+}
+
+.badge_music {
+	color: #873a22;
+	background: rgba(177, 83, 48, 0.12);
+}
+
+[data-theme="dark"] .badge_music {
+	color: #e7a779;
+	background: rgba(177, 83, 48, 0.18);
+}
+
+.badge_ai {
+	color: #713018;
+	background: rgba(224, 160, 111, 0.2);
+}
+
+[data-theme="dark"] .badge_ai {
+	color: #f0c49d;
+	background: rgba(224, 160, 111, 0.16);
+}
+
+.treeCaption {
+	margin: 1rem 0.25rem 0;
+	font-size: 0.85rem;
+	line-height: 1.8;
+	color: var(--landing-muted);
+}
+
+@media (max-width: 996px) {
+	.section {
+		padding: 4.5rem 0;
+	}
+
+	.layout {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+}

@@ -1,0 +1,487 @@
+/*
+ * Tailwind はレイアウトとトップページのために使用します。Docusaurus の Markdown
+ * タイポグラフィを壊さないよう、Preflight は読み込まず theme / utilities のみに限定します。
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../pages/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+
+/**
+ * ブランドパレット: ホワイト + キャラメル + コニャック + エスプレッソ。
+ * ランディングは「ロースト(深煎りの闇) × 精密(ヘアラインとグロー)」を語彙とし、
+ * ドキュメントは白地の静かな読み物として保ちます。
+ */
+:root {
+	--ifm-color-primary: #9a4b26;
+	--ifm-color-primary-dark: #893f1c;
+	--ifm-color-primary-darker: #803a19;
+	--ifm-color-primary-darkest: #622a12;
+	--ifm-color-primary-light: #ad6239;
+	--ifm-color-primary-lighter: #bd774e;
+	--ifm-color-primary-lightest: #e3b28c;
+	--ifm-background-color: #fdfbf7;
+	--ifm-background-surface-color: #fffefc;
+	--ifm-code-font-size: 94%;
+	--ifm-heading-font-weight: 760;
+	--ifm-font-family-base: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo,
+		sans-serif;
+	--ifm-font-family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+	--ifm-navbar-height: 4.25rem;
+	--ifm-navbar-shadow: 0 1px 0 var(--landing-border);
+	--ifm-footer-background-color: #0e0805;
+	--ifm-container-width-xl: 1320px;
+	--docusaurus-highlighted-code-line-bg: rgba(154, 75, 38, 0.11);
+
+	--landing-accent-decor: #d98b4a;
+	--landing-accent-text: #7c3c1e;
+	--landing-muted: #66574e;
+	--landing-border: rgba(67, 35, 23, 0.13);
+	--landing-card-bg: rgba(255, 255, 255, 0.86);
+	--landing-section-alt: #f7f0e6;
+	--landing-chrome-bg: #f3ece2;
+	--landing-chrome-text: #6d574a;
+	--landing-tile-shadow: 0 24px 65px -36px rgba(83, 41, 21, 0.5);
+
+	/* 精密機械の語彙: ヘアライン罫・コーナーブラケット・アンバーのグロー。 */
+	--landing-border-strong: rgba(67, 35, 23, 0.22);
+	--landing-anchor: #c0703a;
+	--landing-glow: rgba(217, 139, 74, 0.17);
+	--landing-glass-bg: rgba(255, 254, 250, 0.66);
+	--landing-glass-border: rgba(255, 255, 255, 0.8);
+	--landing-lift-shadow: 0 18px 40px -22px rgba(83, 41, 21, 0.4);
+	--landing-accent-gradient: linear-gradient(98deg, #f2bc82 0%, #dd8d4c 46%, #b05226 100%);
+
+	/*
+	 * ステージ(常時ダークの深煎り面): ヒーロー・ダークバンド・フッターが共有する。
+	 * カラーモードに依存させないことで、暗面上の演出が両モードで同一に保たれる。
+	 */
+	--stage-bg: #100a07;
+	--stage-bg-deep: #0b0604;
+	--stage-panel: rgba(28, 18, 12, 0.78);
+	--stage-text: #fdf6ec;
+	--stage-muted: #c7ad97;
+	--stage-border: rgba(242, 196, 148, 0.16);
+	--stage-border-strong: rgba(242, 196, 148, 0.32);
+	--stage-grid: rgba(242, 188, 130, 0.055);
+	--stage-glow: rgba(224, 140, 70, 0.22);
+	--stage-ok: #7fd8a4;
+}
+
+[data-theme="dark"] {
+	--ifm-color-primary: #e5aa78;
+	--ifm-color-primary-dark: #d39361;
+	--ifm-color-primary-darker: #c98654;
+	--ifm-color-primary-darkest: #aa6238;
+	--ifm-color-primary-light: #edbd96;
+	--ifm-color-primary-lighter: #f2c9a9;
+	--ifm-color-primary-lightest: #fae6d4;
+	--ifm-background-color: #140d0a;
+	--ifm-background-surface-color: #1f1410;
+	--docusaurus-highlighted-code-line-bg: rgba(229, 170, 120, 0.14);
+
+	--landing-accent-text: #f0b881;
+	--landing-muted: #cbb9ab;
+	--landing-border: rgba(255, 226, 202, 0.12);
+	--landing-card-bg: rgba(33, 22, 17, 0.88);
+	--landing-section-alt: #0f0906;
+	--landing-chrome-bg: #291b13;
+	--landing-chrome-text: #c9b2a1;
+	--landing-tile-shadow: 0 24px 70px -38px rgba(0, 0, 0, 0.9);
+
+	--landing-border-strong: rgba(255, 226, 202, 0.24);
+	--landing-anchor: #e5aa78;
+	--landing-glow: rgba(229, 170, 120, 0.13);
+	--landing-glass-bg: rgba(30, 20, 15, 0.6);
+	--landing-glass-border: rgba(255, 236, 214, 0.15);
+	--landing-lift-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.75);
+}
+
+html {
+	scroll-padding-top: calc(var(--ifm-navbar-height) + 1.5rem);
+}
+
+body {
+	font-feature-settings: "palt" 1, "kern" 1;
+	text-rendering: optimizeLegibility;
+}
+
+::selection {
+	color: #24120c;
+	background: #efc59f;
+}
+
+:focus-visible {
+	outline: 3px solid var(--ifm-color-primary-light);
+	outline-offset: 3px;
+}
+
+/* 本文リンクは色に加えて下線でも区別できるようにします。 */
+.theme-doc-markdown p a,
+.theme-doc-markdown li a,
+.theme-doc-markdown td a,
+.theme-blog-post-page article p a,
+.theme-blog-post-page article li a {
+	text-decoration-line: underline;
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.18em;
+	text-decoration-color: color-mix(in srgb, currentColor 68%, transparent);
+}
+
+.theme-doc-markdown p a:hover,
+.theme-doc-markdown li a:hover,
+.theme-doc-markdown td a:hover,
+.theme-blog-post-page article p a:hover,
+.theme-blog-post-page article li a:hover {
+	text-decoration-thickness: 0.14em;
+}
+
+/* ---------------------------------------------------------------- */
+/* 共通レイアウト: 透明感はナビに、本文は静かな読み物として保ちます。 */
+/* ---------------------------------------------------------------- */
+
+.navbar {
+	background: color-mix(in srgb, var(--ifm-navbar-background-color) 84%, transparent);
+	backdrop-filter: blur(18px) saturate(1.35);
+	border-bottom: 1px solid var(--landing-border-strong);
+	box-shadow: none;
+}
+
+.navbar__inner {
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.navbar__brand {
+	letter-spacing: -0.02em;
+}
+
+.navbar__logo img {
+	filter: drop-shadow(0 5px 12px rgba(129, 61, 29, 0.25));
+}
+
+.navbar__link {
+	font-size: 0.86rem;
+	font-weight: 680;
+}
+
+.navbar__link--active {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.45rem;
+}
+
+.footer,
+.footer--dark {
+	/* Infima の .footer--dark がスレート色を再定義するため、ここで上書きする。 */
+	--ifm-footer-background-color: #0e0805;
+	position: relative;
+	border-top: 1px solid var(--stage-border);
+	background-color: var(--ifm-footer-background-color);
+	background-image:
+		radial-gradient(38rem 20rem at 14% 0%, rgba(196, 104, 52, 0.16), transparent),
+		linear-gradient(var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
+	background-size: auto, 56px 56px, 56px 56px;
+}
+
+/* フッター上辺は発光するアクセントラインで締め、暗面の語彙をそろえる。 */
+.footer::before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(232, 156, 86, 0.7) 18%, rgba(232, 156, 86, 0.7) 82%, transparent);
+	opacity: 0.5;
+}
+
+/* アナウンスバーは計器の注記らしく等幅で示す。 */
+div[class^="announcementBar"] {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	letter-spacing: 0.04em;
+	border-bottom: 1px solid rgba(239, 185, 137, 0.28);
+}
+
+.footer__title {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.footer__link-item {
+	font-size: 0.88rem;
+}
+
+.header-github-link::before {
+	content: "";
+	display: flex;
+	width: 23px;
+	height: 23px;
+	background-color: var(--ifm-navbar-link-color);
+	transition: background-color var(--ifm-transition-fast);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat center / contain;
+	mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.header-github-link:hover::before {
+	background-color: var(--ifm-navbar-link-hover-color);
+}
+
+/* ---------------------------------------------------------------- */
+/* Markdown / API: 装飾を抑え、長文と型情報の走査性を優先します。 */
+/* ---------------------------------------------------------------- */
+
+.theme-doc-markdown {
+	line-height: 1.85;
+}
+
+.theme-doc-markdown > h1:first-child {
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	letter-spacing: -0.035em;
+}
+
+.theme-doc-markdown h2 {
+	margin-top: 2.8rem;
+	padding-bottom: 0.55rem;
+	border-bottom: 1px solid var(--landing-border);
+	letter-spacing: -0.025em;
+}
+
+.theme-doc-markdown h3 {
+	margin-top: 2rem;
+}
+
+.theme-doc-markdown :not(pre) > code {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 18%, transparent);
+	background: color-mix(in srgb, var(--ifm-color-primary) 7%, var(--ifm-background-color));
+}
+
+.theme-doc-sidebar-container {
+	border-right-color: var(--landing-border) !important;
+}
+
+.menu__link {
+	border-radius: 7px;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+	font-weight: 720;
+	box-shadow: inset 2px 0 var(--ifm-color-primary);
+}
+
+.pagination-nav__link {
+	border-color: var(--landing-border);
+	border-radius: 10px;
+	transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.pagination-nav__link:hover {
+	transform: translateY(-2px);
+	border-color: var(--ifm-color-primary-light);
+	box-shadow: var(--landing-tile-shadow);
+}
+
+/* トップページは、読書面とは独立した薄いグリッドを持つプロダクト面です。 */
+main[data-landing] {
+	position: relative;
+	background-color: var(--ifm-background-color);
+	background-image:
+		linear-gradient(color-mix(in srgb, var(--ifm-color-primary) 3%, transparent) 1px, transparent 1px),
+		linear-gradient(90deg, color-mix(in srgb, var(--ifm-color-primary) 3%, transparent) 1px, transparent 1px);
+	background-size: 72px 72px;
+}
+
+/* ランディング直下の要素をベアの3Dレイヤー(z:1)より上へ持ち上げる。
+   ベアは背景を持たないセクションの余白からだけ顔を出す。 */
+main[data-landing] > :not([data-bear-layer]) {
+	position: relative;
+	z-index: 2;
+}
+
+/* ---------------------------------------------------------------- */
+/* ランディング共通ユーティリティ(lp-*): 精密機械の語彙 —             */
+/* ヘアライン罫・コーナーブラケット・角括弧バッジ・グロー・すりガラス。 */
+/* 各セクションはこの語彙だけで装飾し、独自の色や影を増やさない。      */
+/* ---------------------------------------------------------------- */
+
+/* 見出し: 大きく・詰めて・折返しは均等に。 */
+.lp-display {
+	letter-spacing: -0.045em;
+	text-wrap: balance;
+	font-weight: 800;
+}
+
+/* アクセント文字: キャラメル→コニャックのグラデーションで発光させる。 */
+.lp-gradient-text {
+	background: var(--landing-accent-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* 角括弧バッジ: [ 01 — 設計思想 ] のような等幅ラベル。 */
+.lp-badge {
+	display: inline-flex;
+	align-items: baseline;
+	gap: 0.5em;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--landing-accent-text);
+}
+
+.lp-badge::before {
+	content: "[";
+	transition: transform 180ms ease;
+	color: var(--landing-accent-decor);
+}
+
+.lp-badge::after {
+	content: "]";
+	transition: transform 180ms ease;
+	color: var(--landing-accent-decor);
+}
+
+a:hover > .lp-badge::before,
+.lp-badge:hover::before {
+	transform: translateX(-0.2em);
+}
+
+a:hover > .lp-badge::after,
+.lp-badge:hover::after {
+	transform: translateX(0.2em);
+}
+
+/* ヘアラインフレーム: 精密面の枠線。 */
+.lp-frame {
+	border: 1px solid var(--landing-border-strong);
+}
+
+.lp-frame-t {
+	border-top: 1px solid var(--landing-border-strong);
+}
+
+.lp-frame-b {
+	border-bottom: 1px solid var(--landing-border-strong);
+}
+
+/* コーナーブラケット: 照準器のような L 字のティックを左上・右下に置く。 */
+.lp-anchors {
+	position: relative;
+}
+
+.lp-anchors::before,
+.lp-anchors::after {
+	content: "";
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	border: 0 solid var(--landing-anchor);
+	z-index: 1;
+	pointer-events: none;
+}
+
+.lp-anchors::before {
+	top: -5px;
+	left: -5px;
+	border-top-width: 2px;
+	border-left-width: 2px;
+}
+
+.lp-anchors::after {
+	bottom: -5px;
+	right: -5px;
+	border-bottom-width: 2px;
+	border-right-width: 2px;
+}
+
+/* グロー: カードやターミナルの背後に敷くアンバーの環境光。 */
+.lp-glow {
+	position: absolute;
+	pointer-events: none;
+	background: radial-gradient(closest-side, var(--landing-glow), transparent 72%);
+}
+
+/* すりガラス: コードウィンドウやカードのクローム面。 */
+.lp-glass {
+	background: var(--landing-glass-bg);
+	backdrop-filter: blur(14px) saturate(1.2);
+	border: 1px solid var(--landing-glass-border);
+}
+
+/* マイクロリフト: ホバーでわずかに浮き、ヘアラインがアンバーに灯るカード。 */
+.lp-lift {
+	transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.lp-lift:hover {
+	transform: translateY(-4px);
+	border-color: color-mix(in srgb, var(--landing-anchor) 55%, transparent);
+	box-shadow: var(--landing-lift-shadow);
+}
+
+/* スキャンライン: 暗面パネルに敷く極細の走査線。装飾のみ(操作を遮らない)。 */
+.lp-grain {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0.5;
+	background-image: repeating-linear-gradient(
+		0deg,
+		rgba(255, 235, 210, 0.028) 0px,
+		rgba(255, 235, 210, 0.028) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+}
+
+/* 入場モーション: JS が IntersectionObserver で lp-reveal-visible を付与する。
+   JS が無い環境ではクラス自体が付かないため、内容は常に見える。 */
+.lp-reveal {
+	opacity: 0;
+	transform: translateY(26px);
+}
+
+.lp-reveal-visible {
+	opacity: 1;
+	transform: none;
+	transition: opacity 640ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 640ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (max-width: 996px) {
+	:root {
+		--ifm-navbar-height: 3.75rem;
+	}
+
+	.navbar__title {
+		font-size: 0.9rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	.lp-reveal {
+		opacity: 1;
+		transform: none;
+	}
+
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

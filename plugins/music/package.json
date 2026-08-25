@@ -1,0 +1,49 @@
+{
+  "name": "@cc-discord-framework/music",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "cc-discord-framework 公式プラグイン: 音楽再生エンジン(キュー・再生制御・差し替え可能なプロバイダー)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CHACCHAN/cc-discord-framework.git",
+    "directory": "plugins/music"
+  },
+  "homepage": "https://cc-discord-framework.pages.dev",
+  "bugs": "https://github.com/CHACCHAN/cc-discord-framework/issues",
+  "author": "CHACCHAN",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepack": "bun run clean && bun run build"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.19.2",
+    "opusscript": "^0.1.1"
+  },
+  "peerDependencies": {
+    "cc-discord-framework": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  }
+}

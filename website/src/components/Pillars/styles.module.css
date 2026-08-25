@@ -1,0 +1,85 @@
+/*
+ * 設計思想カードのスタイル。
+ * 破線フレーム・コーナーアンカー・ホバー時の浮きはグローバルの
+ * lp-frame / lp-anchors / lp-lift に任せ、ここでは面・余白・環境光を定義します。
+ */
+
+.section {
+	position: relative;
+	padding: clamp(5rem, 9vw, 8rem) 0;
+}
+
+/* グリッドの背後に環境光を敷くための基準枠。 */
+.gridWrap {
+	position: relative;
+}
+
+/* 環境光: グリッド中央のやや上に大きく広げる。 */
+.glow {
+	width: min(46rem, 92%);
+	height: 24rem;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -55%);
+}
+
+.grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.15rem;
+}
+
+/* カード: 枠線は lp-frame(破線)側。アンカー点がはみ出すため overflow は切らない。 */
+.card {
+	position: relative;
+	border-radius: 14px;
+	background: var(--landing-card-bg);
+	padding: 2rem 1.85rem 2.2rem;
+}
+
+/* ホバー時は破線をアクセント色へ寄せる(浮き自体は lp-lift 側)。 */
+.card:hover {
+	border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+/* アイコンタイル: primary の淡い混色を敷いたコニャック色のアイコン。 */
+.icon {
+	display: inline-flex;
+	width: 48px;
+	height: 48px;
+	padding: 11px;
+	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+	border-radius: 10px;
+	color: var(--ifm-color-primary);
+	background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+	margin-bottom: 1.1rem;
+}
+
+.icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+.cardTitle {
+	font-size: 1.16rem;
+	margin-bottom: 0.8rem;
+	letter-spacing: -0.02em;
+}
+
+.cardBody {
+	font-size: 0.9rem;
+	line-height: 1.9;
+	color: var(--landing-muted);
+	margin-bottom: 0;
+}
+
+@media (max-width: 996px) {
+	.section {
+		padding: 4.5rem 0;
+	}
+
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
