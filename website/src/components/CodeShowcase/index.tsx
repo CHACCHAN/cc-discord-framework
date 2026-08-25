@@ -39,7 +39,7 @@ const SAMPLES: Sample[] = [
   ApplicationCommandOptionType,
   Command,
   type ChatInputCommandInteraction,
-} from "cc-discord-framework";
+} from "@cc-discord-framework/core";
 
 @Command.define({
   description: "AIに質問します(会話履歴は使いません)。",
@@ -80,7 +80,7 @@ export class AskCommand extends Command {
 			<>コマンドを増やしても、このファイルは変更不要</>,
 		],
 		code: `import { chunk, paginate, type Page } from "@cc-discord-framework/utils";
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 const PAGE_SIZE = 20;
 
@@ -122,7 +122,7 @@ export class HelpCommand extends Command {
 			</>,
 			<>起動直後にも走らせるなら <code>runOnStart: true</code></>,
 		],
-		code: `import { ActivityType } from "cc-discord-framework";
+		code: `import { ActivityType } from "@cc-discord-framework/core";
 import { Task } from "@cc-discord-framework/utils";
 
 /** 公式 utils プラグインが追加する Task 種別のコンポーネント。 */
@@ -155,7 +155,7 @@ export class PresenceTask extends Task {
 				1関心1ファイル — <code>createClient()</code> が <code>config/</code> を合成
 			</>,
 		],
-		code: `import { defineConfig, GatewayIntentBits } from "cc-discord-framework";
+		code: `import { defineConfig, GatewayIntentBits } from "@cc-discord-framework/core";
 import { music } from "@cc-discord-framework/music";
 import { musicSources } from "@cc-discord-framework/music-sources";
 import { env } from "./_env.js";

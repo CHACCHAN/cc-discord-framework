@@ -44,14 +44,14 @@ await client.login(process.env.DISCORD_TOKEN);`;
 
 /** README と同じ最小エントリポイント(実コード)。 */
 const FRAMEWORK_INDEX = `// src/index.ts — エントリポイントはこれだけ
-import { Client, GatewayIntentBits } from "cc-discord-framework";
+import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 await client.login(); // トークンは DISCORD_TOKEN 環境変数から自動使用`;
 
 /** client/src/commands/system/PingCommand.ts と同一の実コード。 */
 const FRAMEWORK_COMMAND = `// src/commands/PingCommand.ts — 置くだけ。登録・同期は自動
-import { Command, type ChatInputCommandInteraction } from "cc-discord-framework";
+import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
 
 @Command.define({ description: "Botの応答速度を確認します。" })
 export class PingCommand extends Command {

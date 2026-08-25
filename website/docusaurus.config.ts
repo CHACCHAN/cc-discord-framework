@@ -65,8 +65,7 @@ const config: Config = {
 		v4: true,
 	},
 
-	// Cloudflare Pages のドメインが決まったらここを差し替える。
-	url: "https://cc-discord-framework.pages.dev",
+	url: "https://discord-framework.oss.cc-chacchan.com",
 	baseUrl: "/",
 
 	organizationName: "CHACCHAN",
@@ -99,14 +98,18 @@ const config: Config = {
 				docs: {
 					sidebarPath: "./sidebars.ts",
 					editUrl: "https://github.com/CHACCHAN/cc-discord-framework/edit/main/website/",
-					// npm にはまだ v1 系しか無く、main(v2)は未リリース。
-					// 現行ドキュメントは Next として明示し、偽の Stable を作らない。
-					// v2.0.0 のリリース時に `bun run --cwd website docusaurus docs:version 2.0`
-					// で最初の Stable スナップショットを作る。
+					// v2.0.0 のリリースで最初の Stable スナップショット(2.0)を作成済み。
+					// /docs/ は Stable(2.0)を指し、main の変更は Next(/docs/next/)に載る。
+					// 次のリリース時も `bun run --cwd website docusaurus docs:version <版>`
+					// でスナップショットを切る。
+					lastVersion: "2.0",
 					versions: {
 						current: {
 							label: "v2 Next 🚧",
 							banner: "unreleased",
+						},
+						"2.0": {
+							label: "v2.0",
 						},
 					},
 				},
@@ -130,12 +133,12 @@ const config: Config = {
 	themeConfig: {
 		image: "img/social-card.png",
 		announcementBar: {
-			id: "v2-next-status-2026-08",
+			id: "v2-release-2026-08",
 			content:
-				'Current docs: <strong>v2 Next (unreleased)</strong> — <a href="/docs/framework/project-status/">版の違いを確認</a> / npm latest は legacy v1.0.5',
+				'<strong>v2.0.0 を公開しました 🎉</strong> — npm の <strong>@cc-discord-framework/core</strong> で導入できます / <a href="/docs/framework/project-status/">旧 v1 パッケージとの違いを確認</a>',
 			backgroundColor: "#3b2016",
 			textColor: "#fff6eb",
-			isCloseable: false,
+			isCloseable: true,
 		},
 		colorMode: {
 			respectPrefersColorScheme: true,
@@ -177,8 +180,8 @@ const config: Config = {
 					position: "right",
 				},
 				{
-					href: "https://www.npmjs.com/package/cc-discord-framework",
-					label: "npm (v1)",
+					href: "https://www.npmjs.com/package/@cc-discord-framework/core",
+					label: "npm",
 					position: "right",
 				},
 				{
@@ -208,8 +211,8 @@ const config: Config = {
 							href: "https://github.com/CHACCHAN/cc-discord-framework",
 						},
 						{
-							label: "npm (v1)",
-							href: "https://www.npmjs.com/package/cc-discord-framework",
+							label: "npm",
+							href: "https://www.npmjs.com/package/@cc-discord-framework/core",
 						},
 						{ label: "ブログ", to: "/blog" },
 						{

@@ -11,7 +11,7 @@ import {
 } from "./bootScript";
 import styles from "./styles.module.css";
 
-const INSTALL_COMMAND = "bun add github:CHACCHAN/cc-discord-framework";
+const INSTALL_COMMAND = "bun add @cc-discord-framework/core";
 
 /** 演出の時間分解能(ミリ秒)。行の出現間隔より十分細かければよい。 */
 const TICK_MS = 120;

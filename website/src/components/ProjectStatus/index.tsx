@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import styles from "./styles.module.css";
 
 const REPOSITORY = "https://github.com/CHACCHAN/cc-discord-framework";
-const STATUS_UPDATED = "2026-08-24";
+const STATUS_UPDATED = "2026-08-25";
 
 /** 現在のリリース状況・保守者・サポート先を一か所で判断できる情報パネルです。 */
 export default function ProjectStatus(): ReactNode {
@@ -25,7 +25,8 @@ export default function ProjectStatus(): ReactNode {
 							いま選ぶ版と、頼れる場所。
 						</h2>
 						<p className={styles.lead}>
-							公開前の v2 と npm の v1 を混同しないための、現在地をまとめました。
+							公開中の v2(<code>@cc-discord-framework/core</code>)と旧 npm
+							パッケージ v1 を混同しないための、現在地をまとめました。
 							<br />
 							<Link to="/docs/framework/project-status">詳しい状況とサポート方針 →</Link>
 						</p>
@@ -35,23 +36,23 @@ export default function ProjectStatus(): ReactNode {
 						<article className={styles.versionCard}>
 							<div className={styles.versionHeader}>
 								<span className={styles.liveDot} aria-hidden="true" />
-								<span>Docs target / unreleased preview</span>
+								<span>Docs target / npm 公開中 · 2026-08-25</span>
 							</div>
-							<h3>v2 Next — 未公開</h3>
+							<h3>v2 — @cc-discord-framework/core</h3>
 							<p>
-								このサイトと main のコードが説明する未リリース版。v2 を試す場合は
-								GitHub の main から導入します。
+								このサイトと main のコードが説明する現行版。公式プラグインも
+								同じ @cc-discord-framework スコープで公開されています。
 							</p>
-							<code>bun add github:CHACCHAN/cc-discord-framework</code>
+							<code>bun add @cc-discord-framework/core</code>
 							<Link to="/docs/framework/getting-started/installation">導入手順を確認する →</Link>
 						</article>
 
 						<article className={styles.legacyCard}>
-							<p className={styles.cardLabel}>npm latest / legacy · 2026-05-10</p>
-							<h3>v1.0.5</h3>
+							<p className={styles.cardLabel}>旧パッケージ / legacy · 2026-05-10</p>
+							<h3>v1.0.5 — 旧 cc-discord-framework</h3>
 							<p>
-								npm の最新版は旧世代の 1.x です。v2 のドキュメントとは API
-								互換ではないため、新規導入時は区別してください。
+								スコープなしの旧パッケージは旧世代の 1.x です。v2 とは API
+								互換ではないため、新規導入では使わないでください。
 							</p>
 							<Link href="https://www.npmjs.com/package/cc-discord-framework">
 								npm の v1 を確認する ↗
@@ -98,9 +99,9 @@ export default function ProjectStatus(): ReactNode {
 								</li>
 								<li>
 									<Link to="/docs/framework/getting-started/installation">
-										v2 release policy →
+										インストールガイド →
 									</Link>
-									<span>公開前後の導入方針</span>
+									<span>v2 の導入手順と旧パッケージの注意</span>
 								</li>
 							</ul>
 						</nav>

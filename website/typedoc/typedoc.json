@@ -6,7 +6,7 @@
 	"plugin": ["typedoc-plugin-markdown"],
 	"entryPointStrategy": "merge",
 	"entryPoints": [
-		".cache/cc-discord-framework.json",
+		".cache/core.json",
 		".cache/utils.json",
 		".cache/music.json",
 		".cache/music-sources.json",

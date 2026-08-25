@@ -1,0 +1,9 @@
+{
+	"label": "core",
+	"position": 2,
+	"collapsed": true,
+	"link": {
+		"type": "doc",
+		"id": "api/@cc-discord-framework/core/index"
+	}
+}

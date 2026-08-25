@@ -58,7 +58,7 @@ export default function GettingStarted(): ReactNode {
 					</ol>
 					<div className={styles.code}>
 						<CodeWindow filename="terminal" language="bash">
-							{`bun add github:CHACCHAN/cc-discord-framework
+							{`bun add @cc-discord-framework/core
 bun run src/index.ts`}
 						</CodeWindow>
 						<div className={styles.buttons}>

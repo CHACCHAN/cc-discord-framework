@@ -31,7 +31,7 @@ const typedocBin = path.join(path.dirname(require.resolve("typedoc/package.json"
 
 /** ドキュメント対象のパッケージ(掲載順)。 */
 const packages = [
-	{ id: "cc-discord-framework", name: "cc-discord-framework", dir: repoRoot },
+	{ id: "core", name: "@cc-discord-framework/core", dir: repoRoot },
 	{
 		id: "utils",
 		name: "@cc-discord-framework/utils",
@@ -105,13 +105,15 @@ function convertAnchors(dir: string): void {
 }
 convertAnchors(outDir);
 
-/** サイドバー上のカテゴリ表示(パッケージ名)と並び順。 */
+/** サイドバー上のカテゴリ表示と並び順。 */
 const categoryLabels = new Map<string, { label: string; position: number }>(
 	packages.map((pkg, index) => [
 		// typedoc-plugin-markdown はモジュール名をそのままディレクトリにする
 		// (`@cc-discord-framework/utils` → `@cc-discord-framework/utils/`)。
+		// 全パッケージが `@cc-discord-framework` スコープのカテゴリ配下に
+		// 並ぶため、ラベルはスコープを外した短縮名にする(core / utils / …)。
 		pkg.name,
-		{ label: pkg.name, position: index + 2 },
+		{ label: pkg.name.split("/").pop() ?? pkg.name, position: index + 2 },
 	]),
 );
 
