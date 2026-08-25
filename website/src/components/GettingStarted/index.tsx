@@ -37,10 +37,10 @@ const STEPS: { title: string; body: ReactNode }[] = [
 
 export default function GettingStarted(): ReactNode {
 	return (
-		<section className={styles.section} data-landing-section>
+		<section className={styles.section}>
 			<div className="container">
 				<SectionHeader
-					eyebrow="07 — はじめる"
+					eyebrow="09 · はじめる"
 					title="まず、1枚置いてみる。"
 					lead="最小の Bot まで3ステップ。ボイラープレートの生成も、ビルドの設定もありません。"
 				/>
@@ -48,7 +48,9 @@ export default function GettingStarted(): ReactNode {
 					<ol className={styles.steps}>
 						{STEPS.map((step, index) => (
 							<li key={step.title} className={styles.step}>
-								<span className={styles.stepNumber}>{index + 1}</span>
+								<span className={styles.stepNumber}>
+									{String(index + 1).padStart(2, "0")}
+								</span>
 								<div>
 									<h3 className={styles.stepTitle}>{step.title}</h3>
 									<p className={styles.stepBody}>{step.body}</p>
@@ -69,10 +71,10 @@ bun run src/index.ts`}
 								インストールガイドへ
 							</Link>
 							<Link
-								className={styles.buttonSecondary}
+								className={styles.repoLink}
 								href="https://github.com/CHACCHAN/cc-discord-framework"
 							>
-								GitHub で見る
+								GitHub で見る ↗
 							</Link>
 						</div>
 					</div>

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { ReactNode } from "react";
 import SectionHeader from "../SectionHeader";
 import styles from "./styles.module.css";
@@ -76,20 +75,29 @@ const FEATURES: Feature[] = [
 	},
 ];
 
+/**
+ * 主要機能の索引。仕様書の索引のように、ヘアラインで区切った升目に
+ * 番号・見出し・本文だけを詰める、ページ内で最も密度の高いセクション。
+ * 見出しの右側の余白はベアの立ち寄り先(座って索引を読む)。
+ */
 export default function FeatureGrid(): ReactNode {
 	return (
-		<section className={styles.section} data-landing-section>
+		<section className={styles.section}>
 			<div className="container">
 				<SectionHeader
-					eyebrow="03 — 主要機能"
-					title="小さなコアと、本物の拡張点。"
+					eyebrow="03 · 主要機能"
+					title={
+						<>
+							小さなコアと
+							<br className="lp-br-sm" />
+							本物の拡張点
+						</>
+					}
 					lead="コアが持つのはサービス・コマンド・リスナー・Precondition だけ。それ以外は、同じ仕組みの上にプラグインとして積み上がります。"
 				/>
-				{/* グリッド全体を破線フレーム+コーナーアンカーで囲み、1枚の図面として見せる。 */}
-				<div className={clsx("lp-frame", "lp-anchors", styles.grid)}>
+				<div className={styles.grid}>
 					{FEATURES.map((feature) => (
-						<article key={feature.number} className={clsx("lp-frame-t", styles.cell)}>
-							<span className={styles.number}>{feature.number}</span>
+						<article key={feature.number} className={styles.cell}>
 							<h3 className={styles.title}>{feature.title}</h3>
 							<p className={styles.body}>{feature.body}</p>
 						</article>

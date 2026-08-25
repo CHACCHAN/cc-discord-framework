@@ -1,51 +1,69 @@
 /*
  * セクション見出しの共通スタイル。
- * 装飾語彙(角括弧バッジ・字詰め見出し)はグローバルの lp-badge / lp-display に
- * 任せ、ここでは寸法とリズム(余白)だけを定義します。
+ * 章ラベル(lp-eyebrow)と字詰め見出し(lp-display)はグローバル語彙に任せ、
+ * ここでは寸法とリズム(余白)だけを定義します。
  */
 
 .header {
-	max-width: 920px;
-	margin: 0 auto clamp(3rem, 5.5vw, 4.5rem);
+	max-width: 46rem;
+	margin: 0 0 clamp(2.8rem, 5vw, 4.2rem);
+}
+
+.header.center {
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
-.header.left {
-	margin-left: 0;
-	text-align: left;
-}
-
-/* 小見出し: 見た目は lp-badge 側。ここでは下余白のみを持つ。 */
+/* 章ラベルの脇に短いヘアラインを添え、図面の注記らしく見せる。 */
 .eyebrow {
-	margin: 0 0 1.15rem;
+	display: flex;
+	align-items: center;
+	gap: 0.9rem;
+	margin: 0 0 1.3rem;
 }
 
-/* 見出し: 太さ・字詰め・均等折返しは lp-display 側。大きさと行間のみ定義。 */
+.eyebrow::before {
+	content: "";
+	width: 2rem;
+	height: 1px;
+	background: var(--landing-accent-decor);
+}
+
+.center .eyebrow {
+	justify-content: center;
+}
+
+.center .eyebrow::after {
+	content: "";
+	width: 2rem;
+	height: 1px;
+	background: var(--landing-accent-decor);
+}
+
 .title {
-	margin: 0 0 1.2rem;
-	font-size: clamp(2.2rem, 4.6vw, 3.6rem);
-	line-height: 1.12;
+	margin: 0 0 1.15rem;
+	font-size: clamp(1.9rem, 3.8vw, 2.9rem);
 }
 
 .lead {
-	max-width: 46rem;
-	margin: 0 auto;
-	font-size: clamp(0.96rem, 1.35vw, 1.06rem);
-	line-height: 1.8;
+	max-width: 42rem;
+	margin: 0;
+	font-size: clamp(0.95rem, 1.3vw, 1.04rem);
+	line-height: 1.9;
 	color: var(--landing-muted);
 	text-wrap: pretty;
 }
 
-.left .lead {
-	margin-left: 0;
+.center .lead {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-@media (max-width: 600px) {
-	.header {
-		text-align: left;
-	}
-
-	.lead {
-		margin-left: 0;
-	}
+/* ステージ(常時ダーク)面: 文字色トークンだけ差し替える。 */
+.stage {
+	--landing-ink: var(--stage-text);
+	--landing-muted: var(--stage-muted);
+	--landing-accent-text: #edb782;
+	--landing-accent-decor: #d98b4a;
 }

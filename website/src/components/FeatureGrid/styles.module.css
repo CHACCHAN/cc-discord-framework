@@ -1,29 +1,33 @@
+/*
+ * 主要機能の索引。外枠や面の色は持たず、ヘアラインの罫だけで升目を組む。
+ */
+
 .section {
 	padding: clamp(5rem, 9vw, 8rem) 0;
 }
 
-/* 図面(ブループリント)としてのグリッド: セル同士は隙間なく接し、 */
-/* 外周の破線フレームとコーナーアンカーは lp-frame / lp-anchors が担う。 */
 .grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 0;
-	background: color-mix(in srgb, var(--landing-card-bg) 55%, transparent);
+	border-top: 1px solid var(--landing-border-strong);
+	border-bottom: 1px solid var(--landing-border-strong);
 }
 
-/* 各項目は図面の升目。上罫は lp-frame-t、列の区切りはここで引く。 */
+/* 各項目は索引の升目。行の区切りは上罫、列の区切りは左罫で引く。 */
 .cell {
-	padding: 1.85rem 1.7rem 2rem;
-	border-left: 1px solid var(--landing-border-strong);
-	transition: background 180ms ease;
+	padding: 1.9rem 1.7rem 2.1rem;
+	border-top: 1px solid var(--landing-border);
+	border-left: 1px solid var(--landing-border);
+	transition: background-color 180ms ease;
 }
 
-/* リストの升目なので浮かせない。淡い色付けだけで反応を返す。 */
+/* 升目なので浮かせない。淡い色付けだけで反応を返す。 */
 .cell:hover {
 	background: color-mix(in srgb, var(--ifm-color-primary) 4%, transparent);
 }
 
-/* 3列(既定): 外周フレームと重なる 1 行目の上罫・各行先頭の左罫を消す。 */
+/* 3列(既定): 1 行目の上罫と各行先頭の左罫を消す。 */
 @media (min-width: 1201px) {
 	.cell:nth-child(3n + 1) {
 		border-left: none;
@@ -53,8 +57,9 @@
 
 .title {
 	font-size: 1.05rem;
-	font-weight: 800;
+	font-weight: 780;
 	letter-spacing: -0.02em;
+	color: var(--landing-ink);
 	margin-bottom: 0.65rem;
 }
 
@@ -77,6 +82,8 @@
 
 	.cell {
 		border-left: none;
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
 	}
 
 	.cell:first-child {

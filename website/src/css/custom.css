@@ -10,7 +10,9 @@
 
 /**
  * ブランドパレット: ホワイト + キャラメル + コニャック + エスプレッソ。
- * ランディングは「ロースト(深煎りの闇) × 精密(ヘアラインとグロー)」を語彙とし、
+ * ランディングは「静かな工房」を語彙とする — 紙の面・ヘアラインの罫・
+ * タイポグラフィが構造をつくり、アンバーは注目点にだけ灯る。
+ * その静けさの中を、3D のベアだけが生き物として歩く。
  * ドキュメントは白地の静かな読み物として保ちます。
  */
 :root {
@@ -37,25 +39,19 @@
 
 	--landing-accent-decor: #d98b4a;
 	--landing-accent-text: #7c3c1e;
+	--landing-ink: #241a14;
 	--landing-muted: #66574e;
 	--landing-border: rgba(67, 35, 23, 0.13);
-	--landing-card-bg: rgba(255, 255, 255, 0.86);
+	--landing-border-strong: rgba(67, 35, 23, 0.24);
+	/* パネルの面は不透明にする(背面を歩くベアが透けないように)。 */
+	--landing-card-bg: #fffefc;
 	--landing-section-alt: #f7f0e6;
 	--landing-chrome-bg: #f3ece2;
 	--landing-chrome-text: #6d574a;
 	--landing-tile-shadow: 0 24px 65px -36px rgba(83, 41, 21, 0.5);
 
-	/* 精密機械の語彙: ヘアライン罫・コーナーブラケット・アンバーのグロー。 */
-	--landing-border-strong: rgba(67, 35, 23, 0.22);
-	--landing-anchor: #c0703a;
-	--landing-glow: rgba(217, 139, 74, 0.17);
-	--landing-glass-bg: rgba(255, 254, 250, 0.66);
-	--landing-glass-border: rgba(255, 255, 255, 0.8);
-	--landing-lift-shadow: 0 18px 40px -22px rgba(83, 41, 21, 0.4);
-	--landing-accent-gradient: linear-gradient(98deg, #f2bc82 0%, #dd8d4c 46%, #b05226 100%);
-
 	/*
-	 * ステージ(常時ダークの深煎り面): ヒーロー・ダークバンド・フッターが共有する。
+	 * ステージ(常時ダークの深煎り面): ヒーロー・コード帯・フッターが共有する。
 	 * カラーモードに依存させないことで、暗面上の演出が両モードで同一に保たれる。
 	 */
 	--stage-bg: #100a07;
@@ -66,8 +62,13 @@
 	--stage-border: rgba(242, 196, 148, 0.16);
 	--stage-border-strong: rgba(242, 196, 148, 0.32);
 	--stage-grid: rgba(242, 188, 130, 0.055);
-	--stage-glow: rgba(224, 140, 70, 0.22);
+	--stage-accent: #e89a55;
 	--stage-ok: #7fd8a4;
+
+	/* CTA は面で塗る唯一のアンバー。グラデーションは使わない。 */
+	--landing-cta-bg: #e0935a;
+	--landing-cta-bg-hover: #e8a26c;
+	--landing-cta-text: #24120a;
 }
 
 [data-theme="dark"] {
@@ -83,20 +84,15 @@
 	--docusaurus-highlighted-code-line-bg: rgba(229, 170, 120, 0.14);
 
 	--landing-accent-text: #f0b881;
+	--landing-ink: #f6ede2;
 	--landing-muted: #cbb9ab;
 	--landing-border: rgba(255, 226, 202, 0.12);
-	--landing-card-bg: rgba(33, 22, 17, 0.88);
+	--landing-border-strong: rgba(255, 226, 202, 0.26);
+	--landing-card-bg: #211611;
 	--landing-section-alt: #0f0906;
 	--landing-chrome-bg: #291b13;
 	--landing-chrome-text: #c9b2a1;
 	--landing-tile-shadow: 0 24px 70px -38px rgba(0, 0, 0, 0.9);
-
-	--landing-border-strong: rgba(255, 226, 202, 0.24);
-	--landing-anchor: #e5aa78;
-	--landing-glow: rgba(229, 170, 120, 0.13);
-	--landing-glass-bg: rgba(30, 20, 15, 0.6);
-	--landing-glass-border: rgba(255, 236, 214, 0.15);
-	--landing-lift-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.75);
 }
 
 html {
@@ -144,7 +140,7 @@ body {
 
 .navbar {
 	background: transparent;
-	border-bottom: 1px solid var(--landing-border-strong);
+	border-bottom: 1px solid var(--landing-border);
 	box-shadow: none;
 }
 
@@ -172,10 +168,6 @@ body {
 	letter-spacing: -0.02em;
 }
 
-.navbar__logo img {
-	filter: drop-shadow(0 5px 12px rgba(129, 61, 29, 0.25));
-}
-
 .navbar__link {
 	font-size: 0.86rem;
 	font-weight: 680;
@@ -192,16 +184,18 @@ body {
 	/* Infima の .footer--dark がスレート色を再定義するため、ここで上書きする。 */
 	--ifm-footer-background-color: #0e0805;
 	position: relative;
+	/* ベアのキャンバス(z:1)より前に置き、フッターの上をベアが覆えないようにする。 */
+	z-index: 2;
 	border-top: 1px solid var(--stage-border);
 	background-color: var(--ifm-footer-background-color);
 	background-image:
-		radial-gradient(38rem 20rem at 14% 0%, rgba(196, 104, 52, 0.16), transparent),
+		radial-gradient(38rem 20rem at 14% 0%, rgba(196, 104, 52, 0.14), transparent),
 		linear-gradient(var(--stage-grid) 1px, transparent 1px),
 		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
 	background-size: auto, 56px 56px, 56px 56px;
 }
 
-/* フッター上辺は発光するアクセントラインで締め、暗面の語彙をそろえる。 */
+/* フッター上辺は細いアクセントラインで締め、暗面の語彙をそろえる。 */
 .footer::before {
 	content: "";
 	position: absolute;
@@ -213,8 +207,10 @@ body {
 	opacity: 0.5;
 }
 
-/* アナウンスバーは計器の注記らしく等幅で示す。 */
-div[class^="announcementBar"] {
+/* アナウンスバーは計器の注記らしく等幅で示す。
+   (前方一致セレクタは announcementBarPlaceholder にも当たり、
+   左上に 50px の罫線が浮いて見えるため、テーマクラスで限定する。) */
+.theme-announcement-bar {
 	font-family: var(--ifm-font-family-monospace);
 	font-size: 0.78rem;
 	letter-spacing: 0.04em;
@@ -301,80 +297,77 @@ div[class^="announcementBar"] {
 	box-shadow: var(--landing-tile-shadow);
 }
 
-/* トップページは、読書面とは独立した薄いグリッドを持つプロダクト面です。 */
+/* ---------------------------------------------------------------- */
+/* トップページ: 紙の面とベアの 3D レイヤーの前後関係。               */
+/* ---------------------------------------------------------------- */
+
 main[data-landing] {
 	position: relative;
 	background-color: var(--ifm-background-color);
-	background-image:
-		linear-gradient(color-mix(in srgb, var(--ifm-color-primary) 3%, transparent) 1px, transparent 1px),
-		linear-gradient(90deg, color-mix(in srgb, var(--ifm-color-primary) 3%, transparent) 1px, transparent 1px);
-	background-size: 72px 72px;
 }
 
-/* ランディング直下の要素をベアの3Dレイヤー(z:1)より上へ持ち上げる。
-   ベアは背景を持たないセクションの余白からだけ顔を出す。 */
-main[data-landing] > :not([data-bear-layer]) {
+/*
+ * レイヤー規約:
+ *   [data-bear-under](z:0) < ベアのキャンバス(z:1) < コンテンツ(z:2)
+ * 通常のセクションは丸ごと z:2 に持ち上げ、ベアは余白からだけ姿を見せる。
+ * [data-bear-stage] を持つセクションは持ち上げず、内側で
+ * [data-bear-under](背景)と [data-bear-over](本文)に分けることで、
+ * ベアが「背景の前・本文の後ろ」を歩ける一枚の空間になる。
+ */
+main[data-landing] > :not([data-bear-layer]):not([data-bear-stage]) {
 	position: relative;
 	z-index: 2;
 }
 
+main[data-landing] > [data-bear-stage] {
+	position: relative;
+}
+
+main[data-landing] [data-bear-under] {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+main[data-landing] [data-bear-over] {
+	position: relative;
+	z-index: 2;
+}
+
+/* ベアの立ち寄り先マーカー(高さ 0)。操作を遮らない。 */
+main[data-landing] [data-bear-waypoint] {
+	pointer-events: none;
+}
+
+main[data-landing] [data-bear-waypoint] > * {
+	pointer-events: auto;
+}
+
 /* ---------------------------------------------------------------- */
-/* ランディング共通ユーティリティ(lp-*): 精密機械の語彙 —             */
-/* ヘアライン罫・コーナーブラケット・角括弧バッジ・グロー・すりガラス。 */
-/* 各セクションはこの語彙だけで装飾し、独自の色や影を増やさない。      */
+/* ランディング共通語彙(lp-*): タイポグラフィとヘアラインだけで組む。 */
+/* 面の色・影・装飾は各セクションが必要な分だけ持つ。                */
 /* ---------------------------------------------------------------- */
 
-/* 見出し: 大きく・詰めて・折返しは均等に。 */
+/* 見出し: 大きく・詰めて。折返しは JSX 側で明示的に設計する。 */
 .lp-display {
-	letter-spacing: -0.045em;
-	text-wrap: balance;
 	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.18;
+	color: var(--landing-ink);
 }
 
-/* アクセント文字: キャラメル→コニャックのグラデーションで発光させる。 */
-.lp-gradient-text {
-	background: var(--landing-accent-gradient);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-}
-
-/* 角括弧バッジ: [ 01 — 設計思想 ] のような等幅ラベル。 */
-.lp-badge {
-	display: inline-flex;
-	align-items: baseline;
-	gap: 0.5em;
+/* 章ラベル: 図番のような等幅の小見出し。「01 · 設計思想」の形で使う。 */
+.lp-eyebrow {
+	display: inline-block;
 	font-family: var(--ifm-font-family-monospace);
-	font-size: 0.78rem;
+	font-size: 0.75rem;
 	font-weight: 600;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	color: var(--landing-accent-text);
 }
 
-.lp-badge::before {
-	content: "[";
-	transition: transform 180ms ease;
-	color: var(--landing-accent-decor);
-}
-
-.lp-badge::after {
-	content: "]";
-	transition: transform 180ms ease;
-	color: var(--landing-accent-decor);
-}
-
-a:hover > .lp-badge::before,
-.lp-badge:hover::before {
-	transform: translateX(-0.2em);
-}
-
-a:hover > .lp-badge::after,
-.lp-badge:hover::after {
-	transform: translateX(0.2em);
-}
-
-/* ヘアラインフレーム: 精密面の枠線。 */
+/* ヘアライン罫: 構造をつくる唯一の線。 */
 .lp-frame {
 	border: 1px solid var(--landing-border-strong);
 }
@@ -387,87 +380,29 @@ a:hover > .lp-badge::after,
 	border-bottom: 1px solid var(--landing-border-strong);
 }
 
-/* コーナーブラケット: 照準器のような L 字のティックを左上・右下に置く。 */
-.lp-anchors {
-	position: relative;
+/* 章ラベルの先頭に短いヘアラインを添える(図面の注記)。 */
+.lp-eyebrow-rule {
+	display: flex;
+	align-items: center;
+	gap: 0.9rem;
 }
 
-.lp-anchors::before,
-.lp-anchors::after {
+.lp-eyebrow-rule::before {
 	content: "";
-	position: absolute;
-	width: 12px;
-	height: 12px;
-	border: 0 solid var(--landing-anchor);
-	z-index: 1;
-	pointer-events: none;
+	width: 2rem;
+	height: 1px;
+	background: var(--landing-accent-decor);
 }
 
-.lp-anchors::before {
-	top: -5px;
-	left: -5px;
-	border-top-width: 2px;
-	border-left-width: 2px;
+/* モバイルだけの改行: 見出しの折返し位置を設計するための語彙。 */
+.lp-br-sm {
+	display: none;
 }
 
-.lp-anchors::after {
-	bottom: -5px;
-	right: -5px;
-	border-bottom-width: 2px;
-	border-right-width: 2px;
-}
-
-/* グロー: カードやターミナルの背後に敷くアンバーの環境光。 */
-.lp-glow {
-	position: absolute;
-	pointer-events: none;
-	background: radial-gradient(closest-side, var(--landing-glow), transparent 72%);
-}
-
-/* すりガラス: コードウィンドウやカードのクローム面。 */
-.lp-glass {
-	background: var(--landing-glass-bg);
-	backdrop-filter: blur(14px) saturate(1.2);
-	border: 1px solid var(--landing-glass-border);
-}
-
-/* マイクロリフト: ホバーでわずかに浮き、ヘアラインがアンバーに灯るカード。 */
-.lp-lift {
-	transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-}
-
-.lp-lift:hover {
-	transform: translateY(-4px);
-	border-color: color-mix(in srgb, var(--landing-anchor) 55%, transparent);
-	box-shadow: var(--landing-lift-shadow);
-}
-
-/* スキャンライン: 暗面パネルに敷く極細の走査線。装飾のみ(操作を遮らない)。 */
-.lp-grain {
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	opacity: 0.5;
-	background-image: repeating-linear-gradient(
-		0deg,
-		rgba(255, 235, 210, 0.028) 0px,
-		rgba(255, 235, 210, 0.028) 1px,
-		transparent 1px,
-		transparent 3px
-	);
-}
-
-/* 入場モーション: JS が IntersectionObserver で lp-reveal-visible を付与する。
-   JS が無い環境ではクラス自体が付かないため、内容は常に見える。 */
-.lp-reveal {
-	opacity: 0;
-	transform: translateY(26px);
-}
-
-.lp-reveal-visible {
-	opacity: 1;
-	transform: none;
-	transition: opacity 640ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 640ms cubic-bezier(0.22, 0.61, 0.36, 1);
+@media (max-width: 996px) {
+	.lp-br-sm {
+		display: inline;
+	}
 }
 
 @media (max-width: 996px) {
@@ -483,11 +418,6 @@ a:hover > .lp-badge::after,
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto !important;
-	}
-
-	.lp-reveal {
-		opacity: 1;
-		transform: none;
 	}
 
 	*,

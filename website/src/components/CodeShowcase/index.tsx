@@ -2,7 +2,68 @@ import clsx from "clsx";
 import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import CodeWindow from "../CodeWindow";
 import SectionHeader from "../SectionHeader";
+import TechIcon from "../TechIcon";
+import { useSignalLive } from "../signalLive";
 import styles from "./styles.module.css";
+
+/**
+ * interaction が応答になるまでの通り道。信号がこの順に伝播する。
+ * wireDelay は直前の段からの配線を信号が出発する時刻、nodeDelay は
+ * 段が反応する時刻(秒)。Command では処理中の間(約0.6秒)を置いてから
+ * 応答が出発する。
+ */
+const FLOW_NODES = [
+	{ id: "in", label: "Discord", note: "interaction", icon: true, nodeDelay: 0.05 },
+	{ id: "gateway", label: "Gateway", note: "discord.js", wireDelay: 0.15, nodeDelay: 0.7 },
+	{ id: "runtime", label: "Runtime", note: "自動ルーティング", wireDelay: 1.0, nodeDelay: 1.55 },
+	{ id: "command", label: "Command", note: "src/commands/", wireDelay: 1.85, nodeDelay: 2.4 },
+	{ id: "out", label: "応答", note: "reply", icon: true, wireDelay: 3.05, nodeDelay: 3.6 },
+] as const;
+
+/**
+ * 処理の流れの帯。ヘアラインの配線上を信号がひとつ進み、
+ * 到達した段が一瞬だけ反応する。説明文を読まなくても
+ * 「Discord から入り、ランタイムを通り、コマンドが応えている」ことを示す。
+ */
+function InteractionFlow(): ReactNode {
+	const ref = useRef<HTMLDivElement | null>(null);
+	// ベアがコード帯を覗き込んだ瞬間、一巡を頭から流す。
+	useSignalLive(ref, "showcase");
+
+	return (
+		<div
+			ref={ref}
+			className={styles.flow}
+			role="img"
+			aria-label="Discord から届いた interaction が、discord.js の Gateway、フレームワークのランタイム、src/commands/ のコマンドを順に通り、応答として Discord へ戻る流れの図"
+		>
+			<ol className={styles.flowTrack} aria-hidden="true">
+				{FLOW_NODES.map((node) => (
+					<li key={node.id} className={styles.flowStep}>
+						{"wireDelay" in node ? (
+							<span className={styles.flowWire}>
+								<i
+									className={styles.flowSignal}
+									style={{ animationDelay: `${node.wireDelay}s` }}
+								/>
+							</span>
+						) : null}
+						<span
+							className={styles.flowNode}
+							style={{ animationDelay: `${node.nodeDelay}s` }}
+						>
+							{"icon" in node && node.icon ? (
+								<TechIcon icon="discord" className={styles.flowIcon} />
+							) : null}
+							<span className={styles.flowLabel}>{node.label}</span>
+							<span className={styles.flowNote}>{node.note}</span>
+						</span>
+					</li>
+				))}
+			</ol>
+		</div>
+	);
+}
 
 type Sample = {
 	id: string;
@@ -257,66 +318,93 @@ export default function CodeShowcase(): ReactNode {
 	};
 
 	return (
-		<section className={styles.section} data-landing-section>
-			<div className="container">
-				<SectionHeader
-					eyebrow="04 — コード"
-					title="実際の Bot から、そのまま。"
-					lead="以下はすべて、リポジトリ同梱の公式リファレンス Bot(client/)で実際に動いているコードです。"
-				/>
-				{/* タブバーはすりガラスのピル。選択操作(role・キーボード)は変更しない。 */}
-				<div className={clsx("lp-glass", styles.tabs)} role="tablist" aria-label="コード例">
-					{SAMPLES.map((sample, index) => (
-						<button
-							key={sample.id}
-							ref={(element) => {
-								tabRefs.current[index] = element;
-							}}
-							type="button"
-							role="tab"
-							id={`showcase-tab-${sample.id}`}
-							aria-selected={sample.id === active.id}
-							aria-controls={`showcase-panel-${sample.id}`}
-							tabIndex={sample.id === active.id ? 0 : -1}
-							className={clsx(styles.tab, sample.id === active.id && styles.tabActive)}
-							onClick={() => setActiveId(sample.id)}
-							onKeyDown={(event) => onTabKeyDown(event, index)}
-						>
-							{sample.label}
-						</button>
-					))}
-				</div>
-				{SAMPLES.map((sample) => (
-					<div
-						key={sample.id}
-						className={clsx("lp-frame", "lp-anchors", styles.panel)}
-						role="tabpanel"
-						id={`showcase-panel-${sample.id}`}
-						aria-labelledby={`showcase-tab-${sample.id}`}
-						hidden={sample.id !== active.id}
-						tabIndex={sample.id === active.id ? 0 : -1}
-					>
-						<div className={styles.explain}>
-							<h3 className={styles.panelTitle}>{sample.title}</h3>
-							<p className={styles.panelBody}>{sample.description}</p>
-							<ul className={styles.points}>
-								{sample.points.map((point, index) => (
-									// eslint-disable-next-line react/no-array-index-key
-									<li key={index}>{point}</li>
+		<section className={styles.section} data-bear-stage>
+			{/* 深煎りの背景はベアの背面レイヤーへ。ベアは左の空きレーンを歩く。 */}
+			<div className={styles.stage} data-bear-under aria-hidden="true">
+				<span className={styles.bgGrid} />
+			</div>
+			<div className={styles.content} data-bear-over>
+				<div className="container">
+					<SectionHeader
+						tone="stage"
+						eyebrow="04 · コード"
+						title={
+							<>
+								実際の Bot から、
+								<br className="lp-br-sm" />
+								そのまま。
+							</>
+						}
+						lead="以下はすべて、リポジトリ同梱の公式リファレンス Bot(client/)で実際に動いているコードです。"
+					/>
+					<div className={styles.layout}>
+						{/* 左端のレーンはベアの通り道。コンテンツは置かない。
+						    ベアはここで立ち止まり、パネルのコードを覗き込む。 */}
+						<div
+							className={styles.rail}
+							data-bear-waypoint="peer"
+							data-bear-id="showcase"
+							data-bear-x="0.095"
+							data-bear-dy="0.42"
+							data-bear-face="1"
+							data-bear-dwell-sm="0"
+							data-bear-x-sm="0.5"
+							aria-hidden="true"
+						/>
+						<div className={styles.main}>
+							<InteractionFlow />
+							{/* タブはエディタのファイルタブのように、下線だけで示す。 */}
+							<div className={styles.tabs} role="tablist" aria-label="コード例">
+								{SAMPLES.map((sample, index) => (
+									<button
+										key={sample.id}
+										ref={(element) => {
+											tabRefs.current[index] = element;
+										}}
+										type="button"
+										role="tab"
+										id={`showcase-tab-${sample.id}`}
+										aria-selected={sample.id === active.id}
+										aria-controls={`showcase-panel-${sample.id}`}
+										tabIndex={sample.id === active.id ? 0 : -1}
+										className={clsx(styles.tab, sample.id === active.id && styles.tabActive)}
+										onClick={() => setActiveId(sample.id)}
+										onKeyDown={(event) => onTabKeyDown(event, index)}
+									>
+										{sample.label}
+									</button>
 								))}
-							</ul>
-						</div>
-						<div className={styles.code}>
-							{/* コードウィンドウの背後に敷く環境光。装飾のみ(操作を遮らない)。 */}
-							<div className={clsx("lp-glow", styles.codeGlow)} aria-hidden="true" />
-							<div className={styles.codeInner}>
-								<CodeWindow filename={sample.filename} badge={sample.badge}>
-									{sample.code}
-								</CodeWindow>
 							</div>
+							{SAMPLES.map((sample) => (
+								<div
+									key={sample.id}
+									className={styles.panel}
+									role="tabpanel"
+									id={`showcase-panel-${sample.id}`}
+									aria-labelledby={`showcase-tab-${sample.id}`}
+									hidden={sample.id !== active.id}
+									tabIndex={sample.id === active.id ? 0 : -1}
+								>
+									<div className={styles.explain}>
+										<h3 className={styles.panelTitle}>{sample.title}</h3>
+										<p className={styles.panelBody}>{sample.description}</p>
+										<ul className={styles.points}>
+											{sample.points.map((point, index) => (
+												// eslint-disable-next-line react/no-array-index-key
+												<li key={index}>{point}</li>
+											))}
+										</ul>
+									</div>
+									<div className={styles.code}>
+										<CodeWindow tone="stage" filename={sample.filename} badge={sample.badge}>
+											{sample.code}
+										</CodeWindow>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
-				))}
+				</div>
 			</div>
 		</section>
 	);

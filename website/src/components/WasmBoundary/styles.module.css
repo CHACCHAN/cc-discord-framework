@@ -1,0 +1,362 @@
+/*
+ * WASM 構想セクション。左に本文、右に「言語 → WIT → wasm →
+ * ランタイム → Discord」の縦の流れ図。図はヘアラインと等幅文字だけで組み、
+ * アンバーはモジュール(1枚のコンポーネント)にだけ灯す。
+ *
+ * 図が画面内にある間(data-live)、配線の上を小さな信号が周期的に流れる。
+ * 常時光らせず、9秒の周期のうち先頭の約5秒だけ一巡し、残りは静かに保つ。
+ * reduced-motion では信号ごと止まり、静的な構成図として成立する。
+ */
+
+/* 下側は広めに取り、ベアの立ち寄り先(モジュールを掲げる場所)を確保する。 */
+.section {
+	padding: clamp(5.5rem, 10vw, 9rem) 0 clamp(9rem, 13vw, 12rem);
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+	gap: clamp(3rem, 6vw, 6rem);
+	align-items: start;
+}
+
+.copy > p:first-child {
+	margin: 0 0 1.3rem;
+}
+
+.title {
+	margin: 0 0 1.2rem;
+	font-size: clamp(2.1rem, 4.2vw, 3.3rem);
+}
+
+.lead {
+	max-width: 30rem;
+	margin: 0 0 1.6rem;
+	font-size: clamp(0.95rem, 1.3vw, 1.04rem);
+	line-height: 2;
+	color: var(--landing-muted);
+}
+
+/* 構想段階であることの注記。本文より一段静かに、しかし確実に読ませる。 */
+.disclaimer {
+	max-width: 30rem;
+	margin: 0;
+	padding: 0.9rem 1.1rem;
+	border-left: 2px solid var(--landing-accent-decor);
+	/* 不透明にする(背面を通るベアが透けないように)。 */
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, var(--ifm-background-color));
+	font-size: 0.85rem;
+	line-height: 1.9;
+	color: var(--landing-muted);
+}
+
+/* ---- 流れ図 ------------------------------------------------------ */
+
+.diagram {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+/* 言語の段。マークは単色(currentColor)で文字と同じトーンに揃える。 */
+.langs {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.6rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.lang {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+	padding: 0.55rem 0.4rem;
+	border: 1px solid var(--landing-border-strong);
+	border-radius: 8px;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	letter-spacing: 0.02em;
+	color: var(--landing-ink);
+	background: var(--landing-card-bg);
+}
+
+.langIcon {
+	width: 14px;
+	height: 14px;
+	color: var(--landing-muted);
+	flex: none;
+}
+
+/* ---- 配線と信号 --------------------------------------------------- */
+
+/* 言語から境界へ落ちる4本の縦線。 */
+.merge {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.6rem;
+	height: 1.7rem;
+}
+
+.wire {
+	position: relative;
+	justify-self: center;
+	width: 1px;
+	height: 100%;
+	background: var(--landing-border-strong);
+}
+
+/* 段の間を落ちる1本の縦線。 */
+.drop {
+	position: relative;
+	align-self: center;
+	width: 1px;
+	height: 1.7rem;
+	background: var(--landing-border-strong);
+}
+
+/* 信号: 配線を降りる小さな粒。既定では見えず、data-live の間だけ流れる。 */
+.signal {
+	position: absolute;
+	top: -2px;
+	left: 50%;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--landing-accent-decor);
+	box-shadow: 0 0 6px 0 color-mix(in srgb, var(--landing-accent-decor) 60%, transparent);
+	opacity: 0;
+	transform: translate(-50%, 0);
+}
+
+.diagram[data-live] .signal {
+	animation: signalTravel 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* 9秒周期のうち先頭 0.6 秒だけ移動する(残りは消灯)。 */
+@keyframes signalTravel {
+	0% {
+		opacity: 0;
+		transform: translate(-50%, 0);
+	}
+	1% {
+		opacity: 1;
+	}
+	5.6% {
+		opacity: 1;
+		transform: translate(-50%, 1.55rem);
+	}
+	6.7% {
+		opacity: 0;
+		transform: translate(-50%, 1.55rem);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(-50%, 1.55rem);
+	}
+}
+
+/* 信号が到達した段が、一瞬だけ反応する。 */
+.diagram[data-live] .stopWit {
+	animation: nodeReceive 9s linear 1.05s infinite;
+}
+
+.diagram[data-live] .stopModule {
+	animation: moduleReceive 9s linear 2.05s infinite;
+}
+
+.diagram[data-live] .stopRuntime {
+	animation: nodeReceive 9s linear 3.3s infinite;
+}
+
+.diagram[data-live] .stopDiscord {
+	animation: nodeReceive 9s linear 4.55s infinite;
+}
+
+@keyframes nodeReceive {
+	0%,
+	7%,
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+	1.8% {
+		box-shadow:
+			0 0 0 1px color-mix(in srgb, var(--landing-accent-decor) 55%, transparent),
+			0 6px 22px -12px color-mix(in srgb, var(--landing-accent-decor) 70%, transparent);
+	}
+}
+
+/* モジュールは元々淡く灯っているため、受信時はその光を一段強める。 */
+@keyframes moduleReceive {
+	0%,
+	8%,
+	100% {
+		box-shadow: 0 0 34px -8px color-mix(in srgb, var(--landing-accent-decor) 45%, transparent);
+	}
+	2% {
+		box-shadow:
+			0 0 0 1px color-mix(in srgb, var(--landing-accent-decor) 70%, transparent),
+			0 0 42px -4px color-mix(in srgb, var(--landing-accent-decor) 70%, transparent);
+	}
+}
+
+/* ---- 各段 --------------------------------------------------------- */
+
+/* 境界(WIT)の段。境界線らしく、上辺をアクセントで締めた面にする。 */
+.boundary {
+	border: 1px solid var(--landing-border-strong);
+	border-top: 2px solid var(--landing-accent-decor);
+	border-radius: 10px;
+	background: var(--landing-card-bg);
+	overflow: hidden;
+}
+
+.boundaryLabel {
+	display: flex;
+	align-items: baseline;
+	gap: 0.8rem;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0.65rem 1rem;
+	border-bottom: 1px solid var(--landing-border);
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.74rem;
+	letter-spacing: 0.08em;
+	color: var(--landing-accent-text);
+}
+
+.sketchTag {
+	margin-left: auto;
+	color: var(--landing-muted);
+	letter-spacing: 0.12em;
+}
+
+.wit {
+	margin: 0;
+	padding: 0.95rem 1.1rem;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	font-size: 0.8rem;
+	line-height: 1.75;
+	color: var(--landing-ink);
+	overflow-x: auto;
+}
+
+/* モジュールの段: ページで唯一アンバーが「灯る」場所。 */
+.module {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	align-self: center;
+	padding: 0.7rem 1.3rem;
+	border: 1px solid color-mix(in srgb, var(--landing-accent-decor) 55%, transparent);
+	border-radius: 10px;
+	background: color-mix(in srgb, var(--landing-accent-decor) 9%, var(--ifm-background-color));
+	box-shadow: 0 0 34px -8px color-mix(in srgb, var(--landing-accent-decor) 45%, transparent);
+}
+
+/* WebAssembly の公式マーク(単色)。ここではアクセント色で灯す。 */
+.moduleIcon {
+	width: 17px;
+	height: 17px;
+	color: var(--landing-accent-text);
+	flex: none;
+}
+
+.moduleName {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.86rem;
+	font-weight: 700;
+	color: var(--landing-ink);
+}
+
+.moduleNote {
+	font-size: 0.78rem;
+	color: var(--landing-muted);
+}
+
+/* ランタイムの段。フレームワーク自身なので、ベアのロゴを印にする。 */
+.runtime {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	padding: 0.85rem 1.1rem;
+	border: 1px solid var(--landing-border-strong);
+	border-radius: 10px;
+	background: var(--landing-card-bg);
+}
+
+.runtimeMark {
+	width: 22px;
+	height: 22px;
+	flex: none;
+}
+
+.runtimeBody {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+
+.runtimeName {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.82rem;
+	font-weight: 700;
+	color: var(--landing-ink);
+}
+
+.runtimeNote {
+	font-size: 0.78rem;
+	color: var(--landing-muted);
+}
+
+/* 終点: Discord。 */
+.discord {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	align-self: center;
+	padding: 0.5rem 1.6rem;
+	border: 1px solid var(--landing-border-strong);
+	border-radius: 999px;
+	font-weight: 720;
+	font-size: 0.88rem;
+	letter-spacing: 0.02em;
+	color: var(--landing-ink);
+	background: var(--landing-card-bg);
+}
+
+.discordIcon {
+	width: 15px;
+	height: 15px;
+	color: var(--landing-muted);
+}
+
+@media (max-width: 996px) {
+	.section {
+		padding: 4.5rem 0;
+	}
+
+	.layout {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2.6rem;
+	}
+
+	.langs {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* 2列に畳んだ言語チップからは、中央の2本だけ線を落とす。 */
+	.merge {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.merge .wire:nth-child(n + 3) {
+		display: none;
+	}
+}

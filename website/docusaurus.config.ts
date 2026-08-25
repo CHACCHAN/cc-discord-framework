@@ -134,8 +134,9 @@ const config: Config = {
 		image: "img/social-card.png",
 		announcementBar: {
 			id: "v2-release-2026-08",
+			// モバイルでも1行に収まる長さに抑える(リンクは1つに絞る)。
 			content:
-				'<strong>v2.0.0 を公開しました 🎉</strong> — npm の <strong>@cc-discord-framework/core</strong> で導入できます / <a href="/docs/framework/project-status/">旧 v1 パッケージとの違いを確認</a>',
+				'v2.0.0 を公開しました — <a href="/docs/framework/project-status/">旧 v1 パッケージとの違い</a>',
 			backgroundColor: "#3b2016",
 			textColor: "#fff6eb",
 			isCloseable: true,

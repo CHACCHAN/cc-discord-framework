@@ -75,4 +75,54 @@ describe("bearTargetsAt", () => {
 		expect(t.action).toBe("idle");
 		expect(t.xFrac).toBe(0.5);
 	});
+
+	test("滞在中は waypointId、歩行中は null を返す", () => {
+		expect(bearTargetsAt(650, WPS).waypointId).toBe("hero");
+		expect(bearTargetsAt(1300, WPS).waypointId).toBeNull();
+	});
+
+	test("dwellPx: 0 のウェイポイントは通過点になる(直前まで歩き続ける)", () => {
+		const wps: BearWaypoint[] = [
+			{ id: "a", docY: 0, xFrac: 0.2, action: "idle" },
+			{ id: "pass", docY: 2000, xFrac: 0.8, action: "idle", dwellPx: 0 },
+			{ id: "b", docY: 4000, xFrac: 0.2, action: "sit" },
+		];
+		// 既定の滞在半径なら滞在になる位置でも、dwellPx: 0 なら歩行のまま。
+		const nearPass = bearTargetsAt(2000 - DEFAULT_DWELL_PX + 1, wps);
+		expect(nearPass.action).toBe("walk");
+		const afterPass = bearTargetsAt(2000 + DEFAULT_DWELL_PX - 1, wps);
+		expect(afterPass.action).toBe("walk");
+	});
+
+	test("ウェイポイント個別の dwellPx が既定値より優先される", () => {
+		const wps: BearWaypoint[] = [
+			{ id: "a", docY: 0, xFrac: 0.2, action: "idle", dwellPx: 600 },
+			{ id: "b", docY: 4000, xFrac: 0.8, action: "sit" },
+		];
+		expect(bearTargetsAt(500, wps).action).toBe("idle");
+		expect(bearTargetsAt(700, wps).action).toBe("walk");
+	});
+
+	test("歩行中の restAnchorDocY は進んだ側の滞在圏の縁を指す", () => {
+		// hero(600) → pillars(2000): 序盤(t<0.25)は戻り、後半は先へ。
+		const early = bearTargetsAt(900, WPS);
+		expect(early.action).toBe("walk");
+		expect(early.restAnchorDocY).toBe(600 + DEFAULT_DWELL_PX);
+		const late = bearTargetsAt(1600, WPS);
+		expect(late.action).toBe("walk");
+		expect(late.restAnchorDocY).toBe(2000 - DEFAULT_DWELL_PX);
+	});
+
+	test("滞在中の restAnchorDocY は現在のアンカーと一致する", () => {
+		const t = bearTargetsAt(650, WPS);
+		expect(t.restAnchorDocY).toBe(650);
+	});
+
+	test("滞在中の facing はウェイポイントの face を反映する", () => {
+		const wps: BearWaypoint[] = [
+			{ id: "a", docY: 0, xFrac: 0.2, action: "peer", face: 1 },
+			{ id: "b", docY: 4000, xFrac: 0.8, action: "sit" },
+		];
+		expect(bearTargetsAt(100, wps).facing).toBe(1);
+	});
 });

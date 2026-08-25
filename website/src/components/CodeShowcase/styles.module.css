@@ -1,203 +1,327 @@
 /*
- * ダークバンド: ヒーローと同じ「深煎りステージ」をページ中盤で反復し、
- * 実コードを暗い舞台の上で見せる。ランディング語彙(lp-*)の色は
- * ステージ用のローカル変数でまとめて差し替える。
+ * コードショーケース。常時ダークのステージ面に、エディタ風の
+ * 下線タブとコードウィンドウを置く。ベアは data-bear-stage の
+ * レイヤー規約により、背景の前・パネルの後ろ(左のレーン)を歩く。
  */
-.section {
-	--landing-accent-text: #edb782;
-	--landing-accent-decor: #d98b4a;
-	--landing-muted: var(--stage-muted);
-	--landing-border: var(--stage-border);
-	--landing-border-strong: var(--stage-border-strong);
-	--landing-anchor: #e0995c;
-	--landing-card-bg: rgba(30, 19, 13, 0.62);
-	--landing-glass-bg: rgba(32, 21, 14, 0.6);
-	--landing-glass-border: rgba(255, 236, 214, 0.14);
-	--landing-glow: var(--stage-glow);
-	--landing-chrome-bg: rgba(255, 238, 216, 0.04);
-	--landing-chrome-text: var(--stage-muted);
 
-	position: relative;
-	padding: clamp(5rem, 9vw, 8rem) 0;
+.section {
 	color: var(--stage-text);
-	background-color: var(--stage-bg);
-	background-image:
-		radial-gradient(52rem 30rem at 82% 0%, rgba(200, 110, 52, 0.12), transparent 70%),
-		radial-gradient(46rem 28rem at 8% 100%, rgba(224, 140, 70, 0.09), transparent 72%),
-		linear-gradient(var(--stage-grid) 1px, transparent 1px),
-		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
-	background-size: auto, auto, 64px 64px, 64px 64px;
+	padding: clamp(5rem, 9vw, 8rem) 0;
+}
+
+.stage {
+	overflow: hidden;
+	background: linear-gradient(180deg, #150d08 0%, var(--stage-bg) 30%, var(--stage-bg-deep) 100%);
 	border-top: 1px solid var(--stage-border);
 	border-bottom: 1px solid var(--stage-border);
 }
 
-/* 上下の継ぎ目: ヒーローと同じ発光ヘアラインで暗面の出入りを示す。 */
-.section::before,
-.section::after {
-	content: "";
+.bgGrid {
 	position: absolute;
-	left: 0;
-	right: 0;
-	height: 1px;
+	inset: 0;
 	pointer-events: none;
-	background: linear-gradient(90deg, transparent 6%, rgba(238, 168, 98, 0.5) 32%, rgba(238, 168, 98, 0.5) 68%, transparent 94%);
+	background-image:
+		linear-gradient(var(--stage-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
+	background-size: 64px 64px;
+	mask-image: radial-gradient(110% 80% at 50% 30%, #000 30%, transparent 80%);
 }
 
-.section::before {
-	top: -1px;
+/* 左のレーン + 本体。レーンはベアの通り道として最初から確保する。 */
+.layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
 }
 
-.section::after {
-	bottom: -1px;
+@media (min-width: 997px) {
+	.layout {
+		grid-template-columns: 7.5rem minmax(0, 1fr);
+	}
 }
 
-/* タブバー: すりガラス(lp-glass)のピル。面と枠はユーティリティ側が持つ。 */
-.tabs {
+@media (min-width: 1200px) {
+	.layout {
+		grid-template-columns: 9.5rem minmax(0, 1fr);
+	}
+}
+
+.main {
+	min-width: 0;
+}
+
+/* ---- 処理の流れの帯 ---------------------------------------------- */
+
+/*
+ * interaction が応答になるまでの通り道。data-live(画面内)の間だけ、
+ * 配線の上を信号がひとつ進み、到達した段が一瞬だけ反応する。
+ * 8秒の周期のうち先頭の約4秒だけ動き、残りは静かに保つ。
+ */
+.flow {
+	margin-bottom: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.flowTrack {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.flowStep {
+	display: flex;
+	align-items: center;
+	min-width: 0;
+}
+
+/* 2段目以降は配線ごと伸縮し、行全体をビューポート幅に収める。 */
+.flowStep + .flowStep,
+.flowStep:has(.flowWire) {
+	flex: 1;
+}
+
+.flowWire {
 	position: relative;
+	flex: 1;
+	height: 1px;
+	margin: 0 0.7rem;
+	background: var(--stage-border);
+}
+
+.flowSignal {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--stage-accent);
+	box-shadow: 0 0 6px 0 rgba(232, 154, 85, 0.55);
+	opacity: 0;
+	transform: translate(-50%, -50%);
+}
+
+.flow[data-live] .flowSignal {
+	animation: flowTravel 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes flowTravel {
+	0% {
+		left: 0;
+		opacity: 0;
+	}
+	1% {
+		opacity: 1;
+	}
+	5.3% {
+		left: 100%;
+		opacity: 1;
+	}
+	6.3% {
+		left: 100%;
+		opacity: 0;
+	}
+	100% {
+		left: 100%;
+		opacity: 0;
+	}
+}
+
+.flowNode {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	align-items: baseline;
+	column-gap: 0.45em;
+	row-gap: 0.15rem;
+	padding: 0.5rem 0.85rem;
+	border: 1px solid var(--stage-border);
+	border-radius: 8px;
+	background: rgba(255, 238, 216, 0.03);
+}
+
+.flow[data-live] .flowNode {
+	animation: flowReceive 8s linear infinite;
+}
+
+@keyframes flowReceive {
+	0%,
+	6.5%,
+	100% {
+		border-color: var(--stage-border);
+		box-shadow: 0 0 0 0 transparent;
+	}
+	1.8% {
+		border-color: rgba(232, 154, 85, 0.75);
+		box-shadow: 0 0 16px -4px rgba(232, 154, 85, 0.55);
+	}
+}
+
+.flowIcon {
+	width: 12px;
+	height: 12px;
+	align-self: center;
+	color: var(--stage-muted);
+}
+
+.flowLabel {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--stage-text);
+	white-space: nowrap;
+}
+
+.flowNote {
+	grid-column: 1 / -1;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.62rem;
+	letter-spacing: 0.06em;
+	color: var(--stage-muted);
+	white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+	.flowNode {
+		padding: 0.4rem 0.5rem;
+	}
+
+	.flowNote {
+		display: none;
+	}
+
+	.flowWire {
+		margin: 0 0.35rem;
+	}
+
+	.flowLabel {
+		font-size: 0.68rem;
+	}
+
+	.flowIcon {
+		display: none;
+	}
+}
+
+/* ---- タブ ------------------------------------------------------- */
+
+.tabs {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	gap: 0.35rem;
-	width: fit-content;
-	max-width: 100%;
-	margin: 0 auto 2.2rem;
-	padding: 0.38rem;
-	border-radius: 999px;
+	gap: 0 0.4rem;
+	border-bottom: 1px solid var(--stage-border);
+	margin-bottom: clamp(1.8rem, 3vw, 2.6rem);
 }
 
-/* タブラベルは等幅で、設計図の見出しに揃える。 */
 .tab {
+	position: relative;
 	appearance: none;
-	cursor: pointer;
-	font-family: var(--ifm-font-family-monospace);
-	font-size: 0.84rem;
-	font-weight: 600;
-	letter-spacing: 0.02em;
-	padding: 0.5rem 1rem;
-	border-radius: 10px;
-	border: 1px solid transparent;
+	border: 0;
 	background: transparent;
-	color: var(--landing-muted);
-	transition:
-		color 180ms ease,
-		background 180ms ease,
-		border-color 180ms ease;
+	padding: 0.65rem 0.95rem 0.8rem;
+	font-family: var(--ifm-font-family-base);
+	font-size: 0.9rem;
+	font-weight: 640;
+	color: var(--stage-muted);
+	cursor: pointer;
+	transition: color 160ms ease;
+}
+
+/* 下線は擬似要素で引き、選択時にアンバーへ灯す。 */
+.tab::after {
+	content: "";
+	position: absolute;
+	left: 0.6rem;
+	right: 0.6rem;
+	bottom: -1px;
+	height: 2px;
+	background: transparent;
+	transition: background-color 180ms ease;
 }
 
 .tab:hover {
 	color: var(--stage-text);
-	background: rgba(255, 236, 214, 0.06);
 }
 
-/* 選択中: アクセントグラデーションのピル。暗面の上で唯一の無地になる。 */
-.tabActive,
-.tabActive:hover {
-	color: #24120a;
-	background: var(--landing-accent-gradient);
-	border-color: transparent;
-	box-shadow: 0 10px 30px -12px rgba(224, 140, 70, 0.55);
+.tabActive {
+	color: var(--stage-text);
 }
 
-.tab:focus-visible {
-	position: relative;
-	z-index: 1;
-	outline: 3px solid var(--ifm-color-primary-light);
-	outline-offset: 2px;
+.tabActive::after {
+	background: var(--stage-accent);
 }
 
-/* パネル全体: 破線フレーム+コーナーアンカー(lp-frame / lp-anchors)。 */
-/* 図面らしく角は落とさない。枠線はユーティリティ側が持つ。 */
+/* ---- パネル ------------------------------------------------------ */
+
 .panel {
 	display: grid;
-	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-	gap: clamp(1.6rem, 4vw, 3.25rem);
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.6rem;
 	align-items: start;
-	padding: clamp(1.4rem, 3.5vw, 2.6rem);
-	background: color-mix(in srgb, var(--landing-card-bg) 76%, transparent);
+}
+
+/* 説明とコードを横に並べるのは、レーン込みでも十分な幅があるときだけ。 */
+@media (min-width: 1200px) {
+	.panel {
+		grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+		gap: clamp(1.8rem, 3.4vw, 3.4rem);
+	}
 }
 
 .panel[hidden] {
 	display: none;
 }
 
-.panel:focus-visible {
-	outline: 3px solid var(--ifm-color-primary-light);
-	outline-offset: 4px;
-}
-
-.explain {
-	position: sticky;
-	top: calc(var(--ifm-navbar-height) + 1.5rem);
-}
-
 .panelTitle {
-	font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-	line-height: 1.5;
-	margin-bottom: 0.9rem;
+	margin: 0.2rem 0 1rem;
+	font-size: clamp(1.3rem, 2vw, 1.62rem);
+	font-weight: 790;
+	letter-spacing: -0.02em;
+	line-height: 1.4;
+	color: var(--stage-text);
 }
 
 .panelBody {
-	font-size: 0.95rem;
+	margin: 0 0 1.4rem;
+	font-size: 0.93rem;
 	line-height: 2;
-	color: var(--landing-muted);
-	margin-bottom: 1.2rem;
+	color: var(--stage-muted);
+}
+
+.panelBody code,
+.points code {
+	background: rgba(242, 196, 148, 0.1);
+	border: 1px solid rgba(242, 196, 148, 0.18);
+	color: #f2d9bd;
 }
 
 .points {
-	list-style: none;
-	padding: 0;
 	margin: 0;
+	padding: 0;
+	list-style: none;
 	display: flex;
 	flex-direction: column;
-	gap: 0.55rem;
 }
 
 .points li {
 	position: relative;
-	padding-left: 1.4rem;
-	font-size: 0.9rem;
-	line-height: 1.8;
-	color: var(--landing-muted);
+	padding: 0.75rem 0 0.75rem 1.4rem;
+	border-top: 1px solid var(--stage-border);
+	font-size: 0.87rem;
+	line-height: 1.85;
+	color: #e3d0bb;
 }
 
-/* 箇条書きの点は 7px の正方形。コーナーアンカーと同じ語彙で揃える。 */
 .points li::before {
-	content: "";
+	content: "—";
 	position: absolute;
 	left: 0;
-	top: 0.66em;
-	width: 7px;
-	height: 7px;
-	background: var(--landing-accent-decor);
+	color: var(--landing-accent-decor);
 }
 
 .code {
-	position: relative;
 	min-width: 0;
-}
-
-/* コード列の背後に広く敷く環境光。lp-glow が発光そのものを担う。 */
-.codeGlow {
-	inset: -14% -12% -20%;
-}
-
-/* 発光より手前にコードウィンドウを重ねるための階層。
-   ライトモードでは暗い舞台に浮かぶ「白いコードシート」として見せるため、
-   ウィンドウのクローム面だけ明るい面に戻す(コード面は Prism のライト配色)。 */
-.codeInner {
-	position: relative;
-	--landing-glass-bg: rgba(255, 252, 246, 0.92);
-	--landing-glass-border: rgba(255, 255, 255, 0.85);
-	--landing-chrome-text: #6d574a;
-	--landing-accent-text: #7c3c1e;
-}
-
-/* ダークモードは Prism もダーク配色になるため、クロームも暗面のまま揃える。 */
-:global([data-theme="dark"]) .codeInner {
-	--landing-glass-bg: rgba(32, 21, 14, 0.6);
-	--landing-glass-border: rgba(255, 236, 214, 0.14);
-	--landing-chrome-text: var(--stage-muted);
-	--landing-accent-text: #edb782;
 }
 
 @media (max-width: 996px) {
@@ -210,27 +334,14 @@
 		gap: 1.6rem;
 	}
 
-	.explain {
-		position: static;
-	}
-}
-
-@media (max-width: 620px) {
-	/* 横スクロール時にピルの丸みがタブを削らないよう、半径を控えめにする。 */
+	/* タブは切らずに2行へ折り返す(5つ目が見えなくなるのを防ぐ)。 */
 	.tabs {
-		justify-content: flex-start;
-		width: 100%;
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		scrollbar-width: thin;
-		border-radius: 14px;
+		flex-wrap: wrap;
 	}
 
 	.tab {
 		flex: none;
-	}
-
-	.panel {
-		padding: 1.2rem;
+		padding: 0.55rem 0.7rem 0.7rem;
+		font-size: 0.85rem;
 	}
 }

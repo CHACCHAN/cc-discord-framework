@@ -1,3 +1,8 @@
+/*
+ * 公式プラグインの台帳。ヘアラインで区切った行のリストで、
+ * 行全体がリンク。ホバーは淡い面の色と矢印の滑りだけで返す。
+ */
+
 .section {
 	padding: clamp(5rem, 9vw, 8rem) 0;
 	background: var(--landing-section-alt);
@@ -5,167 +10,116 @@
 	border-bottom: 1px solid var(--landing-border);
 }
 
-.grid {
+.ledger {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--landing-border-strong);
+}
+
+.row {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 1rem;
-}
-
-.card {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid var(--landing-border);
-	border-radius: 12px;
-	background: var(--landing-card-bg);
-	padding: 2rem 1.85rem 1.75rem;
-	overflow: hidden;
+	grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+	gap: 1rem 2.5rem;
+	align-items: start;
+	padding: clamp(1.5rem, 2.4vw, 2.1rem) 0.4rem;
+	border-bottom: 1px solid var(--landing-border-strong);
 	color: inherit;
-	transition:
-		transform 0.18s ease,
-		box-shadow 0.18s ease,
-		border-color 0.18s ease;
+	text-decoration: none;
+	transition: background-color 180ms ease;
 }
 
-.card:hover {
-	transform: translateY(-5px);
-	border-color: rgba(154, 75, 38, 0.38);
-	box-shadow: var(--landing-tile-shadow);
+.row:hover {
+	background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
 	color: inherit;
 	text-decoration: none;
 }
 
-.stripe {
-	position: absolute;
-	inset: 0 1.5rem auto auto;
-	width: 4rem;
-	height: 2px;
-	box-shadow: 0 0 16px currentColor;
-}
-
-.stripe_utils {
-	background: linear-gradient(180deg, #d89765, #7c3c1e);
-}
-
-.stripe_music {
-	background: linear-gradient(180deg, #c87950, #713018);
-}
-
-.stripe_sources {
-	background: linear-gradient(180deg, #edb373, #9a4b26);
-}
-
-.stripe_ai {
-	background: linear-gradient(180deg, #f3c595, #a85b32);
-}
-
-.name {
-	align-self: flex-start;
-	font-size: 0.8rem;
-	background: none;
-	border: none;
-	padding: 0;
-	color: var(--ifm-color-primary);
-	font-weight: 700;
-	margin-bottom: 0.7rem;
-}
-
-.tagline {
-	font-size: 1.15rem;
-	margin-bottom: 0.7rem;
-}
-
-.providerFlow {
-	display: grid;
-	grid-template-columns: auto auto minmax(0, 1fr);
-	align-items: center;
-	gap: 0.65rem;
-	padding: 0.65rem;
-	margin: 0 0 0.8rem;
-	border: 1px solid var(--landing-border);
-	border-radius: 9px;
-	background: color-mix(in srgb, var(--landing-card-bg) 74%, var(--landing-section-alt));
-}
-
-.sdkMark,
-.providerMarks {
-	display: inline-flex;
-	align-items: center;
-}
-
-.sdkMark {
-	gap: 0.42rem;
-	font-family: var(--ifm-font-family-monospace);
-	font-size: 0.7rem;
-	font-weight: 700;
-	white-space: nowrap;
-}
-
-.sdkMark img {
-	width: 1.45rem;
-	height: 1.45rem;
-	border-radius: 5px;
-}
-
-.flowArrow {
-	color: var(--ifm-color-primary);
-}
-
-.providerMarks {
-	justify-content: flex-end;
-	gap: 0.42rem;
+.ident {
 	min-width: 0;
 }
 
-.providerMarks img {
-	width: 1.35rem;
-	height: 1.35rem;
-	object-fit: contain;
-	border-radius: 4px;
-}
-
-.providerMarks small {
-	font-family: var(--ifm-font-family-monospace);
-	font-size: 0.62rem;
-	color: var(--landing-muted);
-}
-
-.capabilities {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.38rem;
+.name {
+	display: inline-block;
+	margin-bottom: 0.55rem;
 	padding: 0;
-	margin: 0 0 0.85rem;
-	list-style: none;
+	border: 0;
+	background: none;
+	font-size: 0.8rem;
+	letter-spacing: 0.02em;
+	color: var(--landing-accent-text);
+	word-break: break-all;
 }
 
-.capabilities li {
-	padding: 0.28rem 0.5rem;
-	border: 1px solid var(--landing-border);
-	border-radius: 999px;
-	font-family: var(--ifm-font-family-monospace);
-	font-size: 0.65rem;
-	color: var(--landing-muted);
-	background: var(--landing-section-alt);
+.tagline {
+	margin: 0;
+	font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+	font-weight: 780;
+	letter-spacing: -0.02em;
+	color: var(--landing-ink);
+}
+
+.detail {
+	min-width: 0;
 }
 
 .body {
-	font-size: 0.9rem;
-	line-height: 1.9;
+	margin: 0 0 0.8rem;
+	font-size: 0.91rem;
+	line-height: 1.95;
 	color: var(--landing-muted);
-	margin-bottom: 1.2rem;
 }
 
-.more {
-	margin-top: auto;
-	font-size: 0.85rem;
-	font-weight: 700;
-	color: var(--ifm-color-primary);
-	transition: letter-spacing 160ms ease;
+/* 主要な入口(サービス・ディレクトリ)は等幅の一行で列挙する。 */
+.capabilities {
+	margin: 0;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.76rem;
+	letter-spacing: 0.04em;
+	color: var(--landing-accent-text);
 }
 
-.card:hover .more {
-	letter-spacing: 0.025em;
+/* ai 行だけ: 接続先プロバイダーのロゴ列。 */
+.providers {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+	margin: 0 0 0.8rem;
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.74rem;
+	color: var(--landing-muted);
+}
+
+.providers img {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+}
+
+/* 単色 SVG(currentColor でない借用ロゴ)が暗面で沈む場合に備え、
+   ダークモードでは白い小さな台紙に載せる。公式の形・色は変えない。 */
+[data-theme="dark"] .providers img {
+	background: #f6ede2;
+	border-radius: 4px;
+	padding: 1.5px;
+}
+
+.providersArrow {
+	color: var(--landing-accent-decor);
+}
+
+/* 見出しに寄り添う矢印。ホバーでわずかに滑る。 */
+.arrow {
+	display: inline-block;
+	margin-left: 0.5em;
+	font-size: 0.9em;
+	color: var(--landing-accent-decor);
+	transition: transform 180ms ease;
+}
+
+.row:hover .arrow {
+	transform: translateX(0.3rem);
 }
 
 @media (max-width: 996px) {
@@ -173,18 +127,10 @@
 		padding: 4.5rem 0;
 	}
 
-	.grid {
+	.row {
 		grid-template-columns: minmax(0, 1fr);
-	}
-}
-
-@media (max-width: 520px) {
-	.providerFlow {
-		grid-template-columns: minmax(0, 1fr) auto;
-	}
-
-	.providerMarks {
-		grid-column: 1 / -1;
-		justify-content: flex-start;
+		gap: 0.8rem;
+		padding-left: 0.15rem;
+		padding-right: 0.15rem;
 	}
 }

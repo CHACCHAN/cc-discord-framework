@@ -317,6 +317,20 @@ export function applyBearPose(rig: BearRig, input: BearPoseInput): void {
 		rig.head.rotation.z += 0.14 * w.hello;
 	}
 
+	// peer: 前のめりにかがんで覗き込む。手は後ろへ組み、そっと近づく気配を出す。
+	const peer = w.peer ?? 0;
+	if (peer > 0.001) {
+		const sway = Math.sin(t * 1.4);
+		rig.pose.position.y += -0.1 * peer;
+		rig.body.rotation.x += (0.48 + 0.04 * sway) * peer;
+		rig.head.rotation.x += -0.24 * peer;
+		rig.head.rotation.y += 0.05 * Math.sin(t * 0.9) * peer;
+		rig.armL.rotation.x += 0.7 * peer;
+		rig.armR.rotation.x += 0.7 * peer;
+		rig.armL.rotation.z += 0.15 * peer;
+		rig.armR.rotation.z += -0.15 * peer;
+	}
+
 	// sit: 腰を落として脚を前へ。コードを眺める姿勢。
 	if (w.sit > 0.001) {
 		rig.pose.position.y += -0.22 * w.sit;

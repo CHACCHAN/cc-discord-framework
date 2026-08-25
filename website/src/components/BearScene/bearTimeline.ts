@@ -12,6 +12,7 @@ export type BearActionId =
 	| "sit"
 	| "hello"
 	| "bow"
+	| "peer"
 	| "sleep"
 	| "walk";
 
@@ -21,6 +22,13 @@ export interface BearWaypoint {
 	readonly docY: number;
 	readonly xFrac: number;
 	readonly action: Exclude<BearActionId, "walk">;
+	/**
+	 * 到着とみなす滞在半径(文書座標 px)。0 にすると滞在しない通過点になり、
+	 * 歩行経路の中継点として使えます。未指定は DEFAULT_DWELL_PX。
+	 */
+	readonly dwellPx?: number;
+	/** 滞在中の体の向き。+1 で右、-1 で左、0(既定)で正面。 */
+	readonly face?: -1 | 0 | 1;
 }
 
 /** ベアの目標状態。描画側はこれへ滑らかに追従する。 */
@@ -28,10 +36,18 @@ export interface BearTargets {
 	readonly docY: number;
 	readonly xFrac: number;
 	readonly action: BearActionId;
-	/** 進行方向。+1 で右向き、-1 で左向き。滞在中は直前の値を使う想定で 0 も許す。 */
+	/** 向き。歩行中は進行方向、滞在中はウェイポイントの face。 */
 	readonly facing: -1 | 0 | 1;
 	/** 現在の区間内の正規化位置(0=区間開始、1=区間終了)。滞在中は 0。 */
 	readonly segmentT: number;
+	/** 滞在中のウェイポイント id。歩行中は null。 */
+	readonly waypointId: string | null;
+	/**
+	 * 歩き切りの目標アンカー。スクロールが止まったとき、ベアは道の途中で
+	 * 固まらず、この値までアンカーを進めて最寄りの滞在圏に入る。
+	 * 滞在中は現在のアンカーと同じ。
+	 */
+	readonly restAnchorDocY: number;
 }
 
 /** ウェイポイント到着とみなす滞在半径(文書座標 px)の既定値。 */
@@ -49,6 +65,17 @@ export function sortWaypoints(
 	return [...waypoints].sort((a, b) => a.docY - b.docY);
 }
 
+/** ウェイポイントの滞在半径を、区間長との兼ね合いで解決します。 */
+function dwellOf(
+	waypoint: BearWaypoint,
+	span: number,
+	fallback: number,
+): number {
+	const wanted = waypoint.dwellPx ?? fallback;
+	// 区間が短い場合は半径を区間の1/3に縮め、隣の滞在圏と重ならないようにする。
+	return Math.min(wanted, span / 3);
+}
+
 /**
  * アンカー(ベアが居ようとする文書内Y)から目標状態を導出します。
  * - 最初のウェイポイント以前・最後以降は端のウェイポイントに留まる
@@ -61,16 +88,40 @@ export function bearTargetsAt(
 	dwellPx: number = DEFAULT_DWELL_PX,
 ): BearTargets {
 	if (sorted.length === 0) {
-		return { docY: 0, xFrac: 0.5, action: "idle", facing: 0, segmentT: 0 };
+		return {
+			docY: 0,
+			xFrac: 0.5,
+			action: "idle",
+			facing: 0,
+			segmentT: 0,
+			waypointId: null,
+			restAnchorDocY: anchorDocY,
+		};
 	}
 
 	const first = sorted[0]!;
 	const last = sorted[sorted.length - 1]!;
 	if (anchorDocY <= first.docY) {
-		return { docY: first.docY, xFrac: first.xFrac, action: first.action, facing: 0, segmentT: 0 };
+		return {
+			docY: first.docY,
+			xFrac: first.xFrac,
+			action: first.action,
+			facing: first.face ?? 0,
+			segmentT: 0,
+			waypointId: first.id,
+			restAnchorDocY: anchorDocY,
+		};
 	}
 	if (anchorDocY >= last.docY) {
-		return { docY: last.docY, xFrac: last.xFrac, action: last.action, facing: 0, segmentT: 0 };
+		return {
+			docY: last.docY,
+			xFrac: last.xFrac,
+			action: last.action,
+			facing: last.face ?? 0,
+			segmentT: 0,
+			waypointId: last.id,
+			restAnchorDocY: anchorDocY,
+		};
 	}
 
 	let from = first;
@@ -83,21 +134,47 @@ export function bearTargetsAt(
 		}
 	}
 
-	// 滞在半径内はアクション披露。区間が短い場合は半径を区間の1/3に縮めて重複を防ぐ。
 	const span = to.docY - from.docY;
-	const dwell = Math.min(dwellPx, span / 3);
-	if (anchorDocY - from.docY <= dwell) {
-		return { docY: anchorDocY, xFrac: from.xFrac, action: from.action, facing: 0, segmentT: 0 };
+	const fromDwell = dwellOf(from, span, dwellPx);
+	const toDwell = dwellOf(to, span, dwellPx);
+	if (anchorDocY - from.docY <= fromDwell) {
+		return {
+			docY: anchorDocY,
+			xFrac: from.xFrac,
+			action: from.action,
+			facing: from.face ?? 0,
+			segmentT: 0,
+			waypointId: from.id,
+			restAnchorDocY: anchorDocY,
+		};
 	}
-	if (to.docY - anchorDocY <= dwell) {
-		return { docY: anchorDocY, xFrac: to.xFrac, action: to.action, facing: 0, segmentT: 1 };
+	if (to.docY - anchorDocY <= toDwell) {
+		return {
+			docY: anchorDocY,
+			xFrac: to.xFrac,
+			action: to.action,
+			facing: to.face ?? 0,
+			segmentT: 1,
+			waypointId: to.id,
+			restAnchorDocY: anchorDocY,
+		};
 	}
 
 	// 滞在圏外: 次のウェイポイントへ歩く。x は滑らかに補間する。
-	const t = (anchorDocY - from.docY - dwell) / (span - dwell * 2);
+	const t = (anchorDocY - from.docY - fromDwell) / (span - fromDwell - toDwell);
 	const eased = smoothstep(t);
 	const xFrac = from.xFrac + (to.xFrac - from.xFrac) * eased;
 	const dx = to.xFrac - from.xFrac;
 	const facing: -1 | 0 | 1 = dx > 0.001 ? 1 : dx < -0.001 ? -1 : 0;
-	return { docY: anchorDocY, xFrac, action: "walk", facing, segmentT: t };
+	// 歩き切りの目標: 進んだ側の滞在圏の縁。序盤なら元の滞在圏へ戻る。
+	const restAnchorDocY = t < 0.25 ? from.docY + fromDwell : to.docY - toDwell;
+	return {
+		docY: anchorDocY,
+		xFrac,
+		action: "walk",
+		facing,
+		segmentT: t,
+		waypointId: null,
+		restAnchorDocY,
+	};
 }

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { ReactNode } from "react";
 import SectionHeader from "../SectionHeader";
 import styles from "./styles.module.css";
@@ -33,16 +32,19 @@ const KIND_LABEL: Record<NonNullable<TreeRow["kind"]>, string> = {
 
 export default function PluginArchitecture(): ReactNode {
 	return (
-		<section className={styles.section} data-landing-section>
-			{/* セクション全面に敷くフィルムグレイン。装飾のみで、操作は一切遮らない。 */}
-			<div className={clsx("lp-grain", styles.grain)} aria-hidden="true" />
+		<section className={styles.section}>
 			<div className="container">
 				<div className={styles.layout}>
 					<div className={styles.copy}>
 						<SectionHeader
-							align="left"
-							eyebrow="05 — プラグイン"
-							title="プラグインは、機能ではなく「種別」を足す。"
+							eyebrow="05 · プラグイン"
+							title={
+								<>
+									機能ではなく、
+									<br />
+									「種別」を足す。
+								</>
+							}
 						/>
 						<p className={styles.paragraph}>
 							プラグインが提供するのは、コンポーネント種別の自動ロード・サービス・
@@ -62,9 +64,8 @@ export default function PluginArchitecture(): ReactNode {
 						</p>
 					</div>
 					<div className={styles.treeWrap}>
-						{/* 図面の台紙: すりガラス+破線枠+コーナーアンカー。 */}
-						{/* スクロールは内側に分離する(overflow がアンカーを切り取らないように)。 */}
-						<div className={clsx("lp-glass", "lp-anchors", styles.treeFrame)}>
+						{/* 図面の台紙: ヘアラインの枠と薄い方眼だけ。 */}
+						<div className={styles.treeFrame}>
 							<div
 								className={styles.treeScroller}
 								role="region"

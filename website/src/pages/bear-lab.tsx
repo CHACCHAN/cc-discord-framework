@@ -11,6 +11,7 @@ const LAB_ACTIONS: readonly BearActionId[] = [
 	"hello",
 	"walk",
 	"sit",
+	"peer",
 	"bow",
 	"sleep",
 ];

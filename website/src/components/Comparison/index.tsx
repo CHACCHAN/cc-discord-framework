@@ -44,14 +44,20 @@ await client.login(process.env.DISCORD_TOKEN);`;
 
 /** README と同じ最小エントリポイント(実コード)。 */
 const FRAMEWORK_INDEX = `// src/index.ts — エントリポイントはこれだけ
-import { Client, GatewayIntentBits } from "@cc-discord-framework/core";
+import {
+  Client,
+  GatewayIntentBits,
+} from "@cc-discord-framework/core";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 await client.login(); // トークンは DISCORD_TOKEN 環境変数から自動使用`;
 
 /** client/src/commands/system/PingCommand.ts と同一の実コード。 */
 const FRAMEWORK_COMMAND = `// src/commands/PingCommand.ts — 置くだけ。登録・同期は自動
-import { Command, type ChatInputCommandInteraction } from "@cc-discord-framework/core";
+import {
+  Command,
+  type ChatInputCommandInteraction,
+} from "@cc-discord-framework/core";
 
 @Command.define({ description: "Botの応答速度を確認します。" })
 export class PingCommand extends Command {
@@ -60,42 +66,50 @@ export class PingCommand extends Command {
   }
 }`;
 
+/** 行数はコード文字列から数える(コピーの数字が実物とずれないように)。 */
+const VANILLA_LINES = VANILLA.split("\n").length;
+const FRAMEWORK_LINES =
+	FRAMEWORK_INDEX.split("\n").length + FRAMEWORK_COMMAND.split("\n").length;
+
 export default function Comparison(): ReactNode {
 	return (
-		<section className={styles.section} data-landing-section>
+		<section className={styles.section}>
 			<div className="container">
 				<SectionHeader
-					eyebrow="02 — discord.js との関係"
+					eyebrow="02 · discord.js との関係"
 					title={
 						<>
-							discord.js を、<span className={styles.accent}>置き換えない。</span>
+							discord.js を、
+							<br className="lp-br-sm" />
+							<span className={styles.accent}>置き換えない。</span>
 						</>
 					}
 					lead={
 						<>
-							cc-discord-framework は discord.js 14 の全 API を再エクスポートします
-							(<code>export * from &quot;discord.js&quot;</code>)。
-							柔軟性はそのままに、その上へ規約と型の構造を足す — 同じ discord.js でも、
-							書く量はこれだけ変わります。
+							全 API を再エクスポートし(<code>export * from &quot;discord.js&quot;</code>)、
+							その上へ規約と型の構造を足します。同じ <code>/ping</code> を
+							動かすまでのコードが、これだけ変わります。
 						</>
 					}
 				/>
 				<div className={styles.grid}>
-					{/* 素の discord.js 側: 彩度を落とした控えめな破線枠。 */}
-					<div className={clsx("lp-frame", styles.column, styles.columnPlain)}>
+					{/* 素の discord.js 側: 一段沈めて脇役にする。 */}
+					<div className={clsx(styles.column, styles.columnPlain)}>
 						<p className={styles.columnLabel}>
-							<span className={clsx("lp-badge", styles.labelPlain)}>discord.js のみ</span>
-							定義・登録・ルーティングを手で配線
+							<span className={styles.labelName}>discord.js のみ</span>
+							<span className={styles.labelMeta}>1ファイル · {VANILLA_LINES}行</span>
 						</p>
-						<CodeWindow filename="index.ts" badge="手動">
+						<CodeWindow filename="index.ts" badge="手動配線">
 							{VANILLA}
 						</CodeWindow>
 					</div>
-					{/* フレームワーク側: アクセント枠とアンカー点で主役を示す。 */}
-					<div className={clsx("lp-frame", "lp-anchors", styles.column, styles.columnBrand)}>
+					{/* フレームワーク側: 上辺のアンバーの罫で主役を示す。 */}
+					<div className={clsx(styles.column, styles.columnBrand)}>
 						<p className={styles.columnLabel}>
-							<span className={clsx("lp-badge", styles.labelBrand)}>cc-discord-framework</span>
-							ファイルを置くことが、そのまま登録
+							<span className={clsx(styles.labelName, styles.labelBrand)}>
+								cc-discord-framework
+							</span>
+							<span className={styles.labelMeta}>2ファイル · {FRAMEWORK_LINES}行</span>
 						</p>
 						<div className={styles.stack}>
 							<CodeWindow filename="src/index.ts" badge="自動">
@@ -107,7 +121,7 @@ export default function Comparison(): ReactNode {
 						</div>
 					</div>
 				</div>
-				<p className={clsx("lp-frame-t", styles.footnote)}>
+				<p className={styles.footnote}>
 					<code>interaction</code> は discord.js の型そのもの。2つ目のコマンドは
 					ファイルをもう1枚置くだけで、左のコードのように登録行や分岐が増えることはありません。
 				</p>

@@ -45,7 +45,8 @@
                 "Prisma.prisma",
                 "biomejs.biome",
                 "oven.bun-vscode",
-                "usernamehw.errorlens"
+                "usernamehw.errorlens",
+                "tamasfe.even-better-toml"
             ],
             "settings": {
                 "editor.formatOnSave": true,

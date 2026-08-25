@@ -9,7 +9,6 @@ type Plugin = {
 	slug: "utils" | "music" | "music-sources" | "ai";
 	tagline: string;
 	body: ReactNode;
-	accent: "utils" | "music" | "sources" | "ai";
 	capabilities: readonly string[];
 };
 
@@ -18,8 +17,7 @@ const PLUGINS: Plugin[] = [
 		name: "@cc-discord-framework/utils",
 		slug: "utils",
 		tagline: "毎回書くものの詰め合わせ",
-		accent: "utils",
-		capabilities: ["Tasks", "Confirm UI", "Pagination", "Format"],
+		capabilities: ["tasks/", "confirm()", "paginate()", "this.services.ui"],
 		body: (
 			<>
 				テーマ済み埋め込みの <code>this.services.ui</code>、確認ダイアログの{" "}
@@ -32,8 +30,7 @@ const PLUGINS: Plugin[] = [
 		name: "@cc-discord-framework/music",
 		slug: "music",
 		tagline: "キューと再生制御のエンジン",
-		accent: "music",
-		capabilities: ["Queue", "Voice", "Resolver", "Stream Provider"],
+		capabilities: ["this.services.audio", "resolvers/", "providers/"],
 		body: (
 			<>
 				<code>this.services.audio</code> で解決・キュー・再生制御。
@@ -46,14 +43,12 @@ const PLUGINS: Plugin[] = [
 		name: "@cc-discord-framework/music-sources",
 		slug: "music-sources",
 		tagline: "YouTube と SoundCloud",
-		accent: "sources",
 		capabilities: ["YouTube", "SoundCloud", "yt-dlp", "ffmpeg"],
 		body: (
 			<>
 				music プラグインに YouTube と SoundCloud を音源として追加。
 				Bot 側の <code>/play</code> から検索語や URL を同じ Resolver へ渡せます。
-				<code>yt-dlp</code> と <code>ffmpeg</code> を使う音源処理を、
-				本体から分離した独立パッケージです。
+				重い音源処理を本体から分離した独立パッケージです。
 			</>
 		),
 	},
@@ -61,8 +56,7 @@ const PLUGINS: Plugin[] = [
 		name: "@cc-discord-framework/ai",
 		slug: "ai",
 		tagline: "複数プロバイダー対応の AI",
-		accent: "ai",
-		capabilities: ["Streaming", "Memory", "Structured Output", "Tools"],
+		capabilities: ["this.services.ai", "ai/", "Streaming", "Structured Output"],
 		body: (
 			<>
 				Vercel AI SDK ベース。<code>this.services.ai.reply()</code> が
@@ -73,54 +67,67 @@ const PLUGINS: Plugin[] = [
 	},
 ];
 
+/**
+ * 公式プラグインの台帳。カードを並べず、パッケージ名を左端に置いた
+ * 行のリストとして組む。行全体がドキュメントへのリンク。
+ */
 export default function PluginCards(): ReactNode {
-	const aiSdkLogoUrl = useBaseUrl("img/technologies/ai-sdk.svg");
 	const anthropicLogoUrl = useBaseUrl("img/technologies/anthropic.svg");
 	const openAiLogoUrl = useBaseUrl("img/technologies/openai.svg");
 	// Gemini のみ SVG を配布する Simple Icons の CDN から読み込む(公式形状・公式色)。
 	const geminiLogoUrl = "https://cdn.simpleicons.org/googlegemini";
 	return (
-		<section className={styles.section} data-landing-section>
+		<section className={styles.section}>
 			<div className="container">
 				<SectionHeader
-					eyebrow="06 — 公式プラグイン"
-					title="重い依存は、コアに持ち込まない。"
+					eyebrow="06 · 公式プラグイン"
+					title={
+						<>
+							重い依存を
+							<br className="lp-br-sm" />
+							コアの外へ
+						</>
+					}
 					lead="公式プラグインはそれぞれ独立したパッケージ。すべて npm の @cc-discord-framework スコープで公開されていて、使う分だけ bun add で足せます。"
 				/>
-				<div className={styles.grid}>
+				<ul className={styles.ledger}>
 					{PLUGINS.map((plugin) => (
-						<Link key={plugin.name} to={`/docs/plugins/${plugin.slug}`} className={styles.card}>
-							<span className={`${styles.stripe} ${styles[`stripe_${plugin.accent}`]}`} />
-							<code className={styles.name}>{plugin.name}</code>
-							<h3 className={styles.tagline}>{plugin.tagline}</h3>
-							{plugin.slug === "ai" ? (
-								<div
-									className={styles.providerFlow}
-									aria-label="Vercel AI SDK から OpenAI、Google Gemini、Anthropic、OpenAI互換APIへ接続"
-								>
-									<span className={styles.sdkMark}>
-										<img src={aiSdkLogoUrl} alt="" />
-										Vercel AI SDK
-									</span>
-									<span className={styles.flowArrow} aria-hidden="true">→</span>
-									<span className={styles.providerMarks}>
-										<img src={openAiLogoUrl} alt="OpenAI" />
-										<img src={geminiLogoUrl} alt="Google Gemini" />
-										<img src={anthropicLogoUrl} alt="Anthropic" />
-										<small>Compatible</small>
-									</span>
+						<li key={plugin.name}>
+							<Link to={`/docs/plugins/${plugin.slug}`} className={styles.row}>
+								<div className={styles.ident}>
+									<code className={styles.name}>{plugin.name}</code>
+									<h3 className={styles.tagline}>
+										{plugin.tagline}
+										<span className={styles.arrow} aria-hidden="true">
+											→
+										</span>
+									</h3>
 								</div>
-							) : null}
-							<ul className={styles.capabilities} aria-label={`${plugin.tagline} の主な機能`}>
-								{plugin.capabilities.map((capability) => (
-									<li key={capability}>{capability}</li>
-								))}
-							</ul>
-							<p className={styles.body}>{plugin.body}</p>
-							<span className={styles.more}>ドキュメントを見る →</span>
-						</Link>
+								<div className={styles.detail}>
+									<p className={styles.body}>{plugin.body}</p>
+									{plugin.slug === "ai" ? (
+										<p
+											className={styles.providers}
+											aria-label="Vercel AI SDK から OpenAI、Google Gemini、Anthropic、OpenAI互換APIへ接続"
+										>
+											<span>Vercel AI SDK</span>
+											<span className={styles.providersArrow} aria-hidden="true">
+												→
+											</span>
+											<img src={openAiLogoUrl} alt="OpenAI" />
+											<img src={geminiLogoUrl} alt="Google Gemini" />
+											<img src={anthropicLogoUrl} alt="Anthropic" />
+											<span>+ OpenAI 互換 API</span>
+										</p>
+									) : null}
+									<p className={styles.capabilities}>
+										{plugin.capabilities.join(" · ")}
+									</p>
+								</div>
+							</Link>
+						</li>
 					))}
-				</div>
+				</ul>
 			</div>
 		</section>
 	);

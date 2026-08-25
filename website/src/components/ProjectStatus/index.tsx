@@ -1,112 +1,104 @@
 import Link from "@docusaurus/Link";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import type { ReactNode } from "react";
 import styles from "./styles.module.css";
 
 const REPOSITORY = "https://github.com/CHACCHAN/cc-discord-framework";
 const STATUS_UPDATED = "2026-08-25";
 
-/** 現在のリリース状況・保守者・サポート先を一か所で判断できる情報パネルです。 */
-export default function ProjectStatus(): ReactNode {
-	const logoUrl = useBaseUrl("img/logo.svg");
+type StatusRow = {
+	term: string;
+	body: ReactNode;
+	links: readonly { label: string; to?: string; href?: string }[];
+};
 
+const ROWS: StatusRow[] = [
+	{
+		term: "現行 — v2 系",
+		body: (
+			<>
+				<code>@cc-discord-framework/core</code> 2.0.0。このサイトと main の
+				コードが説明する現行版で、公式プラグインも同じスコープで npm 公開中。
+			</>
+		),
+		links: [
+			{ label: "導入手順", to: "/docs/framework/getting-started/installation" },
+		],
+	},
+	{
+		term: "旧 — v1 系",
+		body: (
+			<>
+				スコープなしの旧パッケージ <code>cc-discord-framework</code>(1.0.5)は
+				旧世代です。v2 と API 互換ではないため、新規導入では選ばないでください。
+			</>
+		),
+		links: [
+			{ label: "npm の v1", href: "https://www.npmjs.com/package/cc-discord-framework" },
+			{ label: "v1.0.5 リリース", href: `${REPOSITORY}/releases/tag/v1.0.5` },
+		],
+	},
+	{
+		term: "保守",
+		body: (
+			<>
+				CHACCHAN が設計・実装・ドキュメントを保守する個人メンテナンスの
+				OSS(MIT License)。熊の耳にした2つの C は CHACCHAN から。
+			</>
+		),
+		links: [
+			{ label: "GitHub", href: "https://github.com/CHACCHAN" },
+			{ label: "サポート方針", href: `${REPOSITORY}/blob/main/SUPPORT.md` },
+			{ label: "Issues", href: `${REPOSITORY}/issues` },
+		],
+	},
+];
+
+/**
+ * プロジェクトの現在地。v1 / v2 の取り違えを防ぐための情報を、
+ * カードではなく定義リストの静かな帯として置く。
+ */
+export default function ProjectStatus(): ReactNode {
 	return (
 		<section
 			id="project-status"
 			className={styles.section}
-			data-landing-section
 			aria-labelledby="project-status-title"
 		>
 			<div className="container">
-				<div className={styles.shell}>
-					<div className={styles.heading}>
-						<p className={styles.eyebrow}>Project status / Updated {STATUS_UPDATED}</p>
-						<h2 id="project-status-title" className={styles.title}>
-							いま選ぶ版と、頼れる場所。
-						</h2>
-						<p className={styles.lead}>
-							公開中の v2(<code>@cc-discord-framework/core</code>)と旧 npm
-							パッケージ v1 を混同しないための、現在地をまとめました。
-							<br />
-							<Link to="/docs/framework/project-status">詳しい状況とサポート方針 →</Link>
-						</p>
-					</div>
-
-					<div className={styles.grid}>
-						<article className={styles.versionCard}>
-							<div className={styles.versionHeader}>
-								<span className={styles.liveDot} aria-hidden="true" />
-								<span>Docs target / npm 公開中 · 2026-08-25</span>
-							</div>
-							<h3>v2 — @cc-discord-framework/core</h3>
-							<p>
-								このサイトと main のコードが説明する現行版。公式プラグインも
-								同じ @cc-discord-framework スコープで公開されています。
-							</p>
-							<code>bun add @cc-discord-framework/core</code>
-							<Link to="/docs/framework/getting-started/installation">導入手順を確認する →</Link>
-						</article>
-
-						<article className={styles.legacyCard}>
-							<p className={styles.cardLabel}>旧パッケージ / legacy · 2026-05-10</p>
-							<h3>v1.0.5 — 旧 cc-discord-framework</h3>
-							<p>
-								スコープなしの旧パッケージは旧世代の 1.x です。v2 とは API
-								互換ではないため、新規導入では使わないでください。
-							</p>
-							<Link href="https://www.npmjs.com/package/cc-discord-framework">
-								npm の v1 を確認する ↗
-							</Link>
-							<span aria-hidden="true"> · </span>
-							<Link href={`${REPOSITORY}/releases/tag/v1.0.5`}>
-								v1.0.5 Release ↗
-							</Link>
-						</article>
-
-						<article className={styles.maintainerCard}>
-							<img src={logoUrl} alt="CC の耳を持つ熊。CC は CHACCHAN から" />
-							<div>
-								<p className={styles.cardLabel}>Maintained by</p>
-								<h3>CHACCHAN</h3>
-								<p>
-									熊の耳にした2つの C は CHACCHAN から。CHACCHAN が設計・実装・
-									ドキュメントを保守する個人メンテナンスの OSS です。公開コードと
-									運用リファレンス Bot を基準に改善しています。
+				<header className={styles.heading}>
+					<p className="lp-eyebrow lp-eyebrow-rule">08 · Project Status — Updated {STATUS_UPDATED}</p>
+					<h2 id="project-status-title" className={`lp-display ${styles.title}`}>
+						プロジェクトの現在地
+					</h2>
+					<p className={styles.lead}>
+						詳しい状況とサポート方針は
+						<Link to="/docs/framework/project-status">ステータスページ</Link>
+						にまとめています。
+					</p>
+				</header>
+				<dl className={styles.rows}>
+					{ROWS.map((row) => (
+						<div key={row.term} className={styles.row}>
+							<dt className={styles.term}>{row.term}</dt>
+							<dd className={styles.detail}>
+								<p className={styles.body}>{row.body}</p>
+								<p className={styles.links}>
+									{row.links.map((link) =>
+										link.to ? (
+											<Link key={link.label} to={link.to}>
+												{link.label} →
+											</Link>
+										) : (
+											<Link key={link.label} href={link.href}>
+												{link.label} ↗
+											</Link>
+										),
+									)}
 								</p>
-								<Link href="https://github.com/CHACCHAN">GitHub プロフィール ↗</Link>
-							</div>
-						</article>
-
-						<nav className={styles.supportCard} aria-label="プロジェクトのサポート導線">
-							<p className={styles.cardLabel}>Follow &amp; support</p>
-							<h3>変化と相談を追う。</h3>
-							<ul>
-								<li>
-									<Link href={`${REPOSITORY}/blob/main/SUPPORT.md`}>Support policy ↗</Link>
-									<span>質問・不具合と、脆弱性報告に関する案内</span>
-								</li>
-								<li>
-									<Link href={`${REPOSITORY}/issues`}>Issues ↗</Link>
-									<span>不具合の報告と既知の課題</span>
-								</li>
-								<li>
-									<Link href={`${REPOSITORY}/commits/main`}>Activity ↗</Link>
-									<span>main の更新履歴</span>
-								</li>
-								<li>
-									<Link href={`${REPOSITORY}/blob/main/LICENSE`}>MIT License ↗</Link>
-									<span>利用条件</span>
-								</li>
-								<li>
-									<Link to="/docs/framework/getting-started/installation">
-										インストールガイド →
-									</Link>
-									<span>v2 の導入手順と旧パッケージの注意</span>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
+							</dd>
+						</div>
+					))}
+				</dl>
 			</div>
 		</section>
 	);

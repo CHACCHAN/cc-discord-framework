@@ -8,6 +8,8 @@ type Props = {
 	filename: string;
 	/** 右端に出す小さなラベル(例: プラグイン名)。 */
 	badge?: string;
+	/** 紙面(既定)か、常時ダークのステージ面か。 */
+	tone?: "paper" | "stage";
 	language?: string;
 	children: string;
 };
@@ -19,21 +21,15 @@ type Props = {
 export default function CodeWindow({
 	filename,
 	badge,
+	tone = "paper",
 	language = "typescript",
 	children,
 }: Props): ReactNode {
 	return (
-		// lp-anchors で四隅(左上・右下)に設計図のアンカー点を付ける
-		<figure className={clsx("lp-anchors", styles.window)}>
-			{/* クロームバーはすりガラス(lp-glass)で浮かせる */}
-			<figcaption className={clsx("lp-glass", styles.chrome)}>
-				<span className={styles.dots} aria-hidden="true">
-					<i />
-					<i />
-					<i />
-				</span>
+		<figure className={clsx(styles.window, tone === "stage" && styles.stage)}>
+			<figcaption className={styles.chrome}>
 				<span className={styles.filename}>{filename}</span>
-				{badge ? <span className={clsx("lp-badge", styles.badge)}>{badge}</span> : null}
+				{badge ? <span className={styles.badge}>{badge}</span> : null}
 			</figcaption>
 			<div className={styles.body}>
 				<CodeBlock language={language}>{children}</CodeBlock>

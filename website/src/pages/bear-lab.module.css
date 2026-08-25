@@ -57,9 +57,9 @@
 }
 
 .actions button[data-active] {
-	background: var(--landing-accent-gradient);
+	background: var(--landing-cta-bg);
 	border-color: transparent;
-	color: #24120a;
+	color: var(--landing-cta-text);
 	font-weight: 700;
 }
 

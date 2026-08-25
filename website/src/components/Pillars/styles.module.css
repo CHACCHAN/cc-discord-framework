@@ -1,77 +1,83 @@
 /*
- * 設計思想カードのスタイル。
- * 破線フレーム・コーナーアンカー・ホバー時の浮きはグローバルの
- * lp-frame / lp-anchors / lp-lift に任せ、ここでは面・余白・環境光を定義します。
+ * 設計思想セクション。カードは使わず、非対称の2カラムに
+ * 番号付きの縦積みとヘアラインだけで組むエディトリアルな構成。
  */
 
 .section {
-	position: relative;
-	padding: clamp(5rem, 9vw, 8rem) 0;
+	padding: clamp(5.5rem, 10vw, 9rem) 0;
 }
 
-/* グリッドの背後に環境光を敷くための基準枠。 */
-.gridWrap {
-	position: relative;
-}
-
-/* 環境光: グリッド中央のやや上に大きく広げる。 */
-.glow {
-	width: min(46rem, 92%);
-	height: 24rem;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -55%);
-}
-
-.grid {
-	position: relative;
+.layout {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 1.15rem;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: clamp(3rem, 7vw, 7rem);
+	align-items: start;
 }
 
-/* カード: 枠線は lp-frame(破線)側。アンカー点がはみ出すため overflow は切らない。 */
-.card {
-	position: relative;
-	border-radius: 14px;
-	background: var(--landing-card-bg);
-	padding: 2rem 1.85rem 2.2rem;
+.copy {
+	/* 見出しの下に残る余白が、ベアの立ち寄り先になる。 */
+	position: sticky;
+	top: calc(var(--ifm-navbar-height) + 3rem);
 }
 
-/* ホバー時は破線をアクセント色へ寄せる(浮き自体は lp-lift 側)。 */
-.card:hover {
-	border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+.copy > p:first-child {
+	margin: 0 0 1.3rem;
 }
 
-/* アイコンタイル: primary の淡い混色を敷いたコニャック色のアイコン。 */
-.icon {
-	display: inline-flex;
-	width: 48px;
-	height: 48px;
-	padding: 11px;
-	border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
-	border-radius: 10px;
-	color: var(--ifm-color-primary);
-	background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
-	margin-bottom: 1.1rem;
+.title {
+	margin: 0 0 1.2rem;
+	font-size: clamp(2.1rem, 4.2vw, 3.3rem);
 }
 
-.icon svg {
-	width: 100%;
-	height: 100%;
-}
-
-.cardTitle {
-	font-size: 1.16rem;
-	margin-bottom: 0.8rem;
-	letter-spacing: -0.02em;
-}
-
-.cardBody {
-	font-size: 0.9rem;
-	line-height: 1.9;
+.lead {
+	max-width: 24rem;
+	margin: 0;
+	font-size: clamp(0.95rem, 1.3vw, 1.04rem);
+	line-height: 2;
 	color: var(--landing-muted);
-	margin-bottom: 0;
+}
+
+.entries {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.entry {
+	display: grid;
+	grid-template-columns: 3.2rem minmax(0, 1fr);
+	gap: 1.2rem;
+	padding: clamp(1.7rem, 2.6vw, 2.3rem) 0;
+	border-top: 1px solid var(--landing-border-strong);
+}
+
+.entry:last-child {
+	border-bottom: 1px solid var(--landing-border-strong);
+}
+
+.number {
+	font-family: var(--ifm-font-family-monospace);
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	color: var(--landing-accent-decor);
+	padding-top: 0.35rem;
+}
+
+.entryTitle {
+	margin: 0 0 0.7rem;
+	font-size: 1.22rem;
+	font-weight: 780;
+	letter-spacing: -0.02em;
+	color: var(--landing-ink);
+}
+
+.entryText {
+	margin: 0;
+	max-width: 34rem;
+	font-size: 0.93rem;
+	line-height: 2;
+	color: var(--landing-muted);
 }
 
 @media (max-width: 996px) {
@@ -79,7 +85,12 @@
 		padding: 4.5rem 0;
 	}
 
-	.grid {
+	.layout {
 		grid-template-columns: minmax(0, 1fr);
+		gap: 2.6rem;
+	}
+
+	.copy {
+		position: static;
 	}
 }

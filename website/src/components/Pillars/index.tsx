@@ -1,26 +1,15 @@
-import clsx from "clsx";
 import type { ReactNode } from "react";
-import SectionHeader from "../SectionHeader";
 import styles from "./styles.module.css";
 
 type Pillar = {
-	icon: ReactNode;
+	number: string;
 	title: string;
 	body: ReactNode;
 };
 
 const PILLARS: Pillar[] = [
 	{
-		icon: (
-			// タイルを置くモチーフ
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<rect x="3" y="3" width="7.5" height="7.5" rx="2" />
-				<rect x="3" y="13.5" width="7.5" height="7.5" rx="2" />
-				<rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2" />
-				<rect x="13.5" y="3" width="7.5" height="7.5" rx="2" strokeDasharray="2.5 2.5" />
-				<path d="M17.25 5.2v3.1M15.7 6.75h3.1" strokeLinecap="round" />
-			</svg>
-		),
+		number: "01",
 		title: "規約が構造になる",
 		body: (
 			<>
@@ -31,13 +20,7 @@ const PILLARS: Pillar[] = [
 		),
 	},
 	{
-		icon: (
-			// 収束モチーフ
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<circle cx="12" cy="12" r="3.2" />
-				<path d="M4 4l4.6 4.6M20 4l-4.6 4.6M4 20l4.6-4.6M20 20l-4.6-4.6" strokeLinecap="round" />
-			</svg>
-		),
+		number: "02",
 		title: "サービスは this に収束",
 		body: (
 			<>
@@ -48,13 +31,7 @@ const PILLARS: Pillar[] = [
 		),
 	},
 	{
-		icon: (
-			// レイヤーモチーフ(discord.js の上に載る)
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<path d="M12 3l9 5-9 5-9-5 9-5z" strokeLinejoin="round" />
-				<path d="M3 13.5l9 5 9-5" strokeLinejoin="round" strokeLinecap="round" />
-			</svg>
-		),
+		number: "03",
 		title: "discord.js のまま",
 		body: (
 			<>
@@ -66,30 +43,41 @@ const PILLARS: Pillar[] = [
 	},
 ];
 
+/**
+ * 設計思想: 左に見出し、右に3項の縦積み。カードやアイコンは使わず、
+ * 番号・見出し・本文とヘアラインだけで組む。左列の下の余白は
+ * ベアの立ち寄り先(クラスのキューブを抱えて見せる)として確保してある。
+ */
 export default function Pillars(): ReactNode {
 	return (
-		<section className={styles.section} data-landing-section>
+		<section className={styles.section}>
 			<div className="container">
-				<SectionHeader
-					eyebrow="01 — 設計思想"
-					title="書くのは Bot の機能だけ。配線はフレームワークの仕事。"
-					lead="発見・登録・ルーティング・型付け — Bot を書くたびに繰り返してきた「いつもの配線」を、規約と型で肩代わりします。"
-				/>
-				<div className={styles.gridWrap}>
-					{/* カード群の背後に敷く環境光。装飾のみで操作は遮らない。 */}
-					<span className={clsx("lp-glow", styles.glow)} aria-hidden="true" />
-					<div className={styles.grid}>
+				<div className={styles.layout}>
+					<header className={styles.copy}>
+						<p className="lp-eyebrow lp-eyebrow-rule">01 · 設計思想</p>
+						<h2 className={`lp-display ${styles.title}`}>
+							書くのは、
+							<br />
+							Bot の機能だけ。
+						</h2>
+						<p className={styles.lead}>
+							発見・登録・ルーティング・型付け。Bot を書くたびに
+							繰り返してきた「いつもの配線」は、規約と型が肩代わりします。
+						</p>
+					</header>
+					<ol className={styles.entries}>
 						{PILLARS.map((pillar) => (
-							<article
-								key={pillar.title}
-								className={clsx("lp-frame", "lp-anchors", "lp-lift", styles.card)}
-							>
-								<span className={styles.icon}>{pillar.icon}</span>
-								<h3 className={styles.cardTitle}>{pillar.title}</h3>
-								<p className={styles.cardBody}>{pillar.body}</p>
-							</article>
+							<li key={pillar.number} className={styles.entry}>
+								<span className={styles.number} aria-hidden="true">
+									{pillar.number}
+								</span>
+								<div className={styles.entryBody}>
+									<h3 className={styles.entryTitle}>{pillar.title}</h3>
+									<p className={styles.entryText}>{pillar.body}</p>
+								</div>
+							</li>
 						))}
-					</div>
+					</ol>
 				</div>
 			</div>
 		</section>

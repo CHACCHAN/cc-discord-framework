@@ -1,12 +1,11 @@
-/* グレイン(lp-grain)を全面に敷くため、セクション自身を配置基準にする。 */
-.section {
-	position: relative;
-	padding: clamp(5rem, 9vw, 8rem) 0;
-}
+/*
+ * プラグイン解説の分割レイアウト。左に本文、右にディレクトリの図面。
+ * 台紙はヘアラインの枠と薄い方眼だけで、飾りは持たない。
+ */
 
-/* グレインは本文の可読性を損ねない強さまで抑える。 */
-.section .grain {
-	opacity: 0.22;
+/* 下側は広めに取り、ベアが座る「縁側」の余白として確保する。 */
+.section {
+	padding: clamp(5rem, 9vw, 8rem) 0 clamp(8.5rem, 13vw, 11.5rem);
 }
 
 .layout {
@@ -35,25 +34,34 @@
 	min-width: 0;
 }
 
-/* 図面の台紙。面は lp-glass が持ち、枠だけは設計図の破線に差し替える。 */
-/* (lp-glass の実線 border と background より確実に勝つよう、親を含めて指定する。) */
-.treeWrap .treeFrame {
+/* 図面の台紙: ヘアラインの枠 + 薄い方眼。 */
+.treeFrame {
 	border: 1px solid var(--landing-border-strong);
+	border-radius: 10px;
+	background-color: var(--landing-card-bg);
 	background-image:
 		linear-gradient(color-mix(in srgb, var(--ifm-color-primary) 5%, transparent) 1px, transparent 1px),
 		linear-gradient(90deg, color-mix(in srgb, var(--ifm-color-primary) 5%, transparent) 1px, transparent 1px);
 	background-size: 28px 28px;
+	overflow: hidden;
 }
 
-/* スクロールは台紙の内側で完結させる(コーナーアンカーを切り取らないため)。 */
+/* スクロールは台紙の内側で完結させる。 */
 .treeScroller {
 	overflow-x: auto;
 	scrollbar-width: thin;
 }
 
+/* 狭い画面では右端をフェードさせ、切れているのではなく続きがあると示す。 */
+@media (max-width: 700px) {
+	.treeScroller {
+		mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+	}
+}
+
 .treeScroller:focus-visible {
 	outline: 3px solid var(--ifm-color-primary-light);
-	outline-offset: 4px;
+	outline-offset: -4px;
 }
 
 .tree {
@@ -98,54 +106,45 @@
 	opacity: 0.6;
 }
 
+/* 提供元の印: ピルにせず、等幅の小さなラベルだけで示す。 */
 .badge {
 	margin-left: auto;
-	font-family: var(--ifm-font-family-base);
+	font-family: var(--ifm-font-family-monospace);
 	font-size: 0.68rem;
 	font-weight: 700;
-	letter-spacing: 0.05em;
-	padding: 0.12rem 0.55rem;
-	border-radius: 999px;
+	letter-spacing: 0.08em;
 }
 
 .badge_core {
 	color: var(--ifm-color-primary-darker);
-	background: rgba(154, 75, 38, 0.12);
 }
 
 [data-theme="dark"] .badge_core {
 	color: var(--ifm-color-primary-lighter);
-	background: rgba(229, 170, 120, 0.16);
 }
 
 .badge_utils {
-	color: #7c3c1e;
-	background: rgba(184, 105, 63, 0.14);
+	color: #8a5a2c;
 }
 
 [data-theme="dark"] .badge_utils {
 	color: #edbd96;
-	background: rgba(205, 124, 76, 0.18);
 }
 
 .badge_music {
-	color: #873a22;
-	background: rgba(177, 83, 48, 0.12);
+	color: #97462a;
 }
 
 [data-theme="dark"] .badge_music {
 	color: #e7a779;
-	background: rgba(177, 83, 48, 0.18);
 }
 
 .badge_ai {
-	color: #713018;
-	background: rgba(224, 160, 111, 0.2);
+	color: #7d4a1e;
 }
 
 [data-theme="dark"] .badge_ai {
 	color: #f0c49d;
-	background: rgba(224, 160, 111, 0.16);
 }
 
 .treeCaption {

@@ -66,11 +66,10 @@ function BootTerminal(): ReactNode {
 
 	return (
 		<figure
-			className={clsx("lp-anchors", styles.terminal)}
+			className={styles.terminal}
 			role="img"
 			aria-label="ファイルを src/ に置くと、フレームワークが自動探索してコマンド・リスナー・サービスを登録し、READY になるまでのターミナル演出"
 		>
-			<span className="lp-grain" aria-hidden="true" />
 			<figcaption className={styles.terminalChrome} aria-hidden="true">
 				<span className={styles.terminalDots}>
 					<i />
@@ -152,34 +151,38 @@ function InstallCommand(): ReactNode {
 	);
 }
 
+/**
+ * ヒーロー: 常時ダークの「深煎りステージ」。
+ * data-bear-stage のレイヤー規約により、ベアは背景(data-bear-under)の前・
+ * 本文(data-bear-over)の後ろを歩く。下端の floor はベアのために
+ * 最初から確保してある舞台の床で、コンテンツは置かない。
+ */
 export default function Hero(): ReactNode {
 	const bunLogoUrl = useBaseUrl("img/technologies/bun.svg");
 	const discordJsLogoUrl = useBaseUrl("img/technologies/discordjs.svg");
 	const typeScriptLogoUrl = useBaseUrl("img/technologies/typescript.svg");
 
 	return (
-		<section className={styles.hero} aria-labelledby="home-hero-title">
-			{/* 背景装飾: グリッド・アンビエントグロー・地平線。すべて操作を遮らない。 */}
-			<span className={styles.bgGrid} aria-hidden="true" />
-			<span className={styles.bgGlowLeft} aria-hidden="true" />
-			<span className={styles.bgGlowRight} aria-hidden="true" />
-			<span className={styles.bgHorizon} aria-hidden="true" />
+		<section className={styles.hero} aria-labelledby="home-hero-title" data-bear-stage>
+			{/* 背景装飾はベアの背面レイヤーへ。すべて操作を遮らない。 */}
+			<div className={styles.stage} data-bear-under aria-hidden="true">
+				<span className={styles.bgGrid} />
+				<span className={styles.bgGlow} />
+				<span className={styles.bgFloorLight} />
+				<span className={styles.bgHorizon} />
+			</div>
 
-			<div className={styles.inner}>
+			<div className={styles.inner} data-bear-over>
 				<header className={styles.copy}>
 					<p className={styles.brandLine}>
-						<span className={clsx("lp-badge", styles.badge)}>CC / CHACCHAN</span>
-						<Link
-							className={clsx("lp-badge", styles.badge, styles.badgeLink)}
-							to="/docs/framework/project-status"
-						>
-							v2.0.0 · npm 公開中
+						<Link className={styles.versionLink} to="/docs/framework/project-status">
+							v2.0.0 — npm 公開中 <span aria-hidden="true">→</span>
 						</Link>
 					</p>
 					<h1 id="home-hero-title" className={clsx("lp-display", styles.title)}>
 						置くだけで、
 						<br />
-						<span className="lp-gradient-text">動く。</span>
+						<span className={styles.titleAccent}>動く。</span>
 					</h1>
 					<p className={styles.subtitle}>
 						クラスを置く。フレームワークが見つけ、登録し、つなぐ。
@@ -238,24 +241,24 @@ export default function Hero(): ReactNode {
 				</header>
 
 				<div className={styles.demo}>
-					<span className={clsx("lp-glow", styles.demoGlow)} aria-hidden="true" />
-					{/* エネルギービーム: 画面の外からターミナルへ流れ込む破線の光。 */}
-					<svg
-						className={styles.beams}
-						viewBox="0 0 640 480"
-						fill="none"
-						aria-hidden="true"
-					>
-						<path d="M -30 70 C 170 76 250 180 320 208" />
-						<path d="M -30 440 C 190 430 260 280 316 240" />
-						<path d="M 670 30 C 500 46 430 150 330 196" />
-					</svg>
 					<BootTerminal />
 					<p className={styles.demoCaption}>
 						auto-discovery — 登録コードを書かずに、配置だけで Bot が組み上がる
 					</p>
 				</div>
 			</div>
+
+			{/* ベアの舞台床。ページを開くと、ベアが右手の奥からここへ歩いてくる。 */}
+			<div
+				className={styles.floor}
+				data-bear-waypoint="hello"
+				data-bear-id="hero"
+				data-bear-x="0.52"
+				data-bear-dy="0.8"
+				data-bear-x-sm="0.5"
+				data-bear-dy-sm="0.11"
+				aria-hidden="true"
+			/>
 		</section>
 	);
 }
