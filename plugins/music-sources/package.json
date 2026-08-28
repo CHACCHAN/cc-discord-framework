@@ -1,6 +1,6 @@
 {
   "name": "@cc-discord-framework/music-sources",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "cc-discord-framework 公式プラグイン: music プラグイン向けの音源(YouTube・SoundCloud)",
   "repository": {

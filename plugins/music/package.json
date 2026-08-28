@@ -1,6 +1,6 @@
 {
   "name": "@cc-discord-framework/music",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "cc-discord-framework 公式プラグイン: 音楽再生エンジン(キュー・再生制御・差し替え可能なプロバイダー)",
   "repository": {

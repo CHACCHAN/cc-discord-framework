@@ -1,6 +1,6 @@
 {
   "name": "@cc-discord-framework/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "cc-discord-framework 公式プラグイン: 小さな便利機能の詰め合わせ(定期実行・埋め込み・ページネーション・確認 UI・整形)",
   "repository": {
