@@ -8,7 +8,7 @@
     "url": "git+https://github.com/CHACCHAN/cc-discord-framework.git",
     "directory": "plugins/music"
   },
-  "homepage": "https://discord-framework.oss.cc-chacchan.com",
+  "homepage": "https://discord-oss.cc-chacchan.com",
   "bugs": "https://github.com/CHACCHAN/cc-discord-framework/issues",
   "author": "CHACCHAN",
   "publishConfig": {
