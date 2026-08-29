@@ -1,6 +1,6 @@
 # インターフェイス: ClientTexts
 
-定義: [src/texts.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L16)
+定義: [src/texts.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L16)
 
 **フレームワークがユーザーへ返す文言**のカタログ。
 
@@ -23,7 +23,7 @@ new Client({ texts: { guildOnly: "This command is server-only." } })
 commandError: string;
 ```
 
-定義: [src/texts.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L30)
+定義: [src/texts.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L30)
 
 コマンドが予期しないエラーで失敗した。
 
@@ -35,7 +35,7 @@ commandError: string;
 guildOnly: string;
 ```
 
-定義: [src/texts.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L18)
+定義: [src/texts.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L18)
 
 ギルド内が前提の権限チェックを持つコマンドがギルド外(DM など)から呼ばれた。
 
@@ -47,7 +47,7 @@ guildOnly: string;
 missingClientPermissions: (permissions) => string;
 ```
 
-定義: [src/texts.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L22)
+定義: [src/texts.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L22)
 
 Bot の権限が不足している(引数は不足している権限名の一覧)。
 
@@ -69,7 +69,7 @@ readonly `string`[]
 missingUserPermissions: (permissions) => string;
 ```
 
-定義: [src/texts.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L20)
+定義: [src/texts.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L20)
 
 実行者の権限が不足している(引数は不足している権限名の一覧)。
 
@@ -91,7 +91,7 @@ readonly `string`[]
 unknownPermissions: string;
 ```
 
-定義: [src/texts.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/texts.ts#L28)
+定義: [src/texts.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/texts.ts#L28)
 
 権限情報そのものを取得できなかった。権限名の代わりに
 [ClientTexts.missingUserPermissions](#missinguserpermissions) /

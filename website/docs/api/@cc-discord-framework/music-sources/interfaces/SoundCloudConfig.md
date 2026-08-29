@@ -1,6 +1,6 @@
 # インターフェイス: SoundCloudConfig
 
-定義: [plugins/music-sources/src/config.ts:74](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L74)
+定義: [plugins/music-sources/src/config.ts:74](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L74)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 artworkSize: string | null;
 ```
 
-定義: [plugins/music-sources/src/config.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L94)
+定義: [plugins/music-sources/src/config.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L94)
 
 サムネイルのサイズ。SoundCloud の既定は小さい `-large` なので、
 ここで指定したサイズへ差し替えます。`null` で差し替えない。
@@ -29,7 +29,7 @@ artworkSize: string | null;
 clientId: string | null;
 ```
 
-定義: [plugins/music-sources/src/config.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L86)
+定義: [plugins/music-sources/src/config.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L86)
 
 client_id。未指定なら soundcloud.ts が公開バンドルから自動抽出します
 (数か月で失効することがあるため、安定させたい場合は指定してください)。
@@ -42,7 +42,7 @@ client_id。未指定なら soundcloud.ts が公開バンドルから自動抽�
 enabled: boolean;
 ```
 
-定義: [plugins/music-sources/src/config.ts:75](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L75)
+定義: [plugins/music-sources/src/config.ts:75](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L75)
 
 ***
 
@@ -52,7 +52,7 @@ enabled: boolean;
 oauthToken: string | null;
 ```
 
-定義: [plugins/music-sources/src/config.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L88)
+定義: [plugins/music-sources/src/config.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L88)
 
 Go+ 音質などに必要な OAuth トークン。
 
@@ -64,7 +64,7 @@ Go+ 音質などに必要な OAuth トークン。
 playlistLimit: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L81)
+定義: [plugins/music-sources/src/config.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L81)
 
 プレイリストから取り込む最大曲数。
 
@@ -82,7 +82,7 @@ playlistLimit: number;
 priority: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L77)
+定義: [plugins/music-sources/src/config.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L77)
 
 Resolver の優先度。
 
@@ -100,7 +100,7 @@ Resolver の優先度。
 searchLimit: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L79)
+定義: [plugins/music-sources/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L79)
 
 検索で候補を何件取得するか。
 

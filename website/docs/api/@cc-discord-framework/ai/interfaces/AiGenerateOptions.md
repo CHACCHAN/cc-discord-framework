@@ -1,6 +1,6 @@
 # インターフェイス: AiGenerateOptions
 
-定義: [plugins/ai/src/AiService.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L76)
+定義: [plugins/ai/src/AiService.ts:82](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L82)
 
 [AiService.generate](../classes/AiService.md#generate) の引数。
 
@@ -20,7 +20,7 @@
 optional abortSignal?: AbortSignal;
 ```
 
-定義: [plugins/ai/src/AiService.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L61)
+定義: [plugins/ai/src/AiService.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L67)
 
 #### 継承元
 
@@ -34,7 +34,7 @@ optional abortSignal?: AbortSignal;
 optional context?: Partial<AiToolContext>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:70](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L70)
+定義: [plugins/ai/src/AiService.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L76)
 
 ツールへ渡すコンテキスト。
 
@@ -50,7 +50,7 @@ optional context?: Partial<AiToolContext>;
 optional history?: string | false;
 ```
 
-定義: [plugins/ai/src/AiService.ts:68](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L68)
+定義: [plugins/ai/src/AiService.ts:74](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L74)
 
 会話履歴のキー(チャンネル ID にすればチャンネル単位)。指定すると
 履歴を前置きし、生成後に追記します。省略・`false` なら一問一答です。
@@ -67,7 +67,7 @@ optional history?: string | false;
 optional instructions?: string | null;
 ```
 
-定義: [plugins/ai/src/AiService.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L49)
+定義: [plugins/ai/src/AiService.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L55)
 
 システム指示。`null` で「指示なし」を明示できます。
 
@@ -83,7 +83,7 @@ optional instructions?: string | null;
 optional maxOutputTokens?: number;
 ```
 
-定義: [plugins/ai/src/AiService.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L56)
+定義: [plugins/ai/src/AiService.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L62)
 
 #### 継承元
 
@@ -97,7 +97,7 @@ optional maxOutputTokens?: number;
 optional maxSteps?: number;
 ```
 
-定義: [plugins/ai/src/AiService.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L58)
+定義: [plugins/ai/src/AiService.ts:64](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L64)
 
 ツール呼び出しを含めて何ステップまで回すか。
 
@@ -113,7 +113,7 @@ optional maxSteps?: number;
 optional messages?: ModelMessage[];
 ```
 
-定義: [plugins/ai/src/AiService.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L72)
+定義: [plugins/ai/src/AiService.ts:78](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L78)
 
 履歴と入力のあいだへ差し込むメッセージ。
 
@@ -129,7 +129,7 @@ optional messages?: ModelMessage[];
 optional model?: AiModelInput;
 ```
 
-定義: [plugins/ai/src/AiService.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L47)
+定義: [plugins/ai/src/AiService.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L53)
 
 使うモデル。文字列なら同梱リゾルバ(または `registry`)が解決します。
 
@@ -145,7 +145,7 @@ optional model?: AiModelInput;
 prompt: string;
 ```
 
-定義: [plugins/ai/src/AiService.ts:78](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L78)
+定義: [plugins/ai/src/AiService.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L84)
 
 ユーザーの入力。
 
@@ -159,7 +159,7 @@ optional stopWhen?:
   | StopCondition<ToolSet>[];
 ```
 
-定義: [plugins/ai/src/AiService.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L60)
+定義: [plugins/ai/src/AiService.ts:66](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L66)
 
 停止条件。指定すると `maxSteps` より優先されます。
 
@@ -175,7 +175,7 @@ optional stopWhen?:
 optional temperature?: number;
 ```
 
-定義: [plugins/ai/src/AiService.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L55)
+定義: [plugins/ai/src/AiService.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L61)
 
 #### 継承元
 
@@ -189,7 +189,7 @@ optional temperature?: number;
 optional timeout?: false | DurationInput;
 ```
 
-定義: [plugins/ai/src/AiService.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L63)
+定義: [plugins/ai/src/AiService.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L69)
 
 生成を打ち切るまでの時間。`false` で無制限。
 
@@ -205,7 +205,7 @@ optional timeout?: false | DurationInput;
 optional tools?: false | ToolSet;
 ```
 
-定義: [plugins/ai/src/AiService.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L54)
+定義: [plugins/ai/src/AiService.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L60)
 
 モデルへ渡すツール。省略すると登録済みの [AiTool](../classes/AiTool.md) 全部、
 `false` でツールなしになります。

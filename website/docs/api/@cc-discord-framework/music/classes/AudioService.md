@@ -1,6 +1,6 @@
 # クラス: AudioService
 
-定義: [plugins/music/src/AudioService.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L53)
+定義: [plugins/music/src/AudioService.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L53)
 
 音楽再生のエントリポイント。`this.services.audio` で参照できます。
 
@@ -40,7 +40,7 @@ new AudioService(): AudioService;
 readonly container: Container;
 ```
 
-定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L30)
+定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L30)
 
 フレームワーク共有サービスを持つコンテナ。
 
@@ -56,7 +56,7 @@ readonly container: Container;
 readonly location: string | null;
 ```
 
-定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L39)
+定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L39)
 
 自動探索されたファイルの絶対パス。明示登録の場合は `null`。
 
@@ -72,7 +72,7 @@ readonly location: string | null;
 readonly logger: Logger;
 ```
 
-定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L36)
+定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L36)
 
 このコンポーネント用の子ロガー(`{ store, component }` が付与済み)。
 
@@ -88,7 +88,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L27)
+定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L27)
 
 ストア内で一意なコンポーネント名。
 
@@ -104,7 +104,7 @@ readonly name: string;
 readonly store: ComponentStore<Component>;
 ```
 
-定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L33)
+定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L33)
 
 このコンポーネントが属するストア。
 
@@ -122,7 +122,7 @@ readonly store: ComponentStore<Component>;
 get client(): Client;
 ```
 
-定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L42)
+定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L42)
 
 フレームワーククライアント。
 
@@ -144,7 +144,7 @@ get client(): Client;
 get queues(): readonly GuildQueue[];
 ```
 
-定義: [plugins/music/src/AudioService.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L62)
+定義: [plugins/music/src/AudioService.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L62)
 
 稼働中のすべてのキュー。
 
@@ -162,7 +162,7 @@ readonly [`GuildQueue`](GuildQueue.md)[]
 get services(): Services;
 ```
 
-定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L50)
+定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L50)
 
 ロード済みサービスへのアクセス(`services/` から自動収束)。
 import せずに `this.services.<名前>` で参照できます。
@@ -183,7 +183,7 @@ import せずに `this.services.<名前>` で参照できます。
 ensureQueue(guildId): GuildQueue;
 ```
 
-定義: [plugins/music/src/AudioService.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L67)
+定義: [plugins/music/src/AudioService.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L67)
 
 ギルドのキューを取得し、なければ作成します(接続はしません)。
 
@@ -205,7 +205,7 @@ ensureQueue(guildId): GuildQueue;
 leave(guildId): boolean;
 ```
 
-定義: [plugins/music/src/AudioService.ts:135](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L135)
+定義: [plugins/music/src/AudioService.ts:135](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L135)
 
 ギルドの再生を停止して切断します。
 
@@ -227,7 +227,7 @@ leave(guildId): boolean;
 optional onLoad(): unknown;
 ```
 
-定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L55)
+定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L55)
 
 初期化後・ストア追加前に呼ばれます。
 
@@ -247,7 +247,7 @@ optional onLoad(): unknown;
 onUnload(): void;
 ```
 
-定義: [plugins/music/src/AudioService.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L143)
+定義: [plugins/music/src/AudioService.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L143)
 
 クライアント終了時、すべてのギルドから切断します。
 
@@ -267,7 +267,7 @@ onUnload(): void;
 play(options): Promise<PlayResult>;
 ```
 
-定義: [plugins/music/src/AudioService.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L103)
+定義: [plugins/music/src/AudioService.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L103)
 
 クエリを解決してキューへ追加し、必要なら接続・再生を開始します。
 
@@ -293,7 +293,7 @@ NoResultError 再生可能な音源が見つからなかった場合。
 queue(guildId): GuildQueue | null;
 ```
 
-定義: [plugins/music/src/AudioService.ts:57](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L57)
+定義: [plugins/music/src/AudioService.ts:57](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L57)
 
 ギルドの既存キューを返します。未接続なら `null`。
 
@@ -315,7 +315,7 @@ queue(guildId): GuildQueue | null;
 resolve(query, requestedBy?): Promise<Track[]>;
 ```
 
-定義: [plugins/music/src/AudioService.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L94)
+定義: [plugins/music/src/AudioService.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L94)
 
 クエリを解決してトラックを返します(キューには追加しません)。
 検索結果の選択 UI を自作したい場合に使います。
@@ -342,7 +342,7 @@ resolve(query, requestedBy?): Promise<Track[]>;
 static define(options?): (_target, context) => void;
 ```
 
-定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/service/Service.ts#L47)
+定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/service/Service.ts#L47)
 
 サービスのメタデータを宣言します。省略可能です。
 

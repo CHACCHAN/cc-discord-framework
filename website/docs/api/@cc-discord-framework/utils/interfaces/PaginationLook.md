@@ -1,6 +1,6 @@
 # インターフェイス: PaginationLook
 
-定義: [plugins/utils/src/paginate.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L36)
+定義: [plugins/utils/src/paginate.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L36)
 
 ## によって拡張された
 
@@ -15,7 +15,7 @@
 optional buttons?: PaginationButtons;
 ```
 
-定義: [plugins/utils/src/paginate.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L38)
+定義: [plugins/utils/src/paginate.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L38)
 
 ボタンの見た目。
 
@@ -31,7 +31,7 @@ optional buttons?: PaginationButtons;
 optional counter?: (current, total) => string;
 ```
 
-定義: [plugins/utils/src/paginate.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L40)
+定義: [plugins/utils/src/paginate.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L40)
 
 中央の現在位置表示。
 
@@ -61,7 +61,7 @@ optional counter?: (current, total) => string;
 optional counterStyle?: ButtonStyle;
 ```
 
-定義: [plugins/utils/src/paginate.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L42)
+定義: [plugins/utils/src/paginate.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L42)
 
 中央の現在位置ボタンの色。
 
@@ -77,7 +77,7 @@ optional counterStyle?: ButtonStyle;
 optional showCounter?: boolean;
 ```
 
-定義: [plugins/utils/src/paginate.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L44)
+定義: [plugins/utils/src/paginate.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L44)
 
 現在位置ボタンを出す。
 
@@ -93,7 +93,7 @@ optional showCounter?: boolean;
 optional theme?: object;
 ```
 
-定義: [plugins/utils/src/paginate.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L46)
+定義: [plugins/utils/src/paginate.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L46)
 
 この呼び出しだけテーマを上書きする。
 

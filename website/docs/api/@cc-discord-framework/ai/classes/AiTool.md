@@ -1,6 +1,6 @@
 # 抽象 クラス: AiTool\<TInput\>
 
-定義: [plugins/ai/src/AiTool.ts:80](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L80)
+定義: [plugins/ai/src/AiTool.ts:80](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L80)
 
 LLM から呼べる関数。`ai/` ディレクトリに置くだけで自動ロードされ、
 モデルへ渡されます。
@@ -61,7 +61,7 @@ new AiTool<TInput>(): AiTool<TInput>;
 readonly container: Container;
 ```
 
-定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L30)
+定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L30)
 
 フレームワーク共有サービスを持つコンテナ。
 
@@ -77,7 +77,7 @@ readonly container: Container;
 readonly description: string;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:82](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L82)
+定義: [plugins/ai/src/AiTool.ts:82](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L82)
 
 モデルへ渡す説明。
 
@@ -89,7 +89,7 @@ readonly description: string;
 readonly enabled: boolean;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L88)
+定義: [plugins/ai/src/AiTool.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L88)
 
 モデルへ渡すか。
 
@@ -101,7 +101,7 @@ readonly enabled: boolean;
 readonly guildOnly: boolean;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L91)
+定義: [plugins/ai/src/AiTool.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L91)
 
 サーバー内からの呼び出しでだけ使うか。
 
@@ -113,7 +113,7 @@ readonly guildOnly: boolean;
 readonly inputSchema: FlexibleSchema<TInput>;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:85](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L85)
+定義: [plugins/ai/src/AiTool.ts:85](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L85)
 
 入力のスキーマ。
 
@@ -125,7 +125,7 @@ readonly inputSchema: FlexibleSchema<TInput>;
 readonly location: string | null;
 ```
 
-定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L39)
+定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L39)
 
 自動探索されたファイルの絶対パス。明示登録の場合は `null`。
 
@@ -141,7 +141,7 @@ readonly location: string | null;
 readonly logger: Logger;
 ```
 
-定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L36)
+定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L36)
 
 このコンポーネント用の子ロガー(`{ store, component }` が付与済み)。
 
@@ -157,7 +157,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L27)
+定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L27)
 
 ストア内で一意なコンポーネント名。
 
@@ -173,7 +173,7 @@ readonly name: string;
 readonly store: ComponentStore<Component>;
 ```
 
-定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L33)
+定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L33)
 
 このコンポーネントが属するストア。
 
@@ -191,7 +191,7 @@ readonly store: ComponentStore<Component>;
 get client(): Client;
 ```
 
-定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L42)
+定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L42)
 
 フレームワーククライアント。
 
@@ -213,7 +213,7 @@ get client(): Client;
 get services(): Services;
 ```
 
-定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L50)
+定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L50)
 
 ロード済みサービスへのアクセス(`services/` から自動収束)。
 import せずに `this.services.<名前>` で参照できます。
@@ -234,7 +234,7 @@ import せずに `this.services.<名前>` で参照できます。
 abstract execute(input, context): unknown;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L103)
+定義: [plugins/ai/src/AiTool.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L103)
 
 ツール本体。戻り値はそのままモデルへ返るので、JSON にできる形に
 してください。投げた例外は握りつぶされず、ログと `aiError` を経由して
@@ -263,7 +263,7 @@ abstract execute(input, context): unknown;
 optional onLoad(): unknown;
 ```
 
-定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L55)
+定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L55)
 
 初期化後・ストア追加前に呼ばれます。
 
@@ -283,7 +283,7 @@ optional onLoad(): unknown;
 optional onUnload(): unknown;
 ```
 
-定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L58)
+定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L58)
 
 ストアから取り除かれるときに呼ばれます(クライアント終了時を含む)。
 
@@ -303,7 +303,7 @@ optional onUnload(): unknown;
 static define<TInput>(options): (_target, context) => void;
 ```
 
-定義: [plugins/ai/src/AiTool.ts:93](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiTool.ts#L93)
+定義: [plugins/ai/src/AiTool.ts:93](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiTool.ts#L93)
 
 #### 型パラメーター
 

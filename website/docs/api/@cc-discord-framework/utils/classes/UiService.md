@@ -1,6 +1,6 @@
 # クラス: UiService
 
-定義: [plugins/utils/src/UiService.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L32)
+定義: [plugins/utils/src/UiService.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L32)
 
 `this.services.ui` — テーマ済みの埋め込みと UI ヘルパー。
 
@@ -37,7 +37,7 @@ new UiService(): UiService;
 readonly container: Container;
 ```
 
-定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L30)
+定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L30)
 
 フレームワーク共有サービスを持つコンテナ。
 
@@ -53,7 +53,7 @@ readonly container: Container;
 readonly location: string | null;
 ```
 
-定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L39)
+定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L39)
 
 自動探索されたファイルの絶対パス。明示登録の場合は `null`。
 
@@ -69,7 +69,7 @@ readonly location: string | null;
 readonly logger: Logger;
 ```
 
-定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L36)
+定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L36)
 
 このコンポーネント用の子ロガー(`{ store, component }` が付与済み)。
 
@@ -85,7 +85,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L27)
+定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L27)
 
 ストア内で一意なコンポーネント名。
 
@@ -101,7 +101,7 @@ readonly name: string;
 readonly store: ComponentStore<Component>;
 ```
 
-定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L33)
+定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L33)
 
 このコンポーネントが属するストア。
 
@@ -119,7 +119,7 @@ readonly store: ComponentStore<Component>;
 get client(): Client;
 ```
 
-定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L42)
+定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L42)
 
 フレームワーククライアント。
 
@@ -141,7 +141,7 @@ get client(): Client;
 get colors(): ColorTheme;
 ```
 
-定義: [plugins/utils/src/UiService.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L41)
+定義: [plugins/utils/src/UiService.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L41)
 
 テーマの色。
 
@@ -159,7 +159,7 @@ get colors(): ColorTheme;
 get embeds(): Embeds;
 ```
 
-定義: [plugins/utils/src/UiService.ts:100](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L100)
+定義: [plugins/utils/src/UiService.ts:100](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L100)
 
 ##### 戻り値
 
@@ -175,7 +175,7 @@ get embeds(): Embeds;
 get services(): Services;
 ```
 
-定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L50)
+定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L50)
 
 ロード済みサービスへのアクセス(`services/` から自動収束)。
 import せずに `this.services.<名前>` で参照できます。
@@ -198,7 +198,7 @@ import せずに `this.services.<名前>` で参照できます。
 get theme(): Theme;
 ```
 
-定義: [plugins/utils/src/UiService.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L36)
+定義: [plugins/utils/src/UiService.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L36)
 
 このクライアントのテーマ。
 
@@ -214,7 +214,7 @@ get theme(): Theme;
 confirm(target, options?): Promise<boolean>;
 ```
 
-定義: [plugins/utils/src/UiService.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L71)
+定義: [plugins/utils/src/UiService.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L71)
 
 確認ダイアログ。テーマのラベル・色・待ち時間が既定になります。
 
@@ -240,7 +240,7 @@ confirm(target, options?): Promise<boolean>;
 error(description?): EmbedBuilder;
 ```
 
-定義: [plugins/utils/src/UiService.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L51)
+定義: [plugins/utils/src/UiService.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L51)
 
 失敗(テーマの色)。`Error` をそのまま渡せます。
 
@@ -262,7 +262,7 @@ error(description?): EmbedBuilder;
 formatDuration(ms, options?): string;
 ```
 
-定義: [plugins/utils/src/UiService.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L91)
+定義: [plugins/utils/src/UiService.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L91)
 
 時計表記。テーマの区切り・ゼロ埋めが既定になります。
 
@@ -288,7 +288,7 @@ formatDuration(ms, options?): string;
 humanize(ms, options?): string;
 ```
 
-定義: [plugins/utils/src/UiService.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L86)
+定義: [plugins/utils/src/UiService.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L86)
 
 大まかな長さ。テーマの単位・区切り・単位数が既定になります。
 
@@ -314,7 +314,7 @@ humanize(ms, options?): string;
 info(description?): EmbedBuilder;
 ```
 
-定義: [plugins/utils/src/UiService.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L61)
+定義: [plugins/utils/src/UiService.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L61)
 
 情報(テーマの色)。
 
@@ -336,7 +336,7 @@ info(description?): EmbedBuilder;
 of(color, description?): EmbedBuilder;
 ```
 
-定義: [plugins/utils/src/UiService.ts:66](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L66)
+定義: [plugins/utils/src/UiService.ts:66](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L66)
 
 任意の色。テーマの色名か色コードを渡します。
 
@@ -362,7 +362,7 @@ of(color, description?): EmbedBuilder;
 optional onLoad(): unknown;
 ```
 
-定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L55)
+定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L55)
 
 初期化後・ストア追加前に呼ばれます。
 
@@ -382,7 +382,7 @@ optional onLoad(): unknown;
 optional onUnload(): unknown;
 ```
 
-定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L58)
+定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L58)
 
 ストアから取り除かれるときに呼ばれます(クライアント終了時を含む)。
 
@@ -402,7 +402,7 @@ optional onUnload(): unknown;
 paginate(target, options): Promise<Message<boolean>>;
 ```
 
-定義: [plugins/utils/src/UiService.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L76)
+定義: [plugins/utils/src/UiService.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L76)
 
 ページ送り。テーマのボタン・待ち時間が既定になります。
 
@@ -431,7 +431,7 @@ progressBar(
    options?): string;
 ```
 
-定義: [plugins/utils/src/UiService.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L81)
+定義: [plugins/utils/src/UiService.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L81)
 
 進捗バー。テーマの文字と幅が既定になります。
 
@@ -461,7 +461,7 @@ progressBar(
 success(description?): EmbedBuilder;
 ```
 
-定義: [plugins/utils/src/UiService.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L46)
+定義: [plugins/utils/src/UiService.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L46)
 
 成功(テーマの色)。
 
@@ -486,7 +486,7 @@ truncate(
    suffix?): string;
 ```
 
-定義: [plugins/utils/src/UiService.ts:96](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L96)
+定義: [plugins/utils/src/UiService.ts:96](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L96)
 
 文字列の切り詰め。テーマの省略記号が既定になります。
 
@@ -516,7 +516,7 @@ truncate(
 warning(description?): EmbedBuilder;
 ```
 
-定義: [plugins/utils/src/UiService.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/UiService.ts#L56)
+定義: [plugins/utils/src/UiService.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/UiService.ts#L56)
 
 警告(テーマの色)。
 
@@ -538,7 +538,7 @@ warning(description?): EmbedBuilder;
 static define(options?): (_target, context) => void;
 ```
 
-定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/service/Service.ts#L47)
+定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/service/Service.ts#L47)
 
 サービスのメタデータを宣言します。省略可能です。
 

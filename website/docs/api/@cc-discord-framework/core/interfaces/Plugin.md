@@ -1,6 +1,6 @@
 # インターフェイス: Plugin
 
-定義: [src/plugin.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/plugin.ts#L18)
+定義: [src/plugin.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/plugin.ts#L18)
 
 フレームワークプラグイン。
 
@@ -23,7 +23,7 @@
 readonly name: string;
 ```
 
-定義: [src/plugin.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/plugin.ts#L20)
+定義: [src/plugin.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/plugin.ts#L20)
 
 ログで使われる一意なプラグイン名。
 
@@ -35,7 +35,7 @@ readonly name: string;
 install(client): unknown;
 ```
 
-定義: [src/plugin.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/plugin.ts#L22)
+定義: [src/plugin.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/plugin.ts#L22)
 
 クライアント起動時に一度だけ、コンポーネントのロード前に呼ばれます。
 

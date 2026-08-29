@@ -8,6 +8,7 @@ import {
 } from "discord.js";
 import type { Logger, LoggerOptions } from "pino";
 import { Container, initializeContainer } from "./container.js";
+import { loadContainerValues, type LoadedContainerValue } from "./containerValues.js";
 import { StoreRegistry } from "./component/StoreRegistry.js";
 import { ServiceStore } from "./service/ServiceStore.js";
 import { CommandStore } from "./command/CommandStore.js";
@@ -117,6 +118,8 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 	readonly #syncApplicationCommands: boolean;
 	readonly #applicationGuildIds: readonly string[] | undefined;
 	readonly #pendingComponents: ComponentClass<Component>[] = [];
+	/** `container/` から読み込んだ値。destroy 時の後始末(dispose)のために保持します。 */
+	#containerValues: LoadedContainerValue[] = [];
 	#loading: Promise<void> | null = null;
 	/**
 	 * ロードを開始したか。`#loading` とは別に持ちます — `#loading` への代入は
@@ -200,6 +203,16 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 		// (load() 自体の失敗は load() の呼び出し元に伝わる)。
 		if (this.#loading) await this.#loading.catch(() => {});
 		await this.stores.unloadAll();
+		// コンテナ値の後始末はストアのアンロード後 — サービスの onUnload が
+		// `this.container.<名前>` を最後まで使えるようにするため。失敗しても
+		// 残りの値の後始末と接続の破棄は続けます。
+		for (const value of this.#containerValues.splice(0).reverse()) {
+			try {
+				await value.dispose(this.container);
+			} catch (error) {
+				this.logger.error({ err: error, value: value.name }, "container 値の破棄に失敗しました");
+			}
+		}
 		return super.destroy();
 	}
 
@@ -217,6 +230,10 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 			this.stores.resolve(cls).register(cls);
 		}
 
+		// コンテナ値はストアより先に読み込む — サービスの onLoad から
+		// `this.container.<名前>` を参照できるようにするため。
+		this.#containerValues = await loadContainerValues(this as Client);
+
 		await this.stores.loadAll(this.baseDirectory);
 
 		const commands = this.stores.get("commands");
@@ -230,7 +247,9 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 			}
 		});
 
-		if (this.#messageCommandsEnabled) {
+		// メンションコマンドはプレフィックス設定と無関係に使えるので、
+		// どちらかが有効ならメッセージを見る(ロード後なので索引は確定済み)。
+		if (this.#messageCommandsEnabled || commands.hasMentionCommands) {
 			this.on(Events.MessageCreate, (message) => {
 				void this.#dispatchMessage(commands, message);
 			});
@@ -253,6 +272,7 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 				components: Object.fromEntries(
 					[...this.stores].map((store) => [store.name, store.size]),
 				),
+				container: this.#containerValues.map((value) => value.name),
 			},
 			"フレームワークをロードしました",
 		);
@@ -260,6 +280,10 @@ export class Client<Ready extends boolean = boolean> extends DiscordClient<Ready
 
 	async #dispatchMessage(commands: CommandStore, message: Message): Promise<void> {
 		try {
+			// メンションが最優先 — 対象へのメンションを含むメッセージは
+			// メンションコマンドが消費し、プレフィックス解析には回さない。
+			if (commands.hasMentionCommands && (await commands.dispatchMention(message))) return;
+			if (!this.#messageCommandsEnabled) return;
 			const resolved = await this.#fetchPrefix(message, this.container);
 			if (resolved === null) return;
 			const prefixes = typeof resolved === "string" ? [resolved] : resolved;

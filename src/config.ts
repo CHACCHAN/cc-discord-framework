@@ -195,7 +195,6 @@ function mergeConfigs(entries: readonly ConfigEntry[], root: string): ClientOpti
 					// ローダーが消費する値。ClientOptions には残さない。
 					break;
 				case "plugins":
-					// 連結。ファイル内の配列順はそのまま保たれる。
 					plugins.push(...(value as readonly Plugin[]));
 					break;
 				case "intents":

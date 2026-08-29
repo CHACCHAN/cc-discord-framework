@@ -1,6 +1,6 @@
 # インターフェイス: ConfirmOptions
 
-定義: [plugins/utils/src/confirm.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L22)
+定義: [plugins/utils/src/confirm.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L22)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 optional anyone?: boolean;
 ```
 
-定義: [plugins/utils/src/confirm.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L36)
+定義: [plugins/utils/src/confirm.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L36)
 
 誰でも押せるようにする。
 
@@ -28,7 +28,7 @@ false
 optional content?: string;
 ```
 
-定義: [plugins/utils/src/confirm.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L24)
+定義: [plugins/utils/src/confirm.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L24)
 
 本文。
 
@@ -40,7 +40,7 @@ optional content?: string;
 optional embeds?: readonly (APIEmbed | EmbedBuilder)[];
 ```
 
-定義: [plugins/utils/src/confirm.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L26)
+定義: [plugins/utils/src/confirm.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L26)
 
 本文の代わり(または併用)に出す埋め込み。
 
@@ -52,7 +52,7 @@ optional embeds?: readonly (APIEmbed | EmbedBuilder)[];
 optional ephemeral?: boolean;
 ```
 
-定義: [plugins/utils/src/confirm.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L38)
+定義: [plugins/utils/src/confirm.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L38)
 
 本人にだけ見える返信にする(インタラクションのみ)。
 
@@ -70,7 +70,7 @@ false
 optional no?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/confirm.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L30)
+定義: [plugins/utils/src/confirm.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L30)
 
 拒否ボタン。文字列ならラベルだけの変更。
 
@@ -86,7 +86,7 @@ optional no?: string | Partial<ButtonTheme>;
 optional theme?: object;
 ```
 
-定義: [plugins/utils/src/confirm.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L40)
+定義: [plugins/utils/src/confirm.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L40)
 
 この呼び出しだけテーマを上書きする。
 
@@ -478,7 +478,7 @@ optional ellipsis?: string;
 optional timeout?: DurationInput;
 ```
 
-定義: [plugins/utils/src/confirm.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L32)
+定義: [plugins/utils/src/confirm.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L32)
 
 応答を待つ時間。過ぎたら `false`。
 
@@ -494,7 +494,7 @@ optional timeout?: DurationInput;
 optional userId?: string;
 ```
 
-定義: [plugins/utils/src/confirm.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L34)
+定義: [plugins/utils/src/confirm.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L34)
 
 押せるユーザー。
 
@@ -512,7 +512,7 @@ optional userId?: string;
 optional yes?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/confirm.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/confirm.ts#L28)
+定義: [plugins/utils/src/confirm.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/confirm.ts#L28)
 
 承認ボタン。文字列ならラベルだけの変更。
 

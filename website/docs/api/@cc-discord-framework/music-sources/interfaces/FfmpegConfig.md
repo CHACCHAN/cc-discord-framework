@@ -1,6 +1,6 @@
 # インターフェイス: FfmpegConfig
 
-定義: [plugins/music-sources/src/config.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L34)
+定義: [plugins/music-sources/src/config.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L34)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 args: (input) => string[];
 ```
 
-定義: [plugins/music-sources/src/config.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L41)
+定義: [plugins/music-sources/src/config.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L41)
 
 入力 URL から引数列を組み立てます。丸ごと差し替えられます。
 標準出力へ 48kHz ステレオの s16le PCM を吐くこと。
@@ -33,7 +33,7 @@ args: (input) => string[];
 path: string;
 ```
 
-定義: [plugins/music-sources/src/config.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L36)
+定義: [plugins/music-sources/src/config.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L36)
 
 実行ファイル。
 

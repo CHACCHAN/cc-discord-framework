@@ -4,7 +4,7 @@
 type AbstractComponentClass<T> = () => T;
 ```
 
-定義: [src/component/metadata.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/metadata.ts#L30)
+定義: [src/component/metadata.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/metadata.ts#L30)
 
 抽象クラスも許容するコンポーネントクラス型 — デコレータが受け取る型。
 

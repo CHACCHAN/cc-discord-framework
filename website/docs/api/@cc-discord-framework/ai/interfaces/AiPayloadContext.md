@@ -1,6 +1,6 @@
 # インターフェイス: AiPayloadContext
 
-定義: [plugins/ai/src/render.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/render.ts#L28)
+定義: [plugins/ai/src/render.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/render.ts#L48)
 
 `display.payload` フックへ渡る文脈。
 
@@ -15,7 +15,7 @@
 readonly index: number;
 ```
 
-定義: [plugins/ai/src/render.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/render.ts#L32)
+定義: [plugins/ai/src/render.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/render.ts#L52)
 
 分割された何通目か(1始まり)。
 
@@ -27,7 +27,7 @@ readonly index: number;
 readonly kind: AiReplyKind;
 ```
 
-定義: [plugins/ai/src/render.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/render.ts#L30)
+定義: [plugins/ai/src/render.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/render.ts#L50)
 
 応答の意味づけ(埋め込みの色に使われているもの)。
 
@@ -39,7 +39,7 @@ readonly kind: AiReplyKind;
 readonly streaming: boolean;
 ```
 
-定義: [plugins/ai/src/render.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/render.ts#L36)
+定義: [plugins/ai/src/render.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/render.ts#L56)
 
 途中経過か(あとで書き換わる送信なら `true`・最終の送信なら `false`)。
 
@@ -51,6 +51,6 @@ readonly streaming: boolean;
 readonly total: number;
 ```
 
-定義: [plugins/ai/src/render.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/render.ts#L34)
+定義: [plugins/ai/src/render.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/render.ts#L54)
 
 分割された総通数。

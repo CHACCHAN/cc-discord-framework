@@ -4,6 +4,6 @@
 const MESSAGE_LIMIT: 2000 = 2_000;
 ```
 
-定義: [plugins/utils/src/text.ts:12](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/text.ts#L12)
+定義: [plugins/utils/src/text.ts:12](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/text.ts#L12)
 
 Discord のメッセージ本文の上限。

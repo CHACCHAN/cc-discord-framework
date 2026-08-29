@@ -1,6 +1,6 @@
 # インターフェイス: AiErrorInfo
 
-定義: [plugins/ai/src/events.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L45)
+定義: [plugins/ai/src/events.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L45)
 
 エラーの発生場所。
 
@@ -12,7 +12,7 @@
 readonly channelId: string | null;
 ```
 
-定義: [plugins/ai/src/events.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L49)
+定義: [plugins/ai/src/events.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L49)
 
 呼び出し元のチャンネル。判らなければ `null`。
 
@@ -24,7 +24,7 @@ readonly channelId: string | null;
 readonly guildId: string | null;
 ```
 
-定義: [plugins/ai/src/events.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L53)
+定義: [plugins/ai/src/events.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L53)
 
 呼び出し元のサーバー。判らなければ `null`。
 
@@ -36,7 +36,7 @@ readonly guildId: string | null;
 readonly phase: AiErrorPhase;
 ```
 
-定義: [plugins/ai/src/events.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L47)
+定義: [plugins/ai/src/events.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L47)
 
 どの処理で失敗したか。
 
@@ -48,7 +48,7 @@ readonly phase: AiErrorPhase;
 readonly tool: string | null;
 ```
 
-定義: [plugins/ai/src/events.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L55)
+定義: [plugins/ai/src/events.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L55)
 
 `phase: "tool"` のときのツール名。それ以外は `null`。
 
@@ -60,6 +60,6 @@ readonly tool: string | null;
 readonly userId: string | null;
 ```
 
-定義: [plugins/ai/src/events.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L51)
+定義: [plugins/ai/src/events.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L51)
 
 呼び出したユーザー。判らなければ `null`。

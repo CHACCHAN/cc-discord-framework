@@ -44,6 +44,10 @@ export { createEnv, type EnvOptions, type EnvReader } from "./env.js";
 
 // コンテナ
 export { Container } from "./container.js";
+export {
+	defineContainerValue,
+	type ContainerValueDefinition,
+} from "./containerValues.js";
 
 // コンポーネントモデル
 export { Component, type ComponentOptions } from "./component/Component.js";
@@ -95,7 +99,13 @@ export {
 } from "./events.js";
 
 // エラー
-export { ComponentLoadError, ConfigLoadError, FrameworkError, UserError } from "./errors.js";
+export {
+	ComponentLoadError,
+	ConfigLoadError,
+	ContainerLoadError,
+	FrameworkError,
+	UserError,
+} from "./errors.js";
 
 // ロギング(標準ロガーは pino。型も pino のものをそのまま使う)
 export type { Logger, LoggerOptions } from "pino";

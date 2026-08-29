@@ -1,6 +1,6 @@
 # インターフェイス: AiAnswerParts
 
-定義: [plugins/ai/src/texts.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L48)
+定義: [plugins/ai/src/texts.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L50)
 
 [AiTexts.answerBody](AiTexts.md#answerbody) に渡る断片。
 
@@ -15,7 +15,7 @@
 readonly answer: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L50)
+定義: [plugins/ai/src/texts.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L52)
 
 モデルが返した本文(ストリーミング中は途中まで)。空のこともあります。
 
@@ -27,7 +27,7 @@ readonly answer: string;
 readonly cursor: string | null;
 ```
 
-定義: [plugins/ai/src/texts.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L55)
+定義: [plugins/ai/src/texts.ts:57](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L57)
 
 ストリーミング中に本文の末尾へ添える記号
 ([AiStreamConfig.cursor](AiStreamConfig.md#cursor))。最後の1回と非ストリーミング時は `null`。
@@ -40,7 +40,7 @@ readonly cursor: string | null;
 readonly failure: string | null;
 ```
 
-定義: [plugins/ai/src/texts.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L79)
+定義: [plugins/ai/src/texts.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L81)
 
 生成が失敗したときの、整形済みのエラー文言
 ([AiTexts.generationFailed](AiTexts.md#generationfailed) を通したもの)。成功なら `null`。
@@ -58,7 +58,7 @@ readonly failure: string | null;
 readonly rawSources: readonly LanguageModelV4Source[];
 ```
 
-定義: [plugins/ai/src/texts.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L63)
+定義: [plugins/ai/src/texts.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L65)
 
 引用元(生の値)。
 
@@ -70,7 +70,7 @@ readonly rawSources: readonly LanguageModelV4Source[];
 readonly rawTools: readonly string[];
 ```
 
-定義: [plugins/ai/src/texts.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L65)
+定義: [plugins/ai/src/texts.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L67)
 
 呼ばれたツール名(生の値・重複なし・呼ばれた順)。
 
@@ -82,7 +82,7 @@ readonly rawTools: readonly string[];
 readonly rawUsage: LanguageModelUsage | null;
 ```
 
-定義: [plugins/ai/src/texts.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L67)
+定義: [plugins/ai/src/texts.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L69)
 
 トークン数(生の値)。判らなければ `null`。
 
@@ -94,7 +94,7 @@ readonly rawUsage: LanguageModelUsage | null;
 readonly sources: readonly string[];
 ```
 
-定義: [plugins/ai/src/texts.ts:57](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L57)
+定義: [plugins/ai/src/texts.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L59)
 
 [AiTexts.sourceLine](AiTexts.md#sourceline) で整形済みの引用元。無ければ空配列。
 
@@ -106,7 +106,7 @@ readonly sources: readonly string[];
 readonly streaming: boolean;
 ```
 
-定義: [plugins/ai/src/texts.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L69)
+定義: [plugins/ai/src/texts.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L71)
 
 まだ生成中か。最後の1回だけ `false` になります。
 
@@ -118,7 +118,7 @@ readonly streaming: boolean;
 readonly tools: readonly string[];
 ```
 
-定義: [plugins/ai/src/texts.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L59)
+定義: [plugins/ai/src/texts.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L61)
 
 [AiTexts.toolLine](AiTexts.md#toolline) で整形済みの、呼ばれたツール。無ければ空配列。
 
@@ -130,6 +130,6 @@ readonly tools: readonly string[];
 readonly usage: string | null;
 ```
 
-定義: [plugins/ai/src/texts.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L61)
+定義: [plugins/ai/src/texts.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L63)
 
 [AiTexts.usageLine](AiTexts.md#usageline) で整形済みのトークン数。判らなければ `null`。

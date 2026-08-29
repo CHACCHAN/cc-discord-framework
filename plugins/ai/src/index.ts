@@ -114,6 +114,7 @@ export {
 	aiConfigOf,
 	aiSplitThreshold,
 	defaultAiConfig,
+	mergeAiDisplay,
 	resolveAiConfig,
 	type AiConfig,
 	type AiConfigOptions,

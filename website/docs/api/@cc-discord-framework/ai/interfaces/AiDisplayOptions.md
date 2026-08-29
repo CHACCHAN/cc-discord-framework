@@ -1,6 +1,6 @@
 # インターフェイス: AiDisplayOptions
 
-定義: [plugins/ai/src/config.ts:196](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L196)
+定義: [plugins/ai/src/config.ts:196](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L196)
 
 [AiDisplayConfig](AiDisplayConfig.md) の部分指定。
 
@@ -12,7 +12,7 @@
 optional allowedMentions?: MessageMentionOptions | null;
 ```
 
-定義: [plugins/ai/src/config.ts:212](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L212)
+定義: [plugins/ai/src/config.ts:212](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L212)
 
 メンションの解決範囲。`null` で discord.js の既定に任せます。
 
@@ -28,7 +28,7 @@ optional allowedMentions?: MessageMentionOptions | null;
 optional decorate?: (embed, kind) => EmbedBuilder;
 ```
 
-定義: [plugins/ai/src/config.ts:214](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L214)
+定義: [plugins/ai/src/config.ts:214](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L214)
 
 #### パラメータ
 
@@ -58,7 +58,7 @@ optional decorate?: (embed, kind) => EmbedBuilder;
 optional embeds?: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:198](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L198)
+定義: [plugins/ai/src/config.ts:198](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L198)
 
 #### Default
 
@@ -74,7 +74,7 @@ true
 optional ephemeral?: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L200)
+定義: [plugins/ai/src/config.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L200)
 
 #### Default
 
@@ -90,7 +90,7 @@ false
 optional payload?: (payload, context) => AiMessagePayload;
 ```
 
-定義: [plugins/ai/src/config.ts:216](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L216)
+定義: [plugins/ai/src/config.ts:216](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L216)
 
 #### パラメータ
 
@@ -120,7 +120,7 @@ optional payload?: (payload, context) => AiMessagePayload;
 optional splitThreshold?: number;
 ```
 
-定義: [plugins/ai/src/config.ts:207](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L207)
+定義: [plugins/ai/src/config.ts:207](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L207)
 
 明示した値でも、埋め込みなら 4096、プレーンテキストなら 2000 を
 超えた分は上限に丸められます(超えた指定は必ず送信に失敗するため)。

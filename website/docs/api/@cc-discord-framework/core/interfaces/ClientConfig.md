@@ -1,6 +1,6 @@
 # インターフェイス: ClientConfig
 
-定義: [src/config.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/config.ts#L16)
+定義: [src/config.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/config.ts#L16)
 
 設定ファイル1枚が返すもの。[ClientOptions](ClientOptions.md) の部分指定に、
 ローダーだけが読む `priority` を足したものです。
@@ -21,7 +21,7 @@
 optional applicationGuildIds?: readonly string[];
 ```
 
-定義: [src/client.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L76)
+定義: [src/client.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L77)
 
 スラッシュコマンドを登録する既定のギルド — 開発中に便利です
 (ギルドコマンドは即時反映)。コマンド側の `guildIds` が優先され、
@@ -39,7 +39,7 @@ optional applicationGuildIds?: readonly string[];
 optional baseDirectory?: string | URL | null;
 ```
 
-定義: [src/client.ts:31](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L31)
+定義: [src/client.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L32)
 
 コンポーネント自動探索のルートディレクトリ。各ストアが
 `<baseDirectory>/<ストア名>`(`services/`、`commands/`、`listeners/`、
@@ -60,7 +60,7 @@ optional baseDirectory?: string | URL | null;
 optional defaultPrefix?: string | readonly string[] | null;
 ```
 
-定義: [src/client.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L52)
+定義: [src/client.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L53)
 
 メッセージ(プレフィックス)コマンドを有効にするプレフィックス。
 省略(または `null`)でスラッシュコマンド専用の Bot になります。
@@ -77,7 +77,7 @@ optional defaultPrefix?: string | readonly string[] | null;
 optional fetchPrefix?: (message, container) => Awaitable<string | readonly string[] | null>;
 ```
 
-定義: [src/client.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L60)
+定義: [src/client.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L61)
 
 メッセージ毎にプレフィックスを解決します(ギルド毎のプレフィックス等)。
 `defaultPrefix` より優先され、`null` を返すとそのメッセージでは
@@ -110,7 +110,7 @@ optional fetchPrefix?: (message, container) => Awaitable<string | readonly strin
 optional logger?: Logger | LoggerOptions<never, boolean>;
 ```
 
-定義: [src/client.ts:37](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L37)
+定義: [src/client.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L38)
 
 フレームワークのロガー: 採用したい pino インスタンス、または pino に
 渡すオプション。既定は `pino({ level: "info" })` です。
@@ -127,7 +127,7 @@ optional logger?: Logger | LoggerOptions<never, boolean>;
 optional plugins?: readonly Plugin[];
 ```
 
-定義: [src/client.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L40)
+定義: [src/client.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L41)
 
 プラグイン。[Client.load](../classes/Client.md#load) の冒頭で配列順にインストールされます。
 
@@ -143,7 +143,7 @@ optional plugins?: readonly Plugin[];
 optional priority?: number;
 ```
 
-定義: [src/config.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/config.ts#L22)
+定義: [src/config.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/config.ts#L22)
 
 読み込み順。大きいほど先(= プラグインが先にインストールされる)。
 同じ値ならファイル名順。
@@ -162,7 +162,7 @@ optional priority?: number;
 optional syncApplicationCommands?: boolean;
 ```
 
-定義: [src/client.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L69)
+定義: [src/client.ts:70](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L70)
 
 クライアントの ready 時にスラッシュコマンドを Discord へ一括登録する。
 
@@ -184,7 +184,7 @@ true
 optional texts?: Partial<ClientTexts>;
 ```
 
-定義: [src/client.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L46)
+定義: [src/client.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L47)
 
 フレームワークがユーザーへ返す文言。指定した項目だけが既定値
 ([defaultClientTexts](../variables/defaultClientTexts.md))を上書きします。

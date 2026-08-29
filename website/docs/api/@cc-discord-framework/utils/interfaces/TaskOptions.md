@@ -1,6 +1,6 @@
 # インターフェイス: TaskOptions
 
-定義: [plugins/utils/src/scheduler.ts:15](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/scheduler.ts#L15)
+定義: [plugins/utils/src/scheduler.ts:15](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/scheduler.ts#L15)
 
 すべてのコンポーネント種別が共有するオプション。
 
@@ -16,7 +16,7 @@
 every: DurationInput;
 ```
 
-定義: [plugins/utils/src/scheduler.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/scheduler.ts#L23)
+定義: [plugins/utils/src/scheduler.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/scheduler.ts#L23)
 
 実行間隔。ミリ秒か `"1h"` `"30m"` のような期間表記。**必須**。
 上限は約24.8日(2^31-1 ミリ秒)です — タイマーの遅延が 32bit を
@@ -32,7 +32,7 @@ every: DurationInput;
 optional name?: string;
 ```
 
-定義: [src/component/Component.ts:13](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L13)
+定義: [src/component/Component.ts:13](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L13)
 
 ストア内で一意なコンポーネント名。
 省略時はクラス名から導出されます(例: `PingCommand` → `ping`)。
@@ -49,7 +49,7 @@ optional name?: string;
 optional overlap?: boolean;
 ```
 
-定義: [plugins/utils/src/scheduler.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/scheduler.ts#L32)
+定義: [plugins/utils/src/scheduler.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/scheduler.ts#L32)
 
 前回の run() がまだ終わっていないときに、次の周期を重ねて
 実行するか。既定では **重ねずにスキップ** します(遅い run() が
@@ -69,7 +69,7 @@ false
 optional runOnStart?: boolean;
 ```
 
-定義: [plugins/utils/src/scheduler.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/scheduler.ts#L25)
+定義: [plugins/utils/src/scheduler.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/scheduler.ts#L25)
 
 クライアントの ready 直後にも一度実行する。
 

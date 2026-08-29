@@ -1,6 +1,6 @@
 # インターフェイス: ButtonTheme
 
-定義: [plugins/utils/src/theme.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/theme.ts#L24)
+定義: [plugins/utils/src/theme.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/theme.ts#L24)
 
 ボタン1つ分の見た目。`label` と `emoji` は少なくとも一方が必要です。
 
@@ -12,7 +12,7 @@
 optional emoji?: string;
 ```
 
-定義: [plugins/utils/src/theme.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/theme.ts#L26)
+定義: [plugins/utils/src/theme.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/theme.ts#L26)
 
 ***
 
@@ -22,7 +22,7 @@ optional emoji?: string;
 optional label?: string;
 ```
 
-定義: [plugins/utils/src/theme.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/theme.ts#L25)
+定義: [plugins/utils/src/theme.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/theme.ts#L25)
 
 ***
 
@@ -32,4 +32,4 @@ optional label?: string;
 style: ButtonStyle;
 ```
 
-定義: [plugins/utils/src/theme.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/theme.ts#L27)
+定義: [plugins/utils/src/theme.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/theme.ts#L27)

@@ -1,6 +1,6 @@
 # インターフェイス: ComponentStoreOptions\<T\>
 
-定義: [src/component/ComponentStore.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L16)
+定義: [src/component/ComponentStore.ts:16](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L16)
 
 ## 型パラメーター
 
@@ -16,7 +16,7 @@
 base: AbstractComponentClass<T>;
 ```
 
-定義: [src/component/ComponentStore.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L23)
+定義: [src/component/ComponentStore.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L23)
 
 この種別のコンポーネントが継承すべき基底クラス。
 
@@ -28,7 +28,7 @@ base: AbstractComponentClass<T>;
 name: string;
 ```
 
-定義: [src/component/ComponentStore.ts:21](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L21)
+定義: [src/component/ComponentStore.ts:21](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L21)
 
 ストア名。ファイル自動探索の対象ディレクトリ名でもあります
 (`<baseDirectory>/<name>`)。慣例として複数形にします(例: `"commands"`)。
@@ -41,7 +41,7 @@ name: string;
 optional suffix?: string;
 ```
 
-定義: [src/component/ComponentStore.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L30)
+定義: [src/component/ComponentStore.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L30)
 
 クラス名から取り除く接尾辞。既定はストア名の単数形
 (`"commands"` → `Command`)。**ディレクトリ名とクラス名の語が

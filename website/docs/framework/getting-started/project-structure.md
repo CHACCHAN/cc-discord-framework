@@ -17,6 +17,7 @@ src/
 │   └── ReadyListener.ts
 ├── preconditions/    ← Precondition(コマンドのガード)を置く
 ├── services/         ← Service(共有ロジック)を置く
+├── container/        ← コンテナへ載せる共有インスタンス(Prisma など)を置く
 └── config/           ← 設定ディレクトリ(createClient を使う場合)
 ```
 

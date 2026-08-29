@@ -1,6 +1,6 @@
 # インターフェイス: PaginationButtons
 
-定義: [plugins/utils/src/paginate.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L29)
+定義: [plugins/utils/src/paginate.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L29)
 
 ページ送りボタンの見た目の上書き。文字列ならラベルだけの変更。
 
@@ -12,7 +12,7 @@
 optional first?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/paginate.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L30)
+定義: [plugins/utils/src/paginate.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L30)
 
 ***
 
@@ -22,7 +22,7 @@ optional first?: string | Partial<ButtonTheme>;
 optional last?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/paginate.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L33)
+定義: [plugins/utils/src/paginate.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L33)
 
 ***
 
@@ -32,7 +32,7 @@ optional last?: string | Partial<ButtonTheme>;
 optional next?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/paginate.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L32)
+定義: [plugins/utils/src/paginate.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L32)
 
 ***
 
@@ -42,4 +42,4 @@ optional next?: string | Partial<ButtonTheme>;
 optional prev?: string | Partial<ButtonTheme>;
 ```
 
-定義: [plugins/utils/src/paginate.ts:31](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/paginate.ts#L31)
+定義: [plugins/utils/src/paginate.ts:31](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/paginate.ts#L31)

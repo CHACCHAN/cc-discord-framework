@@ -17,24 +17,32 @@ flowchart TD
     load["client.load()"]
     plugins["1. プラグイン install(配列順・逐次)"]
     pending["2. register() 済みクラスをストアへ解決"]
-    loadAll["3. ストアのロード(登録順)<br>services → commands → listeners → preconditions → プラグイン種別"]
-    validate["4. 相互参照の検証<br>コマンド ↔ Precondition(fail-fast)"]
-    wire["5. ディスパッチャ接続<br>interactionCreate / messageCreate"]
-    gateway["6. ゲートウェイ接続"]
+    containerValues["3. container/ の値をロード<br>defineContainerValue → client.container"]
+    loadAll["4. ストアのロード(登録順)<br>services → commands → listeners → preconditions → プラグイン種別"]
+    validate["5. 相互参照の検証<br>コマンド ↔ Precondition(fail-fast)"]
+    wire["6. ディスパッチャ接続<br>interactionCreate / messageCreate"]
+    gateway["7. ゲートウェイ接続"]
     ready["clientReady 発火"]
-    sync["7. スラッシュコマンド同期<br>commandsSynced 発火"]
+    sync["8. スラッシュコマンド同期<br>commandsSynced 発火"]
     running["稼働中<br>コマンド実行・イベント処理"]
     destroy["client.destroy()"]
     unload["全コンポーネントをアンロード<br>登録の逆順・unbind → onUnload"]
+    dispose["container/ の値を破棄<br>読み込みの逆順に dispose"]
     closed["接続終了"]
 
     config --> construct
     construct --> login
     login -->|内部で自動実行| load
-    load --> plugins --> pending --> loadAll --> validate --> wire
+    load --> plugins --> pending --> containerValues --> loadAll --> validate --> wire
     wire --> gateway --> ready --> sync --> running
-    running --> destroy --> unload --> closed
+    running --> destroy --> unload --> dispose --> closed
 ```
+
+`container/` の値は **ストアより前** にロードされます(サービスの
+`onLoad` から `this.container.<名前>` を使えるように)。破棄は逆に
+**ストアのアンロード後**です(サービスの `onUnload` が最後まで値を
+使えるように)。ロードが途中で失敗した場合は、生成済みの値をその場で
+逆順に dispose してから失敗を伝えます。
 
 先頭の設定読み込みの段は[設定ディレクトリ](./config-loading.md)を使う場合
 だけのものです。それが構築より **前** に来るのは、`plugins` 配列が

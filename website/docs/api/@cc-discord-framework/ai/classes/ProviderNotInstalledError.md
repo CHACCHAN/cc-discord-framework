@@ -1,6 +1,6 @@
 # クラス: ProviderNotInstalledError
 
-定義: [plugins/ai/src/errors.ts:37](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/errors.ts#L37)
+定義: [plugins/ai/src/errors.ts:37](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/errors.ts#L37)
 
 文字列で指定されたプロバイダーのパッケージが入っていない。
 
@@ -23,7 +23,7 @@ new ProviderNotInstalledError(
    cause?): ProviderNotInstalledError;
 ```
 
-定義: [plugins/ai/src/errors.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/errors.ts#L41)
+定義: [plugins/ai/src/errors.ts:41](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/errors.ts#L41)
 
 #### パラメータ
 
@@ -59,7 +59,7 @@ new ProviderNotInstalledError(
 readonly context: unknown;
 ```
 
-定義: [src/errors.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L62)
+定義: [src/errors.ts:80](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L80)
 
 投げた側が添付する任意の追加データ。
 
@@ -75,7 +75,7 @@ readonly context: unknown;
 readonly identifier: string;
 ```
 
-定義: [src/errors.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L60)
+定義: [src/errors.ts:78](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L78)
 
 機械可読な識別子(Precondition 由来なら Precondition 名)。
 
@@ -91,6 +91,6 @@ readonly identifier: string;
 readonly packageName: string;
 ```
 
-定義: [plugins/ai/src/errors.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/errors.ts#L39)
+定義: [plugins/ai/src/errors.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/errors.ts#L39)
 
 インストールが必要なパッケージ名。

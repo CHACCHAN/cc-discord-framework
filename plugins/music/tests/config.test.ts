@@ -86,7 +86,6 @@ describe("上限値の差し替え", () => {
 		const client = createMusicClient({ defaultVolume: 5, limits: { maxVolume: 2 } });
 		await client.load();
 
-		// 上限を超える既定値でも、setter と同じ上限まで丸められる。
 		expect(client.container.services.audio.ensureQueue("g1").volume).toBe(2);
 		await client.destroy();
 	});

@@ -34,7 +34,9 @@ export type FrameworkEvent = (typeof FrameworkEvents)[keyof typeof FrameworkEven
 export type CommandRunPayload =
 	| { type: "chatInput"; command: Command; interaction: ChatInputCommandInteraction }
 	| { type: "autocomplete"; command: Command; interaction: AutocompleteInteraction }
-	| { type: "message"; command: Command; message: Message; args: string[] };
+	| { type: "message"; command: Command; message: Message; args: string[] }
+	// content は本文から対象のメンションを取り除いて trim した文字列。
+	| { type: "mention"; command: Command; message: Message; content: string };
 
 /** アプリケーションコマンド同期の結果サマリ。 */
 export interface CommandsSyncedResult {

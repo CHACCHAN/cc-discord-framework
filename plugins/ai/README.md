@@ -256,7 +256,8 @@ ai({ display: { allowedMentions: null } })                  // discord.js の既
 
 `display.payload` は **埋め込み経路とプレーンテキスト経路の両方**で、
 送信直前に必ず通ります(`display.decorate` は埋め込み専用で、`payload` は
-その後に走ります)。
+その後に走ります)。`components` / `files` はペイロードの型に含まれている
+ので、ボタンや添付をそのまま足して返せます。
 
 ```ts
 ai({
@@ -269,10 +270,34 @@ ai({
 
 | `context` | 意味 |
 | --- | --- |
-| `kind` | 応答の意味づけ(`"success"` / `"info"` / `"error"`) |
+| `kind` | 応答の意味づけ(`"success"` / `"info"` / `"warning"` / `"error"`) |
 | `index` | 分割された何通目か(1始まり) |
 | `total` | 分割された総通数 |
 | `streaming` | 途中経過か(あとで書き換わる送信なら `true`) |
+
+### 呼び出し単位で見た目を変える
+
+`display` と `texts` は **`reply()` の引数でも**項目単位で上書きできます。
+設定はクライアント全体の既定、引数はその呼び出しだけの上書きです
+(`decorate` / `payload` は関数ごと置き換わります)。フラットな
+`embeds` / `ephemeral` は `display` の同名キーのショートハンドで、両方
+指定した場合はフラットな指定が優先です。
+
+```ts
+await this.services.ai.reply(interaction, {
+  prompt,
+  kind: "warning",                       // 埋め込みの色(テーマの4色に対応)
+  display: {
+    decorate: (embed) => embed.setTitle("質問への回答").setTimestamp(),
+    payload: (payload) => ({ ...payload, components: [row] }),
+    allowedMentions: { parse: ["users"] },
+  },
+  texts: {
+    answerBody: ({ answer, sources }, texts) =>
+      [answer, "", texts.sourcesHeader, ...sources].join("\n"),
+  },
+});
+```
 
 ## 会話履歴
 

@@ -66,7 +66,6 @@ export function utils(options: UtilsOptions = {}): Plugin {
 	return definePlugin({
 		name: "utils",
 		install(client) {
-			// クライアント毎に持たせることで、複数クライアントでもテーマが混ざらない。
 			client.container.theme = resolveTheme(options.theme);
 
 			if (options.scheduler ?? true) client.stores.register(new TaskStore());

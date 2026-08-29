@@ -34,10 +34,12 @@ import type { generateText, LanguageModelUsage } from "ai";
 export type AiSource = Awaited<ReturnType<typeof generateText>>["sources"][number];
 
 /**
- * 応答の意味づけ。埋め込みの色に反映されます。
+ * 応答の意味づけ。埋め込みの色に反映されます(utils テーマの4色に対応)。
  * `"error"` は生成に失敗したことを応答へ表示するときに使われます。
+ * `"warning"` は同梱機能では使いませんが、`reply({ kind: "warning" })` の
+ * ように呼び出し側から選べます。
  */
-export type AiReplyKind = "success" | "info" | "error";
+export type AiReplyKind = "success" | "info" | "warning" | "error";
 
 /**
  * {@link AiTexts.answerBody} に渡る断片。
@@ -188,7 +190,6 @@ export const defaultAiTexts: AiTexts = {
 		// 本文がまだ空なら仮表示を出す(カーソルだけの空メッセージにしない)。
 		const head = answer.length === 0 ? texts.thinking : answer;
 		const body = cursor === null ? head : head + cursor;
-		// 引用元は本文との間を1行空けて末尾へ。
 		return sources.length === 0 ? body : [body, "", texts.sourcesHeader, ...sources].join("\n");
 	},
 

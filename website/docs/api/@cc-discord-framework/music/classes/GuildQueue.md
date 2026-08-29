@@ -1,6 +1,6 @@
 # クラス: GuildQueue
 
-定義: [plugins/music/src/GuildQueue.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L52)
+定義: [plugins/music/src/GuildQueue.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L52)
 
 1ギルド分の音楽セッション。ボイス接続・プレイヤー・キューをまとめて
 保持します。`this.services.audio.queue(guildId)` で取得できます。
@@ -13,7 +13,7 @@
 readonly guildId: string;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L54)
+定義: [plugins/music/src/GuildQueue.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L54)
 
 対象ギルドの ID。
 
@@ -25,7 +25,7 @@ readonly guildId: string;
 loop: LoopMode = "off";
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:64](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L64)
+定義: [plugins/music/src/GuildQueue.ts:64](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L64)
 
 ループの挙動。
 
@@ -37,7 +37,7 @@ loop: LoopMode = "off";
 textChannel: TextBasedChannel | null = null;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L61)
+定義: [plugins/music/src/GuildQueue.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L61)
 
 通知先として記録しておくテキストチャンネル(任意)。
 プラグインはここへ送信しません。`musicError` などのリスナーで
@@ -53,7 +53,7 @@ Bot 側が使うための控えです。
 get current(): Track | null;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L143)
+定義: [plugins/music/src/GuildQueue.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L143)
 
 再生中のトラック。
 
@@ -71,7 +71,7 @@ get current(): Track | null;
 get destroyed(): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:176](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L176)
+定義: [plugins/music/src/GuildQueue.ts:176](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L176)
 
 破棄済みか。
 
@@ -89,7 +89,7 @@ get destroyed(): boolean;
 get history(): readonly Track[];
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:148](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L148)
+定義: [plugins/music/src/GuildQueue.ts:148](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L148)
 
 再生済みのトラック(新しい順・最大 `limits.historySize` 件)。
 
@@ -107,7 +107,7 @@ readonly [`Track`](../interfaces/Track.md)[]
 get paused(): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:158](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L158)
+定義: [plugins/music/src/GuildQueue.ts:158](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L158)
 
 一時停止中か。
 
@@ -125,7 +125,7 @@ get paused(): boolean;
 get playbackDuration(): number;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:171](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L171)
+定義: [plugins/music/src/GuildQueue.ts:171](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L171)
 
 現在トラックの再生位置(ミリ秒)。
 
@@ -143,7 +143,7 @@ get playbackDuration(): number;
 get playing(): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:153](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L153)
+定義: [plugins/music/src/GuildQueue.ts:153](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L153)
 
 何かを再生中か(一時停止中も含む)。
 
@@ -161,7 +161,7 @@ get playing(): boolean;
 get tracks(): readonly Track[];
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:138](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L138)
+定義: [plugins/music/src/GuildQueue.ts:138](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L138)
 
 再生待ちのトラック(読み取り専用)。
 
@@ -179,7 +179,7 @@ readonly [`Track`](../interfaces/Track.md)[]
 get voiceChannelId(): string | null;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:166](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L166)
+定義: [plugins/music/src/GuildQueue.ts:166](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L166)
 
 接続中のボイスチャンネル ID。
 
@@ -197,7 +197,7 @@ get voiceChannelId(): string | null;
 get volume(): number;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:181](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L181)
+定義: [plugins/music/src/GuildQueue.ts:181](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L181)
 
 音量(0〜`limits.maxVolume`、1 が原音)。
 
@@ -211,7 +211,7 @@ get volume(): number;
 set volume(value): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:185](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L185)
+定義: [plugins/music/src/GuildQueue.ts:185](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L185)
 
 ##### パラメータ
 
@@ -231,7 +231,7 @@ set volume(value): void;
 add(...tracks): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:198](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L198)
+定義: [plugins/music/src/GuildQueue.ts:198](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L198)
 
 キュー末尾へ追加します。
 
@@ -253,7 +253,7 @@ add(...tracks): void;
 clear(): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:224](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L224)
+定義: [plugins/music/src/GuildQueue.ts:224](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L224)
 
 待機列を空にします(再生中の曲は止めません)。
 
@@ -269,7 +269,7 @@ clear(): void;
 connect(channel): Promise<void>;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:293](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L293)
+定義: [plugins/music/src/GuildQueue.ts:293](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L293)
 
 ボイスチャンネルへ接続します。Ready の同一接続だけを再利用します。
 同じ試行中に別チャンネルから呼ばれた場合は、後発側を拒否します。
@@ -292,7 +292,7 @@ connect(channel): Promise<void>;
 destroy(): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:344](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L344)
+定義: [plugins/music/src/GuildQueue.ts:344](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L344)
 
 切断してこのキューを破棄します。
 
@@ -308,7 +308,7 @@ destroy(): void;
 insert(index, ...tracks): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:204](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L204)
+定義: [plugins/music/src/GuildQueue.ts:204](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L204)
 
 指定位置へ挿入します(0 が次に再生される位置)。
 
@@ -334,7 +334,7 @@ insert(index, ...tracks): void;
 move(from, to): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:216](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L216)
+定義: [plugins/music/src/GuildQueue.ts:216](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L216)
 
 キュー内でトラックを移動します。
 
@@ -360,7 +360,7 @@ move(from, to): boolean;
 pause(): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:271](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L271)
+定義: [plugins/music/src/GuildQueue.ts:271](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L271)
 
 一時停止します。
 
@@ -376,7 +376,7 @@ pause(): boolean;
 remove(index): Track | null;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:210](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L210)
+定義: [plugins/music/src/GuildQueue.ts:210](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L210)
 
 指定位置のトラックを取り除いて返します。
 
@@ -398,7 +398,7 @@ remove(index): Track | null;
 resume(): boolean;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:276](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L276)
+定義: [plugins/music/src/GuildQueue.ts:276](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L276)
 
 再開します。
 
@@ -414,7 +414,7 @@ resume(): boolean;
 shuffle(): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:233](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L233)
+定義: [plugins/music/src/GuildQueue.ts:233](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L233)
 
 待機列をシャッフルします。
 
@@ -430,7 +430,7 @@ shuffle(): void;
 skip(count?): number;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:256](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L256)
+定義: [plugins/music/src/GuildQueue.ts:256](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L256)
 
 現在のトラックをスキップします。`count` 曲まとめてスキップできます。
 `loop: "track"` は無視されます(同じ曲が繰り返されない)。
@@ -457,7 +457,7 @@ skip(count?): number;
 start(): Promise<void>;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:243](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L243)
+定義: [plugins/music/src/GuildQueue.ts:243](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L243)
 
 再生を開始します。すでに再生中、またはキューが空なら何もしません。
 
@@ -473,7 +473,7 @@ start(): Promise<void>;
 stop(): void;
 ```
 
-定義: [plugins/music/src/GuildQueue.ts:281](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/GuildQueue.ts#L281)
+定義: [plugins/music/src/GuildQueue.ts:281](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/GuildQueue.ts#L281)
 
 再生を止め、キューを空にして切断します。
 

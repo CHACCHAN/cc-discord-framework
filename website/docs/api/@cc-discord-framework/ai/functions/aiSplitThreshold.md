@@ -4,7 +4,7 @@
 function aiSplitThreshold(display, embeds): number;
 ```
 
-定義: [plugins/ai/src/config.ts:378](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L378)
+定義: [plugins/ai/src/config.ts:403](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L403)
 
 その呼び出しで実際に使う分割位置を返します。
 

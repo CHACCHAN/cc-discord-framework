@@ -10,7 +10,7 @@
 commandDenied: [UserError, CommandRunPayload];
 ```
 
-定義: [src/events.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L52)
+定義: [src/events.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L54)
 
 ***
 
@@ -20,7 +20,7 @@ commandDenied: [UserError, CommandRunPayload];
 commandError: [unknown, CommandRunPayload];
 ```
 
-定義: [src/events.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L53)
+定義: [src/events.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L55)
 
 ***
 
@@ -30,7 +30,7 @@ commandError: [unknown, CommandRunPayload];
 commandRun: [CommandRunPayload];
 ```
 
-定義: [src/events.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L51)
+定義: [src/events.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L53)
 
 ***
 
@@ -40,7 +40,7 @@ commandRun: [CommandRunPayload];
 commandsSynced: [CommandsSyncedResult];
 ```
 
-定義: [src/events.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L55)
+定義: [src/events.ts:57](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L57)
 
 ***
 
@@ -50,7 +50,7 @@ commandsSynced: [CommandsSyncedResult];
 componentLoaded: [Component];
 ```
 
-定義: [src/events.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L49)
+定義: [src/events.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L51)
 
 ***
 
@@ -60,7 +60,7 @@ componentLoaded: [Component];
 componentUnloaded: [Component];
 ```
 
-定義: [src/events.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L50)
+定義: [src/events.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L52)
 
 ***
 
@@ -70,4 +70,4 @@ componentUnloaded: [Component];
 listenerError: [unknown, Listener<keyof ClientEvents>];
 ```
 
-定義: [src/events.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/events.ts#L54)
+定義: [src/events.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/events.ts#L56)

@@ -1,6 +1,6 @@
 # インターフェイス: MusicConfig
 
-定義: [plugins/music/src/config.ts:66](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L66)
+定義: [plugins/music/src/config.ts:66](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L66)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 readonly defaultVolume: number;
 ```
 
-定義: [plugins/music/src/config.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L67)
+定義: [plugins/music/src/config.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L67)
 
 ***
 
@@ -20,7 +20,7 @@ readonly defaultVolume: number;
 readonly leaveOnEmpty: number | false;
 ```
 
-定義: [plugins/music/src/config.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L69)
+定義: [plugins/music/src/config.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L69)
 
 ***
 
@@ -30,7 +30,7 @@ readonly leaveOnEmpty: number | false;
 readonly leaveOnEnd: number | false;
 ```
 
-定義: [plugins/music/src/config.ts:68](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L68)
+定義: [plugins/music/src/config.ts:68](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L68)
 
 ***
 
@@ -40,7 +40,7 @@ readonly leaveOnEnd: number | false;
 readonly limits: MusicLimits;
 ```
 
-定義: [plugins/music/src/config.ts:75](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L75)
+定義: [plugins/music/src/config.ts:75](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L75)
 
 数量の上限。
 
@@ -52,7 +52,7 @@ readonly limits: MusicLimits;
 readonly localDirectories: readonly string[];
 ```
 
-定義: [plugins/music/src/config.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L71)
+定義: [plugins/music/src/config.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L71)
 
 ローカル再生を許可する絶対パス。空ならローカル再生は無効。
 
@@ -64,7 +64,7 @@ readonly localDirectories: readonly string[];
 readonly network: MusicNetworkConfig;
 ```
 
-定義: [plugins/music/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L79)
+定義: [plugins/music/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L79)
 
 音源の取得まわり。
 
@@ -76,7 +76,7 @@ readonly network: MusicNetworkConfig;
 readonly texts: MusicTexts;
 ```
 
-定義: [plugins/music/src/config.ts:73](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L73)
+定義: [plugins/music/src/config.ts:73](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L73)
 
 エンジンが投げるエラーの文言。
 
@@ -88,6 +88,6 @@ readonly texts: MusicTexts;
 readonly voice: MusicVoiceConfig;
 ```
 
-定義: [plugins/music/src/config.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L77)
+定義: [plugins/music/src/config.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L77)
 
 ボイス接続の挙動。

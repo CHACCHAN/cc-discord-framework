@@ -77,6 +77,7 @@
 - [ai](functions/ai.md)
 - [aiConfigOf](functions/aiConfigOf.md)
 - [aiSplitThreshold](functions/aiSplitThreshold.md)
+- [mergeAiDisplay](functions/mergeAiDisplay.md)
 - [messageOf](functions/messageOf.md)
 - [renderAiPayload](functions/renderAiPayload.md)
 - [reportAiError](functions/reportAiError.md)

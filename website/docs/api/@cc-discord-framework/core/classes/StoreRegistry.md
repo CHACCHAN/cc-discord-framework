@@ -1,6 +1,6 @@
 # クラス: StoreRegistry
 
-定義: [src/component/StoreRegistry.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L39)
+定義: [src/component/StoreRegistry.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L39)
 
 クライアントが持つ全コンポーネントストアの集合。
 
@@ -20,7 +20,7 @@
 iterator: Iterator<ComponentStore<Component>>;
 ```
 
-定義: [src/component/StoreRegistry.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L103)
+定義: [src/component/StoreRegistry.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L103)
 
 #### 戻り値
 
@@ -42,7 +42,7 @@ Iterable.[iterator]
 get<K>(name): Stores[K];
 ```
 
-定義: [src/component/StoreRegistry.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L62)
+定義: [src/component/StoreRegistry.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L62)
 
 ストアを名前で取得します。[Stores](../interfaces/Stores.md) インターフェースにより型付けされます。
 
@@ -70,7 +70,7 @@ get(name):
   | undefined;
 ```
 
-定義: [src/component/StoreRegistry.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L63)
+定義: [src/component/StoreRegistry.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L63)
 
 ストアを名前で取得します。[Stores](../interfaces/Stores.md) インターフェースにより型付けされます。
 
@@ -93,7 +93,7 @@ get(name):
 loadAll(baseDirectory): Promise<void>;
 ```
 
-定義: [src/component/StoreRegistry.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L90)
+定義: [src/component/StoreRegistry.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L90)
 
 すべてのストアを登録順に順次ロードします。ロード時のイベントと失敗を
 決定的にするためです。
@@ -116,7 +116,7 @@ loadAll(baseDirectory): Promise<void>;
 register(store): this;
 ```
 
-定義: [src/component/StoreRegistry.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L49)
+定義: [src/component/StoreRegistry.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L49)
 
 ストアを登録します。クライアントのロード前に行ってください(プラグインの install で間に合います)。
 
@@ -138,7 +138,7 @@ register(store): this;
 resolve(cls): ComponentStore<Component>;
 ```
 
-定義: [src/component/StoreRegistry.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L72)
+定義: [src/component/StoreRegistry.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L72)
 
 コンポーネントクラスの担当ストアをプロトタイプチェーンから解決します。
 基底クラスが入れ子の場合は、より具体的なストアが優先されます。
@@ -161,7 +161,7 @@ resolve(cls): ComponentStore<Component>;
 unloadAll(): Promise<void>;
 ```
 
-定義: [src/component/StoreRegistry.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L97)
+定義: [src/component/StoreRegistry.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L97)
 
 すべてのストアのコンポーネントを登録の逆順にアンロードします。
 

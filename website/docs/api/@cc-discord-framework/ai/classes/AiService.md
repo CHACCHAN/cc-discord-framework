@@ -1,6 +1,6 @@
 # クラス: AiService
 
-定義: [plugins/ai/src/AiService.ts:160](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L160)
+定義: [plugins/ai/src/AiService.ts:193](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L193)
 
 AI 機能のエントリポイント。`this.services.ai` で参照できます。
 
@@ -39,7 +39,7 @@ new AiService(): AiService;
 readonly container: Container;
 ```
 
-定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L30)
+定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L30)
 
 フレームワーク共有サービスを持つコンテナ。
 
@@ -55,7 +55,7 @@ readonly container: Container;
 readonly location: string | null;
 ```
 
-定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L39)
+定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L39)
 
 自動探索されたファイルの絶対パス。明示登録の場合は `null`。
 
@@ -71,7 +71,7 @@ readonly location: string | null;
 readonly logger: Logger;
 ```
 
-定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L36)
+定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L36)
 
 このコンポーネント用の子ロガー(`{ store, component }` が付与済み)。
 
@@ -87,7 +87,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L27)
+定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L27)
 
 ストア内で一意なコンポーネント名。
 
@@ -103,7 +103,7 @@ readonly name: string;
 readonly store: ComponentStore<Component>;
 ```
 
-定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L33)
+定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L33)
 
 このコンポーネントが属するストア。
 
@@ -121,7 +121,7 @@ readonly store: ComponentStore<Component>;
 get client(): Client;
 ```
 
-定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L42)
+定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L42)
 
 フレームワーククライアント。
 
@@ -143,7 +143,7 @@ get client(): Client;
 get config(): AiConfig;
 ```
 
-定義: [plugins/ai/src/AiService.ts:167](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L167)
+定義: [plugins/ai/src/AiService.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L200)
 
 このクライアントの ai 設定。
 
@@ -161,7 +161,7 @@ get config(): AiConfig;
 get memory(): AiMemoryStore;
 ```
 
-定義: [plugins/ai/src/AiService.ts:175](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L175)
+定義: [plugins/ai/src/AiService.ts:208](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L208)
 
 会話履歴の置き場。`memory.store` を指定していればそれ、
 指定していなければ Map ベースの既定実装です。
@@ -180,7 +180,7 @@ get memory(): AiMemoryStore;
 get services(): Services;
 ```
 
-定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L50)
+定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L50)
 
 ロード済みサービスへのアクセス(`services/` から自動収束)。
 import せずに `this.services.<名前>` で参照できます。
@@ -201,7 +201,7 @@ import せずに `this.services.<名前>` で参照できます。
 ask(prompt, options?): Promise<string>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:218](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L218)
+定義: [plugins/ai/src/AiService.ts:251](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L251)
 
 一問一答。本文だけを返します。
 
@@ -227,7 +227,7 @@ ask(prompt, options?): Promise<string>;
 forget(key): Promise<boolean>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:587](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L587)
+定義: [plugins/ai/src/AiService.ts:626](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L626)
 
 そのキーの会話履歴を消します。消すものがあったかを返します。
 `reply()` / `generate()` の `history` に渡したのと同じキーを渡してください。
@@ -250,7 +250,7 @@ forget(key): Promise<boolean>;
 generate(options): Promise<GenerateTextResult<ToolSet, Context, Output<any, any, any>>>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:227](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L227)
+定義: [plugins/ai/src/AiService.ts:260](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L260)
 
 `generateText` の薄いラッパ。結果をそのまま返します。
 `history` を指定した場合は、終わったあとに履歴へ追記します。
@@ -273,7 +273,7 @@ generate(options): Promise<GenerateTextResult<ToolSet, Context, Output<any, any,
 history(key): Promise<ModelMessage[]>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:576](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L576)
+定義: [plugins/ai/src/AiService.ts:615](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L615)
 
 そのキーの会話履歴を古い順に返します。キーは呼び出し側が決めます
 (チャンネル ID にすればチャンネル単位、`"<チャンネル>:<ユーザー>"`
@@ -298,7 +298,7 @@ history(key): Promise<ModelMessage[]>;
 model(id?): Promise<LanguageModel>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:189](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L189)
+定義: [plugins/ai/src/AiService.ts:222](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L222)
 
 モデル指定を解決します。省略すると `ai({ model })` の既定を使い、
 それも無ければ [ModelNotConfiguredError](ModelNotConfiguredError.md) を投げます。
@@ -324,7 +324,7 @@ object<SCHEMA>(
 options?): Promise<InferSchema<SCHEMA>>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:258](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L258)
+定義: [plugins/ai/src/AiService.ts:291](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L291)
 
 `generateObject` で構造化データを取り出します。
 
@@ -360,7 +360,7 @@ options?): Promise<InferSchema<SCHEMA>>;
 optional onLoad(): unknown;
 ```
 
-定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L55)
+定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L55)
 
 初期化後・ストア追加前に呼ばれます。
 
@@ -380,7 +380,7 @@ optional onLoad(): unknown;
 onUnload(): void;
 ```
 
-定義: [plugins/ai/src/AiService.ts:593](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L593)
+定義: [plugins/ai/src/AiService.ts:632](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L632)
 
 ストアから取り除かれるときに呼ばれます(クライアント終了時を含む)。
 
@@ -400,7 +400,7 @@ onUnload(): void;
 reply(target, options): Promise<AiReplyResult>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:323](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L323)
+定義: [plugins/ai/src/AiService.ts:356](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L356)
 
 Discord へ **ストリーミング表示しながら** 答えます。
 
@@ -444,7 +444,7 @@ Discord へ **ストリーミング表示しながら** 答えます。
 stream(options): Promise<StreamTextResult<ToolSet, Context, Output<any, any, any>>>;
 ```
 
-定義: [plugins/ai/src/AiService.ts:245](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L245)
+定義: [plugins/ai/src/AiService.ts:278](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L278)
 
 `streamText` の薄いラッパ。結果をそのまま返します。
 
@@ -471,7 +471,7 @@ stream(options): Promise<StreamTextResult<ToolSet, Context, Output<any, any, any
 tools(context?): ToolSet;
 ```
 
-定義: [plugins/ai/src/AiService.ts:207](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L207)
+定義: [plugins/ai/src/AiService.ts:240](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L240)
 
 登録済みの [AiTool](AiTool.md) から `ToolSet` を作ります。
 `tools.enabled: false` なら空です。
@@ -494,7 +494,7 @@ tools(context?): ToolSet;
 static define(options?): (_target, context) => void;
 ```
 
-定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/service/Service.ts#L47)
+定義: [src/service/Service.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/service/Service.ts#L47)
 
 サービスのメタデータを宣言します。省略可能です。
 

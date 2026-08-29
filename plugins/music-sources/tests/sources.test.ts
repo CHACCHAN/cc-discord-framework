@@ -66,7 +66,6 @@ describe("musicSources() の設定", () => {
 		const youtube = client.container.musicSourcesConfig.youtube;
 		expect(youtube.searchLimit).toBe(1);
 		expect(youtube.ytdlp.path).toBe("/opt/yt-dlp");
-		// 指定しなかった項目は既定のまま
 		expect(youtube.playlistLimit).toBe(100);
 		expect(youtube.ytdlp.format).toBe("bestaudio[acodec=opus]/bestaudio");
 

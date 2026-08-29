@@ -96,7 +96,6 @@ describe("AiService の履歴", () => {
 
 		await ai.ask("1回目", { history: "c1" });
 		const result = await ai.generate({ prompt: "2回目", history: "c1" });
-		// モデルへ渡ったメッセージを、モックが記録した呼び出しから確かめる。
 		expect(result.steps[0]?.response.messages.length).toBeGreaterThan(0);
 		expect((await ai.history("c1")).map((m) => m.content)).toEqual([
 			"1回目",

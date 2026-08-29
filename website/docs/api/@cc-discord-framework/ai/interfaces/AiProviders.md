@@ -1,6 +1,6 @@
 # インターフェイス: AiProviders
 
-定義: [plugins/ai/src/models.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L59)
+定義: [plugins/ai/src/models.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L59)
 
 プロバイダーごとの接続設定。
 `providerLoaders` で足したプロバイダーの設定もここへ書きます。
@@ -21,7 +21,7 @@
 readonly optional anthropic?: AiProviderSettings;
 ```
 
-定義: [plugins/ai/src/models.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L61)
+定義: [plugins/ai/src/models.ts:61](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L61)
 
 ***
 
@@ -31,7 +31,7 @@ readonly optional anthropic?: AiProviderSettings;
 readonly optional compatible?: AiProviderSettings;
 ```
 
-定義: [plugins/ai/src/models.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L63)
+定義: [plugins/ai/src/models.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L63)
 
 ***
 
@@ -41,7 +41,7 @@ readonly optional compatible?: AiProviderSettings;
 readonly optional google?: AiProviderSettings;
 ```
 
-定義: [plugins/ai/src/models.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L62)
+定義: [plugins/ai/src/models.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L62)
 
 ***
 
@@ -51,4 +51,4 @@ readonly optional google?: AiProviderSettings;
 readonly optional openai?: AiProviderSettings;
 ```
 
-定義: [plugins/ai/src/models.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L60)
+定義: [plugins/ai/src/models.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L60)

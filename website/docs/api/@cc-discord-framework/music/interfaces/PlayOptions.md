@@ -1,6 +1,6 @@
 # インターフェイス: PlayOptions
 
-定義: [plugins/music/src/AudioService.ts:9](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L9)
+定義: [plugins/music/src/AudioService.ts:9](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L9)
 
 [AudioService.play](../classes/AudioService.md#play) の引数。
 
@@ -12,7 +12,7 @@
 readonly channel: VoiceBasedChannel;
 ```
 
-定義: [plugins/music/src/AudioService.ts:11](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L11)
+定義: [plugins/music/src/AudioService.ts:11](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L11)
 
 接続先のボイスチャンネル。
 
@@ -24,7 +24,7 @@ readonly channel: VoiceBasedChannel;
 readonly optional next?: boolean;
 ```
 
-定義: [plugins/music/src/AudioService.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L22)
+定義: [plugins/music/src/AudioService.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L22)
 
 キュー先頭へ割り込む。
 
@@ -36,7 +36,7 @@ readonly optional next?: boolean;
 readonly query: string;
 ```
 
-定義: [plugins/music/src/AudioService.ts:13](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L13)
+定義: [plugins/music/src/AudioService.ts:13](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L13)
 
 URL または検索クエリ。
 
@@ -48,7 +48,7 @@ URL または検索クエリ。
 readonly optional requestedBy?: string;
 ```
 
-定義: [plugins/music/src/AudioService.ts:15](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L15)
+定義: [plugins/music/src/AudioService.ts:15](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L15)
 
 リクエストしたユーザーの ID。
 
@@ -60,7 +60,7 @@ readonly optional requestedBy?: string;
 readonly optional textChannel?: TextBasedChannel;
 ```
 
-定義: [plugins/music/src/AudioService.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/AudioService.ts#L20)
+定義: [plugins/music/src/AudioService.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/AudioService.ts#L20)
 
 通知先として `queue.textChannel` に記録するテキストチャンネル。
 プラグインはここへ送信しません(表示は Bot 側のリスナーの担当)。

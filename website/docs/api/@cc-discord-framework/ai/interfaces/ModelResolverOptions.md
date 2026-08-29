@@ -1,6 +1,6 @@
 # インターフェイス: ModelResolverOptions
 
-定義: [plugins/ai/src/models.ts:141](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L141)
+定義: [plugins/ai/src/models.ts:141](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L141)
 
 [ModelResolver](../classes/ModelResolver.md) の依存。
 
@@ -12,7 +12,7 @@
 readonly optional loaders?: Readonly<Record<string, AiProviderLoader>>;
 ```
 
-定義: [plugins/ai/src/models.ts:153](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L153)
+定義: [plugins/ai/src/models.ts:153](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L153)
 
 プロバイダーの読み込み方。省略すると [builtinProviders](../variables/builtinProviders.md)。
 足したい・差し替えたい場合は `ai({ providerLoaders })` を使ってください
@@ -26,7 +26,7 @@ readonly optional loaders?: Readonly<Record<string, AiProviderLoader>>;
 readonly providers: AiProviders;
 ```
 
-定義: [plugins/ai/src/models.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L143)
+定義: [plugins/ai/src/models.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L143)
 
 プロバイダーごとの接続設定。
 
@@ -38,7 +38,7 @@ readonly providers: AiProviders;
 readonly registry: AiRegistry | null;
 ```
 
-定義: [plugins/ai/src/models.ts:145](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L145)
+定義: [plugins/ai/src/models.ts:145](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L145)
 
 自前のレジストリ。指定するとすべての文字列がこれで解決されます。
 
@@ -50,6 +50,6 @@ readonly registry: AiRegistry | null;
 readonly texts: AiTexts;
 ```
 
-定義: [plugins/ai/src/models.ts:147](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/models.ts#L147)
+定義: [plugins/ai/src/models.ts:147](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/models.ts#L147)
 
 エラー文言。

@@ -1,6 +1,6 @@
 # インターフェイス: AiDisplayConfig
 
-定義: [plugins/ai/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L79)
+定義: [plugins/ai/src/config.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L79)
 
 応答の見せ方。
 
@@ -12,7 +12,7 @@
 readonly allowedMentions: MessageMentionOptions | null;
 ```
 
-定義: [plugins/ai/src/config.ts:106](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L106)
+定義: [plugins/ai/src/config.ts:106](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L106)
 
 応答のメンションをどこまで解決するか。`null` を渡すと discord.js の
 既定(本文に書かれたメンションはすべて解決される)に任せます。
@@ -29,7 +29,7 @@ readonly allowedMentions: MessageMentionOptions | null;
 readonly optional decorate?: (embed, kind) => EmbedBuilder;
 ```
 
-定義: [plugins/ai/src/config.ts:116](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L116)
+定義: [plugins/ai/src/config.ts:116](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L116)
 
 応答の埋め込みに手を入れるフック。title・footer・timestamp などを
 足したい場合に使います。返した EmbedBuilder が送られます。
@@ -66,7 +66,7 @@ readonly optional decorate?: (embed, kind) => EmbedBuilder;
 readonly embeds: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L81)
+定義: [plugins/ai/src/config.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L81)
 
 応答を埋め込みで返す。`false` でプレーンテキスト。
 
@@ -78,7 +78,7 @@ readonly embeds: boolean;
 readonly ephemeral: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:83](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L83)
+定義: [plugins/ai/src/config.ts:83](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L83)
 
 応答を本人にだけ見える形にする。
 
@@ -90,7 +90,7 @@ readonly ephemeral: boolean;
 readonly optional payload?: (payload, context) => AiMessagePayload;
 ```
 
-定義: [plugins/ai/src/config.ts:126](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L126)
+定義: [plugins/ai/src/config.ts:126](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L126)
 
 送信ペイロードそのものに手を入れるフック。
 
@@ -127,7 +127,7 @@ readonly optional payload?: (payload, context) => AiMessagePayload;
 readonly splitThreshold: number | "auto";
 ```
 
-定義: [plugins/ai/src/config.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L97)
+定義: [plugins/ai/src/config.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L97)
 
 1通に収める最大文字数。超えた分は分割して2通目以降へ送ります。
 

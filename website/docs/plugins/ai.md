@@ -292,6 +292,34 @@ ai({
 | `display` | `embeds: true`・`ephemeral: false`・`splitThreshold: "auto"`・`allowedMentions`・`decorate`・`payload` | 応答の見せ方 |
 | `texts` | `thinking`・`emptyResponse`・`generationFailed`・`apiCallFailed`・`answerBody` など | ユーザーに見える文言(すべて差し替え可能) |
 
+### 呼び出し単位で見た目を変える
+
+`display` と `texts` は **`reply()` の引数でも**項目単位で上書きできます。
+設定はクライアント全体の既定、引数は**その呼び出しだけ**の上書きです
+(`decorate` / `payload` は関数ごと置き換わります)。コマンドごとに
+まったく違う見た目を作れます:
+
+```ts
+await this.services.ai.reply(interaction, {
+  prompt,
+  kind: "warning",  // 埋め込みの色(success / info / warning / error)
+  display: {
+    decorate: (embed) => embed.setTitle("質問への回答").setTimestamp(),
+    payload: (payload) => ({ ...payload, components: [row] }),  // ボタンも足せる
+    allowedMentions: { parse: ["users"] },
+  },
+  texts: {
+    answerBody: ({ answer, sources }, texts) =>
+      [answer, "", texts.sourcesHeader, ...sources].join("\n"),
+  },
+});
+```
+
+フラットな `embeds` / `ephemeral` オプションは `display` の同名キーの
+ショートハンドで、両方指定した場合はフラットな指定が優先です。送信
+ペイロードには `components` / `files` も載せられます(`display.payload`
+から返すだけです)。
+
 ### クールダウンと払い戻し
 
 `limits.cooldown` は、同じユーザーが続けて `reply()` を呼べるまでの間隔です(既定は無効)。**本文を1文字も届けられなかった失敗は数えません** — モデル未設定やプロバイダー障害などで何も表示できなかった呼び出しは払い戻されます。途中まで表示できた応答は利用として数えます。

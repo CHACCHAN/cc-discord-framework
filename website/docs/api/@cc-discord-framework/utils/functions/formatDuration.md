@@ -4,7 +4,7 @@
 function formatDuration(ms, options?): string;
 ```
 
-定義: [plugins/utils/src/duration.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L84)
+定義: [plugins/utils/src/duration.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L84)
 
 時計表記に整形します — 再生位置や残り時間の表示向け。
 

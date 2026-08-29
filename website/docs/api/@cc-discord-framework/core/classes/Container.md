@@ -1,6 +1,6 @@
 # クラス: Container
 
-定義: [src/container.ts:31](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L31)
+定義: [src/container.ts:31](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L31)
 
 フレームワーク全体で共有されるサービス群。すべてのコンポーネントから
 `this.container`、クライアントからは `client.container` で参照できます。
@@ -44,7 +44,7 @@ new Container(): Container;
 readonly client: Client;
 ```
 
-定義: [src/container.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L33)
+定義: [src/container.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L33)
 
 フレームワーククライアント。
 
@@ -56,7 +56,7 @@ readonly client: Client;
 readonly logger: Logger;
 ```
 
-定義: [src/container.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L36)
+定義: [src/container.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L36)
 
 ルートの pino ロガー。
 
@@ -68,7 +68,7 @@ readonly logger: Logger;
 readonly stores: StoreRegistry;
 ```
 
-定義: [src/container.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L45)
+定義: [src/container.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L45)
 
 すべてのコンポーネントストア。
 
@@ -80,7 +80,7 @@ readonly stores: StoreRegistry;
 readonly texts: ClientTexts;
 ```
 
-定義: [src/container.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L42)
+定義: [src/container.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L42)
 
 フレームワークがユーザーへ返す文言(解決済み)。
 `new Client({ texts: { ... } })` で項目ごとに差し替えられます。
@@ -95,7 +95,7 @@ readonly texts: ClientTexts;
 get services(): Services;
 ```
 
-定義: [src/container.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/container.ts#L48)
+定義: [src/container.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/container.ts#L48)
 
 ロード済みサービスの名前付きレジストリ(`services/` から自動収束)。
 

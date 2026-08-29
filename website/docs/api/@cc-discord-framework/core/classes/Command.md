@@ -1,11 +1,13 @@
 # 抽象 クラス: Command
 
-定義: [src/command/Command.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L65)
+定義: [src/command/Command.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L76)
 
 コマンド。必要なフローを1つ以上実装してください:
 
 - [Command.chatInputRun](#chatinputrun) — スラッシュコマンド(`/ping`)
 - [Command.messageRun](#messagerun) — プレフィックスコマンド(`!ping`、`defaultPrefix` が必要)
+- [Command.mentionRun](#mentionrun) — メンションコマンド(`@Bot こんにちは`、既定は Bot 自身への
+  メンションに反応。`mentions` オプションで任意のユーザー ID に変えられます)
 - [Command.autocompleteRun](#autocompleterun) — スラッシュオプションの autocomplete
 
 ```ts
@@ -48,7 +50,7 @@ new Command(): Command;
 readonly aliases: readonly string[];
 ```
 
-定義: [src/command/Command.ts:73](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L73)
+定義: [src/command/Command.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L84)
 
 プレフィックスコマンドの別名。
 
@@ -60,7 +62,7 @@ readonly aliases: readonly string[];
 readonly container: Container;
 ```
 
-定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L30)
+定義: [src/component/Component.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L30)
 
 フレームワーク共有サービスを持つコンテナ。
 
@@ -76,7 +78,7 @@ readonly container: Container;
 readonly defaultMemberPermissions: PermissionResolvable | null;
 ```
 
-定義: [src/command/Command.ts:85](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L85)
+定義: [src/command/Command.ts:96](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L96)
 
 Discord 側のデフォルト権限ゲート。
 
@@ -88,7 +90,7 @@ Discord 側のデフォルト権限ゲート。
 readonly description: string;
 ```
 
-定義: [src/command/Command.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L67)
+定義: [src/command/Command.ts:78](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L78)
 
 Discord に表示される説明(メッセージ専用コマンドでは空文字)。
 
@@ -100,7 +102,7 @@ Discord に表示される説明(メッセージ専用コマンドでは空文�
 readonly descriptionLocalizations: Partial<Record<Locale, string | null>> | null;
 ```
 
-定義: [src/command/Command.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L94)
+定義: [src/command/Command.ts:105](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L105)
 
 説明のローカライズ。
 
@@ -112,7 +114,7 @@ readonly descriptionLocalizations: Partial<Record<Locale, string | null>> | null
 readonly guildIds: readonly string[] | null;
 ```
 
-定義: [src/command/Command.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L88)
+定義: [src/command/Command.ts:99](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L99)
 
 このスラッシュコマンドの登録先ギルド(`null` = クライアント既定 / グローバル)。
 
@@ -124,7 +126,7 @@ readonly guildIds: readonly string[] | null;
 readonly location: string | null;
 ```
 
-定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L39)
+定義: [src/component/Component.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L39)
 
 自動探索されたファイルの絶対パス。明示登録の場合は `null`。
 
@@ -140,7 +142,7 @@ readonly location: string | null;
 readonly logger: Logger;
 ```
 
-定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L36)
+定義: [src/component/Component.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L36)
 
 このコンポーネント用の子ロガー(`{ store, component }` が付与済み)。
 
@@ -150,13 +152,26 @@ readonly logger: Logger;
 
 ***
 
+### mentions \{#mentions}
+
+```ts
+readonly mentions: readonly string[] | null;
+```
+
+定義: [src/command/Command.ts:111](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L111)
+
+反応するメンションの対象(`"self"` = Bot 自身、それ以外はユーザー ID)。
+`null` ならメンションでは反応しません。
+
+***
+
 ### name \{#name}
 
 ```ts
 readonly name: string;
 ```
 
-定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L27)
+定義: [src/component/Component.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L27)
 
 ストア内で一意なコンポーネント名。
 
@@ -172,7 +187,7 @@ readonly name: string;
 readonly nameLocalizations: Partial<Record<Locale, string | null>> | null;
 ```
 
-定義: [src/command/Command.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L91)
+定義: [src/command/Command.ts:102](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L102)
 
 名前のローカライズ。
 
@@ -184,7 +199,7 @@ readonly nameLocalizations: Partial<Record<Locale, string | null>> | null;
 readonly options: readonly APIApplicationCommandOption[];
 ```
 
-定義: [src/command/Command.ts:70](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L70)
+定義: [src/command/Command.ts:81](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L81)
 
 スラッシュコマンドのオプション(生の Discord API データ)。
 
@@ -196,7 +211,7 @@ readonly options: readonly APIApplicationCommandOption[];
 readonly preconditions: readonly string[];
 ```
 
-定義: [src/command/Command.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L76)
+定義: [src/command/Command.ts:87](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L87)
 
 このコマンドをガードする Precondition 名。
 
@@ -208,7 +223,7 @@ readonly preconditions: readonly string[];
 readonly requiredClientPermissions: PermissionResolvable | null;
 ```
 
-定義: [src/command/Command.ts:82](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L82)
+定義: [src/command/Command.ts:93](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L93)
 
 Bot にチャンネルで要求される権限。
 
@@ -220,7 +235,7 @@ Bot にチャンネルで要求される権限。
 readonly requiredUserPermissions: PermissionResolvable | null;
 ```
 
-定義: [src/command/Command.ts:79](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L79)
+定義: [src/command/Command.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L90)
 
 呼び出しメンバーに要求される権限。
 
@@ -232,7 +247,7 @@ readonly requiredUserPermissions: PermissionResolvable | null;
 readonly store: ComponentStore<Component>;
 ```
 
-定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L33)
+定義: [src/component/Component.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L33)
 
 このコンポーネントが属するストア。
 
@@ -250,7 +265,7 @@ readonly store: ComponentStore<Component>;
 get client(): Client;
 ```
 
-定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L42)
+定義: [src/component/Component.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L42)
 
 フレームワーククライアント。
 
@@ -272,7 +287,7 @@ get client(): Client;
 get services(): Services;
 ```
 
-定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L50)
+定義: [src/component/Component.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L50)
 
 ロード済みサービスへのアクセス(`services/` から自動収束)。
 import せずに `this.services.<名前>` で参照できます。
@@ -295,9 +310,27 @@ import せずに `this.services.<名前>` で参照できます。
 get supportsChatInput(): boolean;
 ```
 
-定義: [src/command/Command.ts:111](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L111)
+定義: [src/command/Command.ts:139](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L139)
 
 スラッシュコマンドとして公開されるかどうか。
+
+##### 戻り値
+
+`boolean`
+
+***
+
+### supportsMention \{#supportsmention}
+
+#### 署名を取得する
+
+```ts
+get supportsMention(): boolean;
+```
+
+定義: [src/command/Command.ts:149](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L149)
+
+メンションで呼び出せるかどうか。
 
 ##### 戻り値
 
@@ -313,7 +346,7 @@ get supportsChatInput(): boolean;
 get supportsMessage(): boolean;
 ```
 
-定義: [src/command/Command.ts:116](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L116)
+定義: [src/command/Command.ts:144](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L144)
 
 メッセージプレフィックスで呼び出せるかどうか。
 
@@ -329,7 +362,7 @@ get supportsMessage(): boolean;
 optional autocompleteRun(interaction): unknown;
 ```
 
-定義: [src/command/Command.ts:108](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L108)
+定義: [src/command/Command.ts:136](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L136)
 
 このコマンドのオプションに対する autocomplete ハンドラ。
 
@@ -351,7 +384,7 @@ optional autocompleteRun(interaction): unknown;
 optional chatInputRun(interaction): unknown;
 ```
 
-定義: [src/command/Command.ts:102](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L102)
+定義: [src/command/Command.ts:119](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L119)
 
 スラッシュコマンドの実装。
 
@@ -367,13 +400,45 @@ optional chatInputRun(interaction): unknown;
 
 ***
 
+### mentionRun()? \{#mentionrun}
+
+```ts
+optional mentionRun(message, content): unknown;
+```
+
+定義: [src/command/Command.ts:133](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L133)
+
+メンションコマンドの実装 — 対象([CommandOptions.mentions](../interfaces/CommandOptions.md#mentions)、既定は
+Bot 自身)へのメンションを含むメッセージに反応します。`content` には
+本文から対象のメンションを取り除いて trim した文字列が渡ります。
+
+本文を読むため **MessageContent インテントが必要** です。リプライの
+ピン(返信時の通知)は本文に現れないので誤発火しません。Bot と Webhook
+の発言も無視されます。
+
+#### パラメータ
+
+##### message
+
+`Message`
+
+##### content
+
+`string`
+
+#### 戻り値
+
+`unknown`
+
+***
+
 ### messageRun()? \{#messagerun}
 
 ```ts
 optional messageRun(message, args): unknown;
 ```
 
-定義: [src/command/Command.ts:105](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L105)
+定義: [src/command/Command.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L122)
 
 プレフィックス(メッセージ)コマンドの実装。
 
@@ -399,7 +464,7 @@ optional messageRun(message, args): unknown;
 optional onLoad(): unknown;
 ```
 
-定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L55)
+定義: [src/component/Component.ts:55](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L55)
 
 初期化後・ストア追加前に呼ばれます。
 
@@ -419,7 +484,7 @@ optional onLoad(): unknown;
 optional onUnload(): unknown;
 ```
 
-定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/Component.ts#L58)
+定義: [src/component/Component.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/Component.ts#L58)
 
 ストアから取り除かれるときに呼ばれます(クライアント終了時を含む)。
 
@@ -439,7 +504,7 @@ optional onUnload(): unknown;
 toApplicationCommand(): RESTPostAPIChatInputApplicationCommandsJSONBody;
 ```
 
-定義: [src/command/Command.ts:126](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L126)
+定義: [src/command/Command.ts:159](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L159)
 
 このスラッシュコマンドの登録に使う Discord API ペイロードを構築します。
 メタデータが扱わないフィールド(contexts、integration types など)を
@@ -458,7 +523,7 @@ toApplicationCommand(): RESTPostAPIChatInputApplicationCommandsJSONBody;
 static define(options?): (_target, context) => void;
 ```
 
-定義: [src/command/Command.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/Command.ts#L97)
+定義: [src/command/Command.ts:114](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/Command.ts#L114)
 
 コマンドのメタデータを宣言します。
 

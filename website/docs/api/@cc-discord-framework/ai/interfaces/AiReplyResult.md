@@ -1,6 +1,6 @@
 # インターフェイス: AiReplyResult
 
-定義: [plugins/ai/src/AiService.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L97)
+定義: [plugins/ai/src/AiService.ts:130](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L130)
 
 [AiService.reply](../classes/AiService.md#reply) の戻り値。
 
@@ -12,7 +12,7 @@
 readonly edits: number;
 ```
 
-定義: [plugins/ai/src/AiService.ts:114](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L114)
+定義: [plugins/ai/src/AiService.ts:147](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L147)
 
 実際に送った編集の回数(途中経過 + 最終)。
 
@@ -24,7 +24,7 @@ readonly edits: number;
 readonly error: unknown;
 ```
 
-定義: [plugins/ai/src/AiService.ts:118](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L118)
+定義: [plugins/ai/src/AiService.ts:151](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L151)
 
 生成に失敗した場合のエラー。成功なら `null`。
 
@@ -36,7 +36,7 @@ readonly error: unknown;
 readonly finishReason: string | null;
 ```
 
-定義: [plugins/ai/src/AiService.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L110)
+定義: [plugins/ai/src/AiService.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L143)
 
 生成が終わった理由。判らなければ `null`。
 
@@ -48,7 +48,7 @@ readonly finishReason: string | null;
 readonly followUps: number;
 ```
 
-定義: [plugins/ai/src/AiService.ts:116](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L116)
+定義: [plugins/ai/src/AiService.ts:149](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L149)
 
 分割して追加送信した通数。
 
@@ -60,7 +60,7 @@ readonly followUps: number;
 readonly text: string;
 ```
 
-定義: [plugins/ai/src/AiService.ts:106](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L106)
+定義: [plugins/ai/src/AiService.ts:139](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L139)
 
 モデルが返した本文(`limits.maxResponseLength` での切り詰め後)。
 
@@ -77,7 +77,7 @@ readonly text: string;
 readonly toolNames: readonly string[];
 ```
 
-定義: [plugins/ai/src/AiService.ts:112](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L112)
+定義: [plugins/ai/src/AiService.ts:145](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L145)
 
 実際に呼ばれたツールの名前。
 
@@ -89,6 +89,6 @@ readonly toolNames: readonly string[];
 readonly usage: LanguageModelUsage | null;
 ```
 
-定義: [plugins/ai/src/AiService.ts:108](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/AiService.ts#L108)
+定義: [plugins/ai/src/AiService.ts:141](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/AiService.ts#L141)
 
 トークン数。判らなければ `null`。

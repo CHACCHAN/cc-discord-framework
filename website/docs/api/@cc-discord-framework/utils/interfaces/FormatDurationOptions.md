@@ -1,6 +1,6 @@
 # インターフェイス: FormatDurationOptions
 
-定義: [plugins/utils/src/duration.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L63)
+定義: [plugins/utils/src/duration.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L63)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 optional alwaysHours?: boolean;
 ```
 
-定義: [plugins/utils/src/duration.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L69)
+定義: [plugins/utils/src/duration.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L69)
 
 1時間未満でも時を出す。
 
@@ -26,7 +26,7 @@ optional alwaysHours?: boolean;
 optional pad?: string;
 ```
 
-定義: [plugins/utils/src/duration.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L65)
+定義: [plugins/utils/src/duration.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L65)
 
 分・秒を2桁に揃える文字。
 
@@ -42,7 +42,7 @@ optional pad?: string;
 optional separator?: string;
 ```
 
-定義: [plugins/utils/src/duration.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L67)
+定義: [plugins/utils/src/duration.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L67)
 
 時・分・秒の区切り。
 

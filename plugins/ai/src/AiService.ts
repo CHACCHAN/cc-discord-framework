@@ -19,7 +19,13 @@ import {
 } from "ai";
 import { Message, MessageFlags, Service, type RepliableInteraction } from "@cc-discord-framework/core";
 import type { AiToolContext } from "./AiTool.js";
-import { aiSplitThreshold, defaultAiConfig, type AiConfig } from "./config.js";
+import {
+	aiSplitThreshold,
+	defaultAiConfig,
+	mergeAiDisplay,
+	type AiConfig,
+	type AiDisplayOptions,
+} from "./config.js";
 import {
 	AiError,
 	AiTimeoutError,
@@ -33,7 +39,7 @@ import { AiEvents, reportAiError, type AiRequestInfo, type AiResponseInfo } from
 import { MapMemoryStore, type AiMemoryStore } from "./memory.js";
 import { ModelResolver, type AiModelInput } from "./models.js";
 import { renderAiPayload, type AiMessagePayload } from "./render.js";
-import type { AiAnswerParts, AiReplyKind, AiSource } from "./texts.js";
+import type { AiAnswerParts, AiReplyKind, AiSource, AiTexts, AiTextsOptions } from "./texts.js";
 
 /** `generateText` の戻り値(そのまま返します)。 */
 export type AiGenerateResult = Awaited<ReturnType<typeof generateText>>;
@@ -85,12 +91,39 @@ export type AiReplyTarget = RepliableInteraction | Message;
 export interface AiReplyOptions extends AiGenerateOptions {
 	/** 途中経過を編集で見せる。省略すると `stream.enabled`。 */
 	stream?: boolean;
-	/** 本人にだけ見せる。省略すると `display.ephemeral`。 */
+	/**
+	 * 本人にだけ見せる。`display.ephemeral` のショートハンドで、両方指定した
+	 * 場合はこちらが優先です。省略すると `display.ephemeral`。
+	 */
 	ephemeral?: boolean;
-	/** 埋め込みで返す。省略すると `display.embeds`。 */
+	/**
+	 * 埋め込みで返す。`display.embeds` のショートハンドで、両方指定した
+	 * 場合はこちらが優先です。省略すると `display.embeds`。
+	 */
 	embeds?: boolean;
 	/** 埋め込みの色に使う意味づけ。 */
 	kind?: AiReplyKind;
+	/**
+	 * **この呼び出しだけ** 表示設定をキー単位で上書きします。省略した項目は
+	 * `ai({ display })` の設定(それも無ければ既定値)のままです。
+	 *
+	 * ```ts
+	 * await this.services.ai.reply(interaction, {
+	 *   prompt,
+	 *   display: {
+	 *     decorate: (embed) => embed.setTitle("質問への回答"),
+	 *     payload: (payload) => ({ ...payload, components: [row] }),
+	 *   },
+	 * });
+	 * ```
+	 */
+	display?: AiDisplayOptions;
+	/**
+	 * **この呼び出しだけ** 文言(本文の組み立て {@link AiTexts.answerBody} を
+	 * 含む)を項目単位で上書きします。省略した項目は `ai({ texts })` の設定
+	 * のままです。
+	 */
+	texts?: AiTextsOptions;
 }
 
 /** {@link AiService.reply} の戻り値。 */
@@ -322,15 +355,19 @@ export class AiService extends Service {
 	 */
 	public async reply(target: AiReplyTarget, options: AiReplyOptions): Promise<AiReplyResult> {
 		const config = this.config;
-		const { texts, limits, display } = config;
+		const { limits } = config;
+		// 呼び出し単位の上書きを重ねる。以降、この呼び出しの表示と文言は
+		// すべてこのマージ結果を通る(設定でしか変えられない見た目を残さない)。
+		const display = mergeAiDisplay(config.display, options.display);
+		const texts: AiTexts = { ...config.texts, ...options.texts };
 		const toolContext = resolveToolContext({ ...contextFromTarget(target), ...options.context });
 
 		// --- 表示を引き受ける前に済ませる確認(ここでの失敗は throw する) ---
-		this.#checkPrompt(options.prompt);
+		this.#checkPrompt(options.prompt, texts);
 		// クールダウンは **先に刻む**(応答を待つあいだの連打も同じ入口で
 		// 弾くため)。ただし失敗して本文を1文字も届けられなかった呼び出しは
 		// 利用として数えず、あとで払い戻します。
-		const refundCooldown = this.#chargeCooldown(toolContext.userId);
+		const refundCooldown = this.#chargeCooldown(toolContext.userId, texts);
 
 		const streaming = options.stream ?? config.stream.enabled;
 		const ephemeral = options.ephemeral ?? display.ephemeral;
@@ -366,6 +403,8 @@ export class AiService extends Service {
 				index: position.index ?? 1,
 				total: position.total ?? 1,
 				streaming: position.streaming ?? false,
+				// マージは renderAiPayload 側で行うので、上書き分だけを渡す。
+				display: options.display,
 			});
 
 		let model: LanguageModel;
@@ -445,7 +484,7 @@ export class AiService extends Service {
 						captured ??= error;
 					},
 				});
-				for await (const delta of this.#tracked(result.textStream, context)) {
+				for await (const delta of this.#tracked(result.textStream, context, texts)) {
 					answer += delta;
 					if (displayBroken || pending !== null) continue;
 					const now = Date.now();
@@ -482,6 +521,7 @@ export class AiService extends Service {
 							throw streamFailure(error, captured);
 						}),
 					context,
+					texts,
 				);
 				// 本文が出ていれば、途中で失敗しても Promise は解決します。
 				// その失敗を黙って捨てないよう、ログと `aiError` には出します。
@@ -491,7 +531,7 @@ export class AiService extends Service {
 				toolNames = uniqueToolNames(finalCalls);
 				sources = finalSources;
 			} else {
-				const result = await this.#run(() => generateText(context.call), context);
+				const result = await this.#run(() => generateText(context.call), context, texts);
 				answer = result.text;
 				usage = result.usage;
 				finishReason = result.finishReason;
@@ -694,11 +734,15 @@ export class AiService extends Service {
 	 * で abort します。そのままだと文言が固定されてしまうので、
 	 * `texts.timedOut` を使う {@link AiTimeoutError} へ包み直します。
 	 */
-	async #run<T>(run: () => Promise<T>, context: CallContext): Promise<T> {
+	async #run<T>(
+		run: () => Promise<T>,
+		context: CallContext,
+		texts: AiTexts = this.config.texts,
+	): Promise<T> {
 		try {
 			return await run();
 		} catch (error) {
-			throw this.#asTimeout(error, context);
+			throw this.#asTimeout(error, context, texts);
 		}
 	}
 
@@ -706,11 +750,12 @@ export class AiService extends Service {
 	async *#tracked(
 		stream: AsyncIterable<string>,
 		context: CallContext,
+		texts: AiTexts = this.config.texts,
 	): AsyncGenerator<string> {
 		try {
 			for await (const delta of stream) yield delta;
 		} catch (error) {
-			throw this.#asTimeout(error, context);
+			throw this.#asTimeout(error, context, texts);
 		}
 	}
 
@@ -719,16 +764,21 @@ export class AiService extends Service {
 	 * そのまま返します。**呼び出し側が自分で abort した場合は触りません**
 	 * (中断とタイムアウトを混同しないため)。
 	 */
-	#asTimeout(error: unknown, context: CallContext): unknown {
+	#asTimeout(
+		error: unknown,
+		context: CallContext,
+		texts: AiTexts = this.config.texts,
+	): unknown {
 		const timeout = context.call.timeout;
 		if (timeout === undefined) return error;
 		if (context.call.abortSignal?.aborted === true) return error;
 		if (!isTimeoutError(error)) return error;
-		return new AiTimeoutError(this.config.texts.timedOut(timeout), timeout);
+		return new AiTimeoutError(texts.timedOut(timeout), timeout);
 	}
 
-	#checkPrompt(prompt: string): void {
-		const { texts, limits } = this.config;
+	/** 入力の検査。`texts` は呼び出し単位の上書きを反映した文言カタログです。 */
+	#checkPrompt(prompt: string, texts: AiTexts = this.config.texts): void {
+		const { limits } = this.config;
 		if (prompt.trim().length === 0) throw new AiError(texts.promptEmpty);
 		if (prompt.length > limits.maxPromptLength) {
 			throw new PromptTooLongError(
@@ -749,8 +799,8 @@ export class AiService extends Service {
 	 * 利用として数えないために使います。別の呼び出しが期限を刻み直して
 	 * いた場合は、その期限を消さないよう何もしません。
 	 */
-	#chargeCooldown(userId: string | null): () => void {
-		const { texts, limits } = this.config;
+	#chargeCooldown(userId: string | null, texts: AiTexts = this.config.texts): () => void {
+		const { limits } = this.config;
 		if (limits.cooldown === false || userId === null) return () => undefined;
 
 		const now = Date.now();

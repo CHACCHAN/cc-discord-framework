@@ -25,7 +25,6 @@ export async function collectModuleFiles(directory: string): Promise<string[]> {
 	const paths: string[] = [];
 	for await (const relative of glob.scan({ cwd: directory })) {
 		const segments = relative.split(/[/\\]/);
-		// "_" で始まるファイル・ディレクトリは共有コード扱いでスキップする。
 		if (segments.some((segment) => segment.startsWith("_"))) continue;
 		const file = segments[segments.length - 1] ?? "";
 		if (file.endsWith(".d.ts")) continue;

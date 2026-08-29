@@ -32,7 +32,6 @@ export class YouTubeStreamProvider extends StreamProvider {
 		const { url, webm } = await ytdlpAudioUrl(track.url, ytdlp, this.logger);
 
 		if (!webm) {
-			// opus が取れなかった。ここだけは変換が要る。
 			this.logger.debug({ track: track.title }, "opus が取得できないため ffmpeg を経由します");
 			return {
 				stream: ffmpegPcm(url, config.ffmpeg, this.logger),

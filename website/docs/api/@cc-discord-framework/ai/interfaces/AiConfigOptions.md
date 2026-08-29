@@ -1,6 +1,6 @@
 # インターフェイス: AiConfigOptions
 
-定義: [plugins/ai/src/config.ts:223](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L223)
+定義: [plugins/ai/src/config.ts:223](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L223)
 
 [AiConfig](AiConfig.md) の部分指定。指定しなかった項目は既定値のままです。
 `ai()` のオプションはこれを受け取ります。
@@ -13,7 +13,7 @@
 optional display?: AiDisplayOptions;
 ```
 
-定義: [plugins/ai/src/config.ts:295](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L295)
+定義: [plugins/ai/src/config.ts:295](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L295)
 
 応答の見せ方。指定した項目だけが既定値を上書きします。
 
@@ -25,7 +25,7 @@ optional display?: AiDisplayOptions;
 optional instructions?: string | null;
 ```
 
-定義: [plugins/ai/src/config.ts:269](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L269)
+定義: [plugins/ai/src/config.ts:269](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L269)
 
 既定のシステム指示。呼び出しごとの `instructions` が優先されます。
 
@@ -43,7 +43,7 @@ null
 optional limits?: AiLimitsOptions;
 ```
 
-定義: [plugins/ai/src/config.ts:293](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L293)
+定義: [plugins/ai/src/config.ts:293](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L293)
 
 数量の上限。指定した項目だけが既定値を上書きします。
 
@@ -55,7 +55,7 @@ optional limits?: AiLimitsOptions;
 optional maxOutputTokens?: number | null;
 ```
 
-定義: [plugins/ai/src/config.ts:273](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L273)
+定義: [plugins/ai/src/config.ts:273](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L273)
 
 #### Default
 
@@ -71,7 +71,7 @@ null(プロバイダーの既定)
 optional maxSteps?: number;
 ```
 
-定義: [plugins/ai/src/config.ts:279](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L279)
+定義: [plugins/ai/src/config.ts:279](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L279)
 
 ツール呼び出しを含めて何ステップまで回すか
 (`stopWhen: stepCountIs(maxSteps)` になります)。
@@ -90,7 +90,7 @@ optional maxSteps?: number;
 optional memory?: AiMemoryOptions;
 ```
 
-定義: [plugins/ai/src/config.ts:289](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L289)
+定義: [plugins/ai/src/config.ts:289](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L289)
 
 会話履歴の扱い。指定した項目だけが既定値を上書きします。
 
@@ -102,7 +102,7 @@ optional memory?: AiMemoryOptions;
 optional model?: AiModelInput | null;
 ```
 
-定義: [plugins/ai/src/config.ts:232](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L232)
+定義: [plugins/ai/src/config.ts:232](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L232)
 
 既定のモデル。`"<プロバイダー>:<モデルID>"` の文字列か、
 SDK が返す `LanguageModel` をそのまま渡します。
@@ -124,7 +124,7 @@ null
 optional providerLoaders?: Readonly<Record<string, AiProviderLoader>>;
 ```
 
-定義: [plugins/ai/src/config.ts:264](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L264)
+定義: [plugins/ai/src/config.ts:264](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L264)
 
 文字列のモデル指定で使えるプロバイダーを足す・差し替える。
 [builtinProviders](../variables/builtinProviders.md) に重ねられます。
@@ -155,7 +155,7 @@ ai({
 optional providers?: AiProviders;
 ```
 
-定義: [plugins/ai/src/config.ts:244](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L244)
+定義: [plugins/ai/src/config.ts:244](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L244)
 
 プロバイダーの接続設定。API キーを省略すると各 SDK の既定の
 環境変数が使われます。
@@ -174,7 +174,7 @@ optional providers?: AiProviders;
 optional registry?: AiRegistry | null;
 ```
 
-定義: [plugins/ai/src/config.ts:238](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L238)
+定義: [plugins/ai/src/config.ts:238](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L238)
 
 自前のプロバイダーレジストリ(`createProviderRegistry()` の戻り値)。
 指定すると、文字列のモデル指定はすべてこれで解決されます。
@@ -193,7 +193,7 @@ null
 optional stream?: Partial<AiStreamConfig>;
 ```
 
-定義: [plugins/ai/src/config.ts:291](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L291)
+定義: [plugins/ai/src/config.ts:291](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L291)
 
 ストリーミング表示。指定した項目だけが既定値を上書きします。
 
@@ -205,7 +205,7 @@ optional stream?: Partial<AiStreamConfig>;
 optional temperature?: number | null;
 ```
 
-定義: [plugins/ai/src/config.ts:271](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L271)
+定義: [plugins/ai/src/config.ts:271](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L271)
 
 #### Default
 
@@ -221,7 +221,7 @@ null(プロバイダーの既定)
 optional texts?: Partial<AiTexts>;
 ```
 
-定義: [plugins/ai/src/config.ts:300](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L300)
+定義: [plugins/ai/src/config.ts:300](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L300)
 
 ユーザーに見える文言。指定した項目だけが既定値を上書きします。
 
@@ -237,7 +237,7 @@ optional texts?: Partial<AiTexts>;
 optional timeout?: false | DurationInput;
 ```
 
-定義: [plugins/ai/src/config.ts:285](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L285)
+定義: [plugins/ai/src/config.ts:285](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L285)
 
 1回の生成を打ち切るまでの時間。`false` で無制限。
 Discord のインタラクションは defer 後 15分まで応答できます。
@@ -256,6 +256,6 @@ Discord のインタラクションは defer 後 15分まで応答できます�
 optional tools?: AiToolsOptions;
 ```
 
-定義: [plugins/ai/src/config.ts:287](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L287)
+定義: [plugins/ai/src/config.ts:287](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L287)
 
 ツール(`ai/`)の扱い。指定した項目だけが既定値を上書きします。

@@ -4,7 +4,7 @@
 function parseYouTubeUrl(query): YouTubeTarget | null;
 ```
 
-定義: [plugins/music-sources/src/youtube/url.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/url.ts#L29)
+定義: [plugins/music-sources/src/youtube/url.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/url.ts#L29)
 
 YouTube の URL から動画 / プレイリストの ID を取り出します。
 `watch?v=`・`youtu.be/`・`shorts/`・`embed/`・`live/`・`list=` に対応。

@@ -1,6 +1,6 @@
 # インターフェイス: YouTubeConfig
 
-定義: [plugins/music-sources/src/config.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L44)
+定義: [plugins/music-sources/src/config.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L44)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 cookies: string | null;
 ```
 
-定義: [plugins/music-sources/src/config.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L67)
+定義: [plugins/music-sources/src/config.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L67)
 
 yt-dlp に渡す cookies ファイル。年齢制限付き動画などに。
 
@@ -22,7 +22,7 @@ yt-dlp に渡す cookies ファイル。年齢制限付き動画などに。
 enabled: boolean;
 ```
 
-定義: [plugins/music-sources/src/config.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L45)
+定義: [plugins/music-sources/src/config.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L45)
 
 ***
 
@@ -32,7 +32,7 @@ enabled: boolean;
 metadata: MetadataSource;
 ```
 
-定義: [plugins/music-sources/src/config.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L54)
+定義: [plugins/music-sources/src/config.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L54)
 
 メタデータの取得元。`"innertube"` は youtubei.js を使い高速ですが、
 YouTube 側の変更で壊れることがあります。その場合は自動的に yt-dlp へ
@@ -52,7 +52,7 @@ YouTube 側の変更で壊れることがあります。その場合は自動的
 playlistLimit: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L65)
+定義: [plugins/music-sources/src/config.ts:65](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L65)
 
 プレイリストから取り込む最大曲数。
 
@@ -70,7 +70,7 @@ playlistLimit: number;
 priority: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L47)
+定義: [plugins/music-sources/src/config.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L47)
 
 Resolver の優先度。大きいほど先に試されます。
 
@@ -88,7 +88,7 @@ Resolver の優先度。大きいほど先に試されます。
 searchLimit: number;
 ```
 
-定義: [plugins/music-sources/src/config.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L63)
+定義: [plugins/music-sources/src/config.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L63)
 
 検索で取得する候補数(採用するのは先頭1件)。少ないほど速くなります。
 
@@ -110,7 +110,7 @@ InnerTube の検索 API は件数を指定できないため、`metadata: "inner
 userAgent: string;
 ```
 
-定義: [plugins/music-sources/src/config.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L69)
+定義: [plugins/music-sources/src/config.ts:69](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L69)
 
 音源の取得時に送る User-Agent。
 
@@ -128,6 +128,6 @@ userAgent: string;
 ytdlp: YtdlpConfig;
 ```
 
-定義: [plugins/music-sources/src/config.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/config.ts#L71)
+定義: [plugins/music-sources/src/config.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/config.ts#L71)
 
 再生 URL の取得に使う yt-dlp の設定。

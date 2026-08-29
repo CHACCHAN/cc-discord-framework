@@ -10,14 +10,34 @@
  * 入れていなくても既定のテーマで動くので、`this.services.ui` は使いません。
  */
 import { createEmbeds, themeOf } from "@cc-discord-framework/utils";
-import type { EmbedBuilder, MessageMentionOptions } from "@cc-discord-framework/core";
-import { aiConfigOf } from "./config.js";
+import type {
+	BaseMessageOptions,
+	EmbedBuilder,
+	MessageMentionOptions,
+} from "@cc-discord-framework/core";
+import { aiConfigOf, mergeAiDisplay, type AiDisplayOptions } from "./config.js";
 import type { AiReplyKind } from "./texts.js";
 
-/** 送信・編集にそのまま渡せるペイロード。 */
+/**
+ * 送信・編集にそのまま渡せるペイロード。
+ *
+ * `components` / `files` は同梱機能では付けませんが、`display.payload` フックが
+ * ボタンや添付を足して返せるように型に含めています。
+ */
 export type AiMessagePayload =
-	| { content: string; embeds?: undefined; allowedMentions?: MessageMentionOptions }
-	| { embeds: EmbedBuilder[]; allowedMentions?: MessageMentionOptions };
+	| {
+			content: string;
+			embeds?: undefined;
+			allowedMentions?: MessageMentionOptions;
+			components?: BaseMessageOptions["components"];
+			files?: BaseMessageOptions["files"];
+	  }
+	| {
+			embeds: EmbedBuilder[];
+			allowedMentions?: MessageMentionOptions;
+			components?: BaseMessageOptions["components"];
+			files?: BaseMessageOptions["files"];
+	  };
 
 /**
  * `display.payload` フックへ渡る文脈。
@@ -46,6 +66,12 @@ export interface RenderOptions {
 	total?: number;
 	/** 途中経過か。`display.payload` へ渡ります。 @default false */
 	streaming?: boolean;
+	/**
+	 * この呼び出しだけ表示設定をキー単位で上書きします
+	 * (`decorate` / `payload` / `allowedMentions` など)。
+	 * 省略した項目はクライアント設定の `display` のままです。
+	 */
+	display?: AiDisplayOptions;
 }
 
 /**
@@ -66,7 +92,7 @@ export function renderAiPayload(
 	kind: AiReplyKind = "info",
 	options: RenderOptions = {},
 ): AiMessagePayload {
-	const { display } = aiConfigOf(source);
+	const display = mergeAiDisplay(aiConfigOf(source).display, options.display);
 
 	// `null` なら discord.js の既定に任せる(明示的に許可したい人向け)。
 	const mentions: { allowedMentions?: MessageMentionOptions } =

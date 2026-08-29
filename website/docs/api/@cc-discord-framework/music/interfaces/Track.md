@@ -1,6 +1,6 @@
 # インターフェイス: Track
 
-定義: [plugins/music/src/track.ts:2](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L2)
+定義: [plugins/music/src/track.ts:2](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L2)
 
 再生対象の1曲。Resolver が生成し、StreamProvider が音声へ変換します。
 
@@ -12,7 +12,7 @@
 readonly author: string | null;
 ```
 
-定義: [plugins/music/src/track.ts:10](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L10)
+定義: [plugins/music/src/track.ts:10](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L10)
 
 アーティスト・投稿者。
 
@@ -24,7 +24,7 @@ readonly author: string | null;
 readonly data: unknown;
 ```
 
-定義: [plugins/music/src/track.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L26)
+定義: [plugins/music/src/track.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L26)
 
 Provider が再生時に使う任意のデータ。
 
@@ -36,7 +36,7 @@ Provider が再生時に使う任意のデータ。
 readonly duration: number | null;
 ```
 
-定義: [plugins/music/src/track.ts:8](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L8)
+定義: [plugins/music/src/track.ts:8](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L8)
 
 長さ(ミリ秒)。ラジオなど不定の場合は `null`。
 
@@ -48,7 +48,7 @@ readonly duration: number | null;
 readonly isrc: string | null;
 ```
 
-定義: [plugins/music/src/track.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L18)
+定義: [plugins/music/src/track.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L18)
 
 ISRC(国際標準レコーディングコード)。
 Spotify のようなメタデータ専用ソースから、実際に再生できるソースへ
@@ -62,7 +62,7 @@ Spotify のようなメタデータ専用ソースから、実際に再生でき
 readonly live: boolean;
 ```
 
-定義: [plugins/music/src/track.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L20)
+定義: [plugins/music/src/track.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L20)
 
 ライブ配信・ラジオなど終端のないストリームか。
 
@@ -74,7 +74,7 @@ readonly live: boolean;
 readonly requestedBy: string | null;
 ```
 
-定義: [plugins/music/src/track.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L24)
+定義: [plugins/music/src/track.ts:24](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L24)
 
 リクエストしたユーザーの ID。
 
@@ -86,7 +86,7 @@ readonly requestedBy: string | null;
 readonly source: string;
 ```
 
-定義: [plugins/music/src/track.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L22)
+定義: [plugins/music/src/track.ts:22](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L22)
 
 解決した Resolver の名前。
 
@@ -98,7 +98,7 @@ readonly source: string;
 readonly thumbnail: string | null;
 ```
 
-定義: [plugins/music/src/track.ts:12](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L12)
+定義: [plugins/music/src/track.ts:12](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L12)
 
 サムネイル URL。
 
@@ -110,7 +110,7 @@ readonly thumbnail: string | null;
 readonly title: string;
 ```
 
-定義: [plugins/music/src/track.ts:4](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L4)
+定義: [plugins/music/src/track.ts:4](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L4)
 
 表示名。
 
@@ -122,6 +122,6 @@ readonly title: string;
 readonly url: string;
 ```
 
-定義: [plugins/music/src/track.ts:6](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/track.ts#L6)
+定義: [plugins/music/src/track.ts:6](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/track.ts#L6)
 
 元の URL(表示・再解決に使う)。ローカルファイルの場合はパス。

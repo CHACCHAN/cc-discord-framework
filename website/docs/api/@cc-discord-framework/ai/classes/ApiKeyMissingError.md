@@ -1,6 +1,6 @@
 # クラス: ApiKeyMissingError
 
-定義: [plugins/ai/src/errors.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/errors.ts#L59)
+定義: [plugins/ai/src/errors.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/errors.ts#L59)
 
 API キーが見つからなかった。
 
@@ -19,7 +19,7 @@ new ApiKeyMissingError(
    variable): ApiKeyMissingError;
 ```
 
-定義: [plugins/ai/src/errors.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/errors.ts#L60)
+定義: [plugins/ai/src/errors.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/errors.ts#L60)
 
 #### パラメータ
 
@@ -51,7 +51,7 @@ new ApiKeyMissingError(
 readonly context: unknown;
 ```
 
-定義: [src/errors.ts:62](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L62)
+定義: [src/errors.ts:80](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L80)
 
 投げた側が添付する任意の追加データ。
 
@@ -67,7 +67,7 @@ readonly context: unknown;
 readonly identifier: string;
 ```
 
-定義: [src/errors.ts:60](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L60)
+定義: [src/errors.ts:78](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L78)
 
 機械可読な識別子(Precondition 由来なら Precondition 名)。
 

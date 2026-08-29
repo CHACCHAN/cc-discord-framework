@@ -7,7 +7,7 @@ function truncate(
    suffix?): string;
 ```
 
-定義: [plugins/utils/src/text.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/text.ts#L30)
+定義: [plugins/utils/src/text.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/text.ts#L30)
 
 上限を超える文字列を切り詰めます。埋め込みやフィールドの制限に
 引っかかってエラーになるのを防ぐためのものです。

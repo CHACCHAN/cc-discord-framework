@@ -1,6 +1,6 @@
 # インターフェイス: AudioStream
 
-定義: [plugins/music/src/StreamProvider.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L18)
+定義: [plugins/music/src/StreamProvider.ts:18](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L18)
 
 [StreamProvider.stream](../classes/StreamProvider.md#stream) が返す音声ストリーム。
 
@@ -12,7 +12,7 @@
 readonly stream: Readable;
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L20)
+定義: [plugins/music/src/StreamProvider.ts:20](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L20)
 
 音声データ本体。
 
@@ -24,7 +24,7 @@ readonly stream: Readable;
 readonly optional type?: StreamType;
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L28)
+定義: [plugins/music/src/StreamProvider.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L28)
 
 ストリームの形式。既定は `Arbitrary`(ffmpeg での変換が必要)。
 

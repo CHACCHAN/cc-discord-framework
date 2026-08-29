@@ -1,6 +1,6 @@
 # インターフェイス: Stores
 
-定義: [src/component/StoreRegistry.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L25)
+定義: [src/component/StoreRegistry.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L25)
 
 ストア名から具象ストア型へのマップ。`stores.get("commands")` の型付けを
 担います。コンポーネント種別を追加するプラグインはこのインターフェースを
@@ -22,7 +22,7 @@ declare module "@cc-discord-framework/core" {
 commands: CommandStore;
 ```
 
-定義: [src/component/StoreRegistry.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L27)
+定義: [src/component/StoreRegistry.ts:27](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L27)
 
 ***
 
@@ -32,7 +32,7 @@ commands: CommandStore;
 listeners: ListenerStore;
 ```
 
-定義: [src/component/StoreRegistry.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L28)
+定義: [src/component/StoreRegistry.ts:28](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L28)
 
 ***
 
@@ -42,7 +42,7 @@ listeners: ListenerStore;
 preconditions: PreconditionStore;
 ```
 
-定義: [src/component/StoreRegistry.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L29)
+定義: [src/component/StoreRegistry.ts:29](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L29)
 
 ***
 
@@ -52,4 +52,4 @@ preconditions: PreconditionStore;
 services: ServiceStore;
 ```
 
-定義: [src/component/StoreRegistry.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/StoreRegistry.ts#L26)
+定義: [src/component/StoreRegistry.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/StoreRegistry.ts#L26)

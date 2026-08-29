@@ -125,12 +125,10 @@ describe("texts オプションによる上書き", () => {
 		await client.load();
 		const commands = client.stores.get("commands");
 
-		// 上書きした guildOnly は新しい文言になる。
 		const denied = fakeChatInput("locked");
 		await commands.dispatchChatInput(denied.interaction);
 		expect(contentOf(denied.replies)).toBe("This command is server-only.");
 
-		// 指定しなかった commandError は既定値のまま。
 		const crashed = fakeChatInput("crash");
 		await commands.dispatchChatInput(crashed.interaction);
 		expect(contentOf(crashed.replies)).toBe("コマンドの実行中にエラーが発生しました。");
@@ -214,11 +212,9 @@ describe("設定ディレクトリ経由の texts", () => {
 		client.register(defineLockedCommand());
 		await client.load();
 
-		// コンテナ上で解決済み: 上書きした項目 + 既定値の残り。
 		expect(client.container.texts.guildOnly).toBe("サーバー限定のコマンドです。");
 		expect(client.container.texts.commandError).toBe(defaultClientTexts.commandError);
 
-		// 実際の返信にも使われる。
 		const { interaction, replies } = fakeChatInput("locked");
 		await client.stores.get("commands").dispatchChatInput(interaction);
 		expect(contentOf(replies)).toBe("サーバー限定のコマンドです。");

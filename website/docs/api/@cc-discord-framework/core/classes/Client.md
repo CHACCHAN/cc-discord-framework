@@ -1,6 +1,6 @@
 # クラス: Client\<Ready\>
 
-定義: [src/client.ts:98](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L98)
+定義: [src/client.ts:99](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L99)
 
 フレームワーククライアント — コンテナ・コンポーネントストア・コマンド
 ランタイムを備えた discord.js の `Client` です。
@@ -38,7 +38,7 @@ await client.login(); // DISCORD_TOKEN 環境変数を自動使用
 new Client<Ready>(options): Client<Ready>;
 ```
 
-定義: [src/client.ts:129](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L129)
+定義: [src/client.ts:132](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L132)
 
 #### パラメータ
 
@@ -64,7 +64,7 @@ DiscordClient<Ready>.constructor
 readonly baseDirectory: string | null;
 ```
 
-定義: [src/client.ts:109](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L109)
+定義: [src/client.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L110)
 
 解決済みの自動探索ルート(`null` = 自動探索なし)。
 
@@ -76,7 +76,7 @@ readonly baseDirectory: string | null;
 readonly container: Container;
 ```
 
-定義: [src/client.ts:100](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L100)
+定義: [src/client.ts:101](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L101)
 
 フレームワーク共有サービス。
 
@@ -88,7 +88,7 @@ readonly container: Container;
 readonly logger: Logger;
 ```
 
-定義: [src/client.ts:103](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L103)
+定義: [src/client.ts:104](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L104)
 
 ルートの pino ロガー。
 
@@ -100,7 +100,7 @@ readonly logger: Logger;
 readonly stores: StoreRegistry;
 ```
 
-定義: [src/client.ts:106](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L106)
+定義: [src/client.ts:107](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L107)
 
 すべてのコンポーネントストア。
 
@@ -112,7 +112,7 @@ readonly stores: StoreRegistry;
 destroy(): Promise<void>;
 ```
 
-定義: [src/client.ts:198](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L198)
+定義: [src/client.ts:201](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L201)
 
 全コンポーネントをアンロード(`onUnload` 実行)してから接続を破棄します。
 
@@ -134,7 +134,7 @@ DiscordClient.destroy
 load(): Promise<void>;
 ```
 
-定義: [src/client.ts:186](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L186)
+定義: [src/client.ts:189](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L189)
 
 Discord に接続せずにフレームワークを起動します: プラグインの
 インストール、全コンポーネントのロード、ディスパッチャの接続。
@@ -153,7 +153,7 @@ Discord に接続せずにフレームワークを起動します: プラグイ�
 login(token?): Promise<string>;
 ```
 
-定義: [src/client.ts:192](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L192)
+定義: [src/client.ts:195](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L195)
 
 フレームワークをロードし、Discord ゲートウェイへ接続します。
 
@@ -181,7 +181,7 @@ DiscordClient.login
 register(...classes): this;
 ```
 
-定義: [src/client.ts:169](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/client.ts#L169)
+定義: [src/client.ts:172](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/client.ts#L172)
 
 コンポーネントクラスを明示登録します。担当ストアは各クラスの基底
 (Command / Listener / Precondition / Service / プラグイン追加種別)

@@ -1,6 +1,6 @@
 # クラス: MapMemoryStore
 
-定義: [plugins/ai/src/memory.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L53)
+定義: [plugins/ai/src/memory.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L53)
 
 Map ベースの既定実装。プロセスが生きているあいだだけ覚えています。
 
@@ -19,7 +19,7 @@ Map ベースの既定実装。プロセスが生きているあいだだけ覚�
 new MapMemoryStore(options?): MapMemoryStore;
 ```
 
-定義: [plugins/ai/src/memory.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L58)
+定義: [plugins/ai/src/memory.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L58)
 
 #### パラメータ
 
@@ -41,7 +41,7 @@ new MapMemoryStore(options?): MapMemoryStore;
 get size(): number;
 ```
 
-定義: [plugins/ai/src/memory.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L91)
+定義: [plugins/ai/src/memory.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L91)
 
 覚えているキーの数(テストと診断のため)。
 
@@ -57,7 +57,7 @@ get size(): number;
 append(key, messages): void;
 ```
 
-定義: [plugins/ai/src/memory.ts:73](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L73)
+定義: [plugins/ai/src/memory.ts:73](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L73)
 
 キーの履歴の末尾へ追記します。
 
@@ -87,7 +87,7 @@ readonly `ModelMessage`[]
 clear(key): void;
 ```
 
-定義: [plugins/ai/src/memory.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L86)
+定義: [plugins/ai/src/memory.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L86)
 
 キーの履歴を消します。
 
@@ -113,7 +113,7 @@ clear(key): void;
 get(key): ModelMessage[];
 ```
 
-定義: [plugins/ai/src/memory.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L63)
+定義: [plugins/ai/src/memory.ts:63](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L63)
 
 キーの履歴を古い順に返します。無ければ空配列。
 

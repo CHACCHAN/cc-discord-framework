@@ -4,7 +4,7 @@
 function humanizeDuration(ms, options?): string;
 ```
 
-定義: [plugins/utils/src/duration.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/duration.ts#L122)
+定義: [plugins/utils/src/duration.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/duration.ts#L122)
 
 大まかな長さとして整形します — クールダウンや稼働時間の表示向け。
 時計表記と違い、既定では上位2単位だけを出すので長さがぶれません。

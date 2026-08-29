@@ -79,7 +79,8 @@ confirm a test fails, then restore. If no test fails, add one.
   function-calling support.
 - Never write tests that depend on a package being ABSENT (they break the moment a user runs
   `bun add`). Point loaders at nonexistent package names instead.
-- `plugins/`, `docs/`, etc. are untracked (invisible to `git diff`). Verify changes via hashes or builds.
+- (Fixed 2026-08-29: `plugins/`, `docs/`, `website/` are all git-tracked now — `git diff` covers the
+  whole repo. An older note here claimed they were untracked; don't plan around that.)
 
 ## Documentation split
 
@@ -121,9 +122,18 @@ taking screenshots** (after `bun run website:preview`) — not by grepping CSS.
   Publishing (OIDC, no tokens), skipping versions already on the registry. Each package needs a
   Trusted Publisher registered on npmjs.com (repo `CHACCHAN/cc-discord-framework`, workflow
   `publish.yml`) — the owner manages those registrations.
-- The website (`website/`) has NOT been updated for the package rename yet: it still shows the old
-  package name and "npm 未公開" notices, and runs under the "Next 🚧" banner. A dedicated
-  post-publish site pass is planned (rename sweep, TypeDoc regeneration, install pages, and the
-  first Stable snapshot via `bun run --cwd website docusaurus docs:version 2.0`).
+- The website (`website/`) completed its post-publish pass (rename sweep, install pages, TypeDoc
+  regeneration) and carries the "2.0" Stable snapshot under `versioned_docs/`. `website/docs/` is
+  the "Next" (unreleased) docs — document unreleased features there only, never in the snapshot.
 - Running `client/` requires `yt-dlp` (YouTube) and `ffmpeg` (SoundCloud) on the host. The bot still
   boots without them.
+- 2026-08-29, unreleased on npm (needs a version bump + GitHub Release to publish): three features
+  landed on main. (1) Core: `container/` directory auto-loading — `defineContainerValue({ create,
+  dispose, name? })` per file, registered onto `client.container` before stores load, disposed in
+  reverse order on `destroy()` (and immediately if loading fails partway). (2) Core: mention
+  commands — `Command.mentionRun(message, content)` + `mentions` option (`"self"` default / user
+  IDs / `false`), dispatched before prefix parsing, preconditions run via the `messageRun` flow,
+  payload `type: "mention"`. (3) ai plugin: per-call `display` / `texts` overrides on
+  `AiService.reply()` (merged key-wise over config), `AiMessagePayload` gained `components`/`files`,
+  `AiReplyKind` gained `"warning"`. Website docs (Next) and TypeDoc are updated; the 2.0 snapshot
+  intentionally does not mention them.

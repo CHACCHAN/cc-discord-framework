@@ -4,7 +4,7 @@
 const AiEvents: object;
 ```
 
-定義: [plugins/ai/src/events.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/events.ts#L72)
+定義: [plugins/ai/src/events.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/events.ts#L72)
 
 ai プラグインがクライアント上で発火するイベント。
 通常の discord.js エミッターに乗るため、`Listener` コンポーネントで

@@ -1,6 +1,6 @@
 # インターフェイス: AiStreamConfig
 
-定義: [plugins/ai/src/config.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L52)
+定義: [plugins/ai/src/config.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L52)
 
 Discord へのストリーミング表示。
 
@@ -15,7 +15,7 @@ Discord へのストリーミング表示。
 readonly cursor: string;
 ```
 
-定義: [plugins/ai/src/config.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L58)
+定義: [plugins/ai/src/config.ts:58](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L58)
 
 生成中に本文の末尾へ添える記号。空文字にすると何も添えません。
 
@@ -27,7 +27,7 @@ readonly cursor: string;
 readonly enabled: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L54)
+定義: [plugins/ai/src/config.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L54)
 
 生成中の途中経過を編集で見せる。`false` なら完成してから1回だけ送ります。
 
@@ -39,6 +39,6 @@ readonly enabled: boolean;
 readonly intervalMs: number;
 ```
 
-定義: [plugins/ai/src/config.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L56)
+定義: [plugins/ai/src/config.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L56)
 
 編集の最短間隔(ミリ秒)。

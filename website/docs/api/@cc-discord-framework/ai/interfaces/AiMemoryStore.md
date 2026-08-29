@@ -1,6 +1,6 @@
 # インターフェイス: AiMemoryStore
 
-定義: [plugins/ai/src/memory.ts:19](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L19)
+定義: [plugins/ai/src/memory.ts:19](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L19)
 
 会話履歴の読み書き口。**メソッドはこの3つだけ**です — 保存先を
 差し替えるのに必要な最小限に保っています。
@@ -17,7 +17,7 @@
 append(key, messages): Awaitable<void>;
 ```
 
-定義: [plugins/ai/src/memory.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L23)
+定義: [plugins/ai/src/memory.ts:23](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L23)
 
 キーの履歴の末尾へ追記します。
 
@@ -43,7 +43,7 @@ readonly `ModelMessage`[]
 clear(key): Awaitable<void>;
 ```
 
-定義: [plugins/ai/src/memory.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L25)
+定義: [plugins/ai/src/memory.ts:25](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L25)
 
 キーの履歴を消します。
 
@@ -65,7 +65,7 @@ clear(key): Awaitable<void>;
 get(key): Awaitable<ModelMessage[]>;
 ```
 
-定義: [plugins/ai/src/memory.ts:21](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/memory.ts#L21)
+定義: [plugins/ai/src/memory.ts:21](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/memory.ts#L21)
 
 キーの履歴を古い順に返します。無ければ空配列。
 

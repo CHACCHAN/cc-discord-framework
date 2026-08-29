@@ -1,6 +1,6 @@
 # インターフェイス: MusicConfigOptions
 
-定義: [plugins/music/src/config.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L86)
+定義: [plugins/music/src/config.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L86)
 
 [MusicConfig](MusicConfig.md) の部分指定。指定しなかった項目は既定値のままです。
 `music()` のオプションはこれを受け取ります。
@@ -13,7 +13,7 @@
 optional defaultVolume?: number;
 ```
 
-定義: [plugins/music/src/config.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L91)
+定義: [plugins/music/src/config.ts:91](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L91)
 
 既定の音量(1 が原音)。
 
@@ -31,7 +31,7 @@ optional defaultVolume?: number;
 optional leaveOnEmpty?: number | false;
 ```
 
-定義: [plugins/music/src/config.ts:102](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L102)
+定義: [plugins/music/src/config.ts:102](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L102)
 
 ボイスチャンネルが無人になってから切断するまでのミリ秒。
 `false` で切断しない。
@@ -50,7 +50,7 @@ optional leaveOnEmpty?: number | false;
 optional leaveOnEnd?: number | false;
 ```
 
-定義: [plugins/music/src/config.ts:96](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L96)
+定義: [plugins/music/src/config.ts:96](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L96)
 
 キューが空になってから切断するまでのミリ秒。`false` で切断しない。
 
@@ -68,7 +68,7 @@ optional leaveOnEnd?: number | false;
 optional limits?: Partial<MusicLimits>;
 ```
 
-定義: [plugins/music/src/config.ts:117](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L117)
+定義: [plugins/music/src/config.ts:117](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L117)
 
 数量の上限。指定した項目だけが既定値を上書きします。
 
@@ -80,7 +80,7 @@ optional limits?: Partial<MusicLimits>;
 optional localDirectories?: readonly string[];
 ```
 
-定義: [plugins/music/src/config.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L110)
+定義: [plugins/music/src/config.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L110)
 
 ローカルファイル再生を許可するディレクトリ。
 指定した場合のみローカル用の Resolver / Provider が登録されます。
@@ -101,7 +101,7 @@ optional localDirectories?: readonly string[];
 optional network?: Partial<MusicNetworkConfig>;
 ```
 
-定義: [plugins/music/src/config.ts:121](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L121)
+定義: [plugins/music/src/config.ts:121](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L121)
 
 音源の取得まわり。指定した項目だけが既定値を上書きします。
 
@@ -113,7 +113,7 @@ optional network?: Partial<MusicNetworkConfig>;
 optional texts?: Partial<MusicTexts>;
 ```
 
-定義: [plugins/music/src/config.ts:115](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L115)
+定義: [plugins/music/src/config.ts:115](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L115)
 
 エンジンが投げるエラーの文言。指定した項目だけが既定値を上書きします。
 
@@ -129,6 +129,6 @@ optional texts?: Partial<MusicTexts>;
 optional voice?: Partial<MusicVoiceConfig>;
 ```
 
-定義: [plugins/music/src/config.ts:119](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L119)
+定義: [plugins/music/src/config.ts:119](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L119)
 
 ボイス接続の挙動。指定した項目だけが既定値を上書きします。

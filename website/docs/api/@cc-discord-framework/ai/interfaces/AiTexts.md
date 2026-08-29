@@ -1,6 +1,6 @@
 # インターフェイス: AiTexts
 
-定義: [plugins/ai/src/texts.ts:82](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L82)
+定義: [plugins/ai/src/texts.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L84)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 answerBody: (parts, texts) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L122)
+定義: [plugins/ai/src/texts.ts:124](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L124)
 
 応答の本文全体。断片の並べ方(見出し・空行・順序)まで ここで決まります。
 `texts` には解決後のカタログが入るので、既定の見出しを流用できます。
@@ -44,7 +44,7 @@ answerBody: (parts, texts) => string;
 apiCallFailed: (status, message) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:161](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L161)
+定義: [plugins/ai/src/texts.ts:163](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L163)
 
 プロバイダーが HTTP エラーを返したときの言い換え。
 
@@ -75,7 +75,7 @@ apiCallFailed: (status, message) => string;
 apiKeyMissing: (provider, variable) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:135](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L135)
+定義: [plugins/ai/src/texts.ts:137](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L137)
 
 API キーが見つからない(`variable` は既定の環境変数名)。
 
@@ -101,7 +101,7 @@ API キーが見つからない(`variable` は既定の環境変数名)。
 compatibleNotConfigured: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:137](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L137)
+定義: [plugins/ai/src/texts.ts:139](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L139)
 
 `compatible` に `baseURL` / `name` が設定されていない。
 
@@ -113,7 +113,7 @@ compatibleNotConfigured: string;
 cooldown: (remainingMs) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:145](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L145)
+定義: [plugins/ai/src/texts.ts:147](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L147)
 
 クールダウン中。
 
@@ -135,7 +135,7 @@ cooldown: (remainingMs) => string;
 emptyResponse: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L88)
+定義: [plugins/ai/src/texts.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L90)
 
 モデルが空の応答を返した。
 
@@ -147,7 +147,7 @@ emptyResponse: string;
 generationFailed: (message) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:166](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L166)
+定義: [plugins/ai/src/texts.ts:168](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L168)
 
 生成そのものが失敗したときに、Discord の応答へ出す本文
 ([AiService.reply](../classes/AiService.md#reply) が使います)。
@@ -170,7 +170,7 @@ generationFailed: (message) => string;
 modelIdInvalid: (id) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:129](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L129)
+定義: [plugins/ai/src/texts.ts:131](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L131)
 
 モデル指定の書式が `"<provider>:<modelId>"` になっていない。
 
@@ -192,7 +192,7 @@ modelIdInvalid: (id) => string;
 modelNotConfigured: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:127](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L127)
+定義: [plugins/ai/src/texts.ts:129](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L129)
 
 使うモデルが決まっていない。
 
@@ -204,7 +204,7 @@ modelNotConfigured: string;
 promptEmpty: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:139](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L139)
+定義: [plugins/ai/src/texts.ts:141](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L141)
 
 入力が空だった。
 
@@ -216,7 +216,7 @@ promptEmpty: string;
 promptTooLong: (length, max) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:141](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L141)
+定義: [plugins/ai/src/texts.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L143)
 
 入力が長すぎた。
 
@@ -242,7 +242,7 @@ promptTooLong: (length, max) => string;
 providerNotInstalled: (provider, packageName) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:133](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L133)
+定義: [plugins/ai/src/texts.ts:135](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L135)
 
 プロバイダーのパッケージが入っていない。
 
@@ -268,7 +268,7 @@ providerNotInstalled: (provider, packageName) => string;
 providerUnknown: (provider, known) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:131](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L131)
+定義: [plugins/ai/src/texts.ts:133](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L133)
 
 同梱リゾルバが知らないプロバイダー名だった。
 
@@ -294,7 +294,7 @@ readonly `string`[]
 sourceLine: (position, title, url) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:97](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L97)
+定義: [plugins/ai/src/texts.ts:99](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L99)
 
 引用元1件。`position` は1始まり、`title` は題名(無ければ URL)、
 `url` は URL(文書ソースなど URL が無ければ `null`)。
@@ -325,7 +325,7 @@ sourceLine: (position, title, url) => string;
 sourcesHeader: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:92](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L92)
+定義: [plugins/ai/src/texts.ts:94](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L94)
 
 引用元の見出し。
 
@@ -337,7 +337,7 @@ sourcesHeader: string;
 thinking: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:86](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L86)
+定義: [plugins/ai/src/texts.ts:88](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L88)
 
 生成が始まる前・本文がまだ空のときの仮表示。
 
@@ -349,7 +349,7 @@ thinking: string;
 timedOut: (ms) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:143](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L143)
+定義: [plugins/ai/src/texts.ts:145](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L145)
 
 生成が制限時間を超えた。
 
@@ -371,7 +371,7 @@ timedOut: (ms) => string;
 toolFailed: (tool, message) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:150](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L150)
+定義: [plugins/ai/src/texts.ts:152](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L152)
 
 ツールの実行が失敗した。この文言は **AI へ返されます**
 (会話全体を止めず、モデルが失敗を踏まえて続けられるようにするため)。
@@ -398,7 +398,7 @@ toolFailed: (tool, message) => string;
 toolLine: (name) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:108](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L108)
+定義: [plugins/ai/src/texts.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L110)
 
 使用ツール1件。
 
@@ -420,7 +420,7 @@ toolLine: (name) => string;
 toolsHeader: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:106](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L106)
+定義: [plugins/ai/src/texts.ts:108](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L108)
 
 使用ツールの見出し。
 
@@ -437,7 +437,7 @@ toolsHeader: string;
 toolTimedOut: (tool, ms) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:152](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L152)
+定義: [plugins/ai/src/texts.ts:154](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L154)
 
 ツールの実行が `tools.timeout` を超えた。
 
@@ -463,7 +463,7 @@ toolTimedOut: (tool, ms) => string;
 truncated: string;
 ```
 
-定義: [plugins/ai/src/texts.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L90)
+定義: [plugins/ai/src/texts.ts:92](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L92)
 
 `limits.maxResponseLength` で切り詰めたときに末尾へ付ける印。
 
@@ -475,7 +475,7 @@ truncated: string;
 usageLine: (input, output, total) => string;
 ```
 
-定義: [plugins/ai/src/texts.ts:110](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/texts.ts#L110)
+定義: [plugins/ai/src/texts.ts:112](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/texts.ts#L112)
 
 トークン数の行。判らない項目は `null` で渡ります。
 

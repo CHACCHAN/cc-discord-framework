@@ -48,6 +48,24 @@ export class ConfigLoadError extends FrameworkError {
 }
 
 /**
+ * `container/` ディレクトリの読み込みに失敗したときのエラー — default export
+ * が {@link defineContainerValue} の形になっていない、名前がコンテナの既存
+ * プロパティや他のファイルと衝突している、ファクトリが例外を投げた、など。
+ *
+ * ロードエラーは {@link Client.load} 中に投げられるため、コンテナ値の定義に
+ * 問題のある Bot は実行時に誤動作する前に、起動時点で確実に失敗します。
+ */
+export class ContainerLoadError extends FrameworkError {
+	/** 問題のあった定義ファイル、または container ディレクトリの絶対パス(あれば)。 */
+	public readonly path: string | null;
+
+	public constructor(message: string, options?: ErrorOptions & { path?: string | null }) {
+		super(message, options);
+		this.path = options?.path ?? null;
+	}
+}
+
+/**
  * `message` が Discord 上のエンドユーザーに向けられたエラー。
  *
  * コマンド内から throw するとユーザー向けメッセージ付きで中断でき、

@@ -207,7 +207,6 @@ describe("paginationRow の見た目", () => {
 
 		// target 無しでは既定のまま(どのクライアントの呼び出しか分からないため)。
 		expect(jsonOf(paginationRow(1, 3, "x")).components[3]?.label).toBe("›");
-		// target を渡せばそのクライアントのテーマから取る。
 		const target = { client } as unknown as ReplyTarget;
 		expect(jsonOf(paginationRow(1, 3, "x", { target })).components[3]?.label).toBe("NEXT!");
 

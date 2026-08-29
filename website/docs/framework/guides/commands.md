@@ -4,12 +4,13 @@ sidebar_position: 1
 
 # コマンド
 
-`Command` は最大3つのフローを持てます。必要なものだけ実装してください:
+`Command` は最大4つのフローを持てます。必要なものだけ実装してください:
 
 | メソッド | フロー |
 | --- | --- |
 | `chatInputRun(interaction)` | スラッシュコマンド(`/ping`) |
 | `messageRun(message, args)` | プレフィックスコマンド(`!ping`)— `defaultPrefix` / `fetchPrefix` が必要 |
+| `mentionRun(message, content)` | メンションコマンド(`@Bot こんにちは`)— 既定は Bot 自身へのメンションに反応 |
 | `autocompleteRun(interaction)` | スラッシュオプションの autocomplete |
 
 コマンド名はクラス名から導出されます(`PingCommand` → `ping`、
@@ -106,6 +107,49 @@ export class StatsCommand extends Command {
 
 メッセージ内容の取得は特権インテント(Message Content Intent)です。
 可能ならスラッシュコマンドを優先してください。
+
+:::
+
+## メンションコマンド
+
+`mentionRun` を実装するだけで、**Bot 自身へのメンションを含むメッセージ**
+に反応します。プレフィックスの設定は要りません:
+
+```ts
+@Command.define()
+export class AssistantCommand extends Command {
+  override async mentionRun(message: Message, content: string) {
+    // content は本文から対象のメンションを取り除いて trim した文字列
+    await this.services.ai.reply(message, { prompt: content });
+  }
+}
+```
+
+反応する相手は `mentions` オプションで変えられます — Bot 自身に限らず、
+**任意のユーザー(別の Bot)へのメンション**にも反応できます:
+
+```ts
+@Command.define({ mentions: ["123456789012345678"] })  // ユーザー ID
+@Command.define({ mentions: ["self", "123456789012345678"] })  // 自分 + 指定ユーザー
+@Command.define({ mentions: false })  // mentionRun があっても反応しない
+```
+
+- 対象へのメンションは本文の **どこにあっても** 反応します
+  (`おい @Bot 教えて` でも可)。リプライのピンは本文に現れないので、
+  返信しただけでは発火しません。
+- Bot と Webhook のメッセージは無視されます。
+- メンションコマンドが消費したメッセージは、プレフィックスコマンドの
+  解析には回りません(メンションが最優先)。
+- 複数のコマンドの対象にマッチした場合は、本文で先に現れた対象の
+  コマンドが1つだけ実行されます。同じ対象を2つのコマンドが宣言すると
+  起動時にエラーです。
+- [Precondition](./preconditions.md) と権限ゲートはメッセージコマンドと
+  同じように通ります(判定は `messageRun` フロー)。`commandRun` などの
+  イベントには `type: "mention"` の payload が届きます。
+
+:::warning
+
+本文を読むため、こちらも Message Content Intent が必要です。
 
 :::
 

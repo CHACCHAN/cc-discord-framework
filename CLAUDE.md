@@ -17,3 +17,10 @@ every finding before fixing → each fix requires a reproducing test plus mutati
 one follow-up review round from a different perspective. For documentation or large implementation
 work, split areas exclusively across general-purpose agents running in parallel (never let two
 agents touch the same file).
+
+**Never trust a code-builder success report without checking the files yourself** (grep for the
+claimed changes, run the tests). Incident (2026-08-29): the Codex sandbox failed to start in this
+devcontainer (`bwrap: No permissions to create new namespace`) and the relay still returned a
+detailed "success" report — 385 tests passing, per-file change list, mutation checks — with **zero
+files changed on disk**. If Codex is down, fall back to implementing directly (spec-first, then
+the sonnet-scout review round still applies).

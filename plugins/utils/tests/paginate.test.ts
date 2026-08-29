@@ -238,7 +238,7 @@ describe("paginate: ページ送り", () => {
 		const { target, updates, press } = setup();
 		await paginate(target, { pages: ["1", "2"] });
 
-		await press("next", true); // 失敗しても throw しない
+		await press("next", true);
 		await press("next");
 		expect(updates.at(-1)?.content).toBe("2");
 	});
@@ -261,11 +261,11 @@ describe("paginate: テーマと見た目", () => {
 		const { target, sent } = setup({ clientTheme });
 		await paginate(target, {
 			pages: ["1", "2", "3"],
-			counter: (current, total) => `${current}:${total}`, // その場の上書きが勝つ
+			counter: (current, total) => `${current}:${total}`,
 		});
 
 		const row = buttonsOf(sent[0]);
-		expect(row[3]?.label).toBe("NEXT"); // クライアントの utils({ theme })
+		expect(row[3]?.label).toBe("NEXT");
 		expect(row[2]?.label).toBe("1:3");
 	});
 });
@@ -288,7 +288,7 @@ describe("paginate: 時間切れと後片付け", () => {
 		await press("next");
 		await collector.fire("end");
 
-		expect(descriptionOf(edits[0])).toBe("2ページ目"); // 見ていたページのまま
+		expect(descriptionOf(edits[0])).toBe("2ページ目");
 		expect(disabledOf(edits[0])).toEqual([true, true, true, true, true]);
 		expect(updates).toHaveLength(1); // update ではなく元メッセージの編集で閉じる
 	});

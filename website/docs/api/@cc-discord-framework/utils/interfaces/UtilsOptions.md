@@ -1,6 +1,6 @@
 # インターフェイス: UtilsOptions
 
-定義: [plugins/utils/src/index.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/index.ts#L39)
+定義: [plugins/utils/src/index.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/index.ts#L39)
 
 ## プロパティ
 
@@ -10,7 +10,7 @@
 optional scheduler?: boolean;
 ```
 
-定義: [plugins/utils/src/index.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/index.ts#L44)
+定義: [plugins/utils/src/index.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/index.ts#L44)
 
 `tasks/` の自動ロードと定期実行を有効にする。
 
@@ -28,7 +28,7 @@ true
 optional theme?: object;
 ```
 
-定義: [plugins/utils/src/index.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/index.ts#L54)
+定義: [plugins/utils/src/index.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/index.ts#L54)
 
 Bot 全体の見た目。指定した項目だけが既定値を上書きします。
 
@@ -424,7 +424,7 @@ optional ellipsis?: string;
 optional ui?: boolean;
 ```
 
-定義: [plugins/utils/src/index.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/index.ts#L49)
+定義: [plugins/utils/src/index.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/index.ts#L49)
 
 `this.services.ui` を登録する。
 

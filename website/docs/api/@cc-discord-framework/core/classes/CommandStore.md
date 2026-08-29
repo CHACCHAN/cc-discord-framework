@@ -1,6 +1,6 @@
 # クラス: CommandStore
 
-定義: [src/command/CommandStore.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L26)
+定義: [src/command/CommandStore.ts:26](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L26)
 
 [Command](Command.md) コンポーネントのストア。`commands/` を走査します。
 
@@ -19,7 +19,7 @@
 new CommandStore(): CommandStore;
 ```
 
-定義: [src/command/CommandStore.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L30)
+定義: [src/command/CommandStore.ts:33](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L33)
 
 #### 戻り値
 
@@ -37,7 +37,7 @@ new CommandStore(): CommandStore;
 readonly base: AbstractComponentClass<Command>;
 ```
 
-定義: [src/component/ComponentStore.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L50)
+定義: [src/component/ComponentStore.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L50)
 
 この種別のコンポーネントが継承する基底クラス。
 
@@ -53,7 +53,7 @@ readonly base: AbstractComponentClass<Command>;
 readonly container: Container;
 ```
 
-定義: [src/component/ComponentStore.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L56)
+定義: [src/component/ComponentStore.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L56)
 
 コンテナ。レジストリへの登録時に割り当てられます。
 
@@ -69,7 +69,7 @@ readonly container: Container;
 readonly logger: Logger;
 ```
 
-定義: [src/component/ComponentStore.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L59)
+定義: [src/component/ComponentStore.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L59)
 
 このストア用の子ロガー。登録時に割り当てられます。
 
@@ -85,7 +85,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/ComponentStore.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L47)
+定義: [src/component/ComponentStore.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L47)
 
 ストア名(= 自動探索ディレクトリ名)。
 
@@ -101,13 +101,31 @@ readonly name: string;
 readonly suffix: string;
 ```
 
-定義: [src/component/ComponentStore.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L53)
+定義: [src/component/ComponentStore.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L53)
 
 クラス名から取り除く接尾辞([ComponentStoreOptions.suffix](../interfaces/ComponentStoreOptions.md#suffix))。
 
 #### 継承元
 
 [`ComponentStore`](ComponentStore.md).[`suffix`](ComponentStore.md#suffix)
+
+## アクセッサー
+
+### hasMentionCommands \{#hasmentioncommands}
+
+#### 署名を取得する
+
+```ts
+get hasMentionCommands(): boolean;
+```
+
+定義: [src/command/CommandStore.ts:43](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L43)
+
+メンションで反応するコマンドが1つでもあるか。
+
+##### 戻り値
+
+`boolean`
 
 ## メソッド
 
@@ -117,7 +135,7 @@ readonly suffix: string;
 protected applyOptions(command, options): void;
 ```
 
-定義: [src/command/CommandStore.ts:39](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L39)
+定義: [src/command/CommandStore.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L47)
 
 解決済みメタデータをインスタンスへ適用します — 種別固有フィールドの
 割り当てと必須項目の検証はここで行います。ロード時に弾く場合は
@@ -149,7 +167,7 @@ protected applyOptions(command, options): void;
 protected bind(command): void;
 ```
 
-定義: [src/command/CommandStore.ts:67](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L67)
+定義: [src/command/CommandStore.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L76)
 
 ロード済みコンポーネントをランタイムへ配線します(例: リスナーの
 イベント購読)。`onLoad` の後、ストアに追加された状態で呼ばれます。
@@ -176,7 +194,7 @@ protected bind(command): void;
 protected deriveName(className): string;
 ```
 
-定義: [src/component/ComponentStore.ts:229](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L229)
+定義: [src/component/ComponentStore.ts:229](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L229)
 
 クラス名からコンポーネント名を導出します: 種別サフィックス
 ([ComponentStore.suffix](ComponentStore.md#suffix))を取り除き、ケバブケース化します
@@ -205,7 +223,7 @@ protected deriveName(className): string;
 dispatchAutocomplete(interaction): Promise<void>;
 ```
 
-定義: [src/command/CommandStore.ts:121](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L121)
+定義: [src/command/CommandStore.ts:142](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L142)
 
 autocomplete インタラクションを担当コマンドへルーティングします。
 
@@ -227,7 +245,7 @@ autocomplete インタラクションを担当コマンドへルーティング�
 dispatchChatInput(interaction): Promise<void>;
 ```
 
-定義: [src/command/CommandStore.ts:104](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L104)
+定義: [src/command/CommandStore.ts:125](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L125)
 
 スラッシュコマンドのインタラクションを担当コマンドへルーティングします。
 
@@ -243,13 +261,40 @@ dispatchChatInput(interaction): Promise<void>;
 
 ***
 
+### dispatchMention() \{#dispatchmention}
+
+```ts
+dispatchMention(message): Promise<boolean>;
+```
+
+定義: [src/command/CommandStore.ts:197](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L197)
+
+メッセージが対象へのメンションを含んでいれば、担当のメンションコマンドを
+実行します。対象にマッチしたかを返します(拒否・実行失敗でも `true` =
+そのメッセージはメンションコマンドが消費した、という意味です)。
+
+複数のコマンドの対象にマッチした場合は、本文で **最初に現れた** 対象の
+コマンドを1つだけ実行します。Bot と Webhook は無視されます。
+
+#### パラメータ
+
+##### message
+
+`Message`
+
+#### 戻り値
+
+`Promise`\<`boolean`\>
+
+***
+
 ### dispatchMessage() \{#dispatchmessage}
 
 ```ts
 dispatchMessage(message, prefixes): Promise<void>;
 ```
 
-定義: [src/command/CommandStore.ts:140](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L140)
+定義: [src/command/CommandStore.ts:161](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L161)
 
 メッセージからプレフィックスコマンドを解析して実行します。解決済み
 プレフィックスはクライアントが渡します。Bot と Webhook は無視されます。
@@ -276,7 +321,7 @@ readonly `string`[]
 load(cls, location?): Promise<Command>;
 ```
 
-定義: [src/component/ComponentStore.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L122)
+定義: [src/component/ComponentStore.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L122)
 
 単一のコンポーネントクラスを構築・初期化・追加します。
 同じクラスの二重ロードは既存インスタンスを返すだけで無害です。
@@ -309,7 +354,7 @@ load(cls, location?): Promise<Command>;
 loadAll(baseDirectory): Promise<void>;
 ```
 
-定義: [src/component/ComponentStore.ts:95](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L95)
+定義: [src/component/ComponentStore.ts:95](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L95)
 
 この種別のすべてのコンポーネントをロードします: 先に明示登録分、
 次に `<baseDirectory>/<name>` のファイル自動探索(baseDirectory 設定時)。
@@ -337,7 +382,7 @@ loadAll(baseDirectory): Promise<void>;
 lookup(name): Command | undefined;
 ```
 
-定義: [src/command/CommandStore.ts:35](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L35)
+定義: [src/command/CommandStore.ts:38](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L38)
 
 名前または別名でコマンドを検索します(大文字小文字を区別しません)。
 
@@ -359,7 +404,7 @@ lookup(name): Command | undefined;
 register(...classes): this;
 ```
 
-定義: [src/component/ComponentStore.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L77)
+定義: [src/component/ComponentStore.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L77)
 
 コンポーネントクラスを明示登録します(ファイル自動探索の代替)。
 [ComponentStore.loadAll](ComponentStore.md#loadall) 前ならキューに積まれ、後なら即座に
@@ -388,7 +433,7 @@ register(...classes): this;
 syncApplicationCommands(defaultGuildIds?): Promise<CommandsSyncedResult>;
 ```
 
-定義: [src/command/CommandStore.ts:174](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L174)
+定義: [src/command/CommandStore.ts:240](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L240)
 
 すべてのスラッシュ対応コマンドを一括上書きで Discord に登録します。
 `guildIds`(またはクライアント既定の `applicationGuildIds`)を持つ
@@ -413,7 +458,7 @@ readonly `string`[]
 protected unbind(command): void;
 ```
 
-定義: [src/command/CommandStore.ts:80](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L80)
+定義: [src/command/CommandStore.ts:98](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L98)
 
 [ComponentStore.bind](ComponentStore.md#bind) の逆操作。アンロード時に呼ばれます。
 
@@ -439,7 +484,7 @@ protected unbind(command): void;
 unload(resolvable): Promise<Command>;
 ```
 
-定義: [src/component/ComponentStore.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L200)
+定義: [src/component/ComponentStore.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L200)
 
 コンポーネントを取り除きます([ComponentStore.unbind](ComponentStore.md#unbind) と `onUnload` を実行)。
 
@@ -465,7 +510,7 @@ unload(resolvable): Promise<Command>;
 unloadAll(): Promise<void>;
 ```
 
-定義: [src/component/ComponentStore.ts:217](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L217)
+定義: [src/component/ComponentStore.ts:217](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L217)
 
 このストアのすべてのコンポーネントをアンロードします(クライアント終了時に使用)。
 
@@ -485,7 +530,7 @@ unloadAll(): Promise<void>;
 validateReferences(preconditions): void;
 ```
 
-定義: [src/command/CommandStore.ts:90](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/command/CommandStore.ts#L90)
+定義: [src/command/CommandStore.ts:111](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/command/CommandStore.ts#L111)
 
 ロードされていない Precondition を参照するコマンドを起動時に検出します。
 全ストアのロード完了後にクライアントが呼びます。

@@ -65,7 +65,10 @@ export abstract class Precondition extends Component {
 		command: Command,
 	): Awaitable<PreconditionResult>;
 
-	/** プレフィックス(メッセージ)コマンド呼び出しに対する判定。 */
+	/**
+	 * プレフィックス(メッセージ)コマンド呼び出しに対する判定。
+	 * メンションコマンドもメッセージ由来なので、このフローで判定されます。
+	 */
 	public messageRun?(message: Message, command: Command): Awaitable<PreconditionResult>;
 
 	/** 通過を表す結果。 */

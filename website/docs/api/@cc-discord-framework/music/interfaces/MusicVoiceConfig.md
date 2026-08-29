@@ -1,6 +1,6 @@
 # インターフェイス: MusicVoiceConfig
 
-定義: [plugins/music/src/config.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L30)
+定義: [plugins/music/src/config.ts:30](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L30)
 
 ボイス接続の挙動。
 
@@ -12,7 +12,7 @@
 readonly noSubscriberBehavior: NoSubscriberBehavior;
 ```
 
-定義: [plugins/music/src/config.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L42)
+定義: [plugins/music/src/config.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L42)
 
 購読者(ボイス接続)がいないときの挙動。既定は `Pause` —
 一時的に切断されても曲を消費してしまわないようにするためです。
@@ -26,7 +26,7 @@ readonly noSubscriberBehavior: NoSubscriberBehavior;
 readonly readyTimeout: number;
 ```
 
-定義: [plugins/music/src/config.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L34)
+定義: [plugins/music/src/config.ts:34](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L34)
 
 接続完了を待つミリ秒。
 
@@ -38,7 +38,7 @@ readonly readyTimeout: number;
 readonly reconnectTimeout: number;
 ```
 
-定義: [plugins/music/src/config.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L36)
+定義: [plugins/music/src/config.ts:36](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L36)
 
 一時的な切断からの復帰を待つミリ秒。
 
@@ -50,6 +50,6 @@ readonly reconnectTimeout: number;
 readonly selfDeaf: boolean;
 ```
 
-定義: [plugins/music/src/config.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/config.ts#L32)
+定義: [plugins/music/src/config.ts:32](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/config.ts#L32)
 
 接続時に自分のマイクを塞ぐ(受信専用にする)。

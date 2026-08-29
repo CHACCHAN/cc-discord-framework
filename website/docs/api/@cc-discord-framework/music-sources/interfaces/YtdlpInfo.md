@@ -1,6 +1,6 @@
 # インターフェイス: YtdlpInfo
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L42)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L42)
 
 yt-dlp の `-J` が返す情報のうち、ここで使う部分。
 
@@ -12,7 +12,7 @@ yt-dlp の `-J` が返す情報のうち、ここで使う部分。
 optional acodec?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L51)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:51](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L51)
 
 ***
 
@@ -22,7 +22,7 @@ optional acodec?: string;
 optional channel?: string | null;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L48)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:48](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L48)
 
 ***
 
@@ -32,7 +32,7 @@ optional channel?: string | null;
 optional duration?: number | null;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L46)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:46](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L46)
 
 ***
 
@@ -42,7 +42,7 @@ optional duration?: number | null;
 optional entries?: YtdlpInfo[];
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L54)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:54](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L54)
 
 ***
 
@@ -52,7 +52,7 @@ optional entries?: YtdlpInfo[];
 optional ext?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L52)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:52](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L52)
 
 ***
 
@@ -62,7 +62,7 @@ optional ext?: string;
 optional id?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:43](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L43)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:43](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L43)
 
 ***
 
@@ -72,7 +72,7 @@ optional id?: string;
 optional is_live?: boolean;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L50)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L50)
 
 ***
 
@@ -82,7 +82,7 @@ optional is_live?: boolean;
 optional thumbnail?: string | null;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L49)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L49)
 
 ***
 
@@ -92,7 +92,7 @@ optional thumbnail?: string | null;
 optional title?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L44)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L44)
 
 ***
 
@@ -102,7 +102,7 @@ optional title?: string;
 optional uploader?: string | null;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L47)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L47)
 
 ***
 
@@ -112,7 +112,7 @@ optional uploader?: string | null;
 optional url?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L45)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:45](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L45)
 
 ***
 
@@ -122,4 +122,4 @@ optional url?: string;
 optional webpage_url?: string;
 ```
 
-定義: [plugins/music-sources/src/youtube/ytdlp.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music-sources/src/youtube/ytdlp.ts#L53)
+定義: [plugins/music-sources/src/youtube/ytdlp.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music-sources/src/youtube/ytdlp.ts#L53)

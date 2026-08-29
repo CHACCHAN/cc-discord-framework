@@ -41,6 +41,15 @@ export interface CommandOptions extends ComponentOptions {
 	nameLocalizations?: LocalizationMap;
 	/** 説明のローカライズ。 */
 	descriptionLocalizations?: LocalizationMap;
+	/**
+	 * どのユーザーへのメンションに反応するか({@link Command.mentionRun} が
+	 * 呼ばれる条件)。配列は反応するユーザー ID(snowflake)で、`"self"` は
+	 * Bot 自身を指します。`true` は `["self"]` と同じ、`false` で無効です。
+	 *
+	 * 省略した場合、`mentionRun` を実装していれば `["self"]`(Bot 自身への
+	 * メンションに反応)になります。
+	 */
+	mentions?: boolean | readonly string[];
 }
 
 /**
@@ -48,6 +57,8 @@ export interface CommandOptions extends ComponentOptions {
  *
  * - {@link Command.chatInputRun} — スラッシュコマンド(`/ping`)
  * - {@link Command.messageRun} — プレフィックスコマンド(`!ping`、`defaultPrefix` が必要)
+ * - {@link Command.mentionRun} — メンションコマンド(`@Bot こんにちは`、既定は Bot 自身への
+ *   メンションに反応。`mentions` オプションで任意のユーザー ID に変えられます)
  * - {@link Command.autocompleteRun} — スラッシュオプションの autocomplete
  *
  * ```ts
@@ -93,6 +104,12 @@ export abstract class Command extends Component {
 	/** 説明のローカライズ。 */
 	declare public readonly descriptionLocalizations: LocalizationMap | null;
 
+	/**
+	 * 反応するメンションの対象(`"self"` = Bot 自身、それ以外はユーザー ID)。
+	 * `null` ならメンションでは反応しません。
+	 */
+	declare public readonly mentions: readonly string[] | null;
+
 	/** コマンドのメタデータを宣言します。 */
 	public static define(options: CommandOptions = {}) {
 		return defineOptions<Command>(options);
@@ -103,6 +120,17 @@ export abstract class Command extends Component {
 
 	/** プレフィックス(メッセージ)コマンドの実装。 */
 	public messageRun?(message: Message, args: string[]): Awaitable<unknown>;
+
+	/**
+	 * メンションコマンドの実装 — 対象({@link CommandOptions.mentions}、既定は
+	 * Bot 自身)へのメンションを含むメッセージに反応します。`content` には
+	 * 本文から対象のメンションを取り除いて trim した文字列が渡ります。
+	 *
+	 * 本文を読むため **MessageContent インテントが必要** です。リプライの
+	 * ピン(返信時の通知)は本文に現れないので誤発火しません。Bot と Webhook
+	 * の発言も無視されます。
+	 */
+	public mentionRun?(message: Message, content: string): Awaitable<unknown>;
 
 	/** このコマンドのオプションに対する autocomplete ハンドラ。 */
 	public autocompleteRun?(interaction: AutocompleteInteraction): Awaitable<unknown>;
@@ -115,6 +143,11 @@ export abstract class Command extends Component {
 	/** メッセージプレフィックスで呼び出せるかどうか。 */
 	public get supportsMessage(): boolean {
 		return typeof this.messageRun === "function";
+	}
+
+	/** メンションで呼び出せるかどうか。 */
+	public get supportsMention(): boolean {
+		return this.mentions !== null;
 	}
 
 	/**

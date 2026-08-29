@@ -27,6 +27,9 @@ export class CommandStore extends ComponentStore<Command> {
 	/** 小文字化した名前・別名 → コマンド(メッセージディスパッチ用)。 */
 	readonly #index = new Collection<string, Command>();
 
+	/** メンション対象(`"self"` またはユーザー ID)→ コマンド(メンションディスパッチ用)。 */
+	readonly #mentionIndex = new Collection<string, Command>();
+
 	public constructor() {
 		super({ name: "commands", base: Command });
 	}
@@ -34,6 +37,11 @@ export class CommandStore extends ComponentStore<Command> {
 	/** 名前または別名でコマンドを検索します(大文字小文字を区別しません)。 */
 	public lookup(name: string): Command | undefined {
 		return this.#index.get(name.toLowerCase());
+	}
+
+	/** メンションで反応するコマンドが1つでもあるか。 */
+	public get hasMentionCommands(): boolean {
+		return this.#mentionIndex.size > 0;
 	}
 
 	protected override applyOptions(command: Command, options: CommandOptions): void {
@@ -48,6 +56,7 @@ export class CommandStore extends ComponentStore<Command> {
 			guildIds: options.guildIds ?? null,
 			nameLocalizations: options.nameLocalizations ?? null,
 			descriptionLocalizations: options.descriptionLocalizations ?? null,
+			mentions: resolveMentions(command, options),
 		});
 
 		if (command.supportsChatInput) {
@@ -74,12 +83,24 @@ export class CommandStore extends ComponentStore<Command> {
 				);
 			}
 		}
+		for (const target of command.mentions ?? []) {
+			const existing = this.#mentionIndex.get(target);
+			if (existing) {
+				throw new ComponentLoadError(
+					`"${command.name}" のメンション対象 "${target}" は "${existing.name}" がすでに使用しています`,
+				);
+			}
+		}
 		for (const key of keys) this.#index.set(key, command);
+		for (const target of command.mentions ?? []) this.#mentionIndex.set(target, command);
 	}
 
 	protected override unbind(command: Command): void {
 		for (const [key, value] of this.#index) {
 			if (value === command) this.#index.delete(key);
+		}
+		for (const [key, value] of this.#mentionIndex) {
+			if (value === command) this.#mentionIndex.delete(key);
 		}
 	}
 
@@ -166,6 +187,51 @@ export class CommandStore extends ComponentStore<Command> {
 	}
 
 	/**
+	 * メッセージが対象へのメンションを含んでいれば、担当のメンションコマンドを
+	 * 実行します。対象にマッチしたかを返します(拒否・実行失敗でも `true` =
+	 * そのメッセージはメンションコマンドが消費した、という意味です)。
+	 *
+	 * 複数のコマンドの対象にマッチした場合は、本文で **最初に現れた** 対象の
+	 * コマンドを1つだけ実行します。Bot と Webhook は無視されます。
+	 */
+	public async dispatchMention(message: Message): Promise<boolean> {
+		if (message.author.bot || message.webhookId || !message.content) return false;
+
+		// リプライのピンは content に現れないため、mentions コレクションでは
+		// なく本文そのものを見る(返信しただけで誤発火させない)。
+		let matched: { command: Command; id: string; index: number } | undefined;
+		for (const [target, command] of this.#mentionIndex) {
+			const id = target === "self" ? this.container.client.user?.id : target;
+			if (!id) continue;
+			const match = new RegExp(`<@!?${id}>`).exec(message.content);
+			if (!match) continue;
+			if (matched === undefined || match.index < matched.index) {
+				matched = { command, id, index: match.index };
+			}
+		}
+		if (matched === undefined) return false;
+
+		const { command, id } = matched;
+		const content = message.content.replace(new RegExp(`<@!?${id}>`, "g"), "").trim();
+
+		const payload: CommandRunPayload = { type: "mention", command, message, content };
+		try {
+			const denial = await this.#gate(command, payload);
+			if (denial) {
+				await this.#handleDenied(denial, payload);
+				return true;
+			}
+
+			this.container.client.emit(FrameworkEvents.CommandRun, payload);
+			// mentionRun の存在は applyOptions が保証している(無ければロード時に失敗)。
+			await command.mentionRun?.(message, content);
+		} catch (error) {
+			await this.#handleError(error, payload);
+		}
+		return true;
+	}
+
+	/**
 	 * すべてのスラッシュ対応コマンドを一括上書きで Discord に登録します。
 	 * `guildIds`(またはクライアント既定の `applicationGuildIds`)を持つ
 	 * コマンドはギルド毎に、それ以外はグローバルに登録されます。
@@ -221,7 +287,7 @@ export class CommandStore extends ComponentStore<Command> {
 	/** 権限チェック + Precondition。拒否なら UserError、続行なら null。 */
 	async #gate(
 		command: Command,
-		payload: CommandRunPayload & { type: "chatInput" | "message" },
+		payload: CommandRunPayload & { type: "chatInput" | "message" | "mention" },
 	): Promise<UserError | null> {
 		const inGuild =
 			payload.type === "chatInput" ? payload.interaction.inGuild() : payload.message.inGuild();
@@ -281,7 +347,7 @@ export class CommandStore extends ComponentStore<Command> {
 
 	async #handleDenied(
 		error: UserError,
-		payload: CommandRunPayload & { type: "chatInput" | "message" },
+		payload: CommandRunPayload & { type: "chatInput" | "message" | "mention" },
 	): Promise<void> {
 		const handled = this.container.client.emit(FrameworkEvents.CommandDenied, error, payload);
 		if (handled) return;
@@ -305,7 +371,7 @@ export class CommandStore extends ComponentStore<Command> {
 	}
 
 	async #replyTo(
-		payload: CommandRunPayload & { type: "chatInput" | "message" },
+		payload: CommandRunPayload & { type: "chatInput" | "message" | "mention" },
 		content: string,
 	): Promise<void> {
 		try {
@@ -329,6 +395,49 @@ export class CommandStore extends ComponentStore<Command> {
 			);
 		}
 	}
+}
+
+/**
+ * `mentions` オプションを解決します。省略時は mentionRun を実装していれば
+ * `["self"]`(Bot 自身へのメンションに反応)、指定に問題があればロード時に
+ * 失敗させます — メンションに反応しない設定ミスは実行時には気づけないためです。
+ */
+function resolveMentions(command: Command, options: CommandOptions): readonly string[] | null {
+	const raw = options.mentions;
+	const hasRun = typeof command.mentionRun === "function";
+
+	let mentions: readonly string[] | null;
+	if (raw === undefined) {
+		mentions = hasRun ? ["self"] : null;
+	} else if (raw === true) {
+		mentions = ["self"];
+	} else if (raw === false) {
+		mentions = null;
+	} else {
+		if (raw.length === 0) {
+			throw new ComponentLoadError(
+				`コマンド "${command.name}" の mentions に空の配列は指定できません — ` +
+					"省略するか false を指定してください",
+			);
+		}
+		for (const target of raw) {
+			if (target !== "self" && !/^\d+$/.test(target)) {
+				throw new ComponentLoadError(
+					`コマンド "${command.name}" のメンション対象 "${target}" が不正です` +
+						'(ユーザー ID の数字列、または Bot 自身を指す "self" のみ)',
+				);
+			}
+		}
+		mentions = [...new Set(raw)];
+	}
+
+	if (mentions !== null && !hasRun) {
+		throw new ComponentLoadError(
+			`コマンド "${command.name}" は mentions を指定していますが mentionRun がありません — ` +
+				"mentionRun(message, content) を実装してください",
+		);
+	}
+	return mentions;
 }
 
 /**

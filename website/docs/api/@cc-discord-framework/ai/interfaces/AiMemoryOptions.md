@@ -1,6 +1,6 @@
 # インターフェイス: AiMemoryOptions
 
-定義: [plugins/ai/src/config.ts:166](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L166)
+定義: [plugins/ai/src/config.ts:166](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L166)
 
 [AiMemoryConfig](AiMemoryConfig.md) の部分指定。`ttl` は期間表記でも書けます。
 
@@ -12,7 +12,7 @@
 optional enabled?: boolean;
 ```
 
-定義: [plugins/ai/src/config.ts:168](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L168)
+定義: [plugins/ai/src/config.ts:168](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L168)
 
 #### Default
 
@@ -28,7 +28,7 @@ true
 optional maxMessages?: number;
 ```
 
-定義: [plugins/ai/src/config.ts:170](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L170)
+定義: [plugins/ai/src/config.ts:170](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L170)
 
 #### Default
 
@@ -44,7 +44,7 @@ optional maxMessages?: number;
 optional store?: AiMemoryStore;
 ```
 
-定義: [plugins/ai/src/config.ts:174](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L174)
+定義: [plugins/ai/src/config.ts:174](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L174)
 
 #### Default
 
@@ -60,7 +60,7 @@ Map ベースの既定実装
 optional ttl?: false | DurationInput;
 ```
 
-定義: [plugins/ai/src/config.ts:172](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/ai/src/config.ts#L172)
+定義: [plugins/ai/src/config.ts:172](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/ai/src/config.ts#L172)
 
 #### Default
 

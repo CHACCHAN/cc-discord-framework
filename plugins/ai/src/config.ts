@@ -317,7 +317,6 @@ function duration(
 
 /** 部分指定を既定値へ重ねて、完全な設定にします。 */
 export function resolveAiConfig(options: AiConfigOptions = {}): AiConfig {
-	// 分割の既定値は表示方法によって変わるので、embeds を先に決める。
 	const embeds = options.display?.embeds ?? true;
 
 	return {
@@ -359,6 +358,31 @@ export function resolveAiConfig(options: AiConfigOptions = {}): AiConfig {
 			payload: options.display?.payload,
 		},
 		texts: resolveAiTexts(options.texts),
+	};
+}
+
+/**
+ * 表示設定に呼び出し単位の上書きをキー単位で重ねます。
+ *
+ * {@link AiService.reply} の `display` オプションと {@link renderAiPayload} が
+ * 使います。`allowedMentions` は `null` が「discord.js の既定に任せる」という
+ * 意味を持つため、`undefined` のときだけ設定側の値を使います。
+ */
+export function mergeAiDisplay(
+	display: AiDisplayConfig,
+	overrides: AiDisplayOptions | undefined,
+): AiDisplayConfig {
+	if (overrides === undefined) return display;
+	return {
+		embeds: overrides.embeds ?? display.embeds,
+		ephemeral: overrides.ephemeral ?? display.ephemeral,
+		splitThreshold: overrides.splitThreshold ?? display.splitThreshold,
+		allowedMentions:
+			overrides.allowedMentions === undefined
+				? display.allowedMentions
+				: overrides.allowedMentions,
+		decorate: overrides.decorate ?? display.decorate,
+		payload: overrides.payload ?? display.payload,
 	};
 }
 

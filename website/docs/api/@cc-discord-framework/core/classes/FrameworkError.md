@@ -1,6 +1,6 @@
 # クラス: FrameworkError
 
-定義: [src/errors.ts:7](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L7)
+定義: [src/errors.ts:7](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L7)
 
 フレームワーク自身が投げるすべてのエラーの基底クラス。
 
@@ -15,6 +15,7 @@
 
 - [`ComponentLoadError`](ComponentLoadError.md)
 - [`ConfigLoadError`](ConfigLoadError.md)
+- [`ContainerLoadError`](ContainerLoadError.md)
 - [`UserError`](UserError.md)
 
 ## コンストラクター
@@ -25,7 +26,7 @@
 new FrameworkError(message, options?): FrameworkError;
 ```
 
-定義: [src/errors.ts:8](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L8)
+定義: [src/errors.ts:8](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L8)
 
 #### パラメータ
 

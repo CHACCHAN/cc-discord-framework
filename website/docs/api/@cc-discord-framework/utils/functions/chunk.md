@@ -4,7 +4,7 @@
 function chunk<T>(items, size): T[][];
 ```
 
-定義: [plugins/utils/src/text.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/utils/src/text.ts#L49)
+定義: [plugins/utils/src/text.ts:49](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/utils/src/text.ts#L49)
 
 配列を一定の大きさに分割します。ページネーションの元データ作りに。
 

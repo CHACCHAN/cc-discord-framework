@@ -30,7 +30,7 @@ export class PreconditionStore extends ComponentStore<Precondition> {
 	 */
 	public async run(
 		names: readonly string[],
-		payload: CommandRunPayload & { type: "chatInput" | "message" },
+		payload: CommandRunPayload & { type: "chatInput" | "message" | "mention" },
 	): Promise<PreconditionResult> {
 		for (const name of names) {
 			const precondition = this.get(name);
@@ -48,9 +48,10 @@ export class PreconditionStore extends ComponentStore<Precondition> {
 				}
 				result = await precondition.chatInputRun(payload.interaction, payload.command);
 			} else {
+				// メンションコマンドもメッセージ由来なので messageRun で判定する。
 				if (!precondition.messageRun) {
 					throw new FrameworkError(
-						`Precondition "${name}" は messageRun を実装していませんが、メッセージコマンド "${payload.command.name}" をガードしています`,
+						`Precondition "${name}" は messageRun を実装していませんが、メッセージ/メンションコマンド "${payload.command.name}" をガードしています`,
 					);
 				}
 				result = await precondition.messageRun(payload.message, payload.command);

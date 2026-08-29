@@ -49,10 +49,51 @@ declare module "@cc-discord-framework/core" {
 です。宣言マージは「名前 → 型」の対応を TypeScript に教えるだけで、
 実行時の登録は `services/` に置いたことで既に済んでいます。
 
+## `container/` ディレクトリに置く
+
+Prisma のような「プロジェクト全体で使い回すインスタンス」は、
+`container/` ディレクトリにファイルを置くだけでコンテナへ自動登録
+されます — どこで定義するか迷う必要はありません。
+
+```ts title="src/container/prisma.ts"
+import { defineContainerValue } from "@cc-discord-framework/core";
+import { PrismaClient } from "@prisma/client";
+
+export default defineContainerValue({
+  create: () => new PrismaClient(),
+  dispose: (prisma) => prisma.$disconnect(),
+});
+
+declare module "@cc-discord-framework/core" {
+  interface Container {
+    prisma: PrismaClient;
+  }
+}
+```
+
+```ts
+// どのコンポーネントからも — 完全に型付き
+await this.container.prisma.user.findMany();
+```
+
+仕組みと規約:
+
+- コンテナ上の名前はファイル名から導出されます(`prisma.ts` → `prisma`、
+  `my-db.ts` → `myDb`)。`name` オプションで明示もできます。
+- `create` はクライアント毎に呼ばれます(async 可)。引数にコンテナが
+  渡るので、`client` やプラグインの設定も参照できます。
+- 登録は **サービスのロードより前** — サービスの `onLoad` から
+  `this.container.prisma` を使えます。
+- `dispose` は `client.destroy()` 時に **読み込みの逆順** で呼ばれます。
+- ファイルの収集規則は他の規約ディレクトリと同じです — サブディレクトリ
+  も対象、`_` 始まりのファイルは対象外(共有コードの置き場)。
+- 名前の衝突や `defineContainerValue` を通していない default export は
+  **起動時にエラー**になります(実行時に黙って壊れません)。
+
 ## コンテナへ直接値を載せる
 
-コンポーネントの形を取らない値(プラグインが提供する接続など)を直接
-コンテナに載せたい場合も、宣言マージ + 代入だけです:
+セットアップコードから手で載せることもできます(プラグインが接続を
+提供する場合など)。宣言マージ + 代入だけです:
 
 ```ts
 declare module "@cc-discord-framework/core" {
@@ -76,8 +117,10 @@ await this.container.redis.get(key);
   `install` 内 — コンポーネントのロード前に走ります)に行い、`onLoad`
   から参照できるようにしてください。
 - データベースについて: コアは Prisma / SQLite / Redis などの具体を一切
-  知りません。DB はただのサービスです — `services/` に置いて `onLoad` で
-  接続し、`onUnload` で閉じてください([サービス](../guides/services.md))。
+  知りません。接続インスタンスそのものは `container/` に置くのが手軽です
+  (`dispose` で閉じられます)。接続にロジック(クエリの共通化など)を
+  持たせたい場合は、サービスとして `services/` に置いて `onLoad` で接続し、
+  `onUnload` で閉じてください([サービス](../guides/services.md))。
 - 細かい値をバラバラに生やすより、意味のまとまりごとに1つのサービスに
   してください。
 

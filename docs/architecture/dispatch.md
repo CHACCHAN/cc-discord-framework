@@ -13,12 +13,13 @@
 
 - `interactionCreate` — 常時。`isChatInputCommand()` なら
   `dispatchChatInput`、`isAutocomplete()` なら `dispatchAutocomplete` へ。
-- `messageCreate` — **メッセージコマンドが有効なときだけ**
-  (`fetchPrefix` 指定、または `defaultPrefix` が非 null)。クライアントが
-  `fetchPrefix(message, container)` を解決してから
-  `dispatchMessage(message, prefixes)` を呼びます。`fetchPrefix` が
-  `null` を返せばそのメッセージでは無効です。`fetchPrefix` 自体の例外は
-  ログに落ち、Bot は落ちません。
+- `messageCreate` — **メッセージコマンドが有効(`fetchPrefix` 指定、
+  または `defaultPrefix` が非 null)か、メンションコマンドが1つでもある
+  ときだけ**。まず `dispatchMention(message)` を試し、消費されなければ
+  `fetchPrefix(message, container)` を解決して
+  `dispatchMessage(message, prefixes)` を呼びます(メンションが最優先)。
+  `fetchPrefix` が `null` を返せばそのメッセージでは無効です。
+  `fetchPrefix` 自体の例外はログに落ち、Bot は落ちません。
 
 ## CommandStore のロード時の仕事
 
@@ -30,7 +31,9 @@
   `description` を持つことを検証します。違反は `ComponentLoadError` です。
 - `bind` — 名前と `aliases` を **小文字化してインデックス**
   (`#index`)へ登録します。別コマンドとの名前 / 別名の衝突はロード時
-  エラーです。`unbind` がインデックスから取り除きます。
+  エラーです。`unbind` がインデックスから取り除きます。メンション対象
+  (`mentions` の解決結果: `"self"` またはユーザー ID)も同様に
+  `#mentionIndex` へ登録し、対象の重複はロード時エラーです。
 - `validateReferences(preconditions)` — 全ストアのロード後にクライアントが
   呼び、ロードされていない Precondition を参照するコマンドを
   `ComponentLoadError` にします(fail-fast)。
@@ -51,6 +54,21 @@
 3. 残りを空白で分割し、先頭語を `lookup()`(小文字化した名前・別名の
    インデックス)で検索。`messageRun` があるものだけを処理します。
 4. 以降はスラッシュと同じ: ゲート → `commandRun` 発火 → 実行。
+
+### メンション(`dispatchMention`)
+
+1. **Bot・Webhook・本文なしは無視**します。
+2. `#mentionIndex` の各対象(`"self"` は `client.user.id` に解決)を
+   `<@id>` / `<@!id>` の形で **本文そのもの** から探します
+   (`message.mentions` を見ないのは、リプライのピンで誤発火させない
+   ためです)。
+3. 複数マッチしたら **本文で最初に現れた** 対象のコマンドを1つだけ
+   実行します。対象のメンションを本文から取り除いて trim したものが
+   `content` として渡ります。
+4. 以降は他と同じ: ゲート(Precondition は `messageRun` フロー)→
+   `commandRun` 発火(payload は `type: "mention"`)→ 実行。
+5. 対象にマッチした時点で「消費した」扱い(戻り値 `true`)になり、
+   プレフィックス解析には回りません — 拒否や実行失敗でも同じです。
 
 ### autocomplete(`dispatchAutocomplete`)
 

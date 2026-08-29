@@ -22,6 +22,8 @@ import {
 export class AskCommand extends Command {
 	override async chatInputRun(interaction: ChatInputCommandInteraction) {
 		// defer・ストリーミング表示・長文の分割・失敗時の表示は reply() の担当。
+		// 見た目を変えたい場合は display(embeds / decorate / payload など)と
+		// texts(answerBody など)を呼び出し単位で上書きできる。
 		await this.services.ai.reply(interaction, {
 			prompt: interaction.options.getString("prompt", true),
 		});

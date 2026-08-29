@@ -1,6 +1,6 @@
 # クラス: StreamProviderStore
 
-定義: [plugins/music/src/StreamProvider.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L71)
+定義: [plugins/music/src/StreamProvider.ts:71](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L71)
 
 [StreamProvider](StreamProvider.md) のストア。`providers/` を走査します。
 
@@ -16,7 +16,7 @@
 new StreamProviderStore(): StreamProviderStore;
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L72)
+定義: [plugins/music/src/StreamProvider.ts:72](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L72)
 
 #### 戻り値
 
@@ -34,7 +34,7 @@ new StreamProviderStore(): StreamProviderStore;
 readonly base: AbstractComponentClass<StreamProvider>;
 ```
 
-定義: [src/component/ComponentStore.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L50)
+定義: [src/component/ComponentStore.ts:50](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L50)
 
 この種別のコンポーネントが継承する基底クラス。
 
@@ -50,7 +50,7 @@ readonly base: AbstractComponentClass<StreamProvider>;
 readonly container: Container;
 ```
 
-定義: [src/component/ComponentStore.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L56)
+定義: [src/component/ComponentStore.ts:56](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L56)
 
 コンテナ。レジストリへの登録時に割り当てられます。
 
@@ -66,7 +66,7 @@ readonly container: Container;
 readonly logger: Logger;
 ```
 
-定義: [src/component/ComponentStore.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L59)
+定義: [src/component/ComponentStore.ts:59](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L59)
 
 このストア用の子ロガー。登録時に割り当てられます。
 
@@ -82,7 +82,7 @@ readonly logger: Logger;
 readonly name: string;
 ```
 
-定義: [src/component/ComponentStore.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L47)
+定義: [src/component/ComponentStore.ts:47](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L47)
 
 ストア名(= 自動探索ディレクトリ名)。
 
@@ -98,7 +98,7 @@ readonly name: string;
 readonly suffix: string;
 ```
 
-定義: [src/component/ComponentStore.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L53)
+定義: [src/component/ComponentStore.ts:53](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L53)
 
 クラス名から取り除く接尾辞([ComponentStoreOptions.suffix](../../core/interfaces/ComponentStoreOptions.md#suffix))。
 
@@ -114,7 +114,7 @@ readonly suffix: string;
 protected applyOptions(provider, options): void;
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L76)
+定義: [plugins/music/src/StreamProvider.ts:76](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L76)
 
 解決済みメタデータをインスタンスへ適用します — 種別固有フィールドの
 割り当てと必須項目の検証はここで行います。ロード時に弾く場合は
@@ -146,7 +146,7 @@ protected applyOptions(provider, options): void;
 protected bind(component): void;
 ```
 
-定義: [src/component/ComponentStore.ts:247](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L247)
+定義: [src/component/ComponentStore.ts:247](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L247)
 
 ロード済みコンポーネントをランタイムへ配線します(例: リスナーの
 イベント購読)。`onLoad` の後、ストアに追加された状態で呼ばれます。
@@ -173,7 +173,7 @@ protected bind(component): void;
 byPriority(): StreamProvider[];
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L84)
+定義: [plugins/music/src/StreamProvider.ts:84](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L84)
 
 優先度の高い順に並べた Provider。
 
@@ -189,7 +189,7 @@ byPriority(): StreamProvider[];
 protected deriveName(className): string;
 ```
 
-定義: [src/component/ComponentStore.ts:229](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L229)
+定義: [src/component/ComponentStore.ts:229](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L229)
 
 クラス名からコンポーネント名を導出します: 種別サフィックス
 ([ComponentStore.suffix](../../core/classes/ComponentStore.md#suffix))を取り除き、ケバブケース化します
@@ -218,7 +218,7 @@ protected deriveName(className): string;
 load(cls, location?): Promise<StreamProvider>;
 ```
 
-定義: [src/component/ComponentStore.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L122)
+定義: [src/component/ComponentStore.ts:122](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L122)
 
 単一のコンポーネントクラスを構築・初期化・追加します。
 同じクラスの二重ロードは既存インスタンスを返すだけで無害です。
@@ -251,7 +251,7 @@ load(cls, location?): Promise<StreamProvider>;
 loadAll(baseDirectory): Promise<void>;
 ```
 
-定義: [src/component/ComponentStore.ts:95](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L95)
+定義: [src/component/ComponentStore.ts:95](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L95)
 
 この種別のすべてのコンポーネントをロードします: 先に明示登録分、
 次に `<baseDirectory>/<name>` のファイル自動探索(baseDirectory 設定時)。
@@ -279,7 +279,7 @@ loadAll(baseDirectory): Promise<void>;
 open(track, context?): Promise<AudioStream | null>;
 ```
 
-定義: [plugins/music/src/StreamProvider.ts:105](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/plugins/music/src/StreamProvider.ts#L105)
+定義: [plugins/music/src/StreamProvider.ts:105](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/plugins/music/src/StreamProvider.ts#L105)
 
 トラックを再生できる Provider を優先度順に試します。
 担当できる Provider が1つも無ければ `null`。
@@ -321,7 +321,7 @@ watch ページを開いて出す「音声ファイルではありません」�
 register(...classes): this;
 ```
 
-定義: [src/component/ComponentStore.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L77)
+定義: [src/component/ComponentStore.ts:77](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L77)
 
 コンポーネントクラスを明示登録します(ファイル自動探索の代替)。
 [ComponentStore.loadAll](../../core/classes/ComponentStore.md#loadall) 前ならキューに積まれ、後なら即座に
@@ -350,7 +350,7 @@ register(...classes): this;
 protected unbind(component): void;
 ```
 
-定義: [src/component/ComponentStore.ts:252](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L252)
+定義: [src/component/ComponentStore.ts:252](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L252)
 
 [ComponentStore.bind](../../core/classes/ComponentStore.md#bind) の逆操作。アンロード時に呼ばれます。
 
@@ -376,7 +376,7 @@ protected unbind(component): void;
 unload(resolvable): Promise<StreamProvider>;
 ```
 
-定義: [src/component/ComponentStore.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L200)
+定義: [src/component/ComponentStore.ts:200](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L200)
 
 コンポーネントを取り除きます([ComponentStore.unbind](../../core/classes/ComponentStore.md#unbind) と `onUnload` を実行)。
 
@@ -402,7 +402,7 @@ unload(resolvable): Promise<StreamProvider>;
 unloadAll(): Promise<void>;
 ```
 
-定義: [src/component/ComponentStore.ts:217](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/component/ComponentStore.ts#L217)
+定義: [src/component/ComponentStore.ts:217](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/component/ComponentStore.ts#L217)
 
 このストアのすべてのコンポーネントをアンロードします(クライアント終了時に使用)。
 

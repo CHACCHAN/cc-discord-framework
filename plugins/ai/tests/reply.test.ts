@@ -162,9 +162,7 @@ describe("ストリーミング表示", () => {
 			prompt: "やあ",
 		});
 		expect(result.text).toBe("最後");
-		// 4断片あっても、本文が変わらない分は撃たれない。
 		expect(result.edits).toBeLessThanOrEqual(2);
-		// 同じ本文を2度送っていない。
 		expect(new Set(edits.map(bodyOf)).size).toBe(edits.length);
 		await client.destroy();
 	});
@@ -569,7 +567,6 @@ describe("display.payload フック", () => {
 			kind: "success",
 		});
 
-		// 途中経過は index=1 / total=1 / streaming=true。
 		const progress = contexts.filter((context) => context.streaming);
 		expect(progress.length).toBeGreaterThan(0);
 		for (const context of progress) {

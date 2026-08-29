@@ -192,7 +192,7 @@ describe("confirm: 見た目とテーマ", () => {
 
 		const [yes, no] = buttonsOf(sent[0]);
 		expect(yes?.label).toBe("はい");
-		expect(yes?.style).toBe(defaultTheme.confirm.yes.style); // 色は既定のまま
+		expect(yes?.style).toBe(defaultTheme.confirm.yes.style);
 		expect(no?.label).toBe("やめる");
 
 		await expire();
@@ -241,8 +241,8 @@ describe("confirm: 見た目とテーマ", () => {
 		await ids();
 
 		const [yes, no] = buttonsOf(sent[0]);
-		expect(yes?.label).toBe("実行"); // クライアントの utils({ theme })
-		expect(no?.label).toBe("だめ"); // その場の上書きが勝つ
+		expect(yes?.label).toBe("実行");
+		expect(no?.label).toBe("だめ");
 
 		await expire();
 		await promise;

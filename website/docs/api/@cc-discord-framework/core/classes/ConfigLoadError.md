@@ -1,6 +1,6 @@
 # クラス: ConfigLoadError
 
-定義: [src/errors.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L40)
+定義: [src/errors.ts:40](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L40)
 
 設定ディレクトリの読み込みに失敗したときのエラー — ディレクトリや設定
 ファイルが見つからない、default export がない、複数のファイルが同じ
@@ -22,7 +22,7 @@
 new ConfigLoadError(message, options?): ConfigLoadError;
 ```
 
-定義: [src/errors.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L44)
+定義: [src/errors.ts:44](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L44)
 
 #### パラメータ
 
@@ -50,6 +50,6 @@ new ConfigLoadError(message, options?): ConfigLoadError;
 readonly path: string | null;
 ```
 
-定義: [src/errors.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c981e0102bdf422544ebe8652100f9e9fafb03c7/src/errors.ts#L42)
+定義: [src/errors.ts:42](https://github.com/CHACCHAN/cc-discord-framework/blob/c8c1c5297ccf162fce0229ff77097e48ca75ab3e/src/errors.ts#L42)
 
 問題のあった設定ファイル、または設定ディレクトリの絶対パス(あれば)。

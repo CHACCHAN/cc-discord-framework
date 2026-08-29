@@ -183,7 +183,6 @@ describe("toToolSet", () => {
 		await client.load();
 		const store = client.stores.get("ai");
 
-		// 無効なツールはどちらの場合も入らない。
 		expect(Object.keys(store.toToolSet(emptyContext))).toEqual(["echo"]);
 		expect(Object.keys(store.toToolSet({ ...emptyContext, guildId: "g1" })).sort()).toEqual([
 			"echo",
